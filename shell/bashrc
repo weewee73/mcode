@@ -1,5 +1,5 @@
 alias vi='vim'
 alias grep='grep --color=auto'
-alias mnote='vim ~/github/mcode/journal/note.log'
-alias mtask='vim ~/github/mcode/journal/task.log'
-alias mquestion='vim ~/github/mcode/journal/question.log'
+alias mnote='vim -c start ~/github/mcode/journal/note.log'
+alias mtask='vim -c start ~/github/mcode/journal/task.log'
+alias mquestion='vim -c start ~/github/mcode/journal/question.log'

@@ -1,0 +1,4 @@
+git clone https://github.com/zeroflyfire/mcode.git
+git config user.email "zero.flyfire@gmail.com
+git config user.name "flyfire"
+git push origin master

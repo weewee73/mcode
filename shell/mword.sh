@@ -1,9 +1,14 @@
 #!/bin/bash
 
 f_word_xml="$HOME/github/mcode/shell/word.xml"
+if [ ! -f "$f_word_xml" ]; then
+	echo "error! no $f_word_xml!"	
+	exit 1
+fi
 
 if [ -n "$1" ]; then
 	#query word
+	#rm -f /usr/bin/mword && ln -s $HOME/github/mcode/shell/mword.sh /usr/bin/mword
 	word="$1"
 	sed -n "/<word>$word/,/<\/trans>/p" $f_word_xml | xargs echo | sed 's/.*CDATA\[\(.*\)\]\]><\/trans>/\1/g'
 
@@ -13,7 +18,7 @@ if [ -n "$1" ]; then
 else
 	#prompt word
 	#add PROMPT_COMMAND to ~/.bashrc
-	#PROMPT_COMMAND='echo -ne "\e[1;35m[$(/home/code/shell/mword.sh)]\e[m\n"'
+	#PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
 
 	start_time=1370534029
 	step_time=1

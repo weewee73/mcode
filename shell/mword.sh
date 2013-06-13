@@ -1,6 +1,6 @@
 #!/bin/bash
 
-f_word_xml="/home/code/shell/word.xml"
+f_word_xml="$HOME/github/mcode/shell/word.xml"
 
 if [ -n "$1" ]; then
 	#query word

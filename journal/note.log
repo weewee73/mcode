@@ -1,3 +1,7 @@
+git diff --stat --staged origin
+http://scriptogr.am/bee/post/git-ssh-generator
+使用SSH，不要每次GIT PUSH都输入密码
+
 git clone https://github.com/zeroflyfire/mcode.git
 git config user.email "zero.flyfire@gmail.com
 git config user.name "flyfire"

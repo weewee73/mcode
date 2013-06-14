@@ -3,7 +3,7 @@ http://scriptogr.am/bee/post/git-ssh-generator
 使用SSH，不要每次GIT PUSH都输入密码
 
 git clone https://github.com/zeroflyfire/mcode.git
-git config user.email "zero.flyfire@gmail.com
+git config user.email "zero.flyfire@gmail.com"
 git config user.name "flyfire"
 git push origin master
 git branch
@@ -17,3 +17,5 @@ git stash clear
 git stash list
 git stash pop
 git config credential.helper cache
+git config remote.origin.url git@github.com:zeroflyfire/mcode.git
+git diff --stat --staged origin

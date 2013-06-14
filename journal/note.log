@@ -14,3 +14,4 @@ git stash list
 git stash pop
 git config credential.helper cache
 git config remote.origin.url git@github.com:zeroflyfire/mcode.git
+git diff --stat --staged origin

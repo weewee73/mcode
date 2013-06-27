@@ -1,0 +1,46 @@
+COLUMN(1)		  BSD General Commands Manual		     COLUMN(1)
+
+NAME
+     column - columnate lists
+
+SYNOPSIS
+     column [-tx] [-c columns] [-s sep] [file ...]
+
+DESCRIPTION
+     The column utility formats its input into multiple columns.
+	 Rows are filled before columns.
+	 Input is taken from file operands, or, by default, from the standard input.	
+	 Empty lines are ignored.
+
+     The options are as follows:
+
+     -c	     Output is formatted for a display columns wide.
+
+     -s	     Specify a set of characters to be used to delimit columns for the
+	     -t option.
+
+     -t	 --table
+	 Determine the number of columns the input contains and create a table.  
+	 Columns are delimited with whitespace, by default, or
+	     with the characters supplied using the -s option.	Useful for
+	     pretty-printing displays.
+
+     -x	     Fill columns before filling rows.
+
+     Column exits 0 on success, >0 if an error occurred.
+
+ENVIRONMENT
+     COLUMNS  The environment variable COLUMNS is used to determine the size
+	      of the screen if no other information is available.
+
+EXAMPLES
+	   (printf "PERM LINKS OWNER GROUP SIZE MONTH DAY HH:MM/YEAR NAME\n" \
+	   ; ls -l | sed 1d) | column -t
+
+SEE ALSO
+     colrm(1), ls(1), paste(1), sort(1)
+
+HISTORY
+     The column command appeared in 4.3BSD-Reno.
+
+BSD				 June 6, 1993				   BSD

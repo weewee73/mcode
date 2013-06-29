@@ -2373,9 +2373,8 @@ standard.
 'eval'
           eval [ARGUMENTS]
      The arguments are concatenated together into a single command,
-     which is then read and executed, and its exit status returned as
-     the exit status of 'eval'.  If there are no arguments or only empty
-     arguments, the return status is zero.
+     which is then read and executed, and its exit status returned as the exit status of 'eval'.  
+	 If there are no arguments or only empty arguments, the return status is zero.
 
 'exec'
           exec [-cl] [-a NAME] [COMMAND [ARGUMENTS]]

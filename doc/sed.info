@@ -82,9 +82,9 @@ The SCRIPT is actually the first non-option parameter,
 
 `-l N'
 `--line-length=N'
-     Specify the default line-wrap length for the `l' command.  A
-     length of 0 (zero) means to never wrap long lines.  If not
-     specified, it is taken to be 70.
+     Specify the default line-wrap length for the `l' command.  
+	 A length of 0 (zero) means to never wrap long lines.  
+	 If not specified, it is taken to be 70.
 
 `--posix'
      GNU `sed' includes several extensions to POSIX sed.  In order to
@@ -164,23 +164,23 @@ output is actually changed.
 3 `sed' Programs
 ****************
 
-A `sed' program consists of one or more `sed' commands, passed in by
-one or more of the `-e', `-f', `--expression', and `--file' options, or
-the first non-option argument if zero of these options are used.  This
-document will refer to "the" `sed' script; this is understood to mean
-the in-order catenation of all of the SCRIPTs and SCRIPT-FILEs passed
-in.
+A `sed' program consists of one or more `sed' commands, 
+	passed in by one or more of the `-e', 
+	`-f', 
+	`--expression', 
+	and `--file' options, 
+	or the first non-option argument if zero of these options are used.  
+This document will refer to "the" `sed' script; 
+this is understood to mean the in-order catenation of all of the SCRIPTs and SCRIPT-FILEs passed in.
 
-   Commands within a SCRIPT or SCRIPT-FILE can be separated by
-semicolons (`;') or newlines (ASCII 10).  Some commands, due to their
-syntax, cannot be followed by semicolons working as command separators
-and thus should be terminated with newlines or be placed at the end of
-a SCRIPT or SCRIPT-FILE.  Commands can also be preceded with optional
-non-significant whitespace characters.
+Commands within a SCRIPT or SCRIPT-FILE can be separated by semicolons (`;') or newlines (ASCII 10).  
+Some commands, due to their syntax, cannot be followed by semicolons working as command separators 
+	and thus should be terminated with newlines 
+	or be placed at the end of a SCRIPT or SCRIPT-FILE.  
+Commands can also be preceded with optional non-significant whitespace characters.
 
-   Each `sed' command consists of an optional address or address range,
-followed by a one-character command name and any additional
-command-specific code.
+Each `sed' command consists of an optional address or address range, 
+	followed by a one-character command name and any additional command-specific code.
 
 3.1 How `sed' Works
 ===================
@@ -394,11 +394,9 @@ brief description of regular expression syntax as used in `sed'.
      is valid as long as the original content of pattern space is not
      modified, for example with an `s' command.
 
-     `^' acts as a special character only at the beginning of the
-     regular expression or subexpression (that is, after `\(' or `\|').
-     Portable scripts should avoid `^' at the beginning of a
-     subexpression, though, as POSIX allows implementations that treat
-     `^' as an ordinary character in that context.
+     `^' acts as a special character only at the beginning of the regular expression or subexpression (that is, after `\(' or `\|').
+     Portable scripts should avoid `^' at the beginning of a subexpression, 
+	 	though, as POSIX allows implementations that treat `^' as an ordinary character in that context.
 
 `$'
      It is the same as `^', but refers to end of pattern space.  `$'
@@ -492,12 +490,10 @@ Examples:
      This matches a string beginning with `#'.
 
 `\\$'
-     This matches a string ending with a single backslash.  The regexp
-     contains two backslashes for escaping.
+     This matches a string ending with a single backslash.  The regexp contains two backslashes for escaping.
 
 `\$'
-     Instead, this matches a string consisting of a single dollar sign,
-     because it is escaped.
+     Instead, this matches a string consisting of a single dollar sign, because it is escaped.
 
 `[a-zA-Z0-9]'
      In the C locale, this matches any ASCII letters or digits.
@@ -508,8 +504,7 @@ Examples:
      tab.  Usually this means a word.
 
 `^\(.*\)\n\1$'
-     This matches a string consisting of two equal substrings separated
-     by a newline.
+     This matches a string consisting of two equal substrings separated by a newline.
 
 `.\{9\}A$'
      This matches nine characters followed by an `A'.
@@ -667,12 +662,11 @@ FLAGS:
 
 `M'
 `m'
-     The `M' modifier to regular-expression matching is a GNU `sed'
-     extension which causes `^' and `$' to match respectively (in
-     addition to the normal behavior) the empty string after a newline,
-     and the empty string before a newline.  There are special character
-     sequences (`\`' and `\'') which always match the beginning or the
-     end of the buffer.  `M' stands for `multi-line'.
+	 The `M' modifier to regular-expression matching is a GNU `sed' extension 
+	 	which causes `^' and `$' to match respectively (in addition to the normal behavior) 
+			the empty string after a newline, and the empty string before a newline.  
+	 There are special character sequences (`\`' and `\'') which always match the beginning or the end of the buffer.  
+	 `M' stands for `multi-line'.
 
 
    ---------- Footnotes ----------

@@ -1,0 +1,3 @@
+vidcontrol -i mode
+vim /etc/rc.conf
+    allscreens_flags="MODE_379"

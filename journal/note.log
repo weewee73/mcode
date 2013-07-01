@@ -1,6 +1,162 @@
-git diff --stat --staged origin
-http://scriptogr.am/bee/post/git-ssh-generator
-使用SSH，不要每次GIT PUSH都输入密码
+交叉编译MIPS平台的ncurses-5.9的代码的时候，会在执行tic时挂死。
+通过ncurses-5.9源代码编译主机上的版本并安装
+
+
+I just want to dump a few notes here so that other people might benefit, and so that I won’t forget in the future.
+
+http://guides.rubygems.org/
+
+http://tldp.org/HOWTO/Program-Library-HOWTO/index.html
+
+
+cross-platform versions packages
+https://github.com/luislavena/rake-compiler/wiki/Projects-using-rake-compiler
+
+val=`IFS="$PATH_SEPARATOR"
+for dir in $withval; do
+echo x ${LIBPATHFLAG} ${RPATHFLAG} |
+sed -E 's/^x *//;s'"${PATH_SEPARATOR}"'%1\\$-s|%s'"${IFS}${dir}/lib${IFS}g"
+done | tr '\012' ' '`
+
+IFS="$PATH_SEPARATOR"
+for dir in $withval; 
+do
+	echo x ${LIBPATHFLAG} ${RPATHFLAG} |
+	sed -E 's/^x *//;s		'"${PATH_SEPARATOR}"'	 %1\\$-s|%s				'"${IFS}${dir}/lib${IFS}g"
+	sed -E 's/^x *//;s'     "${PATH_SEPARATOR}"     '%1\\$-s|%s'           "${IFS}${dir}/lib${IFS}g"
+	sed -E 's/^x *//;s       :                       %1\$-s|%s               :/home/new_scanner/trunk/user/modules/ruby/local/lib:g'
+done | tr '\012' ' '
+sed -E 's/^x *//;s'"${PATH_SEPARATOR}"'%1\\$-s|%s'"${IFS}${dir}/lib${IFS}g"
+
+sed -E 's/^x *//;s:%1\$-s|%s:/home/new_scanner/trunk/user/modules/ruby/local/lib:g'
+
+++ IFS=:
+++ for dir in '$withval'
+++ tr '\012' ' '
+++ echo x ' -L%1$-s' ' -Wl,-R%1$-s'
+++ sed -E 's/^x *//;s:%1\$-s|%s:/home/new_scanner/trunk/user/modules/ruby/local/lib:g'
+
+----------------------------------------------------------------------
+Libraries have been installed in: 
+/home/new_scanner/trunk/user/modules/ruby/local/lib
+
+If you ever happen to want to link against installed libraries in a given directory, LIBDIR, 
+you must 
+	either 
+		use libtool, and specify the full pathname of the library, 
+	or  
+		use the `-LLIBDIR' flag during linking and do at least one of the following:
+			- add LIBDIR to the `LD_LIBRARY_PATH' environment variable during execution
+			- add LIBDIR to the `LD_RUN_PATH' environment variable during linking
+			- use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+			- have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for 
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+
+
+
+ruby extconf.rb
+make
+make install
+
+gem install rake -v 10.1.0
+
+sed -i 's#/home/new_scanner/trunk/user/modules/ruby/local##g' *
+
+PATH=/bin:/usr/sbin:/usr/bin:/opt/cross-mips32/bin/:/root/bin:/home/new_scanner/trunk/user/modules/ruby/local/bin:/usr/local/bin:/usr/local/sbin:/usr/kerberos/bin:/usr/kerberos/sbin:/usr/lib/qt-3.3/bin
+
+LD_LIBRARY_PATH
+
+$ wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+$ tar xzvf yaml-0.1.4.tar.gz
+$ cd yaml-0.1.4
+$ ./configure --prefix=/usr/local
+$ make
+$ make install
+
+$ wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p0.tar.gz
+$ tar xzvf ruby-1.9.3-p0.tar.gz
+$ cd ruby-1.9.3-p0
+$ ./configure --prefix=/usr/local --enable-shared --disable-install-doc --with-opt-dir=/usr/local/lib
+$ make
+$ make install
+
+
+Adding "# encoding: ascii" at the top of the /usr/local/lib/ruby/gems/2.0.0/gems/packetfu-1.1.8/lib/packetfu/protos/lldp.rb
+gem install pcaprub -- --with-opt-dir=/home/git/metasploit-framework/libpcap
+gem install pg -- --with-pgsql-lib=/home/git/metasploit-framework/postgresql/lib --with-pg-config=/home/git/metasploit-framework/postgresql/bin/pg_config  
+
+gem install bundler && bundle install
+
+Using rake (10.0.4) 
+Using i18n (0.6.1) 
+Using multi_json (1.0.4) 
+Using activesupport (3.2.13) 
+Using builder (3.0.4) 
+Using activemodel (3.2.13) 
+Using arel (3.0.2) 
+Using tzinfo (0.3.37) 
+Using activerecord (3.2.13) 
+Using metaclass (0.0.1) 
+Using mocha (0.13.3) 
+Using bourne (1.4.0) 
+Using database_cleaner (0.9.1) 
+Using diff-lcs (1.2.2) 
+Using factory_girl (4.2.0) 
+Using json (1.7.7) 
+Using pg (0.15.1) 
+Using metasploit_data_models (0.16.1) 
+Using msgpack (0.5.4) 
+Using nokogiri (1.5.9) 
+Using packetfu (1.1.8) 
+Using pcaprub (0.11.3) 
+Using redcarpet (2.2.2) 
+Using robots (0.10.1) 
+Using rspec-core (2.13.1) 
+Using rspec-expectations (2.13.0) 
+Using rspec-mocks (2.13.0) 
+Using rspec (2.13.0) 
+Using shoulda-matchers (1.5.2) 
+Using simplecov-html (0.5.3) 
+Using simplecov (0.5.4) 
+Using timecop (0.6.1) 
+Using yard (0.8.5.2) 
+Using bundler (1.3.5) 
+
+
+
+当你决定出发，最大的困难已不复存在
+
+两眼一抹黑，就直接上了，真是跟上学的时候差不多
+两眼一睁 忙到灯熄
+急生智，穷生变
+轻财足以聚人，律己足以服人，量宽足以得人，身先足以率人
+
+Linus Torvalds
+<<Just for Fun>>
+
+http://www.pentest-standard.org
+
+Think outside of the box.
+
+that's not big of a deal.
+那没什么大不了的
+
+人的一切痛苦,本质上都是对自己的无能的愤怒。王小波
+
+以前喜欢的人，就像走路时撞上的电线杆，很痛。以后，走路的时候就会小心地绕着电线杆走。可能很久以后，就记不得有多痛了，那根电线杆却一直在。
+
+狂霸帅气屌炸天
+
+
+google曾说Don't be evil, 但是在NSA泄密事件中也有所涉及。世界是美好,还是罪恶.那是个人对它的看法，而它只是呈现出内容来。
+
+http://www.offensive-security.com/metasploit-unleashed/Exploits
+If I had eight hours to chop down a tree, I'd speed the first six of them sharpending my axe.  -Abraham Lincoln
+
+http://code.taobao.org/svn/tinixdev/trunk
 
 git clone https://github.com/zeroflyfire/mcode.git
 git config user.email "zero.flyfire@gmail.com"

@@ -1,0 +1,4 @@
+#!/bin/env ruby
+require 'hola'
+puts ARGV[0]
+puts Hola.hi(ARGV[0])

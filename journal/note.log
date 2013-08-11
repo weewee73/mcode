@@ -5,14 +5,14 @@ sudo ln -s /opt/metasploit-framework/armitage /usr/local/bin/armitage
 
 大道理人人懂，小情绪难自控。
 
-svn export exploit /home/new_scanner/trunk/user/modules/dps
+svn export exploit /xxx
 
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 PATH=$PATH:/log/.debug/mips/bin
 
 
-git archive master --format=tar -o dpsploit.tar
+git archive master --format=tar -o xxx.tar
 
 You can try --enable-wide-getaddrinfo.
 http://bugs.ruby-lang.org/issues/7856
@@ -118,21 +118,17 @@ do
 	echo x ${LIBPATHFLAG} ${RPATHFLAG} |
 	sed -E 's/^x *//;s		'"${PATH_SEPARATOR}"'	 %1\\$-s|%s				'"${IFS}${dir}/lib${IFS}g"
 	sed -E 's/^x *//;s'     "${PATH_SEPARATOR}"     '%1\\$-s|%s'           "${IFS}${dir}/lib${IFS}g"
-	sed -E 's/^x *//;s       :                       %1\$-s|%s               :/home/new_scanner/trunk/user/modules/ruby/local/lib:g'
 done | tr '\012' ' '
 sed -E 's/^x *//;s'"${PATH_SEPARATOR}"'%1\\$-s|%s'"${IFS}${dir}/lib${IFS}g"
 
-sed -E 's/^x *//;s:%1\$-s|%s:/home/new_scanner/trunk/user/modules/ruby/local/lib:g'
 
 ++ IFS=:
 ++ for dir in '$withval'
 ++ tr '\012' ' '
 ++ echo x ' -L%1$-s' ' -Wl,-R%1$-s'
-++ sed -E 's/^x *//;s:%1\$-s|%s:/home/new_scanner/trunk/user/modules/ruby/local/lib:g'
 
 ----------------------------------------------------------------------
 Libraries have been installed in: 
-/home/new_scanner/trunk/user/modules/ruby/local/lib
 
 If you ever happen to want to link against installed libraries in a given directory, LIBDIR, 
 you must 
@@ -157,9 +153,7 @@ make install
 
 gem install rake -v 10.1.0
 
-sed -i 's#/home/new_scanner/trunk/user/modules/ruby/local##g' *
 
-PATH=/bin:/usr/sbin:/usr/bin:/opt/cross-mips32/bin/:/root/bin:/home/new_scanner/trunk/user/modules/ruby/local/bin:/usr/local/bin:/usr/local/sbin:/usr/kerberos/bin:/usr/kerberos/sbin:/usr/lib/qt-3.3/bin
 
 LD_LIBRARY_PATH
 

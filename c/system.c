@@ -18,7 +18,7 @@ int main()
 	fp = fopen("/log/yyyy.log", "w+");
 
 	old_handler = signal(SIGCHLD, SIG_DFL);
-	ret = system("/usr/local/dps/ruby/bin/ruby  /usr/local/dps/dpsploit/msfconsole -q -r /log/exploit/set_path_16.txt -o /log/exploit/result_path_16.txt");
+	ret = system("/usr/local/xxx/ruby/bin/ruby  /usr/local/xxx/dpsploit/msfconsole -q -r /log/exploit/set_path_16.txt -o /log/exploit/result_path_16.txt");
     
 	if (WIFEXITED(ret)) {
 		fprintf(fp, "exited, status=%d\n", WEXITSTATUS(ret));

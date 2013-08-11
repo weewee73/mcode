@@ -1,0 +1,516 @@
+vi  visual interface
+
+m 创建标记 
+' 移动到标记的文本行首 
+` 移动到标记的光标位置 
+:marks 列示所有标记 
+:delmarks 删除指定标记 
+:delmarks! 删除所有标记
+ 
+某一行用ma做了标记，
+然后就可以使用d'a来删掉这一行。
+也可以使用y'a命令就可以来复制这一行了。
+
+registers
+
+1.无名（unnamed）寄存器：""，缓存最后一次操作内容；
+2.数字（numbered）寄存器："0 ～ "9，缓存最近操作内容，复制与删除有别, "0寄存器缓存最近一次复制的内容，"1-"9缓存最近9次删除内容
+3.行内删除（small delete）寄存器："-，缓存行内删除内容；
+4.具名（named）寄存器："a ～ "z或"A - "0Z，指定时可用；
+5.只读（read-only）寄存器：":, "., "%, "#，分别缓存最近命令、最近插入文本、当前文件名、当前交替文件名；
+6.表达式（expression）寄存器："=，只读，用于执行表达式命令；
+7.选择及拖拽（selection and drop）寄存器："*, "+, "~，存取GUI选择文本，可用于与外部应用交互，使用前提为系统剪切板（clipboard）可用；
+8.黑洞（black hole）寄存器："_，不缓存操作内容（干净删除）；
+9.模式寄存器（last search pattern）："/，缓存最近的搜索模式。
+
+:g/regex/norm "Ayy 
+上面这条命令把匹配regex的所有行都保存到"a中，当然在运行前需要把"a清空，比如在一个空行上"ayy
+
+:let @a=""
+:g/*/y A
+
+
+
+“0x12,0x34,0x56“改成“0x56,0x34,0x12”。
+假设光标初始在0x12 处，利用数字寄存器的压栈功能，
+用dw....将5个部分依次删除到"5至"1中，
+用"1p....依次吐出来。
+巧妙之处在于，若p命令时指定数字寄 存器，则后续的.命令会自动将数字寄存器的编号加一，也就是第一个.执行的是"2p，依次类推。
+
+
+在插入模式下输入<C-R>=，Vim会提示一个=，再输入0x1234<CR>，4660就自动插入到当前位置。 
+
+在插入模式下输入<C-R>w,删除本行。
+
+
+整篇文章大写转化为小写
+ggguG 
+gg=光标到文件第一个字符
+gu=把选定范围全部小写
+G=到文件结束
+
+
+
+只转化某个单词
+gu5w、gu5e
+gU5w、gU5e
+
+转换几行的大小写
+1gU 从光标所在行 往下一行都进行小写到大写的转换
+10gU　则进行11行小写到大写的转换
+gU0　从光标所在位置到行首，都变为大写
+gU$　从光标所在位置到行尾，都变为大写
+gUG　从光标所在位置到文章最后一个字符，都变为大写
+gU1G 从光标所在位置到文章第一个字符，都变为大写
+
+~ 光标所在的字元大小写互换
+
+正常模式下显示文件名和状态
+:f   或CTRL+G
+
+插入模式
+ctrl + r + = + expand('%')　获取当前文件的文件名
+ctrl + r + = + expand('%:p')　获取当前文件的全路径
+
+
+如果希望和其它程序方便的复制粘贴，可以将剪贴板寄存器"*设为未命名寄存器： 
+:set clipboard=unnamed 
+
+视图模式下：
+shift+d剪切
+shift+p粘贴
+shift+y复制
+
+
+多个文件
+ctrl + ^ 文件快速切换
+:args       查看整个列表有哪些文件(arguments)
+:next       查看后一个文件 :wnext :2next 
+:previous   查看前一个文件
+:first  　　查看第一个文件
+:last       查看最后一个文件
+
+:args 1.c 2.c 3.c 重新定义一个文件列表
+
+`"  上次离开时光标的位置
+`.  最后一次修改的位置
+
+
+:set laststatus=2   显示状态行
+:set laststatus=0   移去状态行
+
+Shift + 3 搜索光标处单词
+
+
+
+:redir > ./all_matches.txt
+:silent g/regex/
+:redir END
+
+
+
+\_.* 贪婪匹配所有字符
+
+ctrl + p 插入模式时，自动补全
+    ctrl + n　补全时，选择下一个
+    
+:set filetype=c
+
+
+:set hlsearch
+    shift + 8 高亮当前单词
+:set nohlsearch
+
+
+
+:split 分割窗口:split another.c
+:vsplit
+    ctrl + w 窗口间跳转
+    ctrl + +/- 窗口高度
+    ctrl + </> 窗口宽度
+    ctrl + |   全屏显示窗口
+:close 关闭窗口
+:only 关闭其他所有窗口，保留当前窗口
+
+
+:Ctrl + r + 寄存器名　在命令行下粘贴
+Ctrl + r + 寄存器名   在插入模式下粘贴
+
+
+q:  打开了命令行窗口
+
+
+ctrl + v 插入列
+    I + 插入内容
+Esc
+Esc
+
+
+zf + ap 手工折行
+zf  创建折行
+zo  打开折行 zO
+    zr　打开多层折行
+    zm  重新折行多层
+    zR  所有折行
+    zM  所有折行
+zc  关闭折行 zC
+
+vim -R xxx
+view file 将以只读方式打开文件。
+
+ctrl + b cursor to beginning of command-line
+ctrl + e cursor to end of command-line
+ctrl + w delete the word before the cursor 
+ctrl + u remove all characters between the cursor position and the beginning of the line.
+
+v  可视模式
+ctrl + v  可视块模式
+
+v +　 +　<</>> + . 缩进
+
+
+:r 文件名1            将文件1内容引入到本文件中
+:r !shell命令        (r与!之间有空格)将shell命令执行的结果导入到本文件中
+
+按每行字符长度排序
+:%s/.*/\=strlen(getline(".")).'|'.getline(".")/g
+sort n
+
+
+
+:%!xxd      二进制
+:%!xxd -r   恢复
+
+:set list   显示不可见字符
+:set nolist
+
+:%s/pattern/&/gn　统计有多少个匹配　计数
+:%s/pattern//gn
+
+help count-items
+
+
+CTRL-X CTRL-L      整行补全                        
+CTRL-X CTRL-N      根据当前文件里关键字补全        
+CTRL-X CTRL-K      根据字典补全                    
+CTRL-X CTRL-T      根据同义词字典补全              
+CTRL-X CTRL-I      根据头文件内关键字补全          
+CTRL-X CTRL-]      根据标签补全                    
+CTRL-X CTRL-F      补全文件名                      
+CTRL-X CTRL-D      补全宏定义                      
+CTRL-X CTRL-V      补全vim命令                     
+CTRL-X CTRL-U      用户自定义补全方式              
+CTRL-X CTRL-S      拼写建议                        
+
+CTRL-B和CTRL-F来进行翻页
+CTRL-U和CTRL-D来进行翻半页
+
+
+diff grep.script_id.openvas.2012-09-* | vim -
+
+set diffopt=filler,context:0
+
+set tags=../tags
+
+
+:set ignorecase　　　忽略大小写
+:set noignorecase   不忽略大小写
+
+
+gf 当前打开文件
+CTRL-W f 新窗口打开文件
+:set path+=""  加搜索路径
+vim "+find stdio.h" 在搜索路径中找到文件并打开
+
+
+:hide edit two.txt
+:buffers
+    :bnext
+    :bprevious
+    :bfirst
+    :blast
+:buffer 1
+:bdelete 3
+    :buffers!
+:bwipe 彻底删除
+:sbuffer 3 在新窗口打开
+
+:set fileformat=unix   dos mac
+:write
+
+vim -x new.txt 加密新文件
+:X 与-x一样
+vim -x -n 不用交换文件
+
+CTRL-W　插入模式删除当前单词
+CTRL-U　插入模式删除到行首 
+CTRL-A　插入模式重复插入之前插入的内容
+CTRL-Y　插入模式插入与上一行当前位置的字符 
+CTRL-E　插入模式插入与下一行当前位置的字符 
+
+:abbreviate  列出所有缩写
+    :iabbrev ad advertisement    输入ad时扩展成advertisement
+    :iabbrev #b /************************************
+    :iabbrev #e <Space>************************************/
+:abbreviate teh the 可以在输入时(插入和命令模式)用来更正错误
+:unabbreviate xx  删除
+    :iunabbreviate ab  删除插入模式
+    :cunabbreviate xx  删除命令模式
+:abclear    清除所有
+    :iabclear
+    :cabclear
+
+
+CTRL-V 数字　　　插入模式插入特称字符
+    CTRL-V x7f
+    CTRL-V o123
+    CTRL-V 9
+    CTRL-V CTRL-C ^C
+    CTRL-V CTRL-M ^M
+    
+:digraphs 查看二合字母
+CTRL-K Co  插入二合字母
+
+
+CTRL-O {command} 插入模式下运行命令
+    CTRL-O D 删除到行尾
+    CTRL-O "g3dw 删除3个单词存入寄存器g中
+
+:set textwidth=30   每行的宽度，自动换行
+:set shiftwidth=4   缩进量4个空格
+:set softtabstop=4  tab为4个空格的缩进
+    
+gq　重排文本
+    vGgq
+    gqap
+
+gj/gk 移动屏幕一行
+:map <Up> gk
+:map <Down> gj
+
+g0  屏幕行首
+g^　屏幕行首第一个非空白字符位置
+gm  屏幕行中间位置
+g$  屏幕行尾
+
+{range}center [width]
+{range}right [width]
+    1,5right 4
+{range}left [margin]
+
+
+
+:set scrollbind 两个窗口同时滚动，两个窗口都要设置
+
+
+:s/<C-V><C-M>//g  删除^M字符
+
+
+:saveas new_file 另存为
+:file new_file　修改当前文件名，但不保存
+
+:e! 重新加载文件
+
+:set encoding       encoding是Vim的内部使用编码，encoding的设置会影响Vim内部的Buffer、消息文字等。
+                    在Unix环境下，encoding的默认设置等于locale；
+                    Windows环境下会和当前代码页相同。
+:set fileencoding   Vim会根据fileencoding的设置编码来保存
+:set fileencodings  Vim在打开文件时会根据fileencodings选项来识别文件编码
+:set termencoding   Vim 所工作的终端 (或者 Windows 的 Console 窗口) 的字符编码方式
+
+
+:sort n /.*script_id(/
+
+:g/^\(.*\)\n\1/d  删除相同行的内容，保留最后一行
+
+
+find . -type f -exec vim {} \; (^ 用vim打开find的结果, 但每次只打开一个文件 ^)
+find . -type f -exec vim {} +; (^ 用vim打开find的结果, 若有多个文件则放入buffer中 ^)
+
+
+:redir @A>>　将命令输出重定向到寄存器a
+:redir @a
+(some commands)
+:redir END
+
+
+group-name
+
+colorscheme 
+
+http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+
+:echo g:colors_name
+
+K 查看当前命令的man
+
+Ctrl+F                             往下（文件结尾方向）滚动一屏。
+
+Ctrl+B                             往上（文件开始方向）滚动一屏。
+
+Ctrl+D                             往下滚动半屏。
+
+Ctrl+U                             往上滚动半屏。
+
+Ctrl+E                             编辑窗口中的文件内容整体上移一行。
+
+Ctrl+Y                             编辑窗口中的文件内容整体下移一行。
+
+H                                     把光标移至编辑窗口顶部第一行的行首位置。
+
+M                                    把光标移至编辑窗口中间一行的行首位置。
+
+L                                     把光标移至编辑窗口底部最后一行的行首位置。
+
+
+
+ gj 光标移动到屏幕下一行
+ gk 光标移动到屏幕上一行
+ 
+
+:mksession vimbook.vim
+:source vimbook.vim
+vim -S vimbook.vim
+
+:[range]ret[ab][!] [new_tabstop]    将连续空白字符(空格和tab)替换为指定的空格
+    retab! 4
+    retab! 8
+    
+
+:h cscope
+
+
+:tabe   在新标签页中打开指定的文件
+:tabnew 在新标签页中编辑新的文件
+:tab split  将在新标签页中，打开当前缓冲区中的文件
+
+:tabf   允许你在当前目录搜索文件，并在新标签页中打开。比如我想打开当前目录下的img.txt文件，那么就可以使用
+:tabf img.*     打开当前目录下的img.txt文件
+请注意，此命令只能打开一个文件，如果搜索出多个匹配文件，将提示你“文件名过多”，这时你需要给出更精确的搜索条件以打开文件。
+
+
+:set tabpagemax=15  改变标签页数量（默认最多只能打开10个标签页）
+
+:tabs   显示已打开标签页的列表
+        “>”标识出当前页面
+        “+”标识出已更改的页面
+
+:tabc   可以关闭当前标签页
+:tabo   将关闭所有的标签页
+
+:tabn或gt    移动到下一个标签页
+:tabp或gT    移动到上一个标签页
+如果已经到达最后面或最前面的标签页，将会自动转向循环
+
+:tabfirst或:tabr    移动到第一个标签页
+:tablast            移动到最后一个标签页
+
+:tabm   移动标签页
+请注意，标签页次序是从0开始计数的。
+如果没有为:tabm命令指定参数，那么当前标签页将会被移动到最后。
+
+:set showtabline=1   新建了标签页才会在窗口上方显示标签栏（默认情况）。
+:set showtabline=2   总是显示标签栏
+:set showtabline=0   不显示标签栏
+
+:tabdo  同时在多个标签页中执行命令。
+:tabdo %s/food/drink/g  一次完成对所有文件的替换操作
+
+Ctrl-A  光标数字下加一
+Ctrl-X  光标数字下减一
+
+:w !sudo tee %      在vi中保存一个只有root可以写的文件
+
+
+http://www.cnblogs.com/napoleon_liu/articles/1988535.html 最佳vim技巧
+
+插件入行号
+:%!sed = | sed "N;s/\n/ /"
+    = Print the current line number
+:%!cat -n
+
+在行首插入行号
+:%s/^/\=line('.')." "/
+
+在行首插入 "line+<行号>"
+:%s/^/\="line ".line('.')." "/
+
+在行首插入 "line+<行号>"，行号从1至5循环
+:%s/^/\="line ".((line('.')+1)%5)." "/
+
+插入行号
+:%s#$#\=" "."/home/tmp/ ".(line('.')+40000)#
+:g/^/ s//\=line('.').' '/
+
+
+:redir @a | 1,30# | redir END
+:1,30d | put! a
+1,30#显示前30行及其行号，保存到寄存器a中
+删掉前30行，再贴上寄存器的内容
+
+:for i in range(31)
+:call setline(i,i .' '. getline(i))
+:endfor
+为前30行加上行号
+
+
+为所有行加上行号
+:let i=1
+:g/^/ s//\=i . ' '/ | let i=i+1
+
+先重置a寄存器。
+再对所有以字母开头的行编号
+^A表示按Ctrl-A组合键
+:let @a='0 '
+:let @q='0"aP0^A"ayaw'
+:g/^\a/ norm @q
+
+/\<\h\w*\>
+"\h" stands for "[A-Za-z_]"
+"\w" for "[0-9A-Za-z_]"
+
+:s/array_\(\h*\)=( \1 )/array_\1=( \11 \12 \13 \14 )/g
+
+:%s/匹配的字符串/\u&
+\u&是把匹配的字符串第一个字符转成大写
+\U&是把匹配的都转成大写(upper case)
+\l&和\L&是转成小写(lower case)
+
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+gD
+跳转到局部变量的定义处
+''
+跳转到光标上次停靠的地方, 是两个', 而不是一个"
+
+
+
+
+
+
+
+
+
+
+
+TlistToggle
+在Vim命令行下运行TlistToggle命令就可以打开Taglist窗口，
+再次运行TlistToggle则关闭
+
+    cscope -Rbq -f path/xxx.out 生成xxx.out文件
+cs add path/xxx.out
+:cs f g kvm_assign_device
+    s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
+    g: 查找函数、宏、枚举等定义的位置，类似ctags所提供的功能
+    d: 查找本函数调用的函数
+    c: 查找调用本函数的函数
+    t: 查找指定的字符串
+    e: 查找egrep模式，相当于egrep功能，但查找速度快多了
+    f: 查找并打开文件，类似vim的find功能
+    i: 查找包含本文件的文件
+
+
+:Matrix   

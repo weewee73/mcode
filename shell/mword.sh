@@ -1,18 +1,28 @@
 #!/bin/bash
 
 f_word_xml="$HOME/github/mcode/shell/word.xml"
+f_words="$f_word_xml.list~"
+f_word_history="$f_word_xml.history~"
+
 if [ ! -f "$f_word_xml" ]; then
 	echo "error! no $f_word_xml!"	
 	exit 1
 fi
 
-if [ -n "$1" ]; then
+if [ "-topx" = "$1x" ]; then
+	#history words statistic
+	number=40
+	if [ -n "$2" ]; then
+		number=$2
+	fi
+	awk -F ',' '{print $1}' $f_word_history | sort | uniq -c | sort -r |  head -n $number
+	
+elif [ -n "$1" ]; then
 	#query word
 	#rm -f /usr/bin/mword && ln -s $HOME/github/mcode/shell/mword.sh /usr/bin/mword
 	word="$1"
 	sed -n "/<word>$word/,/<\/trans>/p" $f_word_xml | xargs echo | sed 's/.*CDATA\[\(.*\)\]\]><\/trans>/\1/g'
 
-	f_word_history="$f_word_xml.history~"
 	echo "$word,`date +"%Y/%m/%d %H:%M:%S"`" >>$f_word_history
 
 else
@@ -29,7 +39,6 @@ else
 	today_base=`echo "$pass_time/86400*$day_count + 1" | bc`
 	count=`echo "$today_base + $pass_time/$step_time%$day_count" | bc`
 
-	f_words="$f_word_xml.list~"
 	if [ ! -f "$f_words" ]; then
 		grep '<word>' $f_word_xml | sed 's/.*<word>\(.*\)<\/word>.*/\1/g' >$f_words
 	fi

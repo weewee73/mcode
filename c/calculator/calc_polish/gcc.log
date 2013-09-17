@@ -1,0 +1,2 @@
+gcc getch.c  getop.c  main.c  stack.c -c
+gcc -o calc *.o

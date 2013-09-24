@@ -30,7 +30,7 @@ else
 	#add PROMPT_COMMAND to ~/.bashrc
 	#PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
 
-	start_time=1370534029
+	start_time=1374300000
 	step_time=1
 	day_count=20
 

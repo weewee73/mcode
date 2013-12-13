@@ -1,0 +1,171 @@
+"==========================================
+" General 基础设置
+"==========================================
+
+"set guifont=Monaco:h20          " 字体 && 字号
+
+" history存储长度。
+set history=2000
+
+"检测文件类型
+filetype on
+"针对不同的文件类型采用不同的缩进格式
+filetype indent on
+"允许插件
+filetype plugin on
+"启动自动补全
+filetype plugin indent on
+
+filetype plugin indent on
+"==========================================
+"开启语法高亮
+syntax enable
+syntax on
+
+
+"非兼容vi模式。去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
+set nocompatible
+set autoread          " 文件修改之后自动载入。
+set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的提示
+
+" 备份,到另一个位置. 防止误删, 目前是取消备份
+"set backup
+"set backupext=.bak
+"set backupdir=~/bak/vimbk/
+
+" 取消备份。 视情况自己改
+set nobackup
+set noswapfile
+
+" 突出显示当前行等 不喜欢这种定位可注解
+set cursorcolumn
+"set cursorline              " 突出显示当前行
+
+"设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
+"好处：误删什么的，如果以前屏幕打开，可以找回
+set t_ti= t_te=
+
+
+"- 则点击光标不会换,用于复制
+set mouse-=a           " 鼠标暂不启用, 键盘党....
+" 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
+"set selection=exclusive
+set selection=inclusive
+set selectmode=mouse,key
+
+" No annoying sound on errors
+" 去掉输入错误的提示声音
+set title                " change the terminal's title
+set novisualbell           " don't beep
+set noerrorbells         " don't beep
+set t_vb=
+set tm=500
+
+"==========================================
+" Show 展示/排班等界面格式设置
+"==========================================
+
+"显示行号：
+set number
+set nowrap                    " 取消换行。
+
+"括号配对情况
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+"设置文内智能搜索提示
+" 高亮search命中的文本。
+set hlsearch
+" 搜索时忽略大小写
+set ignorecase
+" 随着键入即时搜索
+set incsearch
+" 有一个或以上大写字母时仍大小写敏感
+set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
+
+" 代码折叠
+set foldenable
+" 折叠方法
+" manual    手工折叠
+" indent    使用缩进表示折叠
+" expr      使用表达式定义折叠
+" syntax    使用语法定义折叠
+" diff      对没有更改的文本进行折叠
+" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+set foldmethod=indent
+set foldlevel=99
+
+"Smart indent
+set smartindent
+set autoindent    " always set autoindenting on
+" never add copyindent, case error   " copy the previous indentation on autoindenting
+
+set tabstop=4                " 设置Tab键的宽度        [等同的空格个数]
+set shiftwidth=4  " number of spaces to use for autoindenting
+set softtabstop=4             " 按退格键时可以一次删掉 4 个空格
+set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+
+set expandtab                " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+
+" A buffer becomes hidden when it is abandoned
+set hidden
+set wildmode=list:longest
+set ttyfast
+
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
+"显示当前的行号列号：
+set ruler
+""在状态栏显示正在输入的命令
+set showcmd
+" Show current mode
+set showmode
+
+" Set 7 lines to the cursor - when moving vertically using j/k 上下滚动,始终在中间
+set scrolloff=7
+
+"set winwidth=79
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+" Always show the status line
+set laststatus=2
+
+"==========================================
+" file encode, 文件编码,格式
+"==========================================
+" 设置新文件的编码为 UTF-8
+"set fileencodings=ucs-bom,utf-8,gb2312,big5,latin1
+
+set encoding=utf-8
+" 自动判断编码时，依次尝试以下编码：
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set helplang=cn
+"language message zh_CN.UTF-8
+"set langmenu=zh_CN.UTF-8
+"set enc=2byte-gb18030
+" 下面这句只影响普通模式 (非图形界面) 下的 Vim。
+set termencoding=utf-8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" 如遇Unicode值大于255的文本，不必等到空格再折行。
+set formatoptions+=m
+" 合并两行中文时，不在中间加空格：
+set formatoptions+=B
+
+"==========================================
+" others 其它配置
+"==========================================
+autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
+autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
+
+" 自动补全配置
+"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+"set completeopt+=longest
+set completeopt=longest,menu
+ 

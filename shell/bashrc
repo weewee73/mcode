@@ -1,5 +1,6 @@
 alias vi='vim'
 alias grep='grep --color=auto'
+alias man='$HOME/github/mcode/shell/mman.sh'
 alias mnote='vim -c start ~/github/mcode/journal/note.log'
 alias mtask='vim -c start ~/github/mcode/journal/task.log'
 alias mquestion='vim -c start ~/github/mcode/journal/question.log'

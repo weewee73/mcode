@@ -15,7 +15,7 @@ if [ "-topx" = "$1x" ]; then
 	if [ -n "$2" ]; then
 		number=$2
 	fi
-	awk -F ',' '{print $1}' $f_word_history | sort | uniq -c | sort -r |  head -n $number
+	awk -F ',' '{print $1}' $f_word_history | sort | uniq -c | sort -nr |  head -n $number
 	
 elif [ -n "$1" ]; then
 	#query word
@@ -30,7 +30,7 @@ else
 	#add PROMPT_COMMAND to ~/.bashrc
 	#PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
 
-	start_time=1370534029
+	start_time=1385534029
 	step_time=1
 	day_count=20
 

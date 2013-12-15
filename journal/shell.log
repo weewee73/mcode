@@ -717,6 +717,7 @@ gdb
 
 
 	x/8sb 0x15616b04 显示内存地址内容8是8个 s是字符串 b是字节
+	p *a @3 显示数组a前3个元素
 
 	set follow-fork-mode 
 

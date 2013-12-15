@@ -501,7 +501,8 @@ TlistToggle
 再次运行TlistToggle则关闭
 
     cscope -Rbq -f path/xxx.out 生成xxx.out文件
-cs add path/xxx.out
+:set cscopequickfix=s-,c-,d-,i-,t-,e-
+:cs add path/xxx.out path
 :cs f g kvm_assign_device
     s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
     g: 查找函数、宏、枚举等定义的位置，类似ctags所提供的功能
@@ -512,5 +513,8 @@ cs add path/xxx.out
     f: 查找并打开文件，类似vim的find功能
     i: 查找包含本文件的文件
 
-
+:cw  打开quickfix窗口
+	:cn 下一条
+	:cp 上一条
+ 
 :Matrix   

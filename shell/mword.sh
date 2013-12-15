@@ -30,7 +30,7 @@ else
 	#add PROMPT_COMMAND to ~/.bashrc
 	#PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
 
-	start_time=1374300000
+	start_time=1379200000
 	step_time=1
 	day_count=20
 
@@ -48,6 +48,6 @@ else
 	echo -n "$count: $word"
 
 	#set window's title
-	echo -ne "\033]0;$word\007"
+	echo -ne "\033]0;$word ---- $USER@$HOSTNAME: $PWD\007"
 
 fi

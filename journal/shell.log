@@ -306,6 +306,7 @@ finds all lines that contain both ‘paul’ and ‘franc,ois’
 du -s * | sort -n | tail  列出当前目录里最大的10个文件。
 
 date -d@1234567890   时间截 转 时间
+date +%s -d "2013-08-01 12:45:19"
 
 mtr coolshell.cn   mtr命令比traceroute要好。
 

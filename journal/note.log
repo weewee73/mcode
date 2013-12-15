@@ -322,3 +322,20 @@ printf("%*s %s\n", i, buf); //动态宽度或精度
 dd if=/dev/zero of=xxx bs=1K count=1000 生成大文件
 
 lzip -cd gmp-5.1.3.tar.lz | tar -xf -
+
+Asterisk — *
+At — @
+Colon — :
+Comma — ,
+Curly Braces — { }
+Dot — .
+Exclamation Point — !
+Parentheses — ( )
+Percent — %
+Plus — +
+Semicolon — ;
+Single Quotes — ' '
+Space Character
+Slash and Backslash — / \
+Square Brackets — [ ]
+Tilde — ~

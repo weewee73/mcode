@@ -1,6 +1,9 @@
 #!/bin/bash
 
-name=$_
+name=${!#}
+#name=${@:$#}
+#name=${@: -1}
+
 f_man="$HOME/github/mcode/doc/$name.man"
 
 if [ ! -e $f_man ]

@@ -306,6 +306,7 @@ finds all lines that contain both ‘paul’ and ‘franc,ois’
 du -s * | sort -n | tail  列出当前目录里最大的10个文件。
 
 date -d@1234567890   时间截 转 时间
+date +%s -d "2013-08-01 12:45:19"
 
 mtr coolshell.cn   mtr命令比traceroute要好。
 
@@ -717,6 +718,7 @@ gdb
 
 
 	x/8sb 0x15616b04 显示内存地址内容8是8个 s是字符串 b是字节
+	p *a @3 显示数组a前3个元素
 
 	set follow-fork-mode 
 
@@ -734,6 +736,7 @@ rsync -delete 将目标文件夹以一个空文件夹来替换,来删除一个�
 mkdir empty_dir
 rsync -a --delete empty_dir/    yourdirectory/
 
+dd if=/dev/zero of=xxx bs=1K count=1000 生成大文件
 
 ssh-agent bash && ssh-add
 

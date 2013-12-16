@@ -1,3 +1,26 @@
+When you Include a module into your class as shown below, 
+it’s as if you took the code defined within the module and inserted it within the class, where you ‘include’ it. 
+
+It allows the ‘mixin’ behavior. It’s used to DRY up your code to avoid duplication, for instance, if there were multiple classes that would need the same code within the module.
+
+The following assumes that the module Log and class TestClass are defined in the same .rb file. If they were in separate files, then ‘load’ or ‘require’ must be used to let the class know about the module you’ve defined.
+
+
+
+
+The require method does what include does in most other programming languages: 
+run another file. 
+It also tracks what you've required in the past and won't require the same file twice. 
+To run another file without this added functionality, you can use the load method.
+
+The include method takes all the methods from another module and includes them into the current module. 
+This is a language-level thing as opposed to a file-level thing as with require. 
+The include method is the primary way to "extend" classes with other modules (usually referred to as mix-ins). 
+For example, if your class defines the method "each", you can include the mixin module Enumerable and it can act as a collection. 
+This can be confusing as the include verb is used very differently in other languages.
+
+
+
 sudo bash -c 'for MSF in $(ls msf*); do ln -s /opt/metasploit-framework/$MSF /usr/local/bin/$MSF;done'
 sudo ln -s /opt/metasploit-framework/armitage /usr/local/bin/armitage
 
@@ -280,6 +303,7 @@ git branch
 git branch -r
 git diff origin/master
 git fetch origin
+git merge origin/master
 git rebase origin/master
 git reset --hard HEAD~1
 git stash
@@ -289,5 +313,29 @@ git stash pop
 git config credential.helper cache
 git config remote.origin.url git@github.com:zeroflyfire/mcode.git
 git diff --stat --staged origin
+git checkout -- Makefile
 vidcontrol -i mode
 vim /etc/rc.conf
+
+printf("%*s %s\n", i, buf); //动态宽度或精度
+
+dd if=/dev/zero of=xxx bs=1K count=1000 生成大文件
+
+lzip -cd gmp-5.1.3.tar.lz | tar -xf -
+
+Asterisk — *
+At — @
+Colon — :
+Comma — ,
+Curly Braces — { }
+Dot — .
+Exclamation Point — !
+Parentheses — ( )
+Percent — %
+Plus — +
+Semicolon — ;
+Single Quotes — ' '
+Space Character
+Slash and Backslash — / \
+Square Brackets — [ ]
+Tilde — ~

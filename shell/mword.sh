@@ -48,6 +48,7 @@ else
 	echo -n "$count: $word"
 
 	#set window's title
-	echo -ne "\033]0;$word\007"
+	#echo -ne "\033]0;$word ---- $USER@$HOSTNAME: $PWD\007"
+	echo -ne "\033]0;$word $PWD\007"
 
 fi

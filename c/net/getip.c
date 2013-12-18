@@ -4,38 +4,33 @@
 #include <net/if.h>
 #include <netinet/in.h>
 
-/* Given a ifreq structure this function returns its IP address */
-void getip(struct ifreq *ifr, char *addr)
-{
-    struct sockaddr *sa;
-
-    sa = (struct sockaddr *)&(ifr->ifr_addr);
-    switch (sa->sa_family)
-    {
-        case AF_INET6:
-            inet_ntop(AF_INET6, (struct in6_addr *)&(((struct sockaddr_in6 *)sa)->sin6_addr), addr, INET6_ADDRSTRLEN);
-            break;
-        default : 
-            strcpy(addr, (const char *)inet_ntoa(((struct sockaddr_in *)sa)->sin_addr));
-    }
-
-}
 
 void test()
 {
     struct ifreq ifr;
-    char netaddr[INET_ADDRSTRLEN];
     int sd;
+    struct sockaddr_in *addr;
+    unsigned char *mac;
+    char *address;
     
     sd = socket(AF_INET, SOCK_DGRAM, 0);
     strcpy(ifr.ifr_name, "eth0");
 
-    if((ioctl(sd, SIOCGIFADDR, (caddr_t)&ifr, sizeof(struct ifreq))) < 0)
-        perror("Error : ");
+    if((ioctl(sd, SIOCGIFADDR, &ifr)) < 0)
+    {
+        perror("ioctl SIOCGIFADDR error");
+    }
+    addr = (struct sockaddr_in *)&(ifr.ifr_addr);
+    address = (char *)inet_ntoa(addr->sin_addr);
+    printf("inet addr: %s\n", address);
 
-    getip(&ifr, netaddr);
 
-    printf("%s\n", netaddr);
+    if (ioctl(sd, SIOCGIFHWADDR, &ifr) == -1)
+    {
+        perror("ioctl SIOCGIFHWADDR error");
+    }
+    mac = (unsigned char*)(ifr.ifr_hwaddr.sa_data);
+    printf(" mac addr: %2.2x:%2.2x:%2.2x:%2.2x:%2.2x:%2.2x\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
 }
 

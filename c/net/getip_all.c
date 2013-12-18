@@ -49,6 +49,13 @@ void test()
                     struct in_addr inaddr = ((struct sockaddr_in *)(&ifr[i].ifr_addr))->sin_addr;
                     printf("\t%s\n", inet_ntoa(inaddr));
                 }
+                if (ioctl(sd, SIOCGIFHWADDR, &ifr[i]) == 0)
+                {
+                    char *mac = (unsigned char*)(ifr[i].ifr_hwaddr.sa_data);
+                    printf("mac : %2.2x:%2.2x:%2.2x:%2.2x:%2.2x:%2.2x\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+                }
+
+
                 if (ioctl(sd, SIOCGIFBRDADDR, &ifr[i]) == 0)
                 {
                     bcast = ((struct sockaddr_in *)(&ifr[i].ifr_broadaddr))->sin_addr.s_addr;

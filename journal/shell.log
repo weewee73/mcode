@@ -496,6 +496,19 @@ find . -wholename './src/emacs' -prune -print -o -print
 find . -wholename './src/emacs' -prune , -print
     skip the directory src/emacs and all files and directories under it, and print the names of the other files found
     
+LNX=/home/jru/linux-2.4.18
+cd /    
+find  $LNX                                                                \
+    -path "$LNX/arch/*" ! -path "$LNX/arch/i386*" -prune -o               \
+    -path "$LNX/include/asm-*" ! -path "$LNX/include/asm-i386*" -prune -o \
+    -path "$LNX/tmp*" -prune -o                                           \
+    -path "$LNX/Documentation*" -prune -o                                 \
+    -path "$LNX/scripts*" -prune -o                                       \
+    -path "$LNX/drivers*" -prune -o                                       \
+    -name "*.[chxsS]" -print >/home/jru/cscope/cscope.files
+
+   
+(  (-path "$LNX/arch/*") -a (! -path "$LNX/arch/i386*")  )    -prune -o               \
 
 ls -dils
     204744   17 -rw-r--r--   1 djm      staff       17337 Nov  2  1992 ./lwall-quotes
@@ -743,3 +756,27 @@ ssh-agent bash && ssh-add
 expr length 'hello world!'
 str="hello world!"
 echo ${#str}
+
+ls -i
+find ./ -inum 398459501 -print -exec rm -rf {} \;
+
+/usr/sbin/setenforce 0 立刻关闭 SELINUX
+/usr/sbin/setenforce 1 立刻启用 SELINUX
+
+使时区的更改立刻生效
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+最好使用下面的命令将更改写入bios
+hwclock -w
+
+Generate a random 8 character password containing a-z, A-Z and 0-9: 
+egrep -ioam1 '[a-z0-9]{8}' /dev/urandom
+
+ctags --list-kinds=c
+ctags -R --c-kinds=+px
+
+/etc/init.d/iptables stop
+iptables -Lv --line-numbers
+iptables -I INPUT -p udp --dport 123 -j ACCEPT
+/etc/rc.d/init.d/iptables save
+iptables -D INPUT -p udp --dport 123 -j ACCEPT
+iptables -D INPUT 4

@@ -14,7 +14,7 @@ then
     then
         exit $ret
     fi
-    man $name | col -b >$f_man
+    man $name | col -bx >$f_man
 fi
 
 vim $f_man

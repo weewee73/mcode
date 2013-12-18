@@ -1,0 +1,82 @@
+LOCALE(1)                                                            LOCALE(1)
+
+
+
+NAME
+       locale - Get locale-specific information.
+
+SYNOPSIS
+       locale [ -a │ -m]
+
+       locale [ -ck ] name...
+
+DESCRIPTION
+       The locale program writes information 
+            about the current locale environment, or all locales, to standard output.
+
+       When invoked without arguments, 
+            locale summarizes the current locale environment 
+                for each locale category defined by the LC_* environment variables.
+
+       -a, --all-locales
+
+               Write names of available locales.
+
+       -m, --charmaps
+
+               Write names of available charmaps.
+
+
+       Output Format:
+
+       -c, --category-name
+
+               Write names of selected categories.
+
+       -k, --keyword-name
+
+               Write names and values of selected keywords.
+
+
+ENVIRONMENT VARIABLES
+       LC_CTYPE
+
+               Character classification and case conversion.
+
+       LC_COLLATE
+
+               Collation order.
+
+       LC_TIME
+
+               Date and time formats.
+
+       LC_NUMERIC
+
+               Non-monetary numeric formats.
+
+       LC_MONETARY
+
+               Monetary formats.
+
+       LC_MESSAGES
+
+               Formats of informative and diagnostic messages and interactive responses.
+
+AUTHOR
+       locale is written by Ulrich Drepper for the GNU C Library.
+
+       This manpage is written by Joel Klecker <espy@debian.org> for the Debian GNU/Linux system.
+
+
+
+
+
+
+
+
+
+
+
+
+3rd Berkeley Distribution         March 2001                         LOCALE(1)

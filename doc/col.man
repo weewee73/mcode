@@ -21,8 +21,7 @@ The options are as follows:
 -b Do not output any backspaces, printing only the last character written to each column position.
 
 -f Forward half line feeds are permitted (``fine'' mode). 
- Normally characters printed on a half line boundary are printed on the
- following line.
+    Normally characters printed on a half line boundary are printed on the following line.
 
 -h Do not output multiple spaces instead of tabs (default).
 

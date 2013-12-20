@@ -327,6 +327,10 @@ curl -u user:pass -d status=”Tweeting from the shell” http://twitter.com/sta
 curl -u username –silent “https://mail.google.com/mail/feed/atom” | perl -ne ‘print “\t” if /<name>/; print “$2\n” if /<(title|name)>(.*)<\/\1>/;’
 检查你的gmail未读邮件
 
+curl icanhazip.com
+curl ifconfig.me
+当你的机器在内网的时候，可以通过这个命令查看外网的IP。
+
 
 ps aux | sort -nk +4 | tail
 列出头十个最耗内存的进程
@@ -343,10 +347,6 @@ ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
 
 net rpc shutdown -I ipAddressOfWindowsPC -U username%password
 远程关闭一台Windows的机器
-
-curl icanhazip.com
-curl ifconfig.me
-当你的机器在内网的时候，可以通过这个命令查看外网的IP。
 
 
 screen -d -m -S some_name ping my_router
@@ -373,9 +373,6 @@ python -m SimpleHTTPServer
 history | awk '{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] " " CMD[a]/count*100 "% " a }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
 (陈皓注：有点复杂了，history|awk ‘{print $2}’|awk ‘BEGIN {FS=”|”} {print $1}’|sort|uniq -c|sort -rn|head -10)
 这行脚本能输出你最常用的十条命令，由此甚至可以洞察你是一个什么类型的程序员。
-
-tr -c “[:digit:]” ” ” < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR=”1;32″ grep –color “[^ ]“
-想看看Marix的屏幕效果吗？（不是很像，但也很Cool!）
 
 
 # time for((i=0;i<=100000;i++)); do ((sum+=i)); done ; echo $sum
@@ -741,6 +738,14 @@ C$((RANDOM%2+1))
 (( RANDOM%2 == 0 )) && C1 || C2
 
 echo $((RANDOM%2+1))
+echo $[RANDOM%X+1]
+Random Number Between 1 And X 
+
+Generate a random 8 character password containing a-z, A-Z and 0-9: 
+egrep -ioam1 '[a-z0-9]{8}' /dev/urandom
+
+tr -c “[:digit:]” ” ” < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR=”1;32″ grep –color “[^ ]“
+想看看Marix的屏幕效果吗？（不是很像，但也很Cool!）
 
 
 rsync -a -delete empty/ s1/
@@ -768,9 +773,6 @@ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 最好使用下面的命令将更改写入bios
 hwclock -w
 
-Generate a random 8 character password containing a-z, A-Z and 0-9: 
-egrep -ioam1 '[a-z0-9]{8}' /dev/urandom
-
 ctags --list-kinds=c
 ctags -R --c-kinds=+px
 cscope -Rbq
@@ -793,3 +795,109 @@ done < /etc/passwd
 
 wget -r -np http://git-scm.com/book/
 echo >>/tmp/size hhhhjjjj
+
+fc #edit history command
+ctrl-x ctrl-e # in emacs mode
+<ESC> v # in vi mode
+The shell will take what you have written on the command line thus far and paste it into the editor specified by $EDITOR. 
+Then you can edit at leisure using all the powerful macros and commands of vi, emacs, nano, or whatever.
+
+'ALT+.' or '<ESC> .'
+
+dig +short txt <keyword>.wp.dg.cx
+
+!!:gs/foo/bar
+
+rm !(*.foo|*.bar|*.baz)
+Deletes all files in a folder that are NOT *.foo, *.bar or *.baz files.
+find . ! -name <FILENAME> -delete
+
+awk '!x[$0]++' <file>
+Remove duplicate entries in a file without sorting. 
+
+Insert the last command without the last argument (bash)
+/usr/sbin/ab2 -f TLS1 -S -n 1000 -c 100 -t 2 http://www.google.com/
+!:- http://www.commandlinefu.com/
+
+
+? () { echo "$*" | bc -l; }
+? 10*2+3
+
+
+mkdir /home/foo/doc/bar && cd $_
+mkdir & cd into it as single command 
+
+
+
+mount /path/to/file.iso /mnt/cdrom -oloop
+Mount a .iso file in UNIX/Linux
+"-o loop" lets you use a file as a block device
+
+
+timeout 5s COMMAND
+Start COMMAND, and kill it if still running after 5 seconds 
+
+
+cp /work/{host,target}/phone/ui/main.cpp
+cp /work/host/phone/ui/main.cpp !#$:s/host/target
+using `!#$' to referance backward-word
+cp /work/host/phone/ui/main.cpp /work/target/phone/ui/main.cpp
+
+grep --color=always | less -R
+colorized grep in less
+
+
+find . -type f -newermt "2010-01-01" ! -newermt "2010-06-01"
+find files in a date range 
+Time specifications are interpreted as for the argument to the -d option of GNU date.  
+
+
+
+bind -x '"\C-l":ls -l'
+Bind a key with a command
+the -x option is for binding to a shell command
+
+
+echo rm *.txt
+rm *.txt <TAB> <TAB>
+prevent accidents while using wildcards 
+if you're using wildcards * or ? in your command, and if you're deleting, moving multiple files, 
+it's always safe to see how those wildcards will expand. 
+if you put "echo" in front of your command, the expanded form of your command will be printed. 
+It's better safe than sorry.
+
+
+
+PROMPT_COMMAND='if [ $RANDOM -le 3200 ]; then printf "\0337\033[%d;%dH\033[4%dm \033[m\0338" $((RANDOM%LINES+1)) $((RANDOM%COLUMNS+1)) $((RANDOM%8)); fi'
+April Fools' Day Prank
+Add this to a fiend's .bashrc.
+PROMPT_COMMAND will run just before a prompt is drawn.
+RANDOM will be between 0 and 32768; in this case, it'll run about 1/10th of the time.
+\033 is the escape character. I'll call it \e for short.
+\e7 -- save cursor position.
+\e[%d;%dH -- move cursor to absolute position
+\e[4%dm \e[m -- draw a random color at that point
+\e8 -- restore position.
+
+
+echo "foo" > /dev/tcp/192.168.1.2/25
+send echo to socket network
+this command will send a message to the socket 25 on host 192.168.1.2 in tcp.
+works on udp and icmp
+understand only IP address, not hostname.
+on the other side (192.168.1.2), you can listen to this socket and test if you receive the message.
+easy to diagnose a firewall problem or not.
+
+
+[[ test_condition ]] && if_true_do_this || otherwise_do_that
+true && { echo success;} || { echo failed; }
+max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }
+
+
+grep 0 * | tee >(cat a.txt) >(cat b.txt) >(grep -o 4 c.txt)  | grep [[:digit:]]
+some_command | tee >(command1) >(command2) >(command3) ... | command4
+Use tee + process substitution to split STDOUT to multiple commands
+Using process substitution, 
+    we can 'trick' tee into sending a command's STDOUT to an arbitrary number of commands. 
+The last command (command4) in this example will get its input from the pipe.
+

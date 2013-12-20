@@ -11,4 +11,4 @@ complile gcc ld ar make link .....
 <<深入理解计算机系统>>
 <<Advanced Programming in the UNIX Environment>>
 write makefile configure  markdown info tex 
-
+support ipv6

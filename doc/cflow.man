@@ -27,29 +27,27 @@ OPTIONS
        The following options shall be supported:
 
        -d  num
-	      Indicate the depth at which the flowgraph is cut off. The appli-
-	      cation shall ensure that the argument num is a decimal  integer.
-	      By  default  this is a very large number (typically greater than
-	      32000). Attempts to set the  cut-off  depth  to  a  non-positive
-	      integer shall be ignored.
+	      Indicate the depth at which the flowgraph is cut off. 
+          The application shall ensure that the argument num is a decimal integer.
+	      By  default  this is a very large number (typically greater than 32000). 
+          Attempts to set the  cut-off depth to a non-positive integer shall be ignored.
 
        -i  incl
-	      Increase	the  number of included symbols. The incl option-argu-
-	      ment is one of the following characters:
+	      Increase the number of included symbols. 
+          The incl option-argument is one of the following characters:
 
-       x
-	      Include external and static data symbols. The default  shall  be
-	      to include only functions in the flowgraph.
+            x
+                Include external and static data symbols. 
+                The default shall be to include only functions in the flowgraph.
 
-       _
-	      (Underscore)  Include  names  that begin with an underscore. The
-	      default shall be to exclude these functions (and data if -i x is
-	      used).
+            _
+                (Underscore)  Include  names  that begin with an underscore. 
+                The default shall be to exclude these functions (and data if -i x is used).
 
 
-       -r     Reverse  the  caller:callee  relationship, producing an inverted
-	      listing showing the callers of each function. The listing	 shall
-	      also be sorted in lexicographical order by callee.
+       -r     
+          Reverse the caller:callee relationship, producing an inverted listing showing the callers of each function. 
+          The listing shall also be sorted in lexicographical order by callee.
 
 
 OPERANDS

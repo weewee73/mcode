@@ -222,6 +222,15 @@ CTRL-W f 新窗口打开文件
 :set path+=""  加搜索路径
 vim "+find stdio.h" 在搜索路径中找到文件并打开
 
+<PageDown>* *CTRL-F*
+
+CTRL-R
+Insert the object under the cursor:
+        CTRL-F	the Filename under the cursor
+        CTRL-P	the Filename under the cursor, expanded with 'path' as in |gf|
+        CTRL-W	the Word under the cursor
+        CTRL-A	the WORD under the cursor; see |WORD
+
 
 :hide edit two.txt
 :buffers
@@ -518,3 +527,39 @@ TlistToggle
 	:cp 上一条
  
 :Matrix   
+
+
+:grep命令找到一个名字出现的所有位置
+:cn命令带你依次到下一个匹配
+
+gd 从变量的调用跳转到它的局部声明。
+
+[{ 跳回当前代码块起始的“{
+
+[I
+
+|ga|		ga		   print ascii value of character under the cursor
+|gd|		gd		1  go to definition of word under the cursor in current function
+|gD|		gD		1  go to definition of word under the cursor in current file
+|gf|		gf		   start editing the file whose name is under the cursor
+
+
+:cw[indow] [height]	Open the quickfix window when there are recognized errors.  
+                    If the window is already open and there are no recognized errors, close the window.
+:ccl[ose]		    Close the quickfix window.
+:cl[ist] [from] [, [to]]    List all errors that are valid |quickfix-valid|.
+:cc[!] [nr]		    Display error [nr].  If [nr] is omitted, the same error is displayed again.
+:[count]cn[ext][!]	    Display the [count] next error in the list that includes a file name.  
+:[count]cp[revious][!]	Display the [count] previous error in the list that includes a file name.
+:col[der] [count]	Go to older error list.  When [count] is given, do this [count] times.  
+                    When already at the oldest error list, an error message is given.
+:cnew[er] [count]	Go to newer error list.  When [count] is given, do this [count] times.  
+                    When already at the newest error list, an error message is given.
+
+
+
+:tags		Show the contents of the tag stack.  The active entry is marked with a '>'.
+:ts[elect][!] [ident]	List the tags that match [ident], using the information in the tags file(s).
+                        When [ident] is not given, the last tag name from the tag stack is used.
+:[count]tn[ext][!]	    Jump to [count] next matching tag (default 1).
+:[count]tp[revious][!]	Jump to [count] previous matching tag (default 1).

@@ -1,6 +1,37 @@
 #include <stdio.h>
 #include <string.h>
 
+static inline char * skip_ws(const char *p)
+{
+    while (isspace(*p)) 
+        p++;
+
+    return (char *)p;
+}
+    
+static inline char * skip_token(const char *p)
+{
+    while (isspace(*p)) 
+        p++;
+    while (*p && !isspace(*p)) 
+        p++;
+
+    return (char *)p;
+}
+void example()
+{
+    char buffer[4096+1];
+    double load_avg[3];
+    char *p;
+
+    //0.00 0.00 0.00 1/108 4146
+    load_avg[0] = strtod(buffer, &p);
+    load_avg[1] = strtod(p, &p);
+    load_avg[2] = strtod(p, &p);
+    p = skip_token(p);			/* skip running/tasks */
+    p = skip_ws(p);
+}
+
 void swap(char *a, char *b)
 {
 	char temp;

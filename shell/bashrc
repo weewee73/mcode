@@ -17,5 +17,22 @@ alias mquestion='vim -c start ~/github/mcode/journal/question.log'
 alias man='$HOME/github/mcode/shell/mman.sh'
 
 mcode="$HOME/github/mcode"
+source ${mcode}/shell/git-completion.bash
 
 PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
+
+random()
+{
+    X=${1:-100}
+    N=${2:-10}
+    while [ "$N" -gt 0 ]
+    do
+        echo -ne "$[RANDOM%X+1] "
+        N=$[N-1]
+    done
+    echo
+}
+
+?() { echo "$*" | bc -l; }
+
+max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }

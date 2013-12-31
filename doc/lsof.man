@@ -112,16 +112,19 @@ OPTIONS
        files that belong to either login ''fff'' OR ''ggg'' AND  have  network
        connections to either host aaa.bbb OR ccc.ddd.
 
-       Options  may be grouped together following a single prefix -- e.g., the
-       option set ''-a -b -C'' may be stated as -abC.  However,  since  values
-       are optional following +|-f, -F, -g, -i, +|-L, -o, +|-r, -s, -S, -T, -x
-       and -z.  when you have no values for them be careful that the following
-       character isn't ambiguous.  For example, -Fn might represent the -F and
-       -n options, or it might represent the n field identifier character fol-
-       lowing  the  -F option.  When ambiguity is possible, start a new option
-       with a '-' character - e.g., ''-F -n''.  If the next option is  a  file
-       name,  follow the possibly ambiguous option with ''--'' - e.g., ''-F --
-       name''.
+       Options  may be grouped together following a single prefix -
+            - e.g., the option set ''-a -b -C'' may be stated as -abC.  
+
+       However, since values are optional following +|-f, -F, -g, -i, +|-L, -o, +|-r, -s, -S, -T, -x and -z.  
+       when you have no values for them be careful that the following character isn't ambiguous.  
+       For example, 
+            -Fn might represent the -F and -n options, 
+            or it might represent the n field identifier character following the -F option.  
+
+       When ambiguity is possible, start a new option with a '-' character 
+            - e.g., ''-F -n''.  
+       If the next option is a file name,  follow the possibly ambiguous option with ''--'' 
+            - e.g., ''-F -- name''.
 
        Either the '+' or the '-' prefix may be applied to a group of  options.
        Options that don't take on separate meanings for each prefix - e.g., -i
@@ -408,14 +411,14 @@ OPTIONS
                 cal  file use, or lsof field output can be parsed by an AWK or
                 Perl post-filter script, or by a C program.
 
-       -F f     This option specifies a character list, f,  that  selects  the
-                fields to be output for processing by another program, and the
-                character that terminates each output field.  Each field to be
-                output  is  specified with a single character in f.  The field
-                terminator defaults to NL, but may be changed  to  NUL  (000).
-                See the OUTPUT FOR OTHER PROGRAMS section for a description of
-                the field identification characters and the field output  pro-
-                cess.
+       -F f     This option specifies a character list, 
+                    f,  that selects the fields to be output for processing by another program, 
+                        and the character that terminates each output field.  
+                Each field to be output is specified with a single character in f.  
+                The field terminator defaults to NL, but may be changed to NUL(000).
+
+                See the OUTPUT FOR OTHER PROGRAMS section for 
+                    a description of the field identification characters and the field output  process.
 
                 When the field selection character list is empty, all standard
                 fields are selected (except the  raw  device  field,  security
@@ -427,14 +430,12 @@ OPTIONS
                 for compatibility reasons) and the NUL terminator character is
                 used.
 
-                Other combinations of fields and their associated field termi-
-                nator character must be set with explicit  entries  in  f,  as
-                described in the OUTPUT FOR OTHER PROGRAMS section.
+                Other combinations of fields and their associated field terminator character must be set with explicit entries in f,  
+                    as described in the OUTPUT FOR OTHER PROGRAMS section.
 
-                When  a field selection character identifies an item lsof does
-                not normally list - e.g., PPID, selected with -R -  specifica-
-                tion of the field character - e.g., ''-FR'' - also selects the
-                listing of the item.
+                When a field selection character identifies an item lsof does not normally list 
+                    - e.g., PPID, selected with -R -  specification of the field character 
+                    - e.g., ''-FR'' - also selects the listing of the item.
 
                 When the field selection character list  contains  the  single
                 character  '?',  lsof  will  display  a help list of the field
@@ -760,11 +761,10 @@ OPTIONS
                 -F,  option description) and a supervising awk or Perl script,
                 or a C program.
 
-       -R       This option directs lsof to list the Parent Process  IDentifi-
-                cation number in the PPID column.
+       -R       This option directs lsof to list the Parent Process  IDentification number in the PPID column.
 
-       -s [p:s] s  alone  directs  lsof to display file size at all times.  It
-                causes the SIZE/OFF output column title to be changed to SIZE.
+       -s [p:s] s  alone  directs  lsof to display file size at all times.  
+                It causes the SIZE/OFF output column title to be changed to SIZE.
                 If the file does not have a size, nothing is displayed.
 
                 When  followed  by  a  protocol name (p), either TCP or UDP, a
@@ -1077,8 +1077,7 @@ OPTIONS
        -Z [Z]   specifies  how  SELinux  security  contexts are to be handled.
                 This option and 'Z' field output character support are  inhib-
                 ited  when  SELinux  is  disabled in the running Linux kernel.
-                See OUTPUT FOR OTHER PROGRAMS for more information on the  'Z'
-                field output character.
+                See OUTPUT FOR OTHER PROGRAMS for more information on the  'Z' field output character.
 
                 Without  a following argument - e.g., NO Z - the option speci-
                 fies that security contexts are to  be  listed  in  the  SECU-
@@ -1093,16 +1092,16 @@ OPTIONS
                 by  other  options and arguments.  Note that Z can be A:B:C or
                 *:B:C or A:B:* or *:*:C to match against the A:B:C context.
 
-       --       The double minus sign option is a marker that signals the  end
-                of  the  keyed options.  It may be used, for example, when the
-                first file name begins with a minus sign.  It may also be used
-                when  the absence of a value for the last keyed option must be
-                signified by the presence of a minus  sign  in  the  following
-                option and before the start of the file names.
+       --       The double minus sign option is a marker that signals the end of the keyed options.  
+                It may be used, for example, 
+                    when the first file name begins with a minus sign.  
+                It may also be used 
+                    when the absence of a value for the last keyed option 
+                        must be signified by the presence of a minus sign in the following option and before the start of the file names.
 
-       names    These  are  path  names  of  specific files to list.  Symbolic
-                links are resolved before use.  The first name  may  be  sepa-
-                rated from the preceding options with the ''--'' option.
+       names    These are path names of specific files to list.  
+                Symbolic links are resolved before use.  
+                The first name may be separated from the preceding options with the ''--'' option.
 
                 If  a name is the mounted-on directory of a file system or the
                 device of the file system, lsof will list all the  files  open
@@ -1255,9 +1254,8 @@ SECURITY
        accessible via the authority of the real user ID.
 
 OUTPUT
-       This  section  describes the information lsof lists for each open file.
-       See the OUTPUT FOR OTHER PROGRAMS section for additional information on
-       output that can be processed by another program.
+       This section describes the information lsof lists for each open file.
+       See the OUTPUT FOR OTHER PROGRAMS section for additional information on output that can be processed by another program.
 
        Lsof  only  outputs printable (declared so by isprint(3)) 8 bit charac-
        ters.  Non-printable characters are printed in one of three forms:  the
@@ -1891,8 +1889,8 @@ OUTPUT FOR OTHER PROGRAMS
         that is suitable for processing by another program - e.g, an awk or Perl script, or a C program.
 
        Each unit of information is output in a field 
-        that is identified with a leading character and terminated by a NL (012) 
-        (or a NUL (000) if the 0 (zero) field identifier character is specified.)  
+        that is identified with a leading character 
+        and terminated by a NL (012) (or a NUL (000) if the 0 (zero) field identifier character is specified.)  
        The data of the field follows immediately after the field identification character and extends to the field terminator.
 
        It is possible to think of field output as process and file sets.   

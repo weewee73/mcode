@@ -916,3 +916,5 @@ man xxxx | col -bx | sed "s/\xe2\x80\x98/'/g" | sed "s/\xe2\x80\x99/'/g" >xxxx.m
 awk '{ $5=""; print }' file
 cut -f5 --complement
 
+time lsof | awk '{pid[$2]++} END{for (i in pid) print pid[i] ", " i}' | sort -nr | head
+time lsof -F f | awk '{if (/^p/) id=substr($0,2);else pid[id]++;} END{for (i in pid) print pid[i] ", " i}' | sort -nr | head

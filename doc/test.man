@@ -143,7 +143,7 @@ DESCRIPTION
 
        NOTE: your shell may have its own version of test and/or [, which  usu-
        ally  supersedes	 the  version  described  here.	  Please refer to your
-       shell’s documentation for details about the options it supports.
+       shell's documentation for details about the options it supports.
 
 AUTHOR
        Written by Kevin Braunsdorf and Matthew Bradburn.

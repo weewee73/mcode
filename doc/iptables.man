@@ -40,7 +40,7 @@ DESCRIPTION
 
        Each chain is a list of rules which can match a set of  packets.	  Each
        rule specifies what to do with a packet that matches.  This is called a
-       ‘target’, which may be a jump to a user-defined chain in the  same  ta-
+       'target', which may be a jump to a user-defined chain in the  same  ta-
        ble.
 
 TARGETS
@@ -56,7 +56,7 @@ TARGETS
        queue handler.  2.4.x and  2.6.x	 kernels  up  to  2.6.13  include  the
        ip_queue	 queue handler.	 Kernels 2.6.14 and later additionally include
        the nfnetlink_queue queue handler.  Packets with a target of QUEUE will
-       be  sent	 to queue number ’0’ in this case. Please also see the NFQUEUE
+       be  sent	 to queue number '0' in this case. Please also see the NFQUEUE
        target as described  later  in  this  man  page.)   RETURN  means  stop
        traversing  this	 chain	and  resume  at	 the next rule in the previous
        (calling) chain.	 If the end of a built-in chain is reached or  a  rule
@@ -219,7 +219,7 @@ OPTIONS
 	      is  submitted  to	 the  kernel.  Please note that specifying any
 	      name to be resolved with a remote query such as DNS is a	really
 	      bad idea.	 The mask can be either a network mask or a plain num-
-	      ber, specifying the number of 1’s at the left side of  the  net-
+	      ber, specifying the number of 1's at the left side of  the  net-
 	      work  mask.   Thus, a mask of 24 is equivalent to 255.255.255.0.
 	      A "!" argument before  the  address  specification  inverts  the
 	      sense  of	 the  address.	The  flag  --src  is an alias for this
@@ -238,7 +238,7 @@ OPTIONS
             one of the special builtin targets which decide the fate of the packet immediately, 
             or an extension (see EXTENSIONS below).	 
           If this option is omitted in a rule (and -g is not used), 
-            then matching the rule will have no effect on the packet’s fate, 
+            then matching the rule will have no effect on the packet's fate, 
             but the counters on the  rule will be incremented.
 
        -g, --goto chain
@@ -282,7 +282,7 @@ OPTIONS
 	      Verbose  output.	 This  option  makes the list command show the
 	      interface name, the rule options (if any), and  the  TOS	masks.
 	      The  packet  and	byte counters are also listed, with the suffix
-	      ’K’, ’M’ or ’G’ for 1000, 1,000,000 and 1,000,000,000  multipli-
+	      'K', 'M' or 'G' for 1000, 1,000,000 and 1,000,000,000  multipli-
 	      ers  respectively	 (but  see  the	 -x flag to change this).  For
 	      appending, insertion,  deletion  and  replacement,  this	causes
 	      detailed information on the rule or rules to be printed.
@@ -295,13 +295,13 @@ OPTIONS
 
        -x, --exact
 	      Expand numbers.  Display the exact value of the packet and  byte
-	      counters,	 instead  of only the rounded number in K’s (multiples
-	      of 1000) M’s (multiples of 1000K) or G’s (multiples  of  1000M).
+	      counters,	 instead  of only the rounded number in K's (multiples
+	      of 1000) M's (multiples of 1000K) or G's (multiples  of  1000M).
 	      This option is only relevant for the -L command.
 
        --line-numbers
 	      When  listing  rules,  add line numbers to the beginning of each
-	      rule, corresponding to that rule’s position in the chain.
+	      rule, corresponding to that rule's position in the chain.
 
        --modprobe=command
 	      When adding or inserting rules into a chain, use command to load
@@ -460,8 +460,8 @@ MATCH EXTENSIONS
        The primary use is to detect long-lived downloads and mark them	to  be
        scheduled using a lower priority band in traffic control.
 
-       The  transferred	 bytes per connection can also be viewed through ‘con-
-       ntrack -L‘ and accessed via ctnetlink.
+       The  transferred	 bytes per connection can also be viewed through 'con-
+       ntrack -L' and accessed via ctnetlink.
 
        NOTE that for connections which have  no	 accounting  information,  the
        match  will  always return false. The "net.netfilter.nf_conntrack_acct"
@@ -621,7 +621,7 @@ MATCH EXTENSIONS
        [!] --destination-port,--dport port[:port]
 
        [!] --dccp-types mask
-	      Match when the DCCP packet type is one of ’mask’.	 ’mask’	 is  a
+	      Match when the DCCP packet type is one of 'mask'.	 'mask'	 is  a
 	      comma-separated list of packet types.  Packet types are: REQUEST
 	      RESPONSE DATA ACK DATAACK	 CLOSEREQ  CLOSE  RESET	 SYNC  SYNCACK
 	      INVALID.
@@ -655,7 +655,7 @@ MATCH EXTENSIONS
 
        [!] --ecn-ip-ect num
 	      This  matches a particular IPv4 ECT (ECN-Capable Transport). You
-	      have to specify a number between ‘0’ and ‘3’.
+	      have to specify a number between '0' and '3'.
 
    esp
        This module matches the SPIs in ESP header of IPsec packets.
@@ -738,7 +738,7 @@ MATCH EXTENSIONS
 	      Same rules apply for other conntrack-helpers.
 
    icmp
-       This extension can be used if ‘--protocol icmp’ is specified.  It  pro-
+       This extension can be used if '--protocol icmp' is specified.  It  pro-
        vides the following option:
 
        [!] --icmp-type {type[/code]|typename}
@@ -765,12 +765,12 @@ MATCH EXTENSIONS
    limit
        This module matches at a limited rate using a token bucket  filter.   A
        rule  using  this  extension  will  match  until	 this limit is reached
-       (unless the ‘!’ flag is used).  It can be used in combination with  the
+       (unless the '!' flag is used).  It can be used in combination with  the
        LOG target to give limited logging, for example.
 
        --limit rate[/second|/minute|/hour|/day]
 	      Maximum  average	matching  rate: specified as a number, with an
-	      optional ‘/second’, ‘/minute’, ‘/hour’, or  ‘/day’  suffix;  the
+	      optional '/second', '/minute', '/hour', or  '/day'  suffix;  the
 	      default is 3/hour.
 
        --limit-burst number
@@ -824,14 +824,14 @@ MATCH EXTENSIONS
        [!] --uid-owner username
 
        [!] --uid-owner userid[-userid]
-	      Matches if the packet socket’s file structure (if it has one) is
+	      Matches if the packet socket's file structure (if it has one) is
 	      owned by the given user. You may also specify a  numerical  UID,
 	      or an UID range.
 
        [!] --gid-owner groupname
 
        [!] --gid-owner groupid[-groupid]
-	      Matches  if  the	packet socket’s file structure is owned by the
+	      Matches  if  the	packet socket's file structure is owned by the
 	      given group.  You may also specify a numerical  GID,  or	a  GID
 	      range.
 
@@ -848,9 +848,9 @@ MATCH EXTENSIONS
 	      Name of a bridge port via which a packet is received  (only  for
 	      packets  entering	 the INPUT, FORWARD and PREROUTING chains). If
 	      the interface name ends in  a  "+",  then	 any  interface	 which
-	      begins  with  this  name will match. If the packet didn’t arrive
-	      through a bridge device, this packet won’t  match	 this  option,
-	      unless ’!’ is used.
+	      begins  with  this  name will match. If the packet didn't arrive
+	      through a bridge device, this packet won't  match	 this  option,
+	      unless '!' is used.
 
        [!] --physdev-out name
 	      Name  of	a  bridge  port via which a packet is going to be sent
@@ -859,9 +859,9 @@ MATCH EXTENSIONS
 	      face which begins with this name will match. Note	 that  in  the
 	      nat and mangle OUTPUT chains one cannot match on the bridge out-
 	      put port, however one can in the filter  OUTPUT  chain.  If  the
-	      packet  won’t  leave  by a bridge device or if it is yet unknown
-	      what the output device will be, then the packet won’t match this
-	      option, unless ’!’ is used.
+	      packet  won't  leave  by a bridge device or if it is yet unknown
+	      what the output device will be, then the packet won't match this
+	      option, unless '!' is used.
 
        [!] --physdev-is-in
 	      Matches if the packet has entered through a bridge interface.
@@ -1073,7 +1073,7 @@ MATCH EXTENSIONS
 	      iptables	-A FORWARD -p tcp -i eth0 --dport 139 -m recent --name
 	      badguy --set -j DROP
 
-       Steve’s	ipt_recent  website  (http://snowman.net/projects/ipt_recent/)
+       Steve's	ipt_recent  website  (http://snowman.net/projects/ipt_recent/)
        also has some examples of usage.
 
        /proc/net/xt_recent/*  are  the current lists of addresses and informa-
@@ -1179,7 +1179,7 @@ MATCH EXTENSIONS
 	      Where  state  is a comma separated list of the connection states
 	      to match.	 Possible states are INVALID meaning that  the	packet
 	      could  not  be identified for some reason which includes running
-	      out of memory and ICMP errors  which  don’t  correspond  to  any
+	      out of memory and ICMP errors  which  don't  correspond  to  any
 	      known connection, ESTABLISHED meaning that the packet is associ-
 	      ated with a connection which has seen  packets  in  both	direc-
 	      tions, NEW meaning that the packet has started a new connection,
@@ -1233,7 +1233,7 @@ MATCH EXTENSIONS
 	      Matches the given pattern in hex notation.
 
    tcp
-       These extensions can be used if ‘--protocol tcp’ is specified. It  pro-
+       These extensions can be used if '--protocol tcp' is specified. It  pro-
        vides the following options:
 
        [!] --source-port,--sport port[:port]
@@ -1520,7 +1520,7 @@ MATCH EXTENSIONS
 	      payload  and = checks whether the result is any of 1, 2, 5 or 8.
 
    udp
-       These extensions can be used if ‘--protocol udp’ is specified. It  pro-
+       These extensions can be used if '--protocol udp' is specified. It  pro-
        vides the following options:
 
        [!] --source-port,--sport port[:port]
@@ -1564,7 +1564,7 @@ TARGET EXTENSIONS
 	      Compute and fill in the checksum in a packet that lacks a check-
 	      sum.  This is particularly useful, if you need  to  work	around
 	      old  applications	 such  as  dhcp clients, that do not work well
-	      with checksum offloads,  but  don’t  want	 to  disable  checksum
+	      with checksum offloads,  but  don't  want	 to  disable  checksum
 	      offload in your device.
 
    CLASSIFY
@@ -1694,7 +1694,7 @@ TARGET EXTENSIONS
 	      nation  address,	either	via  an	 address  range	 or   multiple
 	      --to-destination	 options,  a  simple  round-robin  (one	 after
 	      another in cycle)	 load  balancing  takes	 place	between	 these
-	      addresses.  Later Kernels (>= 2.6.11-rc1) don’t have the ability
+	      addresses.  Later Kernels (>= 2.6.11-rc1) don't have the ability
 	      to NAT to multiple ranges anymore.
 
        --random
@@ -1818,8 +1818,8 @@ TARGET EXTENSIONS
 
        --to address[/mask]
 	      Network  address	to map to.  The resulting address will be con-
-	      structed in the following way: All ’one’ bits in	the  mask  are
-	      filled in from the new ‘address’.	 All bits that are zero in the
+	      structed in the following way: All 'one' bits in	the  mask  are
+	      filled in from the new 'address'.	 All bits that are zero in the
 	      mask are filled in from the original address.
 
    NFLOG
@@ -1926,7 +1926,7 @@ TARGET EXTENSIONS
 	      used on rules which only match the TCP protocol: this  causes  a
 	      TCP  RST	packet	to  be	sent  back.  This is mainly useful for
 	      blocking ident (113/tcp)	probes	which  frequently  occur  when
-	      sending  mail to broken mail hosts (which won’t accept your mail
+	      sending  mail to broken mail hosts (which won't accept your mail
 	      otherwise).
 
        (*) Using icmp-admin-prohibited with kernels that  do  not  support  it
@@ -1934,17 +1934,17 @@ TARGET EXTENSIONS
 
    SAME
        Similar	to SNAT/DNAT depending on chain: it takes a range of addresses
-       (‘--to 1.2.3.4-1.2.3.7’) and gives a client the	same  source-/destina-
+       ('--to 1.2.3.4-1.2.3.7') and gives a client the	same  source-/destina-
        tion-address for each connection.
 
-       N.B.: The DNAT target’s --persistent option replaced the SAME target.
+       N.B.: The DNAT target's --persistent option replaced the SAME target.
 
        --to ipaddr[-ipaddr]
 	      Addresses	 to map source to. May be specified more than once for
 	      multiple ranges.
 
        --nodst
-	      Don’t use the destination-ip in the calculations when  selecting
+	      Don't use the destination-ip in the calculations when  selecting
 	      the new source-ip
 
        --random
@@ -1996,7 +1996,7 @@ TARGET EXTENSIONS
 	      address, either via an address  range  or	 multiple  --to-source
 	      options, a simple round-robin (one after another in cycle) takes
 	      place between these addresses.  Later  Kernels  (>=  2.6.11-rc1)
-	      don’t have the ability to NAT to multiple ranges anymore.
+	      don't have the ability to NAT to multiple ranges anymore.
 
        --random
 	      If  option --random is used then port mapping will be randomized
@@ -2010,7 +2010,7 @@ TARGET EXTENSIONS
    TCPMSS
        This target allows to alter the MSS value of TCP SYN packets,  to  con-
        trol  the maximum size for that connection (usually limiting it to your
-       outgoing interface’s MTU minus 40 for IPv4  or  60  for	IPv6,  respec-
+       outgoing interface's MTU minus 40 for IPv4  or  60  for	IPv6,  respec-
        tively).	  Of  course,  it can only be used in conjunction with -p tcp.
        It is only valid in the mangle table.
        This target is used to overcome criminally braindead  ISPs  or  servers
@@ -2121,23 +2121,23 @@ TARGET EXTENSIONS
 
    TTL
        This is used to modify the IPv4 TTL header field.  The TTL field deter-
-       mines how many hops (routers) a packet can traverse until it’s time  to
+       mines how many hops (routers) a packet can traverse until it's time  to
        live is exceeded.
 
        Setting	or  incrementing the TTL field can potentially be very danger-
        ous, so it should be avoided at any cost.
 
-       Don’t ever set or increment the value on packets that leave your	 local
+       Don't ever set or increment the value on packets that leave your	 local
        network!	 mangle table.
 
        --ttl-set value
-	      Set the TTL value to ‘value’.
+	      Set the TTL value to 'value'.
 
        --ttl-dec value
-	      Decrement the TTL value ‘value’ times.
+	      Decrement the TTL value 'value' times.
 
        --ttl-inc value
-	      Increment the TTL value ‘value’ times.
+	      Increment the TTL value 'value' times.
 
    ULOG
        This  target provides userspace logging of matching packets.  When this
@@ -2172,7 +2172,7 @@ DIAGNOSTICS
        errors cause an exit code of 1.
 
 BUGS
-       Bugs?  What’s this? ;-)	Well,  you  might  want	 to  have  a  look  at
+       Bugs?  What's this? ;-)	Well,  you  might  want	 to  have  a  look  at
        http://bugzilla.netfilter.org/
 
 COMPATIBILITY WITH IPCHAINS
@@ -2188,7 +2188,7 @@ COMPATIBILITY WITH IPCHAINS
        entering the FORWARD chain.
 
        The various forms of NAT have been separated out; iptables  is  a  pure
-       packet  filter  when  using  the	 default ‘filter’ table, with optional
+       packet  filter  when  using  the	 default 'filter' table, with optional
        extension modules.  This should simplify much of the previous confusion
        over  the combination of IP masquerading and packet filtering seen pre-
        viously.	 So the following options are handled differently:

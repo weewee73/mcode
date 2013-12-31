@@ -1,4 +1,4 @@
-GETIFADDRS(3)              Linux Programmer’s Manual             GETIFADDRS(3)
+GETIFADDRS(3)              Linux Programmer's Manual             GETIFADDRS(3)
 
 
 

@@ -1,4 +1,4 @@
-STRTOD(3)		   Linux Programmer’s Manual		     STRTOD(3)
+STRTOD(3)		   Linux Programmer's Manual		     STRTOD(3)
 
 
 

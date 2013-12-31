@@ -16,7 +16,7 @@ DESCRIPTION
        Wget is non-interactive, meaning that it can work in the background,
        while the user is not logged on.  This allows you to start a retrieval
        and disconnect from the system, letting Wget finish the work.  By
-       contrast, most of the Web browsers require constant user’s presence,
+       contrast, most of the Web browsers require constant user's presence,
        which can be a great hindrance when transferring a lot of data.
 
        Wget can follow links in HTML, XHTML, and CSS pages, to create local
@@ -98,7 +98,7 @@ OPTIONS
 
        -h
        --help
-           Print a help message describing all of Wget’s command-line options.
+           Print a help message describing all of Wget's command-line options.
 
        -b
        --background
@@ -136,7 +136,7 @@ OPTIONS
 
        -q
        --quiet
-           Turn off Wget’s output.
+           Turn off Wget's output.
 
        -v
        --verbose
@@ -168,7 +168,7 @@ OPTIONS
 
            If the file is an external one, the document will be automatically
            treated as html if the Content-Type matches text/html.
-           Furthermore, the file’s location will be implicitly used as base
+           Furthermore, the file's location will be implicitly used as base
            href if none was specified.
 
        -F
@@ -223,7 +223,7 @@ OPTIONS
            combination is used.
 
            Similarly, using -r or -p with -O may not work as you expect: Wget
-           won’t just download the first file to file and then download the
+           won't just download the first file to file and then download the
            rest to their normal names: all downloaded content will be placed
            in file. This was disabled in version 1.11, but has been reinstated
            (with a warning) in 1.11.2, as there are some cases where this
@@ -232,12 +232,12 @@ OPTIONS
            Note that a combination with -k is only permitted when downloading
            a single document, as in that case it will just convert all
            relative URIs to external ones; -k makes no sense for multiple URIs
-           when they’re all being downloaded to a single file.
+           when they're all being downloaded to a single file.
 
        -nc
        --no-clobber
            If a file is downloaded more than once in the same directory,
-           Wget’s behavior depends on a few options, including -nc.  In
+           Wget's behavior depends on a few options, including -nc.  In
            certain cases, the local file will be clobbered, or overwritten,
            upon repeated download.  In other cases it will be preserved.
 
@@ -249,9 +249,9 @@ OPTIONS
            are in effect.)  When -nc is specified, this behavior is
            suppressed, and Wget will refuse to download newer copies of file.
            Therefore, ""no-clobber"" is actually a misnomer in this
-           mode---it’s not clobbering that’s prevented (as the numeric
+           mode---it's not clobbering that's prevented (as the numeric
            suffixes were already preventing clobbering), but rather the
-           multiple version saving that’s prevented.
+           multiple version saving that's prevented.
 
            When running Wget with -r or -p, but without -N, -nd, or -nc, re-
            downloading a file will result in the new copy simply overwriting
@@ -281,7 +281,7 @@ OPTIONS
            will ask the server to continue the retrieval from an offset equal
            to the length of the local file.
 
-           Note that you don’t need to specify this option if you just want
+           Note that you don't need to specify this option if you just want
            the current invocation of Wget to retry downloading a file should
            the connection be lost midway through.  This is the default
            behavior.  -c only affects resumption of downloads started prior to
@@ -305,23 +305,23 @@ OPTIONS
            attempt)---because "continuing" is not meaningful, no download
            occurs.
 
-           On the other side of the coin, while using -c, any file that’s
+           On the other side of the coin, while using -c, any file that's
            bigger on the server than locally will be considered an incomplete
            download and only "(length(remote) - length(local))" bytes will be
            downloaded and tacked onto the end of the local file.  This
            behavior can be desirable in certain cases---for instance, you can
-           use wget -c to download just the new portion that’s been appended
+           use wget -c to download just the new portion that's been appended
            to a data collection or log file.
 
-           However, if the file is bigger on the server because it’s been
-           changed, as opposed to just appended to, you’ll end up with a
+           However, if the file is bigger on the server because it's been
+           changed, as opposed to just appended to, you'll end up with a
            garbled file.  Wget has no way of verifying that the local file is
            really a valid prefix of the remote file.  You need to be
            especially careful of this when using -c in conjunction with -r,
            since every file will be considered as an "incomplete download"
            candidate.
 
-           Another instance where you’ll get a garbled file if you try to use
+           Another instance where you'll get a garbled file if you try to use
            -c is if you have a lame HTTP proxy that inserts a "transfer
            interrupted" string into the local file.  In the future a
            "rollback" option may be added to deal with this case.
@@ -399,7 +399,7 @@ OPTIONS
 
        --dns-timeout=seconds
            Set the DNS lookup timeout to seconds seconds.  DNS lookups that
-           don’t complete within the specified time will fail.  By default,
+           don't complete within the specified time will fail.  By default,
            there is no timeout on DNS lookups, other than that implemented by
            system libraries.
 
@@ -424,7 +424,7 @@ OPTIONS
            expressed in bytes, kilobytes with the k suffix, or megabytes with
            the m suffix.  For example, --limit-rate=20k will limit the
            retrieval rate to 20KB/s.  This is useful when, for whatever
-           reason, you don’t want Wget to consume the entire available
+           reason, you don't want Wget to consume the entire available
            bandwidth.
 
            This option allows the use of decimal numbers, usually in
@@ -436,7 +436,7 @@ OPTIONS
            specified by the rate.  Eventually this strategy causes the TCP
            transfer to slow down to approximately the specified rate.
            However, it may take some time for this balance to be achieved, so
-           don’t be surprised if limiting the rate doesn’t work well with very
+           don't be surprised if limiting the rate doesn't work well with very
            small files.
 
        -w seconds
@@ -454,7 +454,7 @@ OPTIONS
            influenced by "--random-wait", which see.
 
        --waitretry=seconds
-           If you don’t want Wget to wait between every retrieval, but only
+           If you don't want Wget to wait between every retrieval, but only
            between retries of failed downloads, you can use this option.  Wget
            will use linear backoff, waiting 1 second after the first failure
            on a given file, then waiting 2 seconds after the second failure on
@@ -470,7 +470,7 @@ OPTIONS
            similarities in the time between requests. This option causes the
            time between requests to vary between 0.5 and 1.5 * wait seconds,
            where wait was specified using the --wait option, in order to mask
-           Wget’s presence from such analysis.
+           Wget's presence from such analysis.
 
            A 2001 article in a publication devoted to development on a popular
            consumer platform provided code to perform this analysis on the
@@ -483,7 +483,7 @@ OPTIONS
            the actions of one.
 
        --no-proxy
-           Don’t use proxies, even if the appropriate *_proxy environment
+           Don't use proxies, even if the appropriate *_proxy environment
            variable is defined.
 
        -Q quota
@@ -504,7 +504,7 @@ OPTIONS
 
        --no-dns-cache
            Turn off caching of DNS lookups.  Normally, Wget remembers the IP
-           addresses it looked up from DNS so it doesn’t have to repeatedly
+           addresses it looked up from DNS so it doesn't have to repeatedly
            contact the DNS server for the same (typically small) set of hosts
            it retrieves from.  This cache exists in memory only; a new Wget
            run will contact DNS again.
@@ -518,8 +518,8 @@ OPTIONS
            the resolving library or by an external caching layer, such as
            NSCD.
 
-           If you don’t understand exactly what this option does, you probably
-           won’t need it.
+           If you don't understand exactly what this option does, you probably
+           won't need it.
 
        --restrict-file-names=modes
            Change which characters found in remote URLs must be escaped during
@@ -582,7 +582,7 @@ OPTIONS
            hosts and ignore A records and IPv4 addresses.
 
            Neither options should be needed normally.  By default, an
-           IPv6-aware Wget will use the address family specified by the host’s
+           IPv6-aware Wget will use the address family specified by the host's
            DNS record.  If the DNS responds with both IPv4 and IPv6 addresses,
            Wget will try them in sequence until it finds one it can connect
            to.  (Also see "--prefer-family" option described below.)
@@ -607,10 +607,10 @@ OPTIONS
            first; if the specified value is "none", the address order returned
            by DNS is used without change.
 
-           Unlike -4 and -6, this option doesn’t inhibit access to any address
+           Unlike -4 and -6, this option doesn't inhibit access to any address
            family, it only changes the order in which the addresses are
            accessed.  Also note that the reordering performed by this option
-           is stable---it doesn’t affect order of addresses of the same
+           is stable---it doesn't affect order of addresses of the same
            family.  That is, the relative order of all IPv4 addresses and of
            all IPv6 addresses remains intact in all cases.
 
@@ -730,7 +730,7 @@ OPTIONS
 
    HTTP Options
        --default-page=name
-           Use name as the default file name when it isn’t known (i.e., for
+           Use name as the default file name when it isn't known (i.e., for
            URLs that end in a slash), instead of index.html.
 
        -E
@@ -738,16 +738,16 @@ OPTIONS
            If a file of type application/xhtml+xml or text/html is downloaded
            and the URL does not end with the regexp \.[Hh][Tt][Mm][Ll]?, this
            option will cause the suffix .html to be appended to the local
-           filename.  This is useful, for instance, when you’re mirroring a
+           filename.  This is useful, for instance, when you're mirroring a
            remote site that uses .asp pages, but you want the mirrored pages
            to be viewable on your stock Apache server.  Another good use for
-           this is when you’re downloading CGI-generated materials.  A URL
+           this is when you're downloading CGI-generated materials.  A URL
            like http://site.com/article.cgi?25 will be saved as
            article.cgi?25.html.
 
            Note that filenames changed in this way will be re-downloaded every
-           time you re-mirror a site, because Wget can’t tell that the local
-           X.html file corresponds to remote URL X (since it doesn’t yet know
+           time you re-mirror a site, because Wget can't tell that the local
+           X.html file corresponds to remote URL X (since it doesn't yet know
            that the URL produces output of type text/html or
            application/xhtml+xml.  To prevent this re-downloading, you must
            use -k and -K so that the original version of the file will be
@@ -786,7 +786,7 @@ OPTIONS
            the same time reduces the load on the server.
 
            This option is useful when, for some reason, persistent (keep-
-           alive) connections don’t work for you, for example due to a server
+           alive) connections don't work for you, for example due to a server
            bug or due to the inability of server-side scripts to cope with the
            connections.
 
@@ -811,7 +811,7 @@ OPTIONS
 
        --load-cookies file
            Load cookies from file before the first HTTP retrieval.  file is a
-           textual file in the format originally used by Netscape’s
+           textual file in the format originally used by Netscape's
            cookies.txt file.
 
            You will typically use this option when mirroring sites that
@@ -832,7 +832,7 @@ OPTIONS
                The cookies are in ~/.netscape/cookies.txt.
 
            Mozilla and Netscape 6.x.
-               Mozilla’s cookie file is also named cookies.txt, located
+               Mozilla's cookie file is also named cookies.txt, located
                somewhere under ~/.mozilla, in the directory of your profile.
                The full path usually ends up looking somewhat like
                ~/.mozilla/default/some-weird-string/cookies.txt.
@@ -850,7 +850,7 @@ OPTIONS
 
            If you cannot use --load-cookies, there might still be an
            alternative.  If your browser supports a "cookie manager", you can
-           use it to view the cookies used when accessing the site you’re
+           use it to view the cookies used when accessing the site you're
            mirroring.  Write down the name and value of the cookie, and
            manually instruct Wget to send those cookies, bypassing the
            "official" cookie support:
@@ -872,7 +872,7 @@ OPTIONS
            as the site is concerned.
 
            Since the cookie file format does not normally carry session
-           cookies, Wget marks them with an expiry timestamp of 0.  Wget’s
+           cookies, Wget marks them with an expiry timestamp of 0.  Wget's
            --load-cookies recognizes those as session cookies, but it might
            confuse other browsers.  Also note that cookies so loaded will be
            treated as other session cookies, which means that if you want
@@ -931,7 +931,7 @@ OPTIONS
            pertain here as well.
 
        --referer=url
-           Include ‘Referer: url’ header in HTTP request.  Useful for
+           Include 'Referer: url' header in HTTP request.  Useful for
            retrieving documents with server-side processing that assume they
            are always being retrieved by interactive web browsers and only
            come out properly when Referer is set to one of the pages that
@@ -982,12 +982,12 @@ OPTIONS
 
            Please be aware that Wget needs to know the size of the POST data
            in advance.  Therefore the argument to "--post-file" must be a
-           regular file; specifying a FIFO or something like /dev/stdin won’t
-           work.  It’s not quite clear how to work around this limitation
+           regular file; specifying a FIFO or something like /dev/stdin won't
+           work.  It's not quite clear how to work around this limitation
            inherent in HTTP/1.0.  Although HTTP/1.1 introduces chunked
-           transfer that doesn’t require knowing the request length in
-           advance, a client can’t use chunked unless it knows it’s talking to
-           an HTTP/1.1 server.  And it can’t know that until it receives a
+           transfer that doesn't require knowing the request length in
+           advance, a client can't use chunked unless it knows it's talking to
+           an HTTP/1.1 server.  And it can't know that until it receives a
            response, which in turn requires the request to have been completed
            -- a chicken-and-egg problem.
 
@@ -995,7 +995,7 @@ OPTIONS
            will not send the POST data to the redirected URL.  This is because
            URLs that process POST often respond with a redirection to a
            regular page, which does not desire or accept POST.  It is not
-           completely clear that this behavior is optimal; if it doesn’t work
+           completely clear that this behavior is optimal; if it doesn't work
            out, it might be changed in the future.
 
            This example shows how to log to a server using POST and then
@@ -1057,11 +1057,11 @@ OPTIONS
            quite rare.
 
        --no-check-certificate
-           Don’t check the server certificate against the available
-           certificate authorities.  Also don’t require the URL host name to
+           Don't check the server certificate against the available
+           certificate authorities.  Also don't require the URL host name to
            match the common name presented by the certificate.
 
-           As of Wget 1.10, the default is to verify the server’s certificate
+           As of Wget 1.10, the default is to verify the server's certificate
            against the recognized certificate authorities, breaking the SSL
            handshake and aborting the download if the verification fails.
            Although this provides more secure downloads, it does break
@@ -1072,10 +1072,10 @@ OPTIONS
            into warnings and allows you to proceed.
 
            If you encounter "certificate verification" errors or ones saying
-           that "common name doesn’t match requested host name", you can use
+           that "common name doesn't match requested host name", you can use
            this option to bypass the verification and proceed with the
            download.  Only use this option if you are otherwise convinced of
-           the site’s authenticity, or if you really don’t care about the
+           the site's authenticity, or if you really don't care about the
            validity of its certificate.  It is almost always a bad idea not to
            check the certificates when transmitting confidential or important
            data.
@@ -1129,7 +1129,7 @@ OPTIONS
            in $RANDFILE or, if that is unset, in $HOME/.rnd.  If none of those
            are available, it is likely that SSL encryption will not be usable.
 
-           If you’re getting the "Could not seed OpenSSL PRNG; disabling SSL."
+           If you're getting the "Could not seed OpenSSL PRNG; disabling SSL."
            error, you should provide random data using some of the methods
            described above.
 
@@ -1168,12 +1168,12 @@ OPTIONS
            them after Wget has started the download.
 
        --no-remove-listing
-           Don’t remove the temporary .listing files generated by FTP
+           Don't remove the temporary .listing files generated by FTP
            retrievals.  Normally, these files contain the raw directory
            listings received from FTP servers.  Not removing them can be
            useful for debugging purposes, or when you want to be able to
            easily check on the contents of remote server directories (e.g. to
-           verify that a mirror you’re running is complete).
+           verify that a mirror you're running is complete).
 
            Note that even though Wget writes to a known filename for this
            file, this is not a security hole in the scenario of a user making
@@ -1184,8 +1184,8 @@ OPTIONS
            symbolic link will be deleted and replaced with the actual .listing
            file, or the listing will be written to a .listing.number file.
 
-           Even though this situation isn’t a problem, though, "root" should
-           never run Wget in a non-trusted user’s directory.  A user could do
+           Even though this situation isn't a problem, though, "root" should
+           never run Wget in a non-trusted user's directory.  A user could do
            something as simple as linking index.html to /etc/passwd and asking
            "root" to run Wget with -N or -r so the file will be overwritten.
 
@@ -1214,7 +1214,7 @@ OPTIONS
            and active FTP should work equally well.  Behind most firewall and
            NAT configurations passive FTP has a better chance of working.
            However, in some rare firewall configurations, active FTP actually
-           works when passive FTP doesn’t.  If you suspect this to be the
+           works when passive FTP doesn't.  If you suspect this to be the
            case, use this option, or set "passive_ftp=off" in your init file.
 
        --retr-symlinks
@@ -1342,7 +1342,7 @@ OPTIONS
 
                    wget -r -l 2 -p http://<site>/1.html
 
-           all the above files and 3.html’s requisite 3.gif will be
+           all the above files and 3.html's requisite 3.gif will be
            downloaded.  Similarly,
 
                    wget -r -l 1 -p http://<site>/1.html
@@ -1369,7 +1369,7 @@ OPTIONS
 
                    wget -E -H -k -K -p http://<site>/<document>
 
-           To finish off this topic, it’s worth knowing that Wget’s idea of an
+           To finish off this topic, it's worth knowing that Wget's idea of an
            external document link is any URL specified in an "<A>" tag, an
            "<AREA>" tag, or a "<LINK>" tag other than "<LINK
            REL="stylesheet">".
@@ -1386,7 +1386,7 @@ OPTIONS
            Therefore, <!--foo--> is a valid comment, and so is <!--one--
            --two-->, but <!--1--2--> is not.
 
-           On the other hand, most HTML writers don’t perceive comments as
+           On the other hand, most HTML writers don't perceive comments as
            anything other than text delimited with <!-- and -->, which is not
            quite the same.  For example, something like <!------------> works
            as a valid comment as long as the number of dashes is a multiple of
@@ -1445,7 +1445,7 @@ OPTIONS
 
            However, the author of this option came across a page with tags
            like "<LINK REL="home" HREF="/">" and came to the realization that
-           specifying tags to ignore was not enough.  One can’t just tell Wget
+           specifying tags to ignore was not enough.  One can't just tell Wget
            to ignore "<LINK>", because then stylesheets will not be
            downloaded.  Now the best bet for downloading a single page and its
            requisites is the dedicated --page-requisites option.
@@ -1508,7 +1508,7 @@ EXIT STATUS
        precedence over higher-numbered ones, when multiple types of errors are
        encountered.
 
-       In versions of Wget prior to 1.12, Wget’s exit status tended to be
+       In versions of Wget prior to 1.12, Wget's exit status tended to be
        unhelpful and inconsistent. Recursive downloads would virtually always
        return 0 (success), regardless of any issues encountered, and non-
        recursive fetches only returned the status corresponding to the most
@@ -1529,8 +1529,8 @@ BUGS
        simple guidelines.
 
        1.  Please try to ascertain that the behavior you see really is a bug.
-           If Wget crashes, it’s a bug.  If Wget does not behave as
-           documented, it’s a bug.  If things work strange, but you are not
+           If Wget crashes, it's a bug.  If Wget does not behave as
+           documented, it's a bug.  If things work strange, but you are not
            sure about the way they are supposed to work, it might well be a
            bug, but you might want to double-check the documentation and the
            mailing lists.
@@ -1556,9 +1556,9 @@ BUGS
 
            Note: please make sure to remove any potentially sensitive
            information from the debug log before sending it to the bug
-           address.  The "-d" won’t go out of its way to collect sensitive
+           address.  The "-d" won't go out of its way to collect sensitive
            information, but the log will contain a fairly complete transcript
-           of Wget’s communication with the server, which may include
+           of Wget's communication with the server, which may include
            passwords and pieces of downloaded data.  Since the bug address is
            publically archived, you may assume that all bug reports are
            visible to the public.

@@ -59,7 +59,7 @@ OPTIONS
        -Fsymfile
 	      Read  symbol  reference lines from symfile.  (A symbol reference
 	      file is created by > and >>, and can also be read	 using	the  <
-	      command,	 described   under  ‘‘Issuing  Subsequent  Requests,’’
+	      command,	 described   under  ''Issuing  Subsequent  Requests,''
 	      below.)
 
        -freffile
@@ -69,7 +69,7 @@ OPTIONS
        -Iincdir
 	      Look  in	incdir	(before looking in $INCDIR, the standard place
 	      for header files, normally /usr/include) for any #include	 files
-	      whose  names  do not begin with ‘‘/’’ and that are not specified
+	      whose  names  do not begin with ''/'' and that are not specified
 	      on the command line or in namefile below.	 (The  #include	 files
 	      may  be  specified with either double quotes or angle brackets.)
 	      The incdir directory is searched	in  addition  to  the  current
@@ -84,20 +84,20 @@ OPTIONS
 	      instead  of  the	default	 name  list  file,  which  is	called
 	      cscope.files.  If	 this  option is specified, cscope ignores any
 	      file names appearing on the command line. The argument  namefile
-	      can  be set to ‘‘-’’ to accept a list of files from the standard
+	      can  be set to ''-'' to accept a list of files from the standard
 	      input.  Filenames in the namefile that contain  whitespace  have
 	      to  be  enclosed	in  "double quotes".  Inside such quoted file-
 	      names, any double-quote and  backslash  characters  have	to  be
 	      escaped by backslashes.
 
-       -k     ‘‘Kernel	Mode’’,	 turns	off the use of the default include dir
+       -k     ''Kernel	Mode'',	 turns	off the use of the default include dir
 	      (usually /usr/include) when building the database, since	kernel
 	      source trees generally do not use it.
 
        -L     Do  a single search with line-oriented output when used with the
 	      -num pattern option.
 
-       -l     Line-oriented interface (see ‘‘Line-Oriented Interface’’ below).
+       -l     Line-oriented interface (see ''Line-Oriented Interface'' below).
 
        -[0-9]pattern
 	      Go to input field num (counting from 0) and find pattern.
@@ -112,7 +112,7 @@ OPTIONS
 
        -q     Enable  fast  symbol  lookup  via an inverted index. This option
 	      causes  cscope  to  create   2   more   files   (default	 names
-	      ‘‘cscope.in.out’’ and ‘‘cscope.po.out’’) in addition to the nor-
+	      ''cscope.in.out'' and ''cscope.po.out'') in addition to the nor-
 	      mal database. This allows a faster symbol search algorithm  that
 	      provides	 noticeably   faster   lookup  performance  for	 large
 	      projects.
@@ -214,8 +214,8 @@ Issuing subsequent requests
        ^f     Move to next input field and search pattern.
 
        ^c     Toggle  ignore/use  letter  case	when searching. (When ignoring
-	      letter  case,  search  for  ‘‘FILE’’  will  match	 ‘‘File’’  and
-	      ‘‘file’’.)
+	      letter  case,  search  for  ''FILE''  will  match	 ''File''  and
+	      ''file''.)
 
        ^r     Rebuild the cross-reference.
 
@@ -277,11 +277,11 @@ Issuing subsequent requests
 
        cscope will prompt with >> when it is ready for an input line  starting
        with  the  field	 number	 (counting from 0) immediately followed by the
-       search pattern, for example, ‘‘lmain’’ finds the definition of the main
+       search pattern, for example, ''lmain'' finds the definition of the main
        function.
 
        If  you	just want a single search, instead of the -l option use the -L
-       and -num pattern options, and you won’t get the >> prompt.
+       and -num pattern options, and you won't get the >> prompt.
 
        For -l, cscope outputs the number of reference lines cscope: 2 lines
 
@@ -293,13 +293,13 @@ Issuing subsequent requests
        unlike the screen-oriented interface.
 
        You can use the c command to toggle ignore/use letter case when search-
-       ing. (When  ignoring  letter  case,  search  for	 ‘‘FILE’’  will	 match
-       ‘‘File’’ and ‘‘file’’.)
+       ing. (When  ignoring  letter  case,  search  for	 ''FILE''  will	 match
+       ''File'' and ''file''.)
 
        You can use the r command to rebuild the database.
 
        cscope will quit when it detects end-of-file, or when the first charac-
-       ter of an input line is ‘‘^d’’ or ‘‘q’’.
+       ter of an input line is ''^d'' or ''q''.
 
 
 ENVIRONMENT VARIABLES
@@ -310,19 +310,19 @@ ENVIRONMENT VARIABLES
 
        CSCOPE_LINEFLAG
 	      Format of the line number flag  for  your	 editor.  By  default,
-	      cscope  invokes  your  editor  via the equivalent of ‘‘editor +N
-	      file’’, where ‘‘N’’ is the line number that  the	editor	should
+	      cscope  invokes  your  editor  via the equivalent of ''editor +N
+	      file'', where ''N'' is the line number that  the	editor	should
 	      jump  to. This format is used by both emacs and vi. If your edi-
 	      tor needs something different, specify it in this variable, with
-	      ‘‘%s’’ as a placeholder for the line number.  Ex: if your editor
-	      needs to be invoked as ‘‘editor -#103 file’’ to go to line  103,
-	      set this variable to ‘‘-#%s’’.
+	      ''%s'' as a placeholder for the line number.  Ex: if your editor
+	      needs to be invoked as ''editor -#103 file'' to go to line  103,
+	      set this variable to ''-#%s''.
 
        CSCOPE_LINEFLAG_AFTER_FILE
-	      Set  this variable to ‘‘yes’’ if your editor needs to be invoked
+	      Set  this variable to ''yes'' if your editor needs to be invoked
 	      with the line number option after the filename to be edited.  To
 	      continue the example from CSCOPE_LINEFLAG, above: if your editor
-	      needs to see ‘‘editor  file  -#number’’,	set  this  environment
+	      needs to see ''editor  file  -#number'',	set  this  environment
 	      variable. Users of most standard editors (vi, emacs) do not need
 	      to set this variable.
 
@@ -371,7 +371,7 @@ FILES
        cscope.po.out
 	      Default files containing the inverted index used for quick symbol searching (-q option). 
           If you use the -f option to rename
-	      the cross-reference file (so it’s not cscope.out), the names for
+	      the cross-reference file (so it's not cscope.out), the names for
 	      these inverted index files will be created by adding
 	       .in and .po to the name you supply with -f. For example, if you
 	      indicated	 -f  xyz,  then	 these files would be named xyz.in and
@@ -388,7 +388,7 @@ Notices
        blank  is zero or more spaces, tabs,  vtabs,  form  feeds  or  carriage
 	      returns, not including newlines
 
-       args   is any string that does not contain a ‘‘"’’ or a newline
+       args   is any string that does not contain a ''"'' or a newline
 
        white  is  zero	or  more  spaces,  tabs,  vtabs,  form feeds, carriage
 	      returns or newlines
@@ -402,7 +402,7 @@ Notices
        will still recognize the declaration. Function definitions that deviate
        from this form will not be recognized by cscope.
 
-       The ‘‘Function’’ column of the search output for the menu  option  Find
+       The ''Function'' column of the search output for the menu  option  Find
        functions  called  by  this function: input field will only display the
        first function called in the line, that is, for this function
 
@@ -447,14 +447,14 @@ Notices
        is incorrectly recognized as a call to g.
 
        cscope  recognizes  C++	classes	 by looking for the class keyword, but
-       doesn’t recognize that a struct is also a class, so it  doesn’t	recog-
-       nize inline member function definitions in a structure. It also doesn’t
+       doesn't recognize that a struct is also a class, so it  doesn't	recog-
+       nize inline member function definitions in a structure. It also doesn't
        expect the class keyword in a typedef , so it incorrectly recognizes  X
        as a definition in
 
 	typedef class X	 *  Y;
 
-       It also doesn’t recognize operator function definitions
+       It also doesn't recognize operator function definitions
 
 	Bool Feature::operator==(const Feature & other)
 	{

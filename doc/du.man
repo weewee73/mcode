@@ -20,14 +20,14 @@ DESCRIPTION
        --apparent-size
 	      print apparent sizes,  rather  than  disk	 usage;	 although  the
 	      apparent	size is usually smaller, it may be larger due to holes
-	      in (‘sparse’) files, internal  fragmentation,  indirect  blocks,
+	      in ('sparse') files, internal  fragmentation,  indirect  blocks,
 	      and the like
 
        -B, --block-size=SIZE
 	      use SIZE-byte blocks
 
        -b, --bytes
-	      equivalent to ‘--apparent-size --block-size=1’
+	      equivalent to '--apparent-size --block-size=1'
 
        -c, --total
 	      produce a grand total
@@ -57,7 +57,7 @@ DESCRIPTION
 	      dereference all symbolic links
 
        -P, --no-dereference
-	      don’t follow any symbolic links (this is the default)
+	      don't follow any symbolic links (this is the default)
 
        -0, --null
 	      end each output line with 0 byte rather than newline
@@ -91,7 +91,7 @@ DESCRIPTION
 
        --time-style=STYLE
 	      show times using style STYLE: full-iso, long-iso,	 iso,  +FORMAT
-	      FORMAT is interpreted like ‘date’
+	      FORMAT is interpreted like 'date'
 
        --help display this help and exit
 

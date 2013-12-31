@@ -1,4 +1,4 @@
-DAEMON(3)		   Linux Programmer’s Manual		     DAEMON(3)
+DAEMON(3)		   Linux Programmer's Manual		     DAEMON(3)
 
 
 
@@ -18,7 +18,7 @@ DESCRIPTION
        The daemon() function is for programs wishing to detach themselves from
        the controlling terminal and run in the background as system daemons.
 
-       If nochdir is zero, daemon()  changes  the  process’s  current  working
+       If nochdir is zero, daemon()  changes  the  process's  current  working
        directory to the root directory ("/"); otherwise,
 
        If  noclose is zero, daemon() redirects standard input, standard output

@@ -62,7 +62,7 @@ DESCRIPTION
        -q [errorfile]
                    Start in quickFix mode.  The file [errorfile] is  read  and
                    the  first  error is displayed.  If [errorfile] is omitted,
-                   the  filename  is  obtained  from  the  ’errorfile’  option
+                   the  filename  is  obtained  from  the  'errorfile'  option
                    (defaults  to  "AztecC.Err"  for the Amiga, "errors.err" on
                    other systems).  Further errors can be jumped to  with  the
                    ":cn" command.  See ":help quickfix".
@@ -115,7 +115,7 @@ OPTIONS
 
        -S {file}   {file}  will be sourced after the first file has been read.
                    This is equivalent to -c "source  {file}".   {file}  cannot
-                   start with ’-’.  If {file} is omitted "Session.vim" is used
+                   start with '-'.  If {file} is omitted "Session.vim" is used
                    (only works when -S is the last argument).
 
        --cmd {command}
@@ -125,13 +125,13 @@ OPTIONS
 
        -A          If Vim has been compiled with ARABIC  support  for  editing
                    right-to-left  oriented  files and Arabic keyboard mapping,
-                   this option starts Vim in Arabic  mode,  i.e.  ’arabic’  is
+                   this option starts Vim in Arabic  mode,  i.e.  'arabic'  is
                    set.  Otherwise an error message is given and Vim aborts.
 
        -b          Binary  mode.  A few options will be set that makes it pos-
                    sible to edit a binary or executable file.
 
-       -C          Compatible.  Set the ’compatible’ option.  This  will  make
+       -C          Compatible.  Set the 'compatible' option.  This  will  make
                    Vim  behave  mostly  like  Vi,  even  though  a .vimrc file
                    exists.
 
@@ -163,8 +163,8 @@ OPTIONS
 
        -F          If Vim has been compiled with  FKMAP  support  for  editing
                    right-to-left  oriented  files  and Farsi keyboard mapping,
-                   this option starts Vim in  Farsi  mode,  i.e.  ’fkmap’  and
-                   ’rightleft’  are  set.  Otherwise an error message is given
+                   this option starts Vim in  Farsi  mode,  i.e.  'fkmap'  and
+                   'rightleft'  are  set.  Otherwise an error message is given
                    and Vim aborts.
 
        -g          If Vim has been compiled  with  GUI  support,  this  option
@@ -176,8 +176,8 @@ OPTIONS
 
        -H          If Vim has been compiled with RIGHTLEFT support for editing
                    right-to-left oriented files and Hebrew  keyboard  mapping,
-                   this  option  starts  Vim  in Hebrew mode, i.e. ’hkmap’ and
-                   ’rightleft’ are set.  Otherwise an error message  is  given
+                   this  option  starts  Vim  in Hebrew mode, i.e. 'hkmap' and
+                   'rightleft' are set.  Otherwise an error message  is  given
                    and Vim aborts.
 
        -i {viminfo}
@@ -188,18 +188,18 @@ OPTIONS
 
        -L          Same as -r.
 
-       -l          Lisp mode.  Sets the ’lisp’ and ’showmatch’ options on.
+       -l          Lisp mode.  Sets the 'lisp' and 'showmatch' options on.
 
-       -m          Modifying files is disabled.  Resets  the  ’write’  option.
+       -m          Modifying files is disabled.  Resets  the  'write'  option.
                    You  can still modify the buffer, but writing a file is not
                    possible.
 
-       -M          Modifications not allowed.  The  ’modifiable’  and  ’write’
+       -M          Modifications not allowed.  The  'modifiable'  and  'write'
                    options  will be unset, so that changes are not allowed and
                    files can not be written.  Note that these options  can  be
                    set to enable making modifications.
 
-       -N          No-compatible  mode.   Reset the ’compatible’ option.  This
+       -N          No-compatible  mode.   Reset the 'compatible' option.  This
                    will make Vim behave a bit better, but less Vi  compatible,
                    even though a .vimrc file does not exist.
 
@@ -220,13 +220,13 @@ OPTIONS
        -p[N]       Open N tab pages.  When N is omitted, open one tab page for
                    each file.
 
-       -R          Read-only mode.  The ’readonly’ option will  be  set.   You
+       -R          Read-only mode.  The 'readonly' option will  be  set.   You
                    can still edit the buffer, but will be prevented from acci-
                    dently overwriting a file.  If you do want to  overwrite  a
                    file,  add  an  exclamation  mark  to the Ex command, as in
                    ":w!".  The -R option  also  implies  the  -n  option  (see
-                   below).   The  ’readonly’  option  can  be reset with ":set
-                   noro".  See ":help ’readonly’".
+                   below).   The  'readonly'  option  can  be reset with ":set
+                   noro".  See ":help 'readonly'".
 
        -r          List swap files, with  information  about  using  them  for
                    recovery.
@@ -248,7 +248,7 @@ OPTIONS
 
        -T {terminal}
                    Tells  Vim  the  name  of the terminal you are using.  Only
-                   required when the automatic way doesn’t work.  Should be  a
+                   required when the automatic way doesn't work.  Should be  a
                    terminal  known  to Vim (builtin) or defined in the termcap
                    or terminfo file.
 
@@ -266,7 +266,7 @@ OPTIONS
 
        -V[N]       Verbose.  Give messages about which files are  sourced  and
                    for  reading and writing a viminfo file.  The optional num-
-                   ber N is the value for ’verbose’.  Default is 10.
+                   ber N is the value for 'verbose'.  Default is 10.
 
        -v          Start Vim in Vi mode, just like the executable  was  called
                    "vi".   This  only has effect when the executable is called
@@ -285,7 +285,7 @@ OPTIONS
        -x          Use encryption when writing files.  Will prompt for a crypt
                    key.
 
-       -X          Don’t  connect to the X server.  Shortens startup time in a
+       -X          Don't  connect to the X server.  Shortens startup time in a
                    terminal, but the window title and clipboard  will  not  be
                    used.
 
@@ -298,7 +298,7 @@ OPTIONS
 
        --          Denotes the end of the options.  Arguments after this  will
                    be  handled  as  a  file  name.  This can be used to edit a
-                   filename that starts with a ’-’.
+                   filename that starts with a '-'.
 
        --echo-wid  GTK GUI only: Echo the Window ID on stdout.
 
@@ -338,7 +338,7 @@ OPTIONS
 
        --servername {name}
                    Use {name} as the server name.  Used for the  current  Vim,
-                   unless used with a --remote argument, then it’s the name of
+                   unless used with a --remote argument, then it's the name of
                    the server to connect to.
 
        --socketid {id}
@@ -392,11 +392,11 @@ FILES
 
        /usr/share/vim/vim72/filetype.vim
                       Script  to  detect  the type of a file by its name.  See
-                      ":help ’filetype’".
+                      ":help 'filetype'".
 
        /usr/share/vim/vim72/scripts.vim
                       Script to detect the type of a  file  by  its  contents.
-                      See ":help ’filetype’".
+                      See ":help 'filetype'".
 
        /usr/share/vim/vim72/print/*.ps
                       Files used for PostScript printing.
@@ -417,11 +417,11 @@ BUGS
        Probably.  See ":help todo" for a list of known problems.
 
        Note that a number of things that may be regarded as bugs by some,  are
-       in  fact  caused by a too-faithful reproduction of Vi’s behaviour.  And
+       in  fact  caused by a too-faithful reproduction of Vi's behaviour.  And
        if you think other things are bugs "because Vi  does  it  differently",
        you  should  take  a closer look at the vi_diff.txt file (or type :help
-       vi_diff.txt when in Vim).  Also have a look  at  the  ’compatible’  and
-       ’cpoptions’ options.
+       vi_diff.txt when in Vim).  Also have a look  at  the  'compatible'  and
+       'cpoptions' options.
 
 
 

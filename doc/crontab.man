@@ -1,4 +1,4 @@
-CRONTAB(1)		     Cronie Users’ Manual		    CRONTAB(1)
+CRONTAB(1)		     Cronie Users' Manual		    CRONTAB(1)
 
 
 
@@ -24,10 +24,10 @@ DESCRIPTION
        cron.deny file in order to use this command.  If neither of these files
        exists,	only  the super user will be allowed to use this command.  The
        second option is using PAM authentication,  where  you  set  up	users,
-       which  could  or	 couldn’t  use	crontab and also system cron jobs from
+       which  could  or	 couldn't  use	crontab and also system cron jobs from
        /etc/cron.d/.
 
-       The temporary directory could be set in enviroment variables.  If  it’s
+       The temporary directory could be set in enviroment variables.  If  it's
        not set by user than /tmp is used.
 
 
@@ -36,7 +36,7 @@ OPTIONS
 	      this option is not given, crontab examines "your" crontab, i.e.,
 	      the  crontab  of	the  person  executing the command.  Note that
 	      su(8) can confuse crontab and that if you are running inside  of
-	      su(8)  you  should  always  use the -u option for safety’s sake.
+	      su(8)  you  should  always  use the -u option for safety's sake.
 	      The first form of this command is used to install a new  crontab
 	      from  some  named	 file or standard input if the pseudo-filename
 	      "-" is given.
@@ -51,7 +51,7 @@ OPTIONS
 	      automatically.
 
        -i     This  option  modifies  the  -r  option to prompt the user for a
-	      ’y/Y’ response before actually removing the crontab.
+	      'y/Y' response before actually removing the crontab.
 
        -s     It will append the current SELinux security context string as an
 	      MLS_LEVEL	 setting to the crontab file before editing / replace-
@@ -65,7 +65,7 @@ FILES
        /etc/cron.deny
 
 STANDARDS
-       The  crontab command conforms to IEEE Std1003.2-1992 (‘‘POSIX’’).  This
+       The  crontab command conforms to IEEE Std1003.2-1992 (''POSIX'').  This
        new command syntax differs from previous versions  of  Vixie  Cron,  as
        well as from the classic SVR3 syntax.
 

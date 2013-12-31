@@ -102,7 +102,7 @@ BASH BUILTIN COMMANDS
 
        bg [jobspec ...]
 	      Resume  each  suspended  job jobspec in the background, as if it
-	      had been started with &.	If jobspec is not present, the shell’s
+	      had been started with &.	If jobspec is not present, the shell's
 	      notion  of the current job is used.  bg jobspec returns 0 unless
 	      run when job control is disabled or, when run with  job  control
 	      enabled,	any  specified	jobspec	 was  not found or was started
@@ -118,7 +118,7 @@ BASH BUILTIN COMMANDS
 	      sequence	to  a  readline	 function  or macro, or set a readline
 	      variable.	 Each non-option argument is a	command	 as  it	 would
 	      appear  in  .inputrc, but each binding or command must be passed
-	      as a separate argument; e.g.,  ’"\C-x\C-r":  re-read-init-file’.
+	      as a separate argument; e.g.,  '"\C-x\C-r":  re-read-init-file'.
 	      Options, if supplied, have the following meanings:
 	      -m keymap
 		     Use keymap as the keymap to be affected by the subsequent
@@ -173,7 +173,7 @@ BASH BUILTIN COMMANDS
 	      default dir.  The variable CDPATH defines the  search  path  for
 	      the  directory  containing  dir.	Alternative directory names in
 	      CDPATH are separated by a colon (:).  A null directory  name  in
-	      CDPATH  is  the  same as the current directory, i.e., ‘‘.’’.  If
+	      CDPATH  is  the  same as the current directory, i.e., ''.''.  If
 	      dir begins with a slash (/), then CDPATH is  not	used.  The  -P
 	      option  says  to use the physical directory structure instead of
 	      following symbolic links (see also the  -P  option  to  the  set
@@ -250,12 +250,12 @@ BASH BUILTIN COMMANDS
 	      sion before the complete builtin is invoked.
 	      -o comp-option
 		      The comp-option controls several aspects	of  the	 comp-
-		      spec’s  behavior beyond the simple generation of comple-
+		      spec's  behavior beyond the simple generation of comple-
 		      tions.  comp-option may be one of:
 		      bashdefault
 			      Perform the rest of the default bash completions
 			      if the compspec generates no matches.
-		      default Use  readline’s  default	filename completion if
+		      default Use  readline's  default	filename completion if
 			      the compspec generates no matches.
 		      dirnames
 			      Perform directory name completion if  the	 comp-
@@ -357,7 +357,7 @@ BASH BUILTIN COMMANDS
 	      Resume the next iteration of the enclosing for, while, until, or
 	      select  loop.   If  n  is specified, resume at the nth enclosing
 	      loop.  n must be ≥ 1.  If	 n  is	greater	 than  the  number  of
-	      enclosing	 loops,	 the  last  enclosing  loop (the ‘‘top-level’’
+	      enclosing	 loops,	 the  last  enclosing  loop (the ''top-level''
 	      loop) is resumed.	 When continue is executed inside of loop, the
 	      return  value  is	 non-zero  when	 n is ≤ 0; Otherwise, continue
 	      returns 0 value.	When continue is executed outside of loop, the
@@ -390,13 +390,13 @@ BASH BUILTIN COMMANDS
 	      -x     Mark  names  for  export  to  subsequent commands via the
 		     environment.
 
-	      Using ‘+’ instead of ‘-’ turns off the attribute	instead,  with
+	      Using '+' instead of '-' turns off the attribute	instead,  with
 	      the  exception that +a may not be used to destroy an array vari-
 	      able.  When used in a function, makes each name local,  as  with
 	      the  local  command.   If a variable name is followed by =value,
 	      the value of the variable is set to value.  The return value  is
 	      0 unless an invalid option is encountered, an attempt is made to
-	      define a function using ‘‘-f foo=bar’’, an attempt  is  made  to
+	      define a function using ''-f foo=bar'', an attempt  is  made  to
 	      assign  a	 value	to  a readonly variable, an attempt is made to
 	      assign a value to an array variable without using	 the  compound
 	      assignment  syntax (see Arrays above), one of the names is not a
@@ -472,7 +472,7 @@ BASH BUILTIN COMMANDS
 	      the  shell  normally searches for builtins before disk commands.
 	      If -n is used, each  name	 is  disabled;	otherwise,  names  are
 	      enabled.	For example, to use the test binary found via the PATH
-	      instead of the shell builtin version, run	 ‘‘enable  -n  test’’.
+	      instead of the shell builtin version, run	 ''enable  -n  test''.
 	      The  -f  option  means to load the new builtin command name from
 	      shared object filename, on systems that support dynamic loading.
 	      The  -d  option will delete a builtin previously loaded with -f.
@@ -534,7 +534,7 @@ BASH BUILTIN COMMANDS
 	      with that string) or as a number	(an  index  into  the  history
 	      list, where a negative number is used as an offset from the cur-
 	      rent command number).  If last is not specified it is set to the
-	      current  command	for  listing (so that ‘‘fc -l -10’’ prints the
+	      current  command	for  listing (so that ''fc -l -10'' prints the
 	      last 10 commands) and to first otherwise.	 If first is not spec-
 	      ified  it is set to the previous command for editing and -16 for
 	      listing.
@@ -550,8 +550,8 @@ BASH BUILTIN COMMANDS
 
 	      In  the  second form, command is re-executed after each instance
 	      of pat is replaced by rep.  A useful alias to use with  this  is
-	      ‘‘r="fc  -s"’’,  so  that	 typing ‘‘r cc’’ runs the last command
-	      beginning with ‘‘cc’’ and typing ‘‘r’’ re-executes the last com-
+	      ''r="fc  -s"'',  so  that	 typing ''r cc'' runs the last command
+	      beginning with ''cc'' and typing ''r'' re-executes the last com-
 	      mand.
 
 	      If  the  first  form  is	used,  the return value is 0 unless an
@@ -565,7 +565,7 @@ BASH BUILTIN COMMANDS
 
        fg [jobspec]
 	      Resume jobspec in the foreground, and make it the	 current  job.
-	      If jobspec is not present, the shell’s notion of the current job
+	      If jobspec is not present, the shell's notion of the current job
 	      is used.	The return value is that of the	 command  placed  into
 	      the  foreground,	or failure if run when job control is disabled
 	      or, when run with job control enabled, if jobspec does not spec-
@@ -661,7 +661,7 @@ BASH BUILTIN COMMANDS
 	      -c     Clear the history list by deleting all the entries.
 	      -d offset
 		     Delete the history entry at position offset.
-	      -a     Append  the  ‘‘new’’ history lines (history lines entered
+	      -a     Append  the  ''new'' history lines (history lines entered
 		     since the beginning of the current bash session)  to  the
 		     history file.
 	      -n     Read  the history lines not already read from the history
@@ -671,7 +671,7 @@ BASH BUILTIN COMMANDS
 	      -r     Read the contents of the history file and use them as the
 		     current history.
 	      -w     Write  the current history to the history file, overwrit-
-		     ing the history file’s contents.
+		     ing the history file's contents.
 	      -p     Perform history substitution on the  following  args  and
 		     display  the  result  on  the  standard output.  Does not
 		     store the results in the history list.  Each arg must  be
@@ -692,7 +692,7 @@ BASH BUILTIN COMMANDS
 	      The first form lists the active jobs.  The options have the fol-
 	      lowing meanings:
 	      -l     List process IDs in addition to the normal information.
-	      -p     List  only	 the  process  ID  of  the job’s process group
+	      -p     List  only	 the  process  ID  of  the job's process group
 		     leader.
 	      -n     Display information only about  jobs  that	 have  changed
 		     status  since the user was last notified of their status.
@@ -746,11 +746,11 @@ BASH BUILTIN COMMANDS
 	      the new top directory.  Arguments, if supplied, have the follow-
 	      ing meanings:
 	      +n     Removes the nth entry counting from the left of the  list
-		     shown  by	dirs, starting with zero.  For example: ‘‘popd
-		     +0’’ removes the first directory, ‘‘popd +1’’ the second.
+		     shown  by	dirs, starting with zero.  For example: ''popd
+		     +0'' removes the first directory, ''popd +1'' the second.
 	      -n     Removes the nth entry counting from the right of the list
-		     shown by dirs, starting with zero.	 For  example:	‘‘popd
-		     -0’’  removes the last directory, ‘‘popd -1’’ the next to
+		     shown by dirs, starting with zero.	 For  example:	''popd
+		     -0''  removes the last directory, ''popd -1'' the next to
 		     last.
 	      -n     Suppresses the normal change of directory	when  removing
 		     directories  from	the  stack,  so that only the stack is
@@ -917,7 +917,7 @@ BASH BUILTIN COMMANDS
 		      exit  if	the  command that fails is part of the command
 		      list immediately following a  while  or  until  keyword,
 		      part  of the test in an if statement, part of a && or ││
-		      list, or if the command’s return value is being inverted
+		      list, or if the command's return value is being inverted
 		      via  !.	A  trap on ERR, if set, is executed before the
 		      shell exits.
 	      -f      Disable pathname expansion.
@@ -958,7 +958,7 @@ BASH BUILTIN COMMANDS
 			      active shells.
 		      ignoreeof
 			      The   effect   is	  as   if  the	shell  command
-			      ‘‘IGNOREEOF=10’’ had been	 executed  (see	 Shell
+			      ''IGNOREEOF=10'' had been	 executed  (see	 Shell
 			      Variables above).
 		      keyword Same as -k.
 		      monitor Same as -m.
@@ -1111,7 +1111,7 @@ BASH BUILTIN COMMANDS
 	      cmdhist If set, bash attempts to save all lines of  a  multiple-
 		      line  command  in	 the  same history entry.  This allows
 		      easy re-editing of multi-line commands.
-	      dotglob If set, bash includes filenames beginning with a ‘.’  in
+	      dotglob If set, bash includes filenames beginning with a '.'  in
 		      the results of pathname expansion.
 	      execfail
 		      If set, a non-interactive shell will not exit if it can-
@@ -1199,7 +1199,7 @@ BASH BUILTIN COMMANDS
 	      mailwarn
 		      If set, and a file that bash is checking	for  mail  has
 		      been  accessed  since  the last time it was checked, the
-		      message ‘‘The mail in mailfile has been read’’  is  dis-
+		      message ''The mail in mailfile has been read''  is  dis-
 		      played.
 	      no_empty_cmd_completion
 		      If  set,	and  readline  is  being  used,	 bash will not
@@ -1340,7 +1340,7 @@ BASH BUILTIN COMMANDS
 	      ERR trap is not executed if the failed command is	 part  of  the
 	      command  list  immediately  following  a while or until keyword,
 	      part of the test in an if statement, part of a && or ││ list, or
-	      if  the  command’s  return value is being inverted via !.	 These
+	      if  the  command's  return value is being inverted via !.	 These
 	      are the same conditions obeyed by	 the  errexit  option.	 If  a
 	      sigspec is RETURN, the command arg is executed each time a shell
 	      function or a script executed with the . or source builtins fin-
@@ -1359,9 +1359,9 @@ BASH BUILTIN COMMANDS
 	      then nothing  is	printed,  and  an  exit	 status	 of  false  is
 	      returned.	  If  the  -p  option is used, type either returns the
 	      name of the disk file that would be executed if name were speci-
-	      fied as a command name, or nothing if ‘‘type -t name’’ would not
+	      fied as a command name, or nothing if ''type -t name'' would not
 	      return file.  The -P option forces a PATH search for each	 name,
-	      even if ‘‘type -t name’’ would not return file.  If a command is
+	      even if ''type -t name'' would not return file.  If a command is
 	      hashed, -p and -P print the hashed value,	 not  necessarily  the
 	      file that appears first in PATH.	If the -a option is used, type
 	      prints all of the places that contain an executable named	 name.
@@ -1389,7 +1389,7 @@ BASH BUILTIN COMMANDS
 	      lows:
 	      -a     All current limits are reported
 	      -c     The maximum size of core files created
-	      -d     The maximum size of a process’s data segment
+	      -d     The maximum size of a process's data segment
 	      -e     The maximum scheduling priority ("nice")
 	      -f     The  maximum  size	 of files written by the shell and its
 		     children
@@ -1449,7 +1449,7 @@ BASH BUILTIN COMMANDS
        wait [n ...]
 	      Wait  for each specified process and return its termination sta-
 	      tus.  Each n may be a process ID or a job	 specification;	 if  a
-	      job  spec	 is  given,  all  processes in that job’s pipeline are
+	      job  spec	 is  given,  all  processes in that job's pipeline are
 	      waited for.  If n is not given, all currently active child  pro-
 	      cesses  are  waited  for,	 and  the return status is zero.  If n
 	      specifies a non-existent process or job, the  return  status  is

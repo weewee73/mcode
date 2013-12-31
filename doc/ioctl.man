@@ -1,4 +1,4 @@
-IOCTL(2)                   Linux Programmer’s Manual                  IOCTL(2)
+IOCTL(2)                   Linux Programmer's Manual                  IOCTL(2)
 
 
 

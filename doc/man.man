@@ -439,7 +439,7 @@ ENVIRONMENT
        MANLESS
               If $MANLESS is set, man will not perform any of its usual processing to set up a prompt string for the less  pager.   Instead,
               the  value  of $MANLESS will be copied verbatim into $LESS.  For example, if you want to set the prompt string unconditionally
-              to “my prompt string”, set $MANLESS to ‘-Psmy prompt string’.
+              to “my prompt string”, set $MANLESS to '-Psmy prompt string'.
 
        BROWSER
               If $BROWSER is set, its value is a colon-delimited list of commands, each of which in turn is used  to  try  to  start  a  web

@@ -18,7 +18,7 @@ DESCRIPTION
            This form is to view the changes you made relative to the index
            (staging area for the next commit). In other words, the differences
            are what you could tell git to further add to the index but you
-           still haven’t. You can stage these changes by using git-add(1).
+           still haven't. You can stage these changes by using git-add(1).
 
            If exactly two paths are given, and at least one is untracked,
            compare the two files / directories. This behavior can be forced by
@@ -390,7 +390,7 @@ RAW OUTPUT FORMAT
        percentage of similarity between the source and target of the move or
        copy), and are the only ones to be so.
 
-       <sha1> is shown as all 0’s if a file is new on the filesystem and it is
+       <sha1> is shown as all 0's if a file is new on the filesystem and it is
        out of sync with the index.
 
        Example:
@@ -554,7 +554,7 @@ COMBINED DIFF FORMAT
        B), + (plus — missing in A but added to B), or " " (space — unchanged)
        prefix, this format compares two or more files file1, file2,... with
        one file X, and shows how X differs from each of fileN. One column for
-       each of fileN is prepended to the output line to note how X’s line is
+       each of fileN is prepended to the output line to note how X's line is
        different from it.
 
        A - character in the column N means that the line appears in fileN but

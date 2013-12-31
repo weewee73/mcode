@@ -1,4 +1,4 @@
-IOCTL_LIST(2)              Linux Programmer’s Manual             IOCTL_LIST(2)
+IOCTL_LIST(2)              Linux Programmer's Manual             IOCTL_LIST(2)
 
 
 
@@ -574,7 +574,7 @@ RETURN VALUE
        0x00005609   VT_RESIZE        const struct vt_sizes *
        0x0000560A   VT_RESIZEX       const struct vt_consize *
 
-       //  More  arguments.   Some ioctl’s take a pointer to a structure which
+       //  More  arguments.   Some ioctl's take a pointer to a structure which
        contains additional pointers.  These are documented here in  alphabeti-
        cal order.
 
@@ -620,7 +620,7 @@ RETURN VALUE
        buffer for PIO_UNIMAP.
 
        KDADDIO,  KDDELIO,  KDDISABIO, and KDENABIO enable or disable access to
-       I/O ports.  They are essentially alternate interfaces to ’ioperm’.
+       I/O ports.  They are essentially alternate interfaces to 'ioperm'.
 
        KDMAPDISP and KDUNMAPDISP enable or disable memory mappings or I/O port
        access.  They are not implemented in the kernel.

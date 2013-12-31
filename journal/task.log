@@ -1,5 +1,6 @@
 <<Rework>>
 libtool
+win powershell
 complile gcc ld ar make link .....
 <<Just for Fun>>
 <<影响力>>
@@ -12,3 +13,11 @@ complile gcc ld ar make link .....
 <<Advanced Programming in the UNIX Environment>>
 write makefile configure  markdown info tex 
 support ipv6
+gcc
+gdb
+make
+ssh
+smb
+vim
+vim remote edit netrw
+

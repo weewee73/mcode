@@ -156,12 +156,10 @@ set laststatus=2
 " file encode, 文件编码,格式
 "==========================================
 " 设置新文件的编码为 UTF-8
-"set fileencodings=ucs-bom,utf-8,gb2312,big5,latin1
-
 set encoding=utf-8
 " 自动判断编码时，依次尝试以下编码：
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set helplang=cn
+set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
+"set helplang=cn
 "language message zh_CN.UTF-8
 "set langmenu=zh_CN.UTF-8
 "set enc=2byte-gb18030
@@ -189,11 +187,11 @@ set completeopt=longest,menu
 
 "set tw=20
 
-"if has("cscope")
-"    set csprg=/usr/bin/cscope
-"    set csto=0
-"    set cst
-"    set nocsverb
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
 "    " add any database in current directory
 "    if filereadable("cscope.out")
 "        cs add cscope.out
@@ -201,14 +199,16 @@ set completeopt=longest,menu
 "    elseif $CSCOPE_DB != ""
 "        cs add $CSCOPE_DB
 "    endif
-"    set csverb
-"endif
+    set csverb
+endif
 
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 nmap <F3> :cs find e <C-R>=expand("<cword>")<CR><CR>  
 nmap <F4> :cs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <C-n> :cnext<CR>
-nmap <C-p> :cprev<CR>
+nmap <F9> :cnext<CR>
+nmap <F10> :cprev<CR>
+nmap <F5> :tnext<CR>
+nmap <F6> :tprev<CR>
 "nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>  
 "nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
 "nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  

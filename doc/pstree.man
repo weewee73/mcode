@@ -21,7 +21,7 @@ DESCRIPTION
 	   init-+-getty
 		|-getty
 		|-getty
-		‘-getty
+		'-getty
 
        becomes
 
@@ -53,7 +53,7 @@ OPTIONS
        -G     Use VT100 line drawing characters.
 
        -h     Highlight the current process and its ancestors. This is a no-op
-	      if the terminal doesn’t support highlighting or if  neither  the
+	      if the terminal doesn't support highlighting or if  neither  the
 	      current  process	nor  any  of  its ancestors are in the subtree
 	      being shown.
 
@@ -77,7 +77,7 @@ OPTIONS
 
        -U     Use UTF-8 (Unicode) line drawing characters. Under Linux	1.1-54
 	      and  above,  UTF-8  mode	is entered on the console with echo -e
-	      ’\033%8’ and left with echo -e ’\033%@’
+	      '\033%8' and left with echo -e '\033%@'
 
        -V     Display version information.
 

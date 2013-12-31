@@ -1,4 +1,4 @@
-TIMERADD(3)		   Linux Programmer’s Manual		   TIMERADD(3)
+TIMERADD(3)		   Linux Programmer's Manual		   TIMERADD(3)
 
 
 

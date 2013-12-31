@@ -1,0 +1,59 @@
+ICONV(1)                                                              ICONV(1)
+
+
+
+NAME
+       iconv - Convert encoding of given files from one encoding to another
+
+SYNOPSIS
+       iconv -f encoding -t encoding inputfile
+
+DESCRIPTION
+       The iconv program converts the encoding of characters in inputfile from
+       one coded character set to another. The result is written to standard
+       output unless otherwise specified by the --output option.
+
+       --from-code, -f encoding
+
+       Convert characters from encoding
+
+       --to-code, -t encoding
+
+       Convert characters to encoding
+
+       --list
+
+       List known coded character sets
+
+       --output, -o file
+
+       Specify output file (instead of stdout)
+
+       --verbose
+
+       Print progress information.
+
+EXAMPLES
+       Following examples convert from code set ISO88592 "input.txt" to UTF8
+       code set or ASCII and stores the result as "output.txt".
+
+       iconv -f ISO88592 -t UTF8 < input.txt > output.txt
+
+       iconv -f ISO88592 -t ASCII//TRANSLIT < input.txt > output.txt
+
+
+AUTHOR
+       iconv is written by Ulrich Drepper as part of the GNU C Library.
+
+       This man page is written by Joel Klecker <espy@debian.org>, for the
+       Debian GNU/Linux system.
+
+
+
+
+
+
+
+
+
+3rd Berkeley Distribution         March 2001                          ICONV(1)

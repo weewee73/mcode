@@ -1,4 +1,4 @@
-PS(1)			      Linux User’s Manual			 PS(1)
+PS(1)			      Linux User's Manual			 PS(1)
 
 
 
@@ -559,7 +559,7 @@ NOTES
        and it does not conform to the standards that ps otherwise conforms to.
        CPU usage is unlikely to add up to exactly 100%.
 
-       The SIZE and RSS fields don’t count some parts of a process including
+       The SIZE and RSS fields don't count some parts of a process including
        the page tables, kernel stack, struct thread_info, and struct
        task_struct. This is usually at least 20 KiB of memory that is always
        resident. SIZE is the virtual size of the process (code+data+stack).
@@ -575,7 +575,7 @@ NOTES
 PROCESS FLAGS
        The sum of these values is displayed in the "F" column, which is
        provided by the flags output specifier.
-       1    forked but didn’t exec
+       1    forked but didn't exec
        4    used super-user privileges
 
 
@@ -606,7 +606,7 @@ PROCESS STATE CODES
 
 OBSOLETE SORT KEYS
        These keys are used by the BSD O option (when it is used for sorting).
-       The GNU --sort option doesn’t use these keys, but the specifiers
+       The GNU --sort option doesn't use these keys, but the specifiers
        described below in the STANDARD FORMAT SPECIFIERS section. Note that
        the values used in sorting are the internal values ps uses and not the
        "cooked" values used in some of the output format fields (e.g. sorting
@@ -688,14 +688,12 @@ STANDARD FORMAT SPECIFIERS
 CODE	   HEADER   DESCRIPTION
 
 %cpu	   %CPU	    cpu utilization of the process in "##.#" format.
-		    Currently, it is the CPU time used divided by the time the
-		    process has been running (cputime/realtime ratio),
-		    expressed as a percentage. It will not add up to 100%
-		    unless you are lucky. (alias pcpu).
+		    Currently, it is the CPU time used divided by the time the process has been running (cputime/realtime ratio),
+		    expressed as a percentage. 
+            It will not add up to 100% unless you are lucky. (alias pcpu).
 
-%mem	   %MEM	    ratio of the process’s resident set size  to the physical
-		    memory on the machine, expressed as a percentage.
-		    (alias pmem).
+%mem	   %MEM	    ratio of the process's resident set size to the physical memory on the machine, 
+            expressed as a percentage.  (alias pmem).
 
 args	   COMMAND  command with all its arguments as a string. Modifications
 		    to the arguments may be shown. The output in this column
@@ -747,7 +745,7 @@ cgroup	   CGROUP   display control groups to which the process belonges.
 
 
 class	   CLS	    scheduling class of the process. (alias policy, cls).
-		    Field’s possible values are:
+		    Field's possible values are:
 		    -	not reported
 		    TS	SCHED_OTHER
 		    FF	SCHED_FIFO
@@ -758,7 +756,7 @@ class	   CLS	    scheduling class of the process. (alias policy, cls).
 		    ?	unknown value
 
 cls	   CLS	    scheduling class of the process. (alias policy, class).
-		    Field’s possible values are:
+		    Field's possible values are:
 		    -	not reported
 		    TS	SCHED_OTHER
 		    FF	SCHED_FIFO
@@ -829,7 +827,7 @@ flag	   F	    see f. (alias f, flags).
 
 flags	   F	    see f. (alias f, flag).
 
-fname	   COMMAND  first 8 bytes of the base name of the process’s executable
+fname	   COMMAND  first 8 bytes of the base name of the process's executable
 		    file. The output in this column may contain spaces.
 
 fuid	   FUID	    filesystem access user ID. (alias fsuid).
@@ -866,7 +864,7 @@ nlwp	   NLWP	    number of lwps (threads) in the process. (alias thcount).
 
 nwchan	   WCHAN    address of the kernel function where the process is
 		    sleeping (use wchan if you want the kernel function name).
-		    Running tasks will display a dash (’-’) in this column.
+		    Running tasks will display a dash ('-') in this column.
 
 pcpu	   %CPU	    see %cpu. (alias %cpu).
 
@@ -1083,13 +1081,13 @@ ENVIRONMENT VARIABLES
 	  Default namelist (System.map) location.
 
        POSIXLY_CORRECT
-	  Don’t find excuses to ignore bad "features".
+	  Don't find excuses to ignore bad "features".
 
        POSIX2
 	  When set to "on", acts as POSIXLY_CORRECT.
 
        UNIX95
-	  Don’t find excuses to ignore bad "features".
+	  Don't find excuses to ignore bad "features".
 
        _XPG
 	  Cancel CMD_ENV=irix non-standard behavior.

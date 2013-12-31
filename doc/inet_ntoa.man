@@ -1,4 +1,4 @@
-INET(3)                    Linux Programmer’s Manual                   INET(3)
+INET(3)                    Linux Programmer's Manual                   INET(3)
 
 
 

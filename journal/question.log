@@ -1,4 +1,6 @@
 vim buffers
 vim auto line feed 自动换行
+chinese encode
 mark vim 'The current file does not appear to be a Vimball'?
 how to not print the specified column use awk?
+ls $HOME long time and ps show '+D' why?

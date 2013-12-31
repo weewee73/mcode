@@ -1,4 +1,4 @@
-ASCII(7)                   Linux Programmer’s Manual                  ASCII(7)
+ASCII(7)                   Linux Programmer's Manual                  ASCII(7)
 
 
 

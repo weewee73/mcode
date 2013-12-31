@@ -198,7 +198,7 @@ POLL INTERVAL CONTROL
        daemon restarts.
 
 
-THE HUFF-N’-PUFF FILTER
+THE HUFF-N'-PUFF FILTER
        In scenarios where a considerable amount of data are to	be  downloaded
        or uploaded over telephone modems, timekeeping quality can be seriously
        degraded. This occurs because the differential delays on the two direc-
@@ -206,7 +206,7 @@ THE HUFF-N’-PUFF FILTER
        time errors are so large as to exceed the step  threshold  and  a  step
        correction can occur during and after the data transfer is in progress.
 
-       The huff-n’-puff filter is designed to correct the apparent time offset
+       The huff-n'-puff filter is designed to correct the apparent time offset
        in  these  cases. It depends on knowledge of the propagation delay when
        no other traffic is present. In common  scenarios  this	occurs	during
        other  than  work  hours.  The  filter  maintains a shift register that
@@ -306,7 +306,7 @@ COMMAND LINE OPTIONS
 
        -m      Lock memory.
 
-       -n      Don’t fork.
+       -n      Don't fork.
 
        -N      To  the	extent permitted by the operating system, run the ntpd
 	       at the highest priority.

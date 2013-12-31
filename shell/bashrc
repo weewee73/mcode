@@ -5,7 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export LANG=zh_CN.UTF-8
+#export LANG=zh_CN.UTF-8
+export LANG="en_US.UTF-8"
+export LC_CTYPE="zh_CN.UTF-8"
 # User specific aliases and functions
 alias vi='vim'
 alias grep='grep --color=auto'
@@ -15,6 +17,8 @@ alias mshell='vim + ~/github/mcode/journal/shell.log'
 alias ashell='echo >>$HOME/github/mcode/journal/shell.log'
 alias mquestion='vim -c start ~/github/mcode/journal/question.log'
 alias man='$HOME/github/mcode/shell/mman.sh'
+
+alias remote='ssh scooper'
 
 mcode="$HOME/github/mcode"
 source ${mcode}/shell/git-completion.bash

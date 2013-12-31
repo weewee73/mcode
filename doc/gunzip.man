@@ -59,7 +59,7 @@ DESCRIPTION
        does not include a CRC but also allows some consistency checks.
 
        Files created by zip can be uncompressed by gzip only if	 they  have  a
-       single  member  compressed with the ’deflation’ method. This feature is
+       single  member  compressed with the 'deflation' method. This feature is
        only intended to help conversion of tar.zip files to the tar.gz format.
        To  extract  a zip file with a single member, use a command like gunzip
        <foo.zip or gunzip -S .zip foo.zip.  To extract zip files with  several
@@ -342,7 +342,7 @@ BUGS
        The  gzip  format  represents the input size modulo 2^32, so the --list
        option reports incorrect uncompressed sizes and compression ratios  for
        uncompressed  files  4 GB and larger.  To work around this problem, you
-       can use the following command to discover a large  uncompressed	file’s
+       can use the following command to discover a large  uncompressed	file's
        true size:
 
 	     zcat file.gz | wc -c

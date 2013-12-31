@@ -1,4 +1,4 @@
-STRTOUL(3)		   Linux Programmer’s Manual		    STRTOUL(3)
+STRTOUL(3)		   Linux Programmer's Manual		    STRTOUL(3)
 
 
 

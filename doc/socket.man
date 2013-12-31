@@ -1,4 +1,4 @@
-SOCKET(2)                  Linux Programmer’s Manual                 SOCKET(2)
+SOCKET(2)                  Linux Programmer's Manual                 SOCKET(2)
 
 
 
@@ -189,10 +189,10 @@ SEE ALSO
        toent(3), ip(7), socket(7), tcp(7), udp(7), unix(7)
 
        “An  Introductory  4.3BSD  Interprocess  Communication   Tutorial”   is
-       reprinted in UNIX Programmer’s Supplementary Documents Volume 1.
+       reprinted in UNIX Programmer's Supplementary Documents Volume 1.
 
        “BSD Interprocess Communication Tutorial” is reprinted in UNIX Program-
-       mer’s Supplementary Documents Volume 1.
+       mer's Supplementary Documents Volume 1.
 
 COLOPHON
        This page is part of release 3.22 of the Linux  man-pages  project.   A

@@ -1,4 +1,4 @@
-GETTIMEOFDAY(2)		   Linux Programmer’s Manual	       GETTIMEOFDAY(2)
+GETTIMEOFDAY(2)		   Linux Programmer's Manual	       GETTIMEOFDAY(2)
 
 
 

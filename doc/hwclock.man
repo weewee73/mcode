@@ -37,10 +37,10 @@ FUNCTIONS
        -s, --hctosys
 	      Set the System Time from the Hardware Clock.
 
-	      Also set the kernel’s timezone value to the  local  timezone  as
+	      Also set the kernel's timezone value to the  local  timezone  as
 	      indicated by the TZ environment variable and/or /usr/share/zone-
 	      info, as tzset(3) would interpret them.  The obsolete tz_dsttime
-	      field  of	 the  kernel’s timezone value is set to DST_NONE. (For
+	      field  of	 the  kernel's timezone value is set to DST_NONE. (For
 	      details on what this field used to mean, see settimeofday(2).)
 
 	      This is a good option to	use  in	 one  of  the  system  startup
@@ -50,7 +50,7 @@ FUNCTIONS
 	      Set the Hardware Clock to the current System Time.
 
        --systz
-	      Set the kernel’s timezone and reset the System Time based on the
+	      Set the kernel's timezone and reset the System Time based on the
 	      current timezone.
 
 	      The system time is only reset on the first call after boot.
@@ -58,7 +58,7 @@ FUNCTIONS
 	      The local timezone is taken to be what is indicated  by  the  TZ
 	      environment  variable  and/or  /usr/share/zoneinfo,  as tzset(3)
 	      would interpret them.  The obsolete tz_dsttime field of the ker-
-	      nel’s  timezone  value  is set to DST_NONE. (For details on what
+	      nel's  timezone  value  is set to DST_NONE. (For details on what
 	      this field used to mean, see settimeofday(2).)
 
 	      This is an alternate option to --hctosys that does not read  the
@@ -73,18 +73,18 @@ FUNCTIONS
 	      See discussion below.
 
        --getepoch
-	      Print the kernel’s Hardware Clock epoch value to	standard  out-
+	      Print the kernel's Hardware Clock epoch value to	standard  out-
 	      put.   This  is the number of years into AD to which a zero year
 	      value in the Hardware Clock refers.  For	example,  if  you  are
 	      using  the  convention  that  the	 year counter in your Hardware
 	      Clock contains the number of full years  since  1952,  then  the
-	      kernel’s Hardware Counter epoch value must be 1952.
+	      kernel's Hardware Counter epoch value must be 1952.
 
 	      This  epoch  value  is  used  whenever hwclock reads or sets the
 	      Hardware Clock.
 
        --setepoch
-	      Set the kernel’s Hardware Clock epoch value to the value	speci-
+	      Set the kernel's Hardware Clock epoch value to the value	speci-
 	      fied  by	the  --epoch  option.	See  the --getepoch option for
 	      details.
 
@@ -105,9 +105,9 @@ FUNCTIONS
 
        --epoch=year
 	      Specifies the year  which	 is  the  beginning  of	 the  Hardware
-	      Clock’s epoch.  I.e. the number of years into AD to which a zero
-	      value in the Hardware Clock’s year counter refers.  It  is  used
-	      together	with the --setepoch option to set the kernel’s idea of
+	      Clock's epoch.  I.e. the number of years into AD to which a zero
+	      value in the Hardware Clock's year counter refers.  It  is  used
+	      together	with the --setepoch option to set the kernel's idea of
 	      the epoch of the Hardware Clock, or  otherwise  to  specify  the
 	      epoch for use with direct ISA access.
 
@@ -126,7 +126,7 @@ OPTIONS
 	      Indicates that the Hardware Clock is kept in Coordinated Univer-
 	      sal Time or local time, respectively.  It is your choice whether
 	      to  keep	your  clock  in	 UTC or local time, but nothing in the
-	      clock tells which you’ve chosen.	So this option is how you give
+	      clock tells which you've chosen.	So this option is how you give
 	      that information to hwclock.
 
 	      If  you  specify	the  wrong  one	 of  these options (or specify
@@ -137,7 +137,7 @@ OPTIONS
 	      whichever was specified the last time hwclock was	 used  to  set
 	      the  clock  (i.e.	 hwclock  was successfully run with the --set,
 	      --systohc, or --adjust options),	as  recorded  in  the  adjtime
-	      file.   If  the adjtime file doesn’t exist, the default is local
+	      file.   If  the adjtime file doesn't exist, the default is local
 	      time.
 
 
@@ -159,7 +159,7 @@ OPTIONS
        --directisa
 	      is  meaningful  only on an ISA machine or an Alpha (which imple-
 	      ments enough of ISA to be, roughly speaking, an ISA machine  for
-	      hwclock’s	 purposes).   For  other  machines,  it has no effect.
+	      hwclock's	 purposes).   For  other  machines,  it has no effect.
 	      This option tells hwclock to use explicit	 I/O  instructions  to
 	      access  the  Hardware  Clock.  Without this option, hwclock will
 	      try to use the /dev/rtc device (which it assumes to be driven by
@@ -181,7 +181,7 @@ OPTIONS
 
 	      To compensate for this (without  your  getting  a	 BIOS  update,
 	      which  would  definitely be preferable), always use --badyear if
-	      you have one of these machines.  When hwclock knows it’s working
+	      you have one of these machines.  When hwclock knows it's working
 	      with  a  brain-damaged  clock,  it  ignores the year part of the
 	      Hardware Clock value and instead tries to guess the  year	 based
 	      on  the  last  calibrated	 date in the adjtime file, by assuming
@@ -213,13 +213,13 @@ OPTIONS
 
        --funky-toy
 	      These  two  options specify what kind of Alpha machine you have.
-	      They are invalid if you don’t have  an  Alpha  and  are  usually
+	      They are invalid if you don't have  an  Alpha  and  are  usually
 	      unnecessary  if you do, because hwclock should be able to deter-
-	      mine by itself what it’s running on,  at	least  when  /proc  is
+	      mine by itself what it's running on,  at	least  when  /proc  is
 	      mounted.	 (If  you  find	 you need one of these options to make
 	      hwclock work, contact the maintainer to see if the  program  can
 	      be  improved  to	detect	your  system  automatically. Output of
-	      ‘hwclock --debug’ and ‘cat /proc/cpuinfo’ may be of interest.)
+	      'hwclock --debug' and 'cat /proc/cpuinfo' may be of interest.)
 
 	      --jensen means you are running on a Jensen model.
 
@@ -273,7 +273,7 @@ Clocks in a Linux System
        of seconds since 1969).	The System Time is not an integer, though.  It
        has virtually infinite precision.
 
-       The  System  Time is the time that matters.  The Hardware Clock’s basic
+       The  System  Time is the time that matters.  The Hardware Clock's basic
        purpose in a Linux system is to keep time when Linux  is	 not  running.
        You initialize the System Time to the time from the Hardware Clock when
        Linux starts up, and then never use the	Hardware  Clock	 again.	  Note
@@ -289,7 +289,7 @@ Clocks in a Linux System
        while the system runs.
 
        A Linux kernel maintains a concept of a local timezone for the  system.
-       But  don’t  be  misled  -- almost nobody cares what timezone the kernel
+       But  don't  be  misled  -- almost nobody cares what timezone the kernel
        thinks it is in.	 Instead, programs that care about the timezone	 (per-
        haps  because  they want to display a local time for you) almost always
        use a more traditional method of determining the timezone: They use the
@@ -317,7 +317,7 @@ How hwclock Accesses the Hardware Clock
        The most normal way is to do I/O to the device special  file  /dev/rtc,
        which is presumed to be driven by the rtc device driver.	 However, this
        method is not always available.	For one thing, the  rtc	 driver	 is  a
-       relatively  recent  addition  to	 Linux.	  Older systems don’t have it.
+       relatively  recent  addition  to	 Linux.	  Older systems don't have it.
        Also, though there are versions of the rtc  driver  that	 work  on  DEC
        Alphas,	there  appear  to  be plenty of Alphas on which the rtc driver
        does not work (a common symptom is hwclock hanging).  Moreover,	recent
@@ -339,7 +339,7 @@ How hwclock Accesses the Hardware Clock
        This is a really poor method of accessing the clock, for all  the  rea-
        sons  that  user space programs are generally not supposed to do direct
        I/O and disable interrupts.  Hwclock provides it because it is the only
-       method  available on ISA and Alpha systems which don’t have working rtc
+       method  available on ISA and Alpha systems which don't have working rtc
        device drivers available.
 
 
@@ -347,8 +347,8 @@ How hwclock Accesses the Hardware Clock
        via the device special file /dev/tty1.
 
        hwclock	tries  to  use	/dev/rtc.  If it is compiled for a kernel that
-       doesn’t have that function or it is unable to  open  /dev/rtc  (or  the
-       alternative  special  file  you’ve defined on the command line) hwclock
+       doesn't have that function or it is unable to  open  /dev/rtc  (or  the
+       alternative  special  file  you've defined on the command line) hwclock
        will fall back to another method, if available.	On  an	ISA  or	 Alpha
        machine,	 you  can  force hwclock to use the direct manipulation of the
        CMOS registers without even trying /dev/rtc by specifying the  --direc-
@@ -359,7 +359,7 @@ How hwclock Accesses the Hardware Clock
 The Adjust Function
        The  Hardware Clock is usually not very accurate.  However, much of its
        inaccuracy is completely predictable -  it  gains  or  loses  the  same
-       amount  of time every day.  This is called systematic drift.  hwclock’s
+       amount  of time every day.  This is called systematic drift.  hwclock's
        "adjust" function lets you make systematic corrections to  correct  the
        systematic drift.
 
@@ -433,7 +433,7 @@ Automatic Hardware Clock Synchronization By the Kernel
        tem  Time synchronized either to a time server somewhere on the network
        or to a radio clock hooked up to your system.  See RFC 1305).
 
-       This mode (we’ll call it "11 minute mode") is off until something turns
+       This mode (we'll call it "11 minute mode") is off until something turns
        it  on.	 The  ntp daemon xntpd is one thing that turns it on.  You can
        turn it off by running anything, including hwclock --hctosys, that sets
        the System Time the old fashioned way.
@@ -442,8 +442,8 @@ Automatic Hardware Clock Synchronization By the Kernel
        the value of "status".  If the "64" bit of this	number	(expressed  in
        binary) equal to 0, 11 minute mode is on.  Otherwise, it is off.
 
-       If  your system runs with 11 minute mode on, don’t use hwclock --adjust
-       or hwclock --hctosys.  You’ll just make a mess.	It  is	acceptable  to
+       If  your system runs with 11 minute mode on, don't use hwclock --adjust
+       or hwclock --hctosys.  You'll just make a mess.	It  is	acceptable  to
        use a hwclock --hctosys at startup time to get a reasonable System Time
        until your system is able to set the  System  Time  from	 the  external
        source and start 11 minute mode.
@@ -453,8 +453,8 @@ Automatic Hardware Clock Synchronization By the Kernel
 ISA Hardware Clock Century value
        There  is  some sort of standard that defines CMOS memory Byte 50 on an
        ISA machine as an indicator of what century it is.   hwclock  does  not
-       use  or set that byte because there are some machines that don’t define
-       the byte that way, and it really	 isn’t	necessary  anyway,  since  the
+       use  or set that byte because there are some machines that don't define
+       the byte that way, and it really	 isn't	necessary  anyway,  since  the
        year-of-century does a good job of implying which century it is.
 
        If  you	have  a	 bona  fide  use  for a CMOS century byte, contact the

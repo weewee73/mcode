@@ -63,6 +63,8 @@ date  +"%F %T %z (%a, %e %b %G)"
 
 
 iconv -f GB18030 -t utf-8 xxx >yyy
+iconv -f utf8 -t big5 vi.big5.utf8 | iconv -f big5 -t gb2312 | iconv -f gb2312 -t utf8 -o vi.big_utf8.gb_utf8
+big5<->gb2312
 
 sed -e ‘s/^M/\n/g’ myfile.txt
 注意：这里的“^M”要使用“CTRL-V CTRL-M”生成，而不是直接键入“^M”
@@ -739,7 +741,7 @@ C$((RANDOM%2+1))
 
 echo $((RANDOM%2+1))
 echo $[RANDOM%X+1]
-Random Number Between 1 And X 
+Random Number Between 1 And X, RANDOM 0~32767
 
 Generate a random 8 character password containing a-z, A-Z and 0-9: 
 egrep -ioam1 '[a-z0-9]{8}' /dev/urandom
@@ -900,4 +902,17 @@ Use tee + process substitution to split STDOUT to multiple commands
 Using process substitution, 
     we can 'trick' tee into sending a command's STDOUT to an arbitrary number of commands. 
 The last command (command4) in this example will get its input from the pipe.
+
+hexdump -C -n 10 xxx.txt
+cut -b 4- xxx.txt
+lsof -i tcp:22
+ps aux --sort -rss
+ps aux --sort -pcpu
+ssh-keygen -t rsa -C "your_email@example.com"
+
+
+man xxxx | col -bx | sed "s/\xe2\x80\x98/'/g" | sed "s/\xe2\x80\x99/'/g" >xxxx.man
+
+awk '{ $5=""; print }' file
+cut -f5 --complement
 

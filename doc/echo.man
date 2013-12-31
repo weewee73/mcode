@@ -50,7 +50,7 @@ DESCRIPTION
        \xHH   byte with hexadecimal value HH (1 to 2 digits)
 
        NOTE: your shell may have its own version of echo, which usually super-
-       sedes the version described here.  Please refer to your  shell’s  docu-
+       sedes the version described here.  Please refer to your  shell's  docu-
        mentation for details about the options it supports.
 
 AUTHOR

@@ -236,9 +236,10 @@ SHELL GRAMMAR
               sion is non-zero, the return status is 0; otherwise the return status is 1.  This is exactly equivalent to let "expression".
 
        [[ expression ]]
-              Return  a status of 0 or 1 depending on the evaluation of the conditional expression expression.  Expressions are composed of
-              the primaries described below under CONDITIONAL EXPRESSIONS.  Word splitting and pathname expansion are not performed on  the
-              words  between  the [[ and ]]; tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution,
+              Return  a status of 0 or 1 depending on the evaluation of the conditional expression expression.  
+              Expressions are composed of the primaries described below under CONDITIONAL EXPRESSIONS.  
+              Word splitting and pathname expansion are not performed on  the words  between  the [[ and ]]; 
+              tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution,
               process substitution, and quote removal are performed.  Conditional operators such as -f must be unquoted to be recognized as
               primaries.
 
@@ -422,8 +423,9 @@ PARAMETERS
        cial  Parameters.  A variable is a parameter denoted by a name.  A variable has a value and zero or more attributes.  Attributes are
        assigned using the declare builtin command (see declare below in SHELL BUILTIN COMMANDS).
 
-       A parameter is set if it has been assigned a value.  The null string is a valid value.  Once a variable is set, it may be unset only
-       by using the unset builtin command (see SHELL BUILTIN COMMANDS below).
+       A parameter is set if it has been assigned a value.  
+       The null string is a valid value.  
+       Once a variable is set, it may be unset only by using the unset builtin command (see SHELL BUILTIN COMMANDS below).
 
        A variable may be assigned to by a statement of the form
 
@@ -2799,8 +2801,8 @@ SHELL BUILTIN COMMANDS
               -f     Use function names only.
               -i     The variable is treated as an integer; arithmetic evaluation (see ARITHMETIC EVALUATION above) is performed  when  the
                      variable is assigned a value.
-              -l     When  the  variable  is  assigned  a  value,  all  upper-case  characters are converted to lower-case.  The upper-case
-                     attribute is disabled.
+              -l     When  the  variable  is  assigned  a  value,  all  upper-case  characters are converted to lower-case. 
+                     The upper-case attribute is disabled.
               -r     Make names readonly.  These names cannot then be assigned values by subsequent assignment statements or unset.
               -t     Give each name the trace attribute.  Traced functions inherit the DEBUG and RETURN traps from the calling shell.   The
                      trace attribute has no special meaning for variables.
@@ -2894,12 +2896,19 @@ SHELL BUILTIN COMMANDS
 
        export [-fn] [name[=word]] ...
        export -p
-              The supplied names are marked for automatic export to the environment of subsequently executed commands.  If the -f option is
-              given, the names refer to functions.  If no names are given, or if the -p option is supplied, a list of all  names  that  are
-              exported  in  this  shell  is printed.  The -n option causes the export property to be removed from each name.  If a variable
-              name is followed by =word, the value of the variable is set to word.  export returns an exit status of 0  unless  an  invalid
-              option is encountered, one of the names is not a valid shell variable name, or -f is supplied with a name that is not a func‐
-              tion.
+              The supplied names are marked for automatic export to the environment of subsequently executed commands.  
+
+              If the -f option is given, the names refer to functions.  
+
+              If no names are given, or if the -p option is supplied, a list of all  names  that  are exported  in  this  shell  is printed.  
+
+              The -n option causes the export property to be removed from each name.  
+
+              If a variable name is followed by =word, the value of the variable is set to word.  
+
+              export returns an exit status of 0  unless  an  invalid option is encountered, 
+                one of the names is not a valid shell variable name, 
+                or -f is supplied with a name that is not a function.
 
        fc [-e ename] [-lnr] [first] [last]
        fc -s [pat=rep] [cmd]
@@ -3042,8 +3051,8 @@ SHELL BUILTIN COMMANDS
               returns true if at least one signal was successfully sent, or false if an error occurs or an invalid option is encountered.
 
        let arg [arg ...]
-              Each arg is an arithmetic expression to be evaluated (see ARITHMETIC EVALUATION above).  If the last arg evaluates to 0,  let
-              returns 1; 0 is returned otherwise.
+              Each arg is an arithmetic expression to be evaluated (see ARITHMETIC EVALUATION above).  
+              If the last arg evaluates to 0,  let returns 1; 0 is returned otherwise.
 
        local [option] [name[=value] ...]
               For each argument, a local variable named name is created, and assigned value.  The option can be any of the options accepted
@@ -3090,13 +3099,15 @@ SHELL BUILTIN COMMANDS
               change fails.
 
        printf [-v var] format [arguments]
-              Write  the formatted arguments to the standard output under the control of the format.  The -v option causes the output to be
-              assigned to the variable var rather than being printed to the standard output.
+              Write  the formatted arguments to the standard output under the control of the format.  
+              The -v option causes the output to be assigned to the variable var rather than being printed to the standard output.
 
-              The format is a character string which contains three types of objects: plain characters, which are simply copied to standard
-              output, character escape sequences, which are converted and copied to the standard output, and format specifications, each of
-              which causes printing of the next successive argument.  In addition to the standard printf(1) format  specifications,  printf
-              interprets the following extensions:
+              The format is a character string which contains three types of objects: 
+                plain characters, which are simply copied to standard output, 
+                character escape sequences, which are converted and copied to the standard output, 
+                and format specifications, each of which causes printing of the next successive argument.  
+              
+              In addition to the standard printf(1) format  specifications,  printf interprets the following extensions:
               %b     causes  printf  to  expand backslash escape sequences in the corresponding argument (except that \c terminates output,
                      backslashes in \', \", and \? are not removed, and octal escapes beginning with \0 may contain up to four digits).
               %q     causes printf to output the corresponding argument in a format that can be reused as shell input.
@@ -3196,7 +3207,9 @@ SHELL BUILTIN COMMANDS
        set [--abefhkmnptuvxBCEHPT] [-o option-name] [arg ...]
        set [+abefhkmnptuvxBCEHPT] [+o option-name] [arg ...]
               Without options, the name and value of each shell variable are displayed in a format that can be reused as input for  setting
-              or  resetting  the  currently-set  variables.   Read-only variables cannot be reset.  In posix mode, only shell variables are
+              or  resetting  the  currently-set  variables.   
+              Read-only variables cannot be reset.
+              In posix mode, only shell variables are
               listed.  The output is sorted according to the current  locale.   When  options  are  specified,  they  set  or  unset  shell
               attributes.   Any  arguments  remaining  after  option processing are treated as values for the positional parameters and are
               assigned, in order, to $1, $2, ...  $n.  Options, if specified, have the following meanings:
@@ -3583,11 +3596,14 @@ SHELL BUILTIN COMMANDS
               is true unless a supplied name is not a defined alias.
 
        unset [-fv] [name ...]
-              For  each  name,  remove the corresponding variable or function.  If no options are supplied, or the -v option is given, each
-              name refers to a shell variable.  Read-only variables may not be unset.  If -f is specified, each  name  refers  to  a  shell
-              function,  and the function definition is removed.  Each unset variable or function is removed from the environment passed to
-              subsequent commands.  If any of COMP_WORDBREAKS, RANDOM, SECONDS, LINENO, HISTCMD, FUNCNAME, GROUPS, or DIRSTACK  are  unset,
-              they lose their special properties, even if they are subsequently reset.  The exit status is true unless a name is readonly.
+              For  each  name,  remove the corresponding variable or function.  
+              If no options are supplied, or the -v option is given, each name refers to a shell variable.  
+              Read-only variables may not be unset.  
+              If -f is specified, each  name  refers  to  a  shell function,  and the function definition is removed.  
+              Each unset variable or function is removed from the environment passed to subsequent commands.  
+              If any of COMP_WORDBREAKS, RANDOM, SECONDS, LINENO, HISTCMD, FUNCNAME, GROUPS, or DIRSTACK  are  unset,
+                they lose their special properties, even if they are subsequently reset.  
+              The exit status is true unless a name is readonly.
 
        wait [n ...]
               Wait  for  each specified process and return its termination status.  Each n may be a process ID or a job specification; if a

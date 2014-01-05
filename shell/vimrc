@@ -187,11 +187,11 @@ set completeopt=longest,menu
 
 "set tw=20
 
-if has("cscope")
-    set csprg=/usr/bin/cscope
-    set csto=0
+"if has("cscope")
+"    set csprg=/usr/bin/cscope
+"    set csto=0
     set cst
-    set nocsverb
+"    set nocsverb
 "    " add any database in current directory
 "    if filereadable("cscope.out")
 "        cs add cscope.out
@@ -199,8 +199,8 @@ if has("cscope")
 "    elseif $CSCOPE_DB != ""
 "        cs add $CSCOPE_DB
 "    endif
-    set csverb
-endif
+"    set csverb
+"endif
 
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 nmap <F3> :cs find e <C-R>=expand("<cword>")<CR><CR>  

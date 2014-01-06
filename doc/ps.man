@@ -444,11 +444,10 @@ OUTPUT MODIFIERS
 		       entirely, respectively.
 
 
-       k spec	       specify sorting order. Sorting syntax is
-		       [+|-]key[,[+|-]key[,...]] Choose a multi-letter key
-		       from the STANDARD FORMAT SPECIFIERS section. The "+" is
-		       optional since default direction is increasing
-		       numerical or lexicographic order. Identical to --sort.
+       k spec     specify sorting order. 
+               Sorting syntax is [+|-]key[,[+|-]key[,...]] Choose a multi-letter key from the STANDARD FORMAT SPECIFIERS section. 
+               The "+" is optional since default direction is increasing numerical or lexicographic order.
+               Identical to --sort.
 		       Examples:
 		       ps jaxkuid,-ppid,+pid
 		       ps axk comm o comm,args
@@ -506,12 +505,12 @@ OUTPUT MODIFIERS
        --rows n	       set screen height
 
 
-       --sort spec     specify sorting order. Sorting syntax is
-		       [+|-]key[,[+|-]key[,...]] Choose a multi-letter key
-		       from the STANDARD FORMAT SPECIFIERS section. The "+" is
-		       optional since default direction is increasing
-		       numerical or lexicographic order. Identical to k. For
-		       example: ps jax --sort=uid,-ppid,+pid
+       --sort spec     specify sorting order. 
+               Sorting syntax is [+|-]key[,[+|-]key[,...]] Choose a multi-letter key from the STANDARD FORMAT SPECIFIERS section. 
+               The "+" is optional since default direction is increasing numerical or lexicographic order. 
+               Identical to k.
+               For example:
+                ps jax --sort=uid,-ppid,+pid
 
 
        --width n       set screen width
@@ -717,18 +716,17 @@ blocked	   BLOCKED  mask of the blocked signals, see signal(7). According to
 		    hexadecimal format is displayed.
 		    (alias sig_block, sigmask).
 
-bsdstart   START    time the command started. If the process was started less
-		    than 24 hours ago, the output format is " HH:MM", else it
-		    is "mmm dd" (where mmm is the three letters of the month).
+bsdstart   START    time the command started. 
+            If the process was started less than 24 hours ago, the output format is " HH:MM", 
+            else it is "mmm dd" (where mmm is the three letters of the month).
 		    See also lstart, start, start_time, and stime.
 
 bsdtime	   TIME	    accumulated cpu time, user + system. The display format is
 		    usually "MMM:SS", but can be shifted to the right if the
 		    process used more than 999 minutes of cpu time.
 
-c	   C	    processor utilization. Currently, this is the integer
-		    value of the percent usage over the lifetime of the
-		    process. (see %cpu).
+c	   C	processor utilization. 
+            Currently, this is the integer value of the percent usage over the lifetime of the process. (see %cpu).
 
 caught	   CAUGHT   mask of the caught signals, see signal(7). According to
 		    the width of the field, a 32 or 64 bits mask in
@@ -736,13 +734,6 @@ caught	   CAUGHT   mask of the caught signals, see signal(7). According to
 		    (alias sig_catch, sigcatch).
 
 cgroup	   CGROUP   display control groups to which the process belonges.
-
-
-
-
-
-
-
 
 class	   CLS	    scheduling class of the process. (alias policy, cls).
 		    Field's possible values are:
@@ -801,8 +792,7 @@ eip	   EIP	    instruction pointer.
 
 esp	   ESP	    stack pointer.
 
-etime	   ELAPSED  elapsed time since the process was started, in the
-		    form [[dd-]hh:]mm:ss.
+etime	   ELAPSED  elapsed time since the process was started, in the form [[dd-]hh:]mm:ss.
 
 euid	   EUID	    effective user ID. (alias uid).
 
@@ -849,8 +839,7 @@ label	   LABEL    security label, most commonly used for SE Linux context
 		    data. This is for the Mandatory Access Control ("MAC")
 		    found on high-security systems.
 
-lstart	   STARTED  time the command started. See also bsdstart, start,
-		    start_time, and stime.
+lstart	   STARTED  time the command started. See also bsdstart, start, start_time, and stime.
 
 lwp	   LWP	    lwp (light weight process, or thread) ID of the lwp being
 		    reported. (alias spid, tid).
@@ -974,11 +963,11 @@ start	   STARTED  time the command started. If the process was started less
 		    it is "  mmm dd" (where mmm is a three-letter month name).
 		    See also lstart, bsdstart, start_time, and stime.
 
-start_time START    starting time or date of the process. Only the year will
-		    be displayed if the process was not started the same year
-		    ps was invoked, or "mmmdd" if it was not started the same
-		    day, or "HH:MM" otherwise. See also bsdstart, start,
-		    lstart, and stime.
+start_time START    starting time or date of the process. 
+            Only the year will be displayed if the process was not started the same year ps was invoked, 
+                or "mmmdd" if it was not started the same day, 
+                or "HH:MM" otherwise. 
+            See also bsdstart, start, lstart, and stime.
 
 stat	   STAT	    multi-character process state. See section PROCESS STATE
 		    CODES for the different values meaning. See also s and
@@ -1006,8 +995,7 @@ thcount	   THCNT    see nlwp. (alias nlwp). number of kernel threads owned by
 
 tid	   TID	    see lwp. (alias lwp).
 
-time	   TIME	    cumulative CPU time, "[dd-]hh:mm:ss" format.
-		    (alias cputime).
+time	   TIME	    cumulative CPU time, "[dd-]hh:mm:ss" format.  (alias cputime).
 
 tname	   TTY	    controlling tty (terminal). (alias tt, tty).
 
@@ -1032,9 +1020,8 @@ user	   USER	    see euser. (alias euser, uname).
 vsize	   VSZ	    see vsz. (alias vsz).
 
 
-vsz	   VSZ	    virtual memory size of the process in KiB
-		    (1024-byte units). Device mappings are currently excluded;
-		    this is subject to change. (alias vsize).
+vsz	   VSZ	    virtual memory size of the process in KiB (1024-byte units).
+            Device mappings are currently excluded; this is subject to change. (alias vsize).
 
 wchan	   WCHAN    name of the kernel function in which the process is
 		    sleeping, a "-" if the process is running, or a "*" if the

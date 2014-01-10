@@ -138,7 +138,8 @@ EXPRESSIONS
               This option only affects tests which appear later on the command line.
 
 
-       -depth Process each directory's contents before the directory itself.  The -delete action also implies -depth.
+       -depth Process each directory's contents before the directory itself. 
+              The -delete action also implies -depth.
 
 
        -follow
@@ -164,7 +165,8 @@ EXPRESSIONS
 
 
        -maxdepth levels
-              Descend at most levels (a non-negative integer) levels of directories below the command line arguments.  -maxdepth 0
+              Descend at most levels (a non-negative integer) levels of directories below the command line arguments. 
+              -maxdepth 0
                means only apply the tests and actions to the command line arguments.
 
 

@@ -9,6 +9,8 @@ then
 	exit $E_OPTERROR
 fi
 
+
+############# getopt ################
 set -- `getopt "abcd:" "$@"`
 
 while [ ! -z "$1" ]
@@ -26,6 +28,8 @@ done
 
 exit 0
 
+
+############# getopts ################
 while getopts ":mnopq:rs" Option
 do
 	case $Option in

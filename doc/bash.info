@@ -5179,66 +5179,72 @@ commands.
 ==========
 
 Bash provides one-dimensional indexed and associative array variables.
-Any variable may be used as an indexed array; the 'declare' builtin will
-explicitly declare an array.  There is no maximum limit on the size of
-an array, nor any requirement that members be indexed or assigned
-contiguously.  Indexed arrays are referenced using integers (including
-arithmetic expressions (*note Shell Arithmetic::) and are zero-based;
+
+Any variable may be used as an indexed array;
+the 'declare' builtin will explicitly declare an array.
+
+There is no maximum limit on the size of an array,
+    nor any requirement that members be indexed or assigned contiguously.
+
+Indexed arrays are referenced using integers (including arithmetic expressions (*note Shell Arithmetic::) and are zero-based;
 associative arrays use arbitrary strings.
 
-   An indexed array is created automatically if any variable is assigned
-to using the syntax
-     name[SUBSCRIPT]=VALUE
 
-The SUBSCRIPT is treated as an arithmetic expression that must evaluate
-to a number.  If SUBSCRIPT evaluates to a number less than zero, it is
-used as an offset from one greater than the array's maximum index (so a
-subcript of -1 refers to the last element of the array).  To explicitly
-declare an array, use
+An indexed array is created automatically if any variable is assigned to using the syntax
+    name[SUBSCRIPT]=VALUE
+
+The SUBSCRIPT is treated as an arithmetic expression that must evaluate to a number. 
+If SUBSCRIPT evaluates to a number less than zero,
+    it is used as an offset from one greater than the array's maximum index
+    (so a subcript of -1 refers to the last element of the array). 
+    
+To explicitly declare an array, use
      declare -a NAME
 The syntax
      declare -a NAME[SUBSCRIPT]
 is also accepted; the SUBSCRIPT is ignored.
 
-   Associative arrays are created using
-     declare -A NAME.
 
-   Attributes may be specified for an array variable using the 'declare'
-and 'readonly' builtins.  Each attribute applies to all members of an
-array.
+Associative arrays are created using
+    declare -A NAME.
+
+   Attributes may be specified for an array variable using the 'declare' and 'readonly' builtins. 
+   Each attribute applies to all members of an array.
 
    Arrays are assigned to using compound assignments of the form
      name=(value1 ... valueN)
-where each VALUE is of the form '[SUBSCRIPT]='STRING.  Indexed array
-assignments do not require the bracket and subscript.  When assigning to
-indexed arrays, if the optional subscript is supplied, that index is
-assigned to; otherwise the index of the element assigned is the last
-index assigned to by the statement plus one.  Indexing starts at zero.
+where each VALUE is of the form '[SUBSCRIPT]='STRING. 
+Indexed array assignments do not require the bracket and subscript.
+When assigning to indexed arrays,
+    if the optional subscript is supplied, that index is assigned to;
+    otherwise the index of the element assigned is the last index assigned to by the statement plus one.
+Indexing starts at zero.
 
-   When assigning to an associative array, the subscript is required.
+When assigning to an associative array, the subscript is required.
 
-   This syntax is also accepted by the 'declare' builtin.  Individual
-array elements may be assigned to using the 'name['SUBSCRIPT']='VALUE
-syntax introduced above.
+This syntax is also accepted by the 'declare' builtin. 
+Individual array elements may be assigned to using the 'name['SUBSCRIPT']='VALUE syntax introduced above.
 
-   Any element of an array may be referenced using
-'${name['SUBSCRIPT']}'.  The braces are required to avoid conflicts with
-the shell's filename expansion operators.  If the SUBSCRIPT is '@' or
-'*', the word expands to all members of the array NAME.  These
-subscripts differ only when the word appears within double quotes.  If
-the word is double-quoted, '${name[*]}' expands to a single word with
-the value of each array member separated by the first character of the
-'IFS' variable, and '${name[@]}' expands each element of NAME to a
-separate word.  When there are no array members, '${name[@]}' expands to
-nothing.  If the double-quoted expansion occurs within a word, the
-expansion of the first parameter is joined with the beginning part of
-the original word, and the expansion of the last parameter is joined
-with the last part of the original word.  This is analogous to the
-expansion of the special parameters '@' and '*'.
+Any element of an array may be referenced using '${name['SUBSCRIPT']}'. 
+The braces are required to avoid conflicts with the shell's filename expansion operators.
+
+If the SUBSCRIPT is '@' or '*', the word expands to all members of the array NAME.
+These subscripts differ only when the word appears within double quotes.
+
+If the word is double-quoted,
+'${name[*]}' expands to a single word with the value of each array member separated by the first character of the 'IFS' variable,
+and '${name[@]}' expands each element of NAME to a separate word.
+
+When there are no array members, '${name[@]}' expands to nothing.
+
+If the double-quoted expansion occurs within a word,
+    the expansion of the first parameter is joined with the beginning part of the original word,
+    and the expansion of the last parameter is joined with the last part of the original word. 
+This is analogous to the expansion of the special parameters '@' and '*'.
+
 '${#name['SUBSCRIPT']}' expands to the length of '${name['SUBSCRIPT']}'.
-If SUBSCRIPT is '@' or '*', the expansion is the number of elements in
-the array.  Referencing an array variable without a subscript is
-equivalent to referencing with a subscript of 0.
+If SUBSCRIPT is '@' or '*', the expansion is the number of elements in the array.
+Referencing an array variable without a subscript is equivalent to referencing with a subscript of 0.
 
    An array variable is considered set if a subscript has been assigned
 a value.  The null string is a valid value.

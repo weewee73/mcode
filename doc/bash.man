@@ -458,6 +458,7 @@ PARAMETERS
 
    Special Parameters
        The shell treats several parameters specially.  These parameters may only be referenced; assignment to them is not allowed.
+
        *      Expands to the positional parameters, starting from one. 
               When the expansion occurs within double quotes,
                  it expands to a single word with the value of each parameter separated by the first character of the IFS special variable. 
@@ -1837,8 +1838,10 @@ READLINE
        which do not kill text separate the chunks of text on the kill ring.
 
    Readline Initialization
-       Readline is customized by putting commands in an initialization file (the inputrc file).  The name of this file is taken from the
-       value of the INPUTRC variable.  If that variable is unset, the default is ~/.inputrc.   When a program which uses the readline
+       Readline is customized by putting commands in an initialization file (the inputrc file).  
+       The name of this file is taken from the value of the INPUTRC variable. 
+       If that variable is unset, the default is ~/.inputrc.  
+       When a program which uses the readline
        library starts up,  the initialization file is read, and the key bindings and variables are set.  There are only a few basic con‐
        structs allowed in the readline initialization file.  Blank lines are ignored.  Lines beginning with a # are comments.  Lines begin‐
        ning with a $ indicate conditional constructs.  Other lines denote key bindings and variable settings.

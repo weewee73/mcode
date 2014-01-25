@@ -240,16 +240,20 @@ VARIABLES, RECORDS AND FIELDS
        set to the null string, the newline character always acts as a field separator, in addition to whatever value FS may have.
 
    Fields
-       As each input record is read, gawk splits the record into fields, using the value of the FS variable as the field separator.   If FS 
-       is a single character , fields are separated by that character.  If FS is the null string, then each individual character becomes a
-       separate field.  Otherwise, FS is expected to be a full regular expression.  In the special case that FS is a single space,  fields
-       are separated by runs of spaces and/or tabs and/or newlines.  (But see the section POSIX COMPATIBILITY, below).  NOTE: The value of
-       IGNORECASE (see below) also affects how fields are split when FS is a regular expression, and how records are separated when RS is a 
-       regular expression.
+       As each input record is read, gawk splits the record into fields, using the value of the FS variable as the field separator.
+       If FS is a single character, fields are separated by that character. 
+       If FS is the null string, then each individual character becomes a separate field. 
+       Otherwise, FS is expected to be a full regular expression. 
+       In the special case that FS is a single space,  fields are separated by runs of spaces and/or tabs and/or newlines. 
+       (But see the section POSIX COMPATIBILITY, below).
+       NOTE:
+             The value of IGNORECASE (see below) also affects how fields are split when FS is a regular expression,
+             and how records are separated when RS is a regular expression.
 
-       If the FIELDWIDTHS variable is set to a space separated list of numbers, each field is expected to have fixed width, and gawk splits
-       up the record using the specified widths.  The value of FS is ignored.  Assigning a new value to FS or FPAT overrides the use of 
-       FIELDWIDTHS.
+       If the FIELDWIDTHS variable is set to a space separated list of numbers,
+             each field is expected to have fixed width, and gawk splits up the record using the specified widths.
+       The value of FS is ignored. 
+       Assigning a new value to FS or FPAT overrides the use of FIELDWIDTHS.
 
        Similarly, if the FPAT variable is set to a string representing a regular expression, each field is made up of text that matches that
        regular expression. In this case, the regular expression describes the fields themselves, instead of the text that separates the 

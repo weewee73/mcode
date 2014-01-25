@@ -38,8 +38,10 @@ filetype plugin indent on
 "开启语法高亮
 syntax enable
 syntax on
-let g:molokai_original = 1
-set background=light
+"let g:molokai_original = 1
+"set background=light
+"set background=dark
+"set t_Co=256
 
 set tags=tags;
 
@@ -229,3 +231,13 @@ let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=40        "设置taglist宽度
 "let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
 "let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
+"let Tlist_Auto_Open = 1
+
+
+"==========================================
+" netrw setting
+"==========================================
+let g:netrw_winsize = 30
+let g:netrw_browse_split = 3
+nmap <silent> <leader>fe :Vexplore!<cr>
+

@@ -40,3 +40,6 @@ random()
 ?() { echo "$*" | bc -l; }
 
 max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }
+
+# PROMPT_COMMAND=
+# echo -ne "\033]0;CODEING\007"

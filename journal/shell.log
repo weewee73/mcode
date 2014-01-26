@@ -830,7 +830,7 @@ mkdir /home/foo/doc/bar && cd $_
 mkdir & cd into it as single command 
 
 
-
+mount -t cifs -o uid=500,gid=500,username=administrator,password=q //192.168.2.20/C$ /mnt/hgfs/C\:
 mount /path/to/file.iso /mnt/cdrom -oloop
 Mount a .iso file in UNIX/Linux
 "-o loop" lets you use a file as a block device

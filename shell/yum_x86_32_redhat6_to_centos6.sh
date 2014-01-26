@@ -46,4 +46,5 @@ yum makecache
 
 ##  安装EPEL第三方源
 #rpm -ivh http://mirrors.ustc.edu.cn/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
+#rpm --import http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-6
 

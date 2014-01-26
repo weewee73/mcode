@@ -8,22 +8,24 @@ fi
 #export LANG=zh_CN.UTF-8
 export LANG="en_US.UTF-8"
 export LC_CTYPE="zh_CN.UTF-8"
+WORKSPACE="$HOME/github"
+
 # User specific aliases and functions
 alias vi='vim'
 alias grep='grep --color=auto'
-alias mnote='vim -c start ~/github/mcode/journal/note.log'
-alias mtask='vim -c start ~/github/mcode/journal/task.log'
-alias mshell='vim + ~/github/mcode/journal/shell.log'
-alias ashell='echo >>$HOME/github/mcode/journal/shell.log'
-alias mquestion='vim -c start ~/github/mcode/journal/question.log'
-alias man='$HOME/github/mcode/shell/mman.sh'
+alias mnote='vim -c start $WORKSPACE/mcode/journal/note.log'
+alias mtask='vim -c start $WORKSPACE/mcode/journal/task.log'
+alias mshell='vim + $WORKSPACE/mcode/journal/shell.log'
+alias ashell='echo >>$WORKSPACE/mcode/journal/shell.log'
+alias mquestion='vim -c start $WORKSPACE/mcode/journal/question.log'
+alias man='$WORKSPACE/mcode/shell/mman.sh'
 
 alias remote='ssh scooper'
 
-mcode="$HOME/github/mcode"
+mcode="$WORKSPACE/mcode"
 source ${mcode}/shell/git-completion.bash
 
-PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
+PROMPT_COMMAND='echo -ne "\n\e[1;35m[$($WORKSPACE/mcode/shell/mword.sh)]\e[m\n"'
 
 random()
 {

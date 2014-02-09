@@ -929,3 +929,6 @@ echo '2014-01-25 09:17:17' | grep "[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\s\+[0-9]\{2\
 nautilus [OPTION...] [URI...] 
 Browse the file system with the file manager
 nautilus `pwd`
+
+evince [OPTION...] [FILE…] GNOME Document Viewer
+evince man.pdf

@@ -8,6 +8,7 @@ fi
 #export LANG=zh_CN.UTF-8
 export LANG="en_US.UTF-8"
 export LC_CTYPE="zh_CN.UTF-8"
+export EDITOR="vim"
 WORKSPACE="$HOME/github"
 
 # User specific aliases and functions
@@ -19,8 +20,6 @@ alias mshell='vim + $WORKSPACE/mcode/journal/shell.log'
 alias ashell='echo >>$WORKSPACE/mcode/journal/shell.log'
 alias mquestion='vim -c start $WORKSPACE/mcode/journal/question.log'
 alias man='$WORKSPACE/mcode/shell/mman.sh'
-
-alias remote='ssh scooper'
 
 mcode="$WORKSPACE/mcode"
 source ${mcode}/shell/git-completion.bash

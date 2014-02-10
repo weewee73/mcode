@@ -439,10 +439,9 @@ brief description of regular expression syntax as used in `sed'.
      the other regular expression operators.
 
 `\DIGIT'
-     Matches the DIGIT-th `\(...\)' parenthesized subexpression in the
-     regular expression.  This is called a "back reference".
-     Subexpressions are implicity numbered by counting occurrences of
-     `\(' left-to-right.
+     Matches the DIGIT-th `\(...\)' parenthesized subexpression in the regular expression.
+     This is called a "back reference".
+     Subexpressions are implicity numbered by counting occurrences of `\(' left-to-right.
 
 `\n'
      Matches the newline character.
@@ -986,8 +985,7 @@ existing "word boundary" meaning.
 in regular expressions:
 
 `\w'
-     Matches any "word" character.  A "word" character is any letter or
-     digit or the underscore character.
+     Matches any "word" character.  A "word" character is any letter or digit or the underscore character.
 
 `\W'
      Matches any "non-word" character.

@@ -563,3 +563,32 @@ gd 从变量的调用跳转到它的局部声明。
                         When [ident] is not given, the last tag name from the tag stack is used.
 :[count]tn[ext][!]	    Jump to [count] next matching tag (default 1).
 :[count]tp[revious][!]	Jump to [count] previous matching tag (default 1).
+
+
+	CTRL-X CTRL-F		file names
+	CTRL-X CTRL-L		whole lines
+	CTRL-X CTRL-D		macro definitions (also in included files)
+	CTRL-X CTRL-I		current and included files
+	CTRL-X CTRL-K		words from a dictionary
+	CTRL-X CTRL-T		words from a thesaurus
+	CTRL-X CTRL-]		tags
+	CTRL-X CTRL-V		Vim command line
+    CTRL-X CTRL-O       Omni completion
+
+
+    CTRL-A		Insert previously inserted text.
+    CTRL-W		Delete the word before the cursor
+    CTRL-U		Delete all entered characters in the current line
+    <NL> or CTRL-J	Begin new line.
+    <CR> or CTRL-M	Begin new line.
+    CTRL-K {char1} [char2] Enter digraph (see |digraphs|).
+
+    CTRL-R {0-9a-z"%#*+:.-=} Insert the contents of a register.
+    CTRL-R CTRL-R {0-9a-z"%#*+/:.-=} Insert the contents of a register. Works like using a single CTRL-R, but the text is inserted literally, not as if typed.
+
+
+    0 CTRL-D	Delete all indent in the current line.
+    ^ CTRL-D	Delete all indent in the current line.  The indent is restored in the next line.
+
+
+

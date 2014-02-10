@@ -429,8 +429,7 @@ FILESYSTEM INDEPENDENT MOUNT OPTIONS
 
        auto Can be mounted with the -a option.
 
-       noauto Can only be mounted explicitly (i.e., the -a option will not
-              cause the filesystem to be mounted).
+       noauto Can only be mounted explicitly (i.e., the -a option will not cause the filesystem to be mounted).
 
        context=context,  fscontext=context,  defcontext=context and rootcon-
        text=context
@@ -1408,14 +1407,15 @@ Mount options for nfs and nfs4
 
 Mount options for ntfs
        iocharset=name
-              Character set to use when returning file names.   Unlike VFAT,
-              NTFS suppresses names that contain unconvertible characters.
+              Character set to use when returning file names.
+              Unlike VFAT, NTFS suppresses names that contain unconvertible characters.
               Deprecated.
 
        nls=name
               New name for the option earlier called iocharset.
 
-       utf8 Use UTF-8 for converting file names.
+       utf8
+              Use UTF-8 for converting file names.
 
        uni_xlate={0|1|2}
               For 0 (or 'no' or 'false'), do not use escape sequences for
@@ -1430,9 +1430,9 @@ Mount options for ntfs
               instead of being suppressed. This option is obsolete.
 
        uid=value, gid=value and umask=value
-              Set the file permission on the filesystem.  The umask value is
-              given in octal.  By default, the files are owned by root and not
-              readable by somebody else.
+              Set the file permission on the filesystem.
+              The umask value is given in octal.
+              By default, the files are owned by root and not readable by somebody else.
 
 
 Mount options for proc

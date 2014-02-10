@@ -13,8 +13,7 @@ DESCRIPTION
     and replaces white-space characters with tabs where possible.
   This can be useful in processing the output of nroff(1) and tbl(1).
 
-  The col utility reads from the standard input 
-    and writes to the standard output.
+  The col utility reads from the standard input and writes to the standard output.
 
 The options are as follows:
 
@@ -52,12 +51,10 @@ All unrecognized control characters and escape sequences are discarded.
 The col utility keeps track of the character set as characters are read
 and makes sure the character set is correct when they are output.
 
-If the input attempts to back up to the last flushed line, col will dis-
-play a warning message.
+If the input attempts to back up to the last flushed line, col will display a warning message.
 
 ENVIRONMENT
-The LANG, LC_ALL and LC_CTYPE environment variables affect the execution
-of col as described in environ(7).
+The LANG, LC_ALL and LC_CTYPE environment variables affect the execution of col as described in environ(7).
 
 EXIT STATUS
 The col utility exits 0 on success, and >0 if an error occurs.

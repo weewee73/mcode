@@ -46,8 +46,8 @@ OPTIONS
               hyphen (-).  (-e is specified by POSIX.)
 
        -f FILE, --file=FILE
-              Obtain patterns from FILE, one per line.  The empty file contains zero  patterns,  and  therefore  matches  nothing.   (-f  is
-              specified by POSIX.)
+              Obtain patterns from FILE, one per line.
+              The empty file contains zero  patterns, and therefore matches nothing.  (-f  is specified by POSIX.)
 
        -i, --ignore-case
               Ignore case distinctions in both the PATTERN and the input files.  (-i is specified by POSIX.)
@@ -248,13 +248,16 @@ REGULAR EXPRESSIONS
        typically not equivalent to [abcd]; it might be equivalent to [aBbCcDd], for example.  To obtain the  traditional  interpretation  of
        bracket expressions, you can use the C locale by setting the LC_ALL environment variable to the value C.
 
-       Finally,  certain  named  classes  of  characters  are  predefined  within  bracket  expressions,  as  follows.  Their names are self
-       explanatory, and they are  [:alnum:],  [:alpha:],  [:cntrl:],  [:digit:],  [:graph:],  [:lower:],  [:print:],  [:punct:],  [:space:],
-       [:upper:], and [:xdigit:].  For example, [[:alnum:]] means the character class of numbers and letters in the current locale. In the C
-       locale and ASCII character set encoding, this is the same as [0-9A-Za-z].  (Note that the brackets in these class names are  part  of
-       the  symbolic  names, and must be included in addition to the brackets delimiting the bracket expression.)  Most meta-characters lose
-       their special meaning inside bracket expressions.  To include a literal ] place it first  in  the  list.   Similarly,  to  include  a
-       literal ^ place it anywhere but first.  Finally, to include a literal - place it last.
+       Finally, certain named classes of characters are predefined within bracket expressions, as follows.
+       Their names are self explanatory, and they are
+        [:alnum:],  [:alpha:],  [:cntrl:],  [:digit:],  [:graph:],  [:lower:],  [:print:],  [:punct:],  [:space:], [:upper:], and [:xdigit:].
+       For example, [[:alnum:]] means the character class of numbers and letters in the current locale.
+       In the C locale and ASCII character set encoding, this is the same as [0-9A-Za-z].
+       (Note that the brackets in these class names are  part  of the  symbolic  names, and must be included in addition to the brackets delimiting the bracket expression.)
+       Most meta-characters lose their special meaning inside bracket expressions.
+       To include a literal ] place it first  in  the  list.
+       Similarly, to include a literal ^ place it anywhere but first.
+       Finally, to include a literal - place it last.
 
    Anchoring
        The caret ^ and the dollar sign $ are meta-characters that respectively match the empty string at the beginning and end of a line.

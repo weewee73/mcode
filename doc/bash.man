@@ -3594,6 +3594,7 @@ SHELL BUILTIN COMMANDS
               If neither variable is set, vi is used.  When editing is complete, the edited commands are echoed and executed.
 
 
+
               In the second form, command is re-executed after each instance of pat is replaced by rep. 
               A useful alias to use with this is ``r="fc -s"'',
                 so that typing ``r cc'' runs the last command beginning with ``cc'' and typing ``r'' re-executes the last command.

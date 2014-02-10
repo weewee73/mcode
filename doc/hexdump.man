@@ -8,31 +8,30 @@ SYNOPSIS
      hd [-bcdovx] [-e format_string] [-f format_file] [-n length] [-s skip] file ...
 
 DESCRIPTION
-     The hexdump utility is a filter which displays the specified files, or the standard input, if no files are specified, in a user speci‐
-     fied format.
+     The hexdump utility is a filter which displays the specified files, or the standard input, if no files are specified, in a user specified format.
 
      The options are as follows:
 
-     -b      One-byte octal display.  Display the input offset in hexadecimal, followed by sixteen space-separated, three column, zero-
-             filled, bytes of input data, in octal, per line.
+     -b      One-byte octal display.
+             Display the input offset in hexadecimal, followed by sixteen space-separated, three column, zero-filled, bytes of input data, in octal, per line.
 
-     -c      One-byte character display.  Display the input offset in hexadecimal, followed by sixteen space-separated, three column, space-
-             filled, characters of input data per line.
+     -c      One-byte character display.
+             Display the input offset in hexadecimal, followed by sixteen space-separated, three column, space-filled, characters of input data per line.
 
-     -C      Canonical hex+ASCII display.  Display the input offset in hexadecimal, followed by sixteen space-separated, two column, hexa‐
-             decimal bytes, followed by the same sixteen bytes in %_p format enclosed in ``|'' characters.
+     -C      Canonical hex+ASCII display.
+             Display the input offset in hexadecimal, followed by sixteen space-separated, two column, hexadecimal bytes, followed by the same sixteen bytes in %_p format enclosed in ``|'' characters.
 
              Calling the command hd implies this option.
 
-     -d      Two-byte decimal display.  Display the input offset in hexadecimal, followed by eight space-separated, five column, zero-
-             filled, two-byte units of input data, in unsigned decimal, per line.
+     -d      Two-byte decimal display.
+             Display the input offset in hexadecimal, followed by eight space-separated, five column, zero-filled, two-byte units of input data, in unsigned decimal, per line.
 
      -e format_string
              Specify a format string to be used for displaying data.
 
      -f format_file
-             Specify a file that contains one or more newline separated format strings.  Empty lines and lines whose first non-blank charac‐
-             ter is a hash mark (#) are ignored.
+             Specify a file that contains one or more newline separated format strings.
+             Empty lines and lines whose first non-blank character is a hash mark (#) are ignored.
 
      -n length
              Interpret only length bytes of input.

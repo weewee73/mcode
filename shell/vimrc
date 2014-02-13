@@ -52,6 +52,9 @@ set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的
 " Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode
 set backspace=indent,eol,start
 
+"To enable the automatic restore of marks from a previous Vim session
+let g:mwAutoLoadMarks = 1
+
 " 备份,到另一个位置. 防止误删, 目前是取消备份
 "set backup
 "set backupext=.bak

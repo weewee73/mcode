@@ -61,7 +61,7 @@ date  +"%F %T %z (%a, %e %b %G)"
 
     
 
-
+iconv -f cp936 -t utf8 Makefile >Makefile.utf8
 iconv -f GB18030 -t utf-8 xxx >yyy
 iconv -f utf8 -t big5 vi.big5.utf8 | iconv -f big5 -t gb2312 | iconv -f gb2312 -t utf8 -o vi.big_utf8.gb_utf8
 big5<->gb2312
@@ -932,3 +932,6 @@ nautilus `pwd`
 
 evince [OPTION...] [FILE…] GNOME Document Viewer
 evince man.pdf
+
+
+cvs status | grep -v "^ " | grep -v "^$" | grep -v = | grep -v "Status: Up-to-date"

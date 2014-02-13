@@ -2200,9 +2200,12 @@ JOB CONTROL
         are sent a SIGTTIN (SIGTTOU) signal by the kernel's terminal driver, which, unless caught, suspends the process.
 
        If the operating system on which bash is running supports job control, bash contains facilities to use it.
-       Typing the suspend character (typically ^Z, Control-Z) while a process is running causes that process to be stopped and returns control to bash.
-       Typing the delayed suspend character (typically ^Y, Control-Y) causes the process to be stopped when it attempts to read input from the terminal, and control to be returned to bash.
-       The user may then manipulate the state of this job, using the bg command to continue it in the background, the fg command to continue it in the foreground, or the kill command to kill it.
+       Typing the suspend character (typically ^Z, Control-Z) while a process is running
+        causes that process to be stopped and returns control to bash.
+       Typing the delayed suspend character (typically ^Y, Control-Y)
+        causes the process to be stopped when it attempts to read input from the terminal, and control to be returned to bash.
+       The user may then manipulate the state of this job,
+        using the bg command to continue it in the background, the fg command to continue it in the foreground, or the kill command to kill it.
        A ^Z takes effect immediately, and has the additional side effect of causing pending output and typeahead to be discarded.
 
        There are a number of ways to refer to a job in the shell.

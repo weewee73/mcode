@@ -28,8 +28,7 @@ OPTIONS
 
        -c string
                  If the -c option is present, then commands are read from string.
-                 If there are arguments after the string,
-                    they are assigned to the positional parameters, starting with $0.
+                 If there are arguments after the string, they are assigned to the positional parameters, starting with $0.
 
        -i        If the -i option is present, the shell is interactive.
 
@@ -3202,7 +3201,8 @@ SHELL BUILTIN COMMANDS
               Options, if supplied, have the following meanings:
               -m keymap
                      Use keymap as the keymap to be affected by the subsequent bindings.
-                     Acceptable keymap names are emacs, emacs-standard, emacs-meta, emacs-ctlx, vi, vi-move, vi-command, and vi-insert.  vi is equivalent to vi-command; emacs is equivalent to emacs-standard.
+                     Acceptable keymap names are emacs, emacs-standard, emacs-meta, emacs-ctlx, vi, vi-move, vi-command, and vi-insert.
+                     vi is equivalent to vi-command; emacs is equivalent to emacs-standard.
               -l     List the names of all readline functions.
               -p     Display readline function names and bindings in such a way that they can be re-read.
               -P     List current readline function names and bindings.
@@ -4019,10 +4019,10 @@ SHELL BUILTIN COMMANDS
                       If expansion is attempted on an unset variable or parameter, the shell prints an error message,
                         and, if not interactive, exits with a non-zero status.
               -v      Print shell input lines as they are read.
-              -x      After expanding each simple command,
-                        for command, case command, select command, or arithmetic for command,
-                        display the expanded value of PS4,
-                        followed by the command and its expanded arguments or associated word list.
+
+              -x      After expanding each simple command, for command, case command, select command, or arithmetic for command,
+                        display the expanded value of PS4, followed by the command and its expanded arguments or associated word list.
+
               -B      The shell performs brace expansion (see Brace Expansion above).
                       This is on by default.
               -C      If set, bash does not overwrite an existing file with the >, >&, and <> redirection operators.

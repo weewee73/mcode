@@ -22,8 +22,10 @@ cscope -Rbq
 
 f_session="Session.vim"
 if [[ -f $f_session ]]; then
-    vim -c "cs add $source/cscope.out $source" -S $f_session
+#    vim -c "cs add $source/cscope.out $source" -S $f_session
+    vim -S $f_session
 else
-    vim -c "cs add $source/cscope.out $source" .
+#    vim -c "cs add $source/cscope.out $source" .
+    vim $source
 fi
 

@@ -13,7 +13,7 @@ WORKSPACE="$HOME/github"
 
 # User specific aliases and functions
 alias vi='vim'
-alias grep='grep --color=auto'
+alias grep='grep -n --color=auto'
 alias mnote='vim -c start $WORKSPACE/mcode/journal/note.log'
 alias mtask='vim -c start $WORKSPACE/mcode/journal/task.log'
 alias mshell='vim + $WORKSPACE/mcode/journal/shell.log'

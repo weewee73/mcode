@@ -265,19 +265,19 @@ REGULAR EXPRESSIONS
        Regular expressions are constructed analogously to arithmetic expressions, by using various operators to combine smaller expressions.
 
        grep understands three different versions of regular expression syntax:
-       “basic,” “extended” and “perl.” In GNU grep, there is no difference in
-       available functionality between basic and extended syntaxes.  In other
-       implementations, basic regular expressions are less powerful.   The
-       following description applies to extended regular expressions;
-       differences for basic regular expressions are summarized afterwards.
-       Perl regular expressions give additional functionality,  and are
-       documented in pcresyntax(3)  and pcrepattern(3),  but may not be
-       available on every system.
+            “basic,” “extended” and “perl.”
 
-       The fundamental building blocks are the regular expressions that match
-       a single character.  Most characters, including all letters and digits,
-       are regular expressions that match themselves.  Any meta-character with
-       special meaning may be quoted by preceding it with a backslash.
+       In GNU grep, there is no difference in available functionality between basic and extended syntaxes.
+
+       In other implementations, basic regular expressions are less powerful.
+
+       The following description applies to extended regular expressions; differences for basic regular expressions are summarized afterwards.
+
+       Perl regular expressions give additional functionality, and are documented in pcresyntax(3) and pcrepattern(3), but may not be available on every system.
+
+       The fundamental building blocks are the regular expressions that match a single character.
+       Most characters, including all letters and digits, are regular expressions that match themselves.
+       Any meta-character with special meaning may be quoted by preceding it with a backslash.
 
        The period . matches any single character.
 
@@ -342,9 +342,8 @@ REGULAR EXPRESSIONS
        that respectively match the concatenated expressions.
 
    Alternation
-       Two regular expressions may be joined by the infix operator |;  the
-       resulting regular expression matches any string matching either
-       alternate expression.
+       Two regular expressions may be joined by the infix operator |;
+            the resulting regular expression matches any string matching either alternate expression.
 
    Precedence
        Repetition takes precedence over concatenation,  which in turn takes
@@ -358,20 +357,16 @@ REGULAR EXPRESSIONS
        regular expression.
 
    Basic vs Extended Regular Expressions
-       In basic regular expressions the meta-characters ?, +, {, |, (, and )
-       lose their special meaning; instead use the backslashed versions  \?,
-       \+, \{, \|, \(, and \).
+       In basic regular expressions the meta-characters ?, +, {, |, (, and ) lose their special meaning;
+            instead use the backslashed versions  \?, \+, \{, \|, \(, and \).
 
-       Traditional egrep did not support the { meta-character, and some egrep
-       implementations support \{ instead, so portable scripts should avoid  {
-       in grep -E patterns and should use [{] to match a literal {.
+       Traditional egrep did not support the { meta-character, and some egrep implementations support \{ instead,
+            so portable scripts should avoid  { in grep -E patterns and should use [{] to match a literal {.
 
-       GNU grep -E attempts to support traditional usage by assuming that { is
-       not special if it would be the start of an invalid interval
-       specification.   For example, the command grep -E '{1' searches for the
-       two-character string {1 instead of reporting a syntax error in the
-       regular expression.  POSIX.2 allows this behavior as an extension, but
-       portable scripts should avoid it.
+       GNU grep -E attempts to support traditional usage by assuming that { is not special if it would be the start of an invalid interval specification.
+       For example,
+            the command grep -E '{1' searches for the two-character string {1 instead of reporting a syntax error in the regular expression.
+       POSIX.2 allows this behavior as an extension, but portable scripts should avoid it.
 
 ENVIRONMENT VARIABLES
        The behavior of grep is affected by the following environment

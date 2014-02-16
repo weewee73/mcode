@@ -201,7 +201,7 @@ set completeopt=longest,menu
 "set tw=20
 
 if has("cscope")
-    set csprg=/usr/bin/cscope
+"    set csprg=/usr/bin/cscope
     set csto=0
     set cst
     set nocsverb
@@ -235,6 +235,8 @@ nmap <F6> :tprev<CR>
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 nmap <silent> <leader>fe :Vexplore!<cr>
+nnoremap <silent> <F12> :call SearchWord()<CR>
+"nnoremap <silent> <F12> :call Mydict()<CR>
 
 
 
@@ -260,3 +262,31 @@ let g:netrw_browse_split = 3
 
 iabbrev #b /****************************************
 iabbrev #e <Space>****************************************/
+
+"When on, splitting a window will put the new window right of the current one.
+set splitright 
+
+" look up current word under cursor
+function! SearchWord()
+    let expr = '!sdcv -n -u "朗道英汉字典5.0" ' .expand("<cword>")
+    exec expr
+endfunction
+
+"nnoremap <Leader>d :call SearchWord()<CR>
+"vnoremap <Leader>d :<C-U>call SearchWord_v(visualmode(), 1)<cr>
+
+
+function! Mydict()
+    "执行sdcv命令查询单词的含义,返回的值保存在expl变量中
+    let expl=system('sdcv -n ' . expand("<cword>"))
+    "在每个窗口中执行命令，判断窗口中的文件名是否是dict-tmp，如果是，强制关闭
+    windo if expand("%")=="dict-tmp" |q!|endif  
+    "纵向分割窗口，宽度为25，新窗口的内容为dict-tmp文件的内容
+    25vsp dict-tmp
+    "设置查询结果窗口的属性，不缓存，不保留交换文件
+    setlocal buftype=nofile bufhidden=hide noswapfile
+    "将expl的内容显示到查询结果窗口
+    1s/^/\=expl/
+    "跳转回文本窗口
+    wincmd p
+endfunction

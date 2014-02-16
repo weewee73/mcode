@@ -5766,11 +5766,11 @@ File: bash.info,  Node: Job Control Basics,  Next: Job Control Builtins,  Up: Jo
 7.1 Job Control Basics
 ======================
 
-Job control refers to the ability to selectively stop (suspend) the
-execution of processes and continue (resume) their execution at a later
-point.  A user typically employs this facility via an interactive
-interface supplied jointly by the operating system kernel's terminal
-driver and Bash.
+Job control refers to the ability to
+    selectively stop (suspend) the execution of processes and continue (resume) their execution at a later point.
+
+A user typically employs this facility
+    via an interactive interface supplied jointly by the operating system kernel's terminal driver and Bash.
 
    The shell associates a JOB with each pipeline.  It keeps a table of
 currently executing jobs, which may be listed with the `jobs' command.

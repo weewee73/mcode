@@ -39,7 +39,7 @@ random()
     echo
 }
 
-?() { echo "$*" | bc -l; }
+calc() { echo "$*" | bc -l; }
 
 max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }
 

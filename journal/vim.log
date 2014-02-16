@@ -122,7 +122,8 @@ ctrl + p 插入模式时，自动补全
 :set nohlsearch
 
 
-
+When on, splitting a window will put the new window right of the current one.
+:set splitright 
 :split 分割窗口:split another.c
 :vsplit
     ctrl + w 窗口间跳转
@@ -591,4 +592,26 @@ gd 从变量的调用跳转到它的局部声明。
     ^ CTRL-D	Delete all indent in the current line.  The indent is restored in the next line.
 
 
+:set keywordprg=man\ -s
+    Program to use for the |K| command.  
 
+Copy a word and paste it over other words:
+yiw     yank inner word (copy word under cursor, say "first").
+...     Move the cursor to another word (say "second").
+viwp    select "second", then replace it with "first".
+...     Move the cursor to another word (say "third").
+viw"0p  select "third", then replace it with "first".
+
+Copy a line and paste it over other lines:
+yy  yank current line (say "first line").
+...     Move the cursor to another line (say "second line").
+Vp  select "second line", then replace it with "first line".
+...     Move the cursor to another line (say "third line").
+V"0p    select "third line", then replace it with "first line". 
+
+
+:split +enew | r !ls
+split ：分割窗口  split {+cmd} 表示打开一个新窗口，并在新窗口中执行 {cmd} 命令
+split +enew 就是打开一个新窗口，并且在其中执行 enew 这个命令
+enew  打开一个新的无名buffer  | 命令分割符 r read  !ls  执行外部命令
+在打开一个空buffer后，可以一直用 : r !cmd 来执行外部命令并在该buffer中输出了。

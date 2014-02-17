@@ -237,10 +237,13 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 nmap <silent> <leader>fe :Vexplore!<cr>
 nnoremap <silent> <F12> :call SearchWord()<CR>
 "nnoremap <silent> <F12> :call Mydict()<CR>
+nnoremap <silent> qq :q<CR>
 
 
 
 au BufNewFile,BufRead *.cflow setf cflow
+au BufRead,BufNewFile *.txt setlocal ft=txt
+au BufRead,BufNewFile *.log setlocal ft=txt
 
 
 "==========================================

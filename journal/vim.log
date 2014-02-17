@@ -591,6 +591,13 @@ gd 从变量的调用跳转到它的局部声明。
     0 CTRL-D	Delete all indent in the current line.
     ^ CTRL-D	Delete all indent in the current line.  The indent is restored in the next line.
 
+                            *i_CTRL-T*
+    CTRL-T		Insert one shiftwidth of indent at the start of the current line.
+                            *i_CTRL-D*
+    CTRL-D		Delete one shiftwidth of indent at the start of the current line. 
+
+
+
 
 :set keywordprg=man\ -s
     Program to use for the |K| command.  

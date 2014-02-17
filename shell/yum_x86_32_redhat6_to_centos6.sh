@@ -44,7 +44,9 @@ yum makecache
 #yum install -y yum-downloadonly
 #yum install -y --downloadonly --downloaddir=/root/test/ git{,web,-daemon,olite} httpd xinetd
 
-##  安装EPEL第三方源
+##  安装EPEL第三方源 for gitolite
 #rpm -ivh http://mirrors.ustc.edu.cn/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
 #rpm --import http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-6
-
+## RHEL/CentOS 6 32-Bit for unrar
+#wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.i686.rpm
+#rpm -Uvh rpmforge-release-0.5.2-2.el6.rf.i686.rpm

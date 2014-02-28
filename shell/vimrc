@@ -52,7 +52,7 @@ set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的
 " Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode
 set backspace=indent,eol,start
 
-
+" MarkSave color
 set viminfo+=!
 "To turn on the automatic persistence of marks across Vim sessions
 let g:mwAutoSaveMarks = 1
@@ -237,7 +237,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 nmap <silent> <leader>fe :Vexplore!<cr>
 nnoremap <silent> <F12> :call SearchWord()<CR>
 "nnoremap <silent> <F12> :call Mydict()<CR>
-nnoremap <silent> qq :q<CR>
+nnoremap <silent> qq :q!<CR>
 
 
 

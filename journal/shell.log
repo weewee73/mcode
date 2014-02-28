@@ -935,3 +935,10 @@ evince man.pdf
 
 
 cvs status | grep -v "^ " | grep -v "^$" | grep -v = | grep -v "Status: Up-to-date"
+
+To show the headers of files created after October 1, 2005 and before October 3, 2005:
+cvs log -S -d "2005/10/1<2005/10/3"
+
+To show the headers of files in the current directory created after October 1, 2005 through the present time:
+cvs log -S -l -d "2005/10/1<now"
+

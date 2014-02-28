@@ -25,7 +25,7 @@ alias project_init='$WORKSPACE/mcode/shell/project_init.sh'
 mcode="$WORKSPACE/mcode"
 source ${mcode}/shell/git-completion.bash
 
-PROMPT_COMMAND='echo -ne "\n\e[1;35m[$($WORKSPACE/mcode/shell/mword.sh)]\e[m\n"'
+PROMPT_COMMAND='$HOME/github/mcode/shell/mword.sh'
 
 random()
 {

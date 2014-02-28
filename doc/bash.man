@@ -12,18 +12,14 @@ COPYRIGHT
        Bash is Copyright (C) 1989-2011 by the Free Software Foundation, Inc.
 
 DESCRIPTION
-       Bash is an sh-compatible command language interpreter
-        that executes commands read from the standard input or from a file.  
+       Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.  
        Bash also incorporates useful features from the Korn and C shells (ksh and csh).
 
-       Bash is intended to be
-        a conformant implementation of the Shell and Utilities portion of the IEEE POSIX specification
-        (IEEE Standard 1003.1). 
+       Bash is intended to be a conformant implementation of the Shell and Utilities portion of the IEEE POSIX specification (IEEE Standard 1003.1). 
        Bash can be configured to be POSIX-conformant by default.
 
 OPTIONS
-       All of the single-character shell options documented in the description of the set builtin command can be used as options
-        when the shell is invoked.
+       All of the single-character shell options documented in the description of the set builtin command can be used as options when the shell is invoked.
        In addition, bash interprets the following options when it is invoked:
 
        -c string
@@ -3188,10 +3184,15 @@ HISTORY EXPANSION
 
 SHELL BUILTIN COMMANDS
        Unless otherwise noted,
-        each builtin command documented in this section as accepting options preceded by - accepts -- to signify the end of the options.
+            each builtin command documented in this section as accepting options preceded by - accepts -- to signify the end of the options.
+
        The :, true, false, and test builtins do not accept options and do not treat -- specially.
-       The exit, logout, break, continue, let, and shift builtins accept and process arguments beginning with - without requiring --.   Other builtins that
-       accept arguments but are not specified as accepting options interpret arguments beginning with - as invalid options and require -- to prevent this interpretation.
+
+       The exit, logout, break, continue, let, and shift builtins accept and process arguments beginning with - without requiring --.
+
+       Other builtins that accept arguments but are not specified as accepting options interpret arguments beginning with - as invalid options and require -- to prevent this interpretation.
+
+
        : [arguments]
               No effect; the command does nothing beyond expanding arguments and performing any specified redirections.
               A zero exit code is returned.
@@ -3345,63 +3346,71 @@ SHELL BUILTIN COMMANDS
                       The comp-option controls several aspects of the compspec's behavior beyond the simple generation of completions.
                       comp-option may be one of:
                       bashdefault
-                              Perform the rest of the default bash completions if the compspec generates no matches.
-                      default Use readline's default filename completion if the compspec generates no matches.
+                            Perform the rest of the default bash completions if the compspec generates no matches.
+                      default
+                            Use readline's default filename completion if the compspec generates no matches.
                       dirnames
-                              Perform directory name completion if the compspec generates no matches.
+                            Perform directory name completion if the compspec generates no matches.
                       filenames
-                              Tell readline that the compspec generates filenames,
+                            Tell readline that the compspec generates filenames,
                                 so it can perform any filename-specific processing
                                 (like adding a slash to directory names, quoting special characters, or suppressing trailing spaces).  Intended to
                               be used with shell functions.
-                      nospace Tell readline not to append a space (the default) to words completed at the end of the line.
+                      nospace
+                            Tell readline not to append a space (the default) to words completed at the end of the line.
                       plusdirs
-                              After any matches defined by the compspec are generated,
+                            After any matches defined by the compspec are generated,
                                 directory name completion is attempted and any matches are added to the results of the other actions.
               -A action
                       The action may be one of the following to generate a list of possible completions:
-                      alias Alias names.
-                      May also be specified as -a.
+                      alias
+                            Alias names.  May also be specified as -a.
                       arrayvar
-                              Array variable names.
-                      binding Readline key binding names.
-                      builtin Names of shell builtin commands.
-                              May also be specified as -b.
-                      command Command names. 
-                              May also be specified as -c.
+                            Array variable names.
+                      binding
+                            Readline key binding names.
+                      builtin
+                            Names of shell builtin commands.  May also be specified as -b.
+                      command
+                            Command names.  May also be specified as -c.
                       directory
-                              Directory names.
-                              May also be specified as -d.
+                            Directory names.  May also be specified as -d.
                       disabled
-                              Names of disabled shell builtins.
-                      enabled Names of enabled shell builtins.
-                      export  Names of exported shell variables.
-                              May also be specified as -e.
-                      file    File names.
-                              May also be specified as -f.
+                            Names of disabled shell builtins.
+                      enabled
+                            Names of enabled shell builtins.
+                      export
+                            Names of exported shell variables.  May also be specified as -e.
+                      file
+                            File names.  May also be specified as -f.
                       function
-                              Names of shell functions.
-                      group   Group names.
-                              May also be specified as -g.
+                            Names of shell functions.
+                      group
+                            Group names.  May also be specified as -g.
                       helptopic
-                              Help topics as accepted by the help builtin.
+                            Help topics as accepted by the help builtin.
                       hostname
-                              Hostnames, as taken from the file specified by the HOSTFILE shell variable.
-                      job     Job names, if job control is active.  May also be specified as -j.
-                      keyword Shell reserved words.
-                              May also be specified as -k.
-                      running Names of running jobs, if job control is active.
-                      service Service names.
-                              May also be specified as -s.
-                      setopt  Valid arguments for the -o option to the set builtin.
-                      shopt   Shell option names as accepted by the shopt builtin.
-                      signal  Signal names.
-                      stopped Names of stopped jobs, if job control is active.
-                      user    User names.
-                              May also be specified as -u.
+                            Hostnames, as taken from the file specified by the HOSTFILE shell variable.
+                      job    
+                            Job names, if job control is active.  May also be specified as -j.
+                      keyword
+                            Shell reserved words.  May also be specified as -k.
+                      running
+                            Names of running jobs, if job control is active.
+                      service
+                            Service names.  May also be specified as -s.
+                      setopt
+                            Valid arguments for the -o option to the set builtin.
+                      shopt
+                            Shell option names as accepted by the shopt builtin.
+                      signal 
+                            Signal names.
+                      stopped
+                            Names of stopped jobs, if job control is active.
+                      user
+                            User names.  May also be specified as -u.
                       variable
-                              Names of all shell variables.
-                              May also be specified as -v.
+                            Names of all shell variables.  May also be specified as -v.
               -C command
                       command is executed in a subshell environment,
                         and its output is used as the possible completions.

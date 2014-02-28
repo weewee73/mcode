@@ -28,9 +28,9 @@ elif [ -n "$1" ]; then
 else
 	#prompt word
 	#add PROMPT_COMMAND to ~/.bashrc
-	#PROMPT_COMMAND='echo -ne "\n\e[1;35m[$(~/github/mcode/shell/mword.sh)]\e[m\n"'
+	#PROMPT_COMMAND='$HOME/github/mcode/shell/mword.sh'
 
-	start_time=1385534029
+	start_time=1389534029
 	step_time=1
 	day_count=20
 
@@ -45,7 +45,7 @@ else
 
 	word=`sed -n "$count p" $f_words`
 
-	echo -n "$count: $word"
+	#echo -ne "\n\e[1;35m[$count: $word]\e[m\n"
 
 	#set window's title
 	#echo -ne "\033]0;$word ---- $USER@$HOSTNAME: $PWD\007"

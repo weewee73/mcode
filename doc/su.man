@@ -1,0 +1,67 @@
+SU(1)                            User Commands                           SU(1)
+
+
+
+NAME
+       su - run a shell with substitute user and group IDs
+
+SYNOPSIS
+       su [OPTION]... [-] [USER [ARG]...]
+
+DESCRIPTION
+       Change the effective user id and group id to that of USER.
+
+       -, -l, --login
+              make the shell a login shell, clears all envvars except for TERM, initializes HOME, SHELL, USER, LOGNAME and PATH
+
+       -c, --command=COMMAND
+              pass a single COMMAND to the shell with -c
+
+       --session-command=COMMAND
+              pass a single COMMAND to the shell with -c and do not create a new session
+
+       -f, --fast
+              pass -f to the shell (for csh or tcsh)
+
+       -m, --preserve-environment
+              do not reset HOME, SHELL, USER, LOGNAME environment variables
+
+       -p     same as -m
+
+       -s, --shell=SHELL
+              run SHELL if /etc/shells allows it
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       A mere - implies -l.   If USER not given, assume root.
+
+AUTHOR
+       Written by David MacKenzie.
+
+REPORTING BUGS
+       Report su bugs to bug-coreutils@gnu.org
+       GNU coreutils home page: <http://www.gnu.org/software/coreutils/>
+       General help using GNU software: <http://www.gnu.org/gethelp/>
+       Report su translation bugs to <http://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2010 Free Software Foundation, Inc.  License GPLv3+: GNU
+       GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+       This is free software: you are free to change and redistribute it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       The full documentation for su is maintained as a Texinfo manual.  If
+       the info and su programs are properly installed at your site, the com-
+       mand
+
+              info coreutils 'su invocation'
+
+       should give you access to the complete manual.
+
+
+
+GNU coreutils 8.4                November 2013                           SU(1)

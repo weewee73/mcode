@@ -514,24 +514,19 @@ EXPRESSIONS
 
 
        -path pattern
-              File name matches shell pattern pattern.  The metacharacters do
-              not treat '/' or '.' specially; so, for example,
+              File name matches shell pattern pattern.
+              The metacharacters do not treat '/' or '.' specially; so, for example,
                         find . -path "./sr*sc"
-              will print an entry for a directory called './src/misc' (if one
-              exists).  To ignore a whole directory tree,  use  -prune rather
-              than checking every file in the tree.  For example, to skip the
-              directory 'src/emacs' and all files and directories under it,
-              and print the names of the other files found, do something like
-              this:
+              will print an entry for a directory called './src/misc' (if one exists).
+              To ignore a whole directory tree,  use -prune rather than checking every file in the tree.
+              For example, to skip the directory 'src/emacs' and all files and directories under it, and print the names of the other files found,
+              do something like this:
                         find . -path ./src/emacs -prune -o -print
-              Note that the pattern match test applies to the whole file name,
-              starting from one of the start points named on the command line.
-              It would only make sense to use an absolute path name here if
-              the relevant start point is also an absolute path.  This means
-              that this command will never match anything:
+              Note that the pattern match test applies to the whole file name, starting from one of the start points named on the command line.
+              It would only make sense to use an absolute path name here if the relevant start point is also an absolute path.
+              This means that this command will never match anything:
                         find bar -path /foo/bar/myfile -print
-              The predicate -path is also supported by HP-UX find and will be
-              in a forthcoming version of the POSIX standard.
+              The predicate -path is also supported by HP-UX find and will be in a forthcoming version of the POSIX standard.
 
 
        -perm mode

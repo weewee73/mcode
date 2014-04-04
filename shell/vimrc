@@ -293,3 +293,11 @@ function! Mydict()
     "跳转回文本窗口
     wincmd p
 endfunction
+
+function! Synchronize()
+    exec ':silent !ctags -R --c-kinds=+px && cscope -Rbq'
+    exec ':silent cs reset'
+        "exec ':redraw!' "ctrl-l
+endfunction
+
+command Sync call Synchronize()

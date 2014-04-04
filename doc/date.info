@@ -80,13 +80,11 @@ File: coreutils.info,  Node: Time conversion specifiers,  Next: Date conversion 
 
 `%s'
      seconds since the epoch, i.e., since 1970-01-01 00:00:00 UTC.
-     Leap seconds are not counted unless leap second support is
-     available.  *Note %s-examples::, for examples.  This is a GNU
-     extension.
+     Leap seconds are not counted unless leap second support is available.
+     *Note %s-examples::, for examples.  This is a GNU extension.
 
 `%S'
-     second (`00'...`60').  This may be `60' if leap seconds are
-     supported.
+     second (`00'...`60').  This may be `60' if leap seconds are supported.
 
 `%T'
      24-hour hour, minute, and second.  Same as `%H:%M:%S'.
@@ -838,31 +836,22 @@ File: coreutils.info,  Node: Seconds since the Epoch,  Next: Specifying time zon
 28.9 Seconds since the Epoch
 ============================
 
-If you precede a number with `@', it represents an internal time stamp
-as a count of seconds.  The number can contain an internal decimal
-point (either `.' or `,'); any excess precision not supported by the
-internal representation is truncated toward minus infinity.  Such a
-number cannot be combined with any other date item, as it specifies a
-complete time stamp.
+If you precede a number with `@', it represents an internal time stamp as a count of seconds.
+The number can contain an internal decimal point (either `.' or `,'); any excess precision not supported by the internal representation is truncated toward minus infinity.
+Such a number cannot be combined with any other date item, as it specifies a complete time stamp.
 
-   Internally, computer times are represented as a count of seconds
-since an epoch--a well-defined point of time.  On GNU and POSIX
-systems, the epoch is 1970-01-01 00:00:00 UTC, so `@0' represents this
-time, `@1' represents 1970-01-01 00:00:01 UTC, and so forth.  GNU and
-most other POSIX-compliant systems support such times as an extension
-to POSIX, using negative counts, so that `@-1' represents 1969-12-31
-23:59:59 UTC.
+   Internally, computer times are represented as a count of seconds since an epoch--a well-defined point of time.
+   On GNU and POSIX systems, the epoch is 1970-01-01 00:00:00 UTC, so `@0' represents this time, `@1' represents 1970-01-01 00:00:01 UTC, and so forth.
+   GNU and most other POSIX-compliant systems support such times as an extension to POSIX, using negative counts, so that `@-1' represents 1969-12-31 23:59:59 UTC.
 
-   Traditional Unix systems count seconds with 32-bit two's-complement
-integers and can represent times from 1901-12-13 20:45:52 through
-2038-01-19 03:14:07 UTC.  More modern systems use 64-bit counts of
-seconds with nanosecond subcounts, and can represent all the times in
-the known lifetime of the universe to a resolution of 1 nanosecond.
+   Traditional Unix systems count seconds with 32-bit two's-complement integers
+        and can represent times from 1901-12-13 20:45:52 through 2038-01-19 03:14:07 UTC.
+   More modern systems use 64-bit counts of seconds with nanosecond subcounts,
+        and can represent all the times in the known lifetime of the universe to a resolution of 1 nanosecond.
 
    On most hosts, these counts ignore the presence of leap seconds.
-For example, on most hosts `@915148799' represents 1998-12-31 23:59:59
-UTC, `@915148800' represents 1999-01-01 00:00:00 UTC, and there is no
-way to represent the intervening leap second 1998-12-31 23:59:60 UTC.
+   For example, on most hosts `@915148799' represents 1998-12-31 23:59:59 UTC, `@915148800' represents 1999-01-01 00:00:00 UTC,
+   and there is no way to represent the intervening leap second 1998-12-31 23:59:60 UTC.
 
 File: coreutils.info,  Node: Specifying time zone rules,  Next: Authors of parse_datetime,  Prev: Seconds since the Epoch,  Up: Date input formats
 
@@ -1025,8 +1014,7 @@ option in the previous section.
           date -d '1970-01-01 UTC 946684800 seconds' +"%Y-%m-%d %T %z"
           1999-12-31 19:00:00 -0500
 
-     Or if you do not mind depending on the `@' feature present since
-     coreutils 5.3.0, you could shorten this to:
+     Or if you do not mind depending on the `@' feature present since coreutils 5.3.0, you could shorten this to:
 
           date -d @946684800 +"%F %T %z"
           1999-12-31 19:00:00 -0500

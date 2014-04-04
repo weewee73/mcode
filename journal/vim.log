@@ -55,6 +55,10 @@ G=到文件结束
 gu5w、gu5e
 gU5w、gU5e
 
+guu  把一行的文字变成全小写。或是Vu
+
+gUU  把一行的文件变成全大写。或是VU
+
 转换几行的大小写
 1gU 从光标所在行 往下一行都进行小写到大写的转换
 10gU　则进行11行小写到大写的转换
@@ -545,6 +549,7 @@ gd 从变量的调用跳转到它的局部声明。
 |gf|		gf		   start editing the file whose name is under the cursor
 
 
+:lw[indow] [height]	Same as ":cwindow", except use the window showing the location list for the current window.
 :cw[indow] [height]	Open the quickfix window when there are recognized errors.  
                     If the window is already open and there are no recognized errors, close the window.
 :ccl[ose]		    Close the quickfix window.
@@ -622,3 +627,29 @@ split ：分割窗口  split {+cmd} 表示打开一个新窗口，并在新窗�
 split +enew 就是打开一个新窗口，并且在其中执行 enew 这个命令
 enew  打开一个新的无名buffer  | 命令分割符 r read  !ls  执行外部命令
 在打开一个空buffer后，可以一直用 : r !cmd 来执行外部命令并在该buffer中输出了。
+
+
+要让两个分屏中的文件同步移动，需要同步移动的两个屏中都输入如下命令：
+:set scb
+解开
+:set scb!
+注：set scb 是 set scrollbind 的简写。
+
+
+
+Tab页浏览目录
+:Te
+全称是 :Texplorer
+
+
+The CTRL-A command is very useful in a macro.  Example: Use the following steps to make a numbered list.
+
+1. Create the first list entry, make sure it starts with a number.
+2. qa	     - start recording into register 'a'
+3. Y	     - yank the entry
+4. p	     - put a copy of the entry below the first one
+5. CTRL-A    - increment the number
+6. q	     - stop recording
+7. <count>@a - repeat the yank, put and increment <count> times
+
+

@@ -776,8 +776,7 @@ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock -w
 
 ctags --list-kinds=c
-ctags -R --c-kinds=+px
-cscope -Rbq
+ctags -R --c-kinds=+px && cscope -Rbq
 
 /etc/init.d/iptables stop
 iptables -Lv --line-numbers
@@ -831,6 +830,7 @@ mkdir & cd into it as single command
 
 
 mount -t cifs -o uid=500,gid=500,username=administrator,password=q //192.168.2.20/C$ /mnt/hgfs/C\:
+mount -t cifs -o rw,nounix,noserverino,uid=500,gid=500,username=administrator,password=q //192.168.2.20/F$ /mnt/hgfs/F\:
 mount /path/to/file.iso /mnt/cdrom -oloop
 Mount a .iso file in UNIX/Linux
 "-o loop" lets you use a file as a block device

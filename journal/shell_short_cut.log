@@ -14,6 +14,16 @@ ctrl + h  <--  向左删除一个字符
 ctrl + d   --> 向右删除一个字符
 
 
+       delete-horizontal-space (M-\)
+              Delete all spaces and tabs around point.
+
+       transpose-chars (C-t)
+              Drag the character before point forward over the character at point, moving point forward as well.
+              If point is at the end of the line, then this transposes the two characters before point.
+              Negative arguments have no effect.
+       transpose-words (M-t)
+              Drag the word before point past the word after point, moving point over that word as well.
+              If point is at the end of the line, this transposes the last two words on the line.
 
 
 
@@ -57,3 +67,86 @@ ctrl + p 上一条命令
 ctrl + l        清屏相当于命令clear
 
 Esc + r 删除全行
+
+
+
+
+
+       beginning-of-line (C-a)
+       end-of-line (C-e)
+
+       forward-char (C-f)
+       backward-char (C-b)
+
+       forward-word (M-f)
+       backward-word (M-b)
+
+       clear-screen (C-l)
+
+       previous-history (C-p)
+       next-history (C-n)
+
+       beginning-of-history (M-<)
+       end-of-history (M->)
+
+       reverse-search-history (C-r)
+       forward-search-history (C-s)
+       abort (C-g)
+
+       non-incremental-reverse-search-history (M-p)
+       non-incremental-forward-search-history (M-n)
+
+       yank-nth-arg (M-C-y)
+       yank-last-arg (M-., M-_)
+
+       shell-expand-line (M-C-e)
+       history-expand-line (M-^)
+       insert-last-argument (M-., M-_)
+       operate-and-get-next (C-o)
+
+       edit-and-execute-command (C-xC-e)
+
+
+       quoted-insert (C-q, C-v)
+
+       transpose-chars (C-t)
+       transpose-words (M-t)
+
+       upcase-word (M-u)
+       downcase-word (M-l)
+       capitalize-word (M-c)
+
+       kill-line (C-k)
+       unix-line-discard (C-u)
+       revert-line (M-r)
+
+       delete-horizontal-space (M-\)
+       delete-char (C-d)
+       kill-word (M-d)
+       shell-kill-word (M-d)
+       unix-word-rubout (C-w)
+
+
+       yank (C-y)
+       yank-pop (M-y)
+       digit-argument (M-0, M-1, ..., M--)
+
+       possible-completions (M-?)
+       insert-completions (M-*)
+       complete-filename (M-/)
+       complete-username (M-~)
+       complete-variable (M-$)
+       complete-hostname (M-@)
+       complete-command (M-!)
+       complete-into-braces (M-{)
+       re-read-init-file (C-x C-r)
+       undo (C-_, C-x C-u)
+       tilde-expand (M-&)
+
+       exchange-point-and-mark (C-x C-x)
+
+       character-search (C-])
+       character-search-backward (M-C-])
+       insert-comment (M-#)
+       glob-complete-word (M-g)
+       display-shell-version (C-x C-v)

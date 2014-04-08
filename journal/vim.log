@@ -653,3 +653,92 @@ The CTRL-A command is very useful in a macro.  Example: Use the following steps 
 7. <count>@a - repeat the yank, put and increment <count> times
 
 
+
+|format-comments|	Format comments.
+
+[i			Display the first line that contains the keyword under the cursor.
+|[I|			List all lines in current and included files where identifier under the cursor matches.
+|[_CTRL-I|		Jump to match for "[i"
+
+|[d|			Search for define under cursor in current and included files.
+
+
+|CTRL-]|		Jump to tag under cursor (e.g., definition of a function).
+|CTRL-T|		Jump back to before a CTRL-] command.
+
+
+|gd|			Go to Declaration of local variable under cursor.
+|gD|			Go to Declaration of global variable under cursor.
+
+|%|			Go to matching (), {}, [], /* */, #if, #else, #endif.
+|[/|			Go to previous start of comment.
+|]/|			Go to next end of comment.
+|[#|			Go back to unclosed #if, #ifdef, or #else.
+|]#|			Go forward to unclosed #else or #endif.
+|[(|			Go back to unclosed '('
+|])|			Go forward to unclosed ')'
+|[{|			Go back to unclosed '{'
+|]}|			Go forward to unclosed '}'
+
+|v_ab|			Select "a block" from "[(" to "])", including braces
+|v_ib|			Select "inner block" from "[(" to "])"
+|v_aB|			Select "a block" from "[{" to "]}", including brackets
+|v_iB|			Select "inner block" from "[{" to "]}"
+
+
+ge			Backward to the end of word [count] 
+
+CTRL-E			Scroll window [count] lines downwards in the buffer.
+CTRL-Y			Scroll window [count] lines upwards in the buffer.
+
+CTRL-D			Scroll window Downwards in the buffer.
+CTRL-U			Scroll window Upwards in the buffer.
+
+CTRL-F			Scroll window [count] pages Forwards (downwards) in the buffer.
+CTRL-B			Scroll window [count] pages Backwards (upwards) in the buffer.
+
+If you are in insert mode and you want to see something that is just off the screen,
+you can use CTRL-X CTRL-E and CTRL-X CTRL-Y to scroll the screen.
+						*i_CTRL-X_CTRL-E*
+CTRL-X CTRL-E		scroll window one line up.
+						*i_CTRL-X_CTRL-Y*
+CTRL-X CTRL-Y		scroll window one line down.
+
+
+
+count
+	:%s/./&/gn		characters
+	:%s/\i\+/&/ 	words
+	:%s/^//n		lines
+	:%s/the/&/gn		"the" anywhere
+	:%s/\<the\>/&/gn	"the" as a word
+
+g CTRL-G		Prints the current position of the cursor in five ways: Column, Line, Word, Character and Byte.
+
+
+If you want to count bytes, you can use this:
+	Visually select the characters (block is also possible)
+	Use "y" to yank the characters
+	Use the strlen() function: >
+		:echo strlen(@")
+A line break is counted for one byte.
+
+
+   :map <F2> msHmtgg/Last [cC]hange:\s*/e+1<CR>"_D"=strftime("%Y %b %d %X")<CR>p'tzt`s
+   ms
+   H
+   mt
+   gg
+   /Last [cC]hange:\s*/e+1<CR>
+   "_
+   D
+   "=
+   strftime("%Y %b %d %X")<CR>p
+   't
+   zt
+   `s
+
+
+	:r !ls *.c
+	:%s/\(.*\).c/mv & \1.bla
+	:w !sh

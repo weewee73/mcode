@@ -34,3 +34,21 @@ int sctimer_stop(sc_timer_entry_t **pptTimerHandle);
 void sctimer_process(); //定时器计数函数20ms执行一次，如果调用sctimer_loop，不能调用该函数
 int sctimer_loop();
 
+Timer={}
+ 
+function Timer:new(p)
+    local obj = p
+    if (obj == nil) then
+        obj = {="Tom", age=27, male=true}
+    end
+    self.__index = self
+    return setmetatable(obj, self)
+end
+
+function Person:toString()
+    return self.name .." : ".. self.age .." : ".. (self.male and "male" or "female")
+end
+
+
+tom = Person:new()
+print(tom:toString())

@@ -742,3 +742,8 @@ A line break is counted for one byte.
 	:r !ls *.c
 	:%s/\(.*\).c/mv & \1.bla
 	:w !sh
+
+Copy all lines matching a pattern to end of file.
+:g/<pattern>/t$
+Move all lines matching a pattern to end of file.
+:g/<pattern>/m$

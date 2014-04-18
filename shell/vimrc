@@ -83,6 +83,7 @@ set mouse-=a           " 鼠标暂不启用, 键盘党....
 "set selection=exclusive
 set selection=inclusive
 set selectmode=mouse,key
+set clipboard=unnamedplus
 
 " No annoying sound on errors
 " 去掉输入错误的提示声音
@@ -177,8 +178,8 @@ set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
 "set langmenu=zh_CN.UTF-8
 "set enc=2byte-gb18030
 " 下面这句只影响普通模式 (非图形界面) 下的 Vim。
-"set termencoding=utf-8
-set termencoding=cp936
+set termencoding=utf-8
+"set termencoding=cp936
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac

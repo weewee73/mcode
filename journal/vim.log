@@ -685,6 +685,7 @@ The CTRL-A command is very useful in a macro.  Example: Use the following steps 
 |v_aB|			Select "a block" from "[{" to "]}", including brackets
 |v_iB|			Select "inner block" from "[{" to "]}"
 
+v_it			"inner tag block", select [count] tag blocks, from the [count]'th unmatched "<aaa>" backwards to the matching "</aaa>", excluding the "<aaa>" and "</aaa>".
 
 ge			Backward to the end of word [count] 
 
@@ -747,3 +748,30 @@ Copy all lines matching a pattern to end of file.
 :g/<pattern>/t$
 Move all lines matching a pattern to end of file.
 :g/<pattern>/m$
+
+
+g_			To the last non-blank character of the line and [count - 1] lines downward |inclusive|. {not in Vi}
+
+;			Repeat latest f, t, F or T [count] times. See |cpo-;|
+,			Repeat latest f, t, F or T in opposite direction [count] times. See also |cpo-;|
+
+(			[count] sentences backward.  |exclusive| motion.
+)			[count] sentences forward.  |exclusive| motion.
+
+{			[count] paragraphs backward.  |exclusive| motion.
+}			[count] paragraphs forward.  |exclusive| motion.
+
+]]			[count] sections forward or to the next '{' in the first column. 
+[[			[count] sections backward or to the previous '{' in the first column. 
+
+][			[count] sections forward or to the next '}' in the first column.
+[]			[count] sections backward or to the previous '}' in the first column. 
+
+
+:.!cmd
+将命令结果输出到当前行
+
+
+
+'[  `[			To the first character of the previously changed or yanked text.  {not in Vi}
+']  `]			To the last character of the previously changed or yanked text.  {not in Vi}

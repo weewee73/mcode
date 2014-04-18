@@ -1,8 +1,37 @@
 #!/usr/bin/lua
+print("---------------")
 
+Timer = {}
+Timer.prototype = {m_iDelay=1000, m_iRepeatCnt=-1, m_pCallBack=function() print("Timer CallBack Func.") end, m_pUsrData=nil} 
+Timer.mt = {}
+Timer.mt.__index = Timer.prototype
 
-timer.start(int)
-timer.stop()
+function Timer.new(o)
+    o = o or {}
+    setmetatable(o, Timer.mt)
+    return o
+end
+
+function Timer.loop()
+end
+
+t = Timer.new()
+print(t.m_iDelay)
+t.m_pCallBack()
+
+--[[
+
+function Timer:start()
+
+end
+
+function Timer:stop()
+
+end
+
+function Timer:loop()
+
+end
 
 timer.Create()
 
@@ -52,3 +81,6 @@ end
 
 tom = Person:new()
 print(tom:toString())
+
+--]]
+

@@ -218,17 +218,15 @@ OPTIONS
 
 
        -L file
-            Read from file a list of file names for which tags should be gen-
-            erated.   If file is specified as "-", then file names are read
-            from standard input. File names read using this option are pro-
-            cessed following file names appearing on the command line. Options
-            are also accepted in this input. If this option is specified more
-            than once,  only the last will apply. Note: file is read in line-
-            oriented mode, where a new line is the only delimiter and non-
-            trailing white space is considered significant, in order that file
-            names containing spaces may be supplied (however,  trailing white
-            space is stripped from lines); this can affect how options are
-            parsed if included in the input.
+            Read from file a list of file names for which tags should be generated.
+            If file is specified as "-", then file names are read from standard input.
+            File names read using this option are processed following file names appearing on the command line.
+            Options are also accepted in this input.
+            If this option is specified more than once, only the last will apply.
+            Note: file is read in line-oriented mode, where a new line is the only delimiter
+            and non-trailing white space is considered significant, in order that file names containing spaces may be supplied
+            (however,  trailing white space is stripped from lines);
+            this can affect how options are parsed if included in the input.
 
 
        -n Equivalent to --excmd=number.

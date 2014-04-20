@@ -411,6 +411,7 @@ vim -S vimbook.vim
 
 :tabc   可以关闭当前标签页
 :tabo   将关闭所有的标签页
+:tabo[nly][!]	Close all other tab pages.
 
 :tabn或gt    移动到下一个标签页
 :tabp或gT    移动到上一个标签页
@@ -547,6 +548,7 @@ gd 从变量的调用跳转到它的局部声明。
 |gd|		gd		1  go to definition of word under the cursor in current function
 |gD|		gD		1  go to definition of word under the cursor in current file
 |gf|		gf		   start editing the file whose name is under the cursor
+ctrl-w gf
 
 
 :lw[indow] [height]	Same as ":cwindow", except use the window showing the location list for the current window.
@@ -775,3 +777,10 @@ g_			To the last non-blank character of the line and [count - 1] lines downward 
 
 '[  `[			To the first character of the previously changed or yanked text.  {not in Vi}
 ']  `]			To the last character of the previously changed or yanked text.  {not in Vi}
+
+
+:args *.[ch]
+:argdo %s/\<my_foo\>/My_Foo/ge | update
+This changes the word "my_foo" to "My_Foo" in all *.c and *.h files.
+The "e" flag is used for the ":substitute" command to avoid an error for files where "my_foo" isn't used.
+":update" writes the file only if changes were made.

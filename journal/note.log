@@ -339,3 +339,20 @@ Space Character
 Slash and Backslash — / \
 Square Brackets — [ ]
 Tilde — ~
+
+
+let @b=:tabnew<0d>iHello World<1b>
+:tabnewiHello World
+
+vim -u NONE
+
+http://learnvimscriptthehardway.stevelosh.com/
+http://www.vimperator.org/
+https://github.com/shawncplus/dotfiles/blob/master/.vim/startup/mappings.vim
+https://github.com/shawncplus/dotfiles/tree/master/.vim/bundle
+https://github.com/vim-scripts
+http://vim-scripts.org/vim/scripts.html
+https://github.com/gmarik/Vundle.vim
+
+
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle

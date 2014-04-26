@@ -37,6 +37,7 @@ Plugin 'c.vim'
 Plugin 'a.vim'
 Plugin 'Mark--Karkat'
 Plugin 'TxtBrowser'
+Plugin 'vis'
 "" scripts on GitHub repos https://github.com/
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gregsexton/gitv'
@@ -65,6 +66,8 @@ set number
 set hlsearch
 set ignorecase
 
+set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
+
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 set shiftwidth=4    " number of spaces to use for autoindenting
 set softtabstop=4   " Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
@@ -76,6 +79,42 @@ set backspace=indent,eol,start  " Influences the working of <BS>, <Del>, CTRL-W 
 " Always show the status line
 set laststatus=2
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+
+
+" custom comma motion mapping
+nmap di, f,dT,
+nmap ci, f,cT,
+nmap da, f,ld2F,i,<ESC>l "delete argument 
+nmap ca, f,ld2F,i,<ESC>a "delete arg and insert
+" delete surrounding characters
+noremap ds{ F{xf}x
+noremap cs{ F{xf}xi
+noremap ds" F"x,x
+noremap cs" F"x,xi
+noremap ds' F'x,x
+noremap cs' F'x,xi
+noremap ds( F(xf)x
+noremap cs( F(xf)xi
+noremap ds) F(xf)x
+noremap cs) F(xf)xi
+" quick pairs
+imap <leader>' ''<ESC>i
+imap <leader>" ""<ESC>i
+imap <leader>( ()<ESC>i
+imap <leader>[ []<ESC>i
+" auto-center
+nmap G Gzz
+nmap n nzz
+nmap N Nzz
+nmap } }zz
+nmap { {zz
+" indent
+vnoremap > >gv
+vnoremap < <gv
+
+
+
+
 
 set tags=tags;
 set cst
@@ -125,10 +164,10 @@ au BufRead,BufNewFile *.txt setlocal ft=txt
 " taglist.vim
 "==========================================
 let Tlist_Show_One_File=1
-let Tlist_WinWidth=30
+let Tlist_WinWidth=40
 let Tlist_Exit_OnlyWindow=1
 "let Tlist_Use_Right_Window=1
-"let Tlist_Auto_Open = 1
+let Tlist_Auto_Open=1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 "==========================================
@@ -321,7 +360,6 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "" 设置新文件的编码为 UTF-8
 "set encoding=utf-8
 "" 自动判断编码时，依次尝试以下编码：
-"set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
 ""set helplang=cn
 ""language message zh_CN.UTF-8
 ""set langmenu=zh_CN.UTF-8

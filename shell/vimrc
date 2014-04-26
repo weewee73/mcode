@@ -71,6 +71,9 @@ set noswapfile
 " 突出显示当前行等 不喜欢这种定位可注解
 "set cursorcolumn
 "set cursorline              " 突出显示当前行
+"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
 "好处：误删什么的，如果以前屏幕打开，可以找回
@@ -233,7 +236,7 @@ nmap <F6> :tprev<CR>
 "nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>  
 "nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 "nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>  
-"
+"map <F4> :execute "vimgrep /".expand("<cword>")."/"expand("%") <Bar> cw<CR>
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 nmap <silent> <leader>fe :Vexplore!<cr>

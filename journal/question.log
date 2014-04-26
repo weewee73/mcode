@@ -1,3 +1,7 @@
+vim:
+    1. delete all blank line
+    2. delete all blank end of line
+    3. fold auto
 vim buffers
 vim auto line feed 自动换行
 chinese encode

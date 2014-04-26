@@ -36,6 +36,7 @@ Plugin 'taglist.vim'
 Plugin 'c.vim'
 Plugin 'a.vim'
 Plugin 'Mark--Karkat'
+Plugin 'TxtBrowser'
 "" scripts on GitHub repos https://github.com/
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gregsexton/gitv'

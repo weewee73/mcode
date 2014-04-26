@@ -5,15 +5,37 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# General definitions
+alias grep='grep --color=auto'
+alias lt='ls -Altr'
+
+random()
+{
+    X=${1:-100}
+    N=${2:-10}
+    while [ "$N" -gt 0 ]
+    do
+        echo -ne "$[RANDOM%X+1] "
+        N=$[N-1]
+    done
+    echo
+}
+calc() { echo "$*" | bc -l; }
+max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }
+mtail() { tail -n +"$2" $1 | head -n $3; }
+mcount() { grep -o "$1" $2 | sort -n | uniq -c | sort -nr; }
+cp936_to_utf8() { iconv -f cp936 -t utf8 -o $1.tmp $1 && mv -i $1 $1.original && mv -i $1.tmp $1; }
+utf8_to_cp936() { iconv -t cp936 -f utf8 -o $1.tmp $1 && mv -i $1 $1.original && mv -i $1.tmp $1; }
+
+
+# User specific aliases and functions
 #export LANG=zh_CN.UTF-8
 export LANG="en_US.UTF-8"
 export LC_CTYPE="zh_CN.UTF-8"
 export EDITOR="vim"
 WORKSPACE="$HOME/github"
 
-# User specific aliases and functions
 alias vi='vim'
-alias grep='grep --color=auto'
 alias mnote='vim -c start $WORKSPACE/mcode/journal/note.log'
 alias mtask='vim -c start $WORKSPACE/mcode/journal/task.log'
 alias mshell='vim + $WORKSPACE/mcode/journal/shell.log'
@@ -27,21 +49,12 @@ source ${mcode}/shell/git-completion.bash
 
 PROMPT_COMMAND='$HOME/github/mcode/shell/mword.sh'
 
-random()
-{
-    X=${1:-100}
-    N=${2:-10}
-    while [ "$N" -gt 0 ]
-    do
-        echo -ne "$[RANDOM%X+1] "
-        N=$[N-1]
-    done
-    echo
-}
-
-calc() { echo "$*" | bc -l; }
-
-max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }
-
 # PROMPT_COMMAND=
 # echo -ne "\033]0;CODEING\007"
+
+
+# Workplace definitions
+if [ -f $HOME/.workrc ]; then
+	. $HOME/.workrc
+fi
+

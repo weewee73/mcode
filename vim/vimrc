@@ -1,33 +1,33 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+   set nocompatible              " be iMproved, required
+   filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" alternatively, pass a path where Vundle should install plugins
-"let path = '~/some/path/here'
-"call vundle#rc(path)
+   " set the runtime path to include Vundle and initialize
+   set rtp+=~/.vim/bundle/Vundle.vim
+   call vundle#begin()
+   " alternatively, pass a path where Vundle should install plugins
+   "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+   " let Vundle manage Vundle, required
+   Plugin 'gmarik/Vundle.vim'
 
-"" The following are examples of different formats supported.
-"" Keep Plugin commands between here and filetype plugin indent on.
-"" scripts on GitHub repos
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'tpope/vim-rails.git'
-"" The sparkup vim script is in a subdirectory of this repo called vim.
-"" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"" scripts from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-"Plugin 'FuzzyFinder'
-"" scripts not on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-"" git repos on your local machine (i.e. when working on your own plugin)
-""Plugin 'file:///home/gmarik/path/to/plugin'
-"" ...
+"   " The following are examples of different formats supported.
+"   " Keep Plugin commands between vundle#begin/end.
+"   " plugin on GitHub repo
+"   Plugin 'tpope/vim-fugitive'
+"   " plugin from http://vim-scripts.org/vim/scripts.html
+"   Plugin 'L9'
+"   " plugin not on GitHub
+"   Plugin 'git://git.wincent.com/command-t.git'
+"   " git repos on your local machine (i.e. when working on your own plugin)
+"   Plugin 'file:///home/gmarik/path/to/plugin'
+"   " The sparkup vim script is in a subdirectory of this repo called vim.
+"   " Pass the path to set the runtimepath properly.
+"   Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"   " Avoid a name conflict with L9
+"   Plugin 'user/L9', {'name': 'newL9'}
+"
+   " All of your Plugins must be added before the following line
+
 
 " my scripts
 "" scripts from http://vim-scripts.org/vim/scripts.html
@@ -43,19 +43,21 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
 
-filetype plugin indent on     " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-" Put your stuff after this line
+
+   call vundle#end()            " required
+   filetype plugin indent on    " required
+   " To ignore plugin indent changes, instead use:
+   "filetype plugin on
+   "
+   " Brief help
+   " :PluginList          - list configured plugins
+   " :PluginInstall(!)    - install (update) plugins
+   " :PluginSearch(!) foo - search (or refresh cache first) for foo
+   " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+   "
+   " see :h vundle for more details or wiki for FAQ
+   " Put your non-Plugin stuff after this line
+
 
 
 "==========================================
@@ -66,6 +68,11 @@ set number
 set hlsearch
 set ignorecase
 
+set background=light
+set t_Co=256
+
+
+set termencoding=gb18030
 set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
@@ -84,19 +91,25 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 " custom comma motion mapping
 nmap di, f,dT,
 nmap ci, f,cT,
-nmap da, f,ld2F,i,<ESC>l "delete argument 
-nmap ca, f,ld2F,i,<ESC>a "delete arg and insert
-" delete surrounding characters
-noremap ds{ F{xf}x
-noremap cs{ F{xf}xi
-noremap ds" F"x,x
-noremap cs" F"x,xi
-noremap ds' F'x,x
-noremap cs' F'x,xi
-noremap ds( F(xf)x
-noremap cs( F(xf)xi
-noremap ds) F(xf)x
-noremap cs) F(xf)xi
+nmap da, f,ld2F,i,<ESC>l
+nmap ca, f,ld2F,i,<ESC>a
+"" delete surrounding characters
+noremap <leader>d" F"x,x
+noremap <leader>c" F"x,xi
+noremap <leader>d' F'x,x
+noremap <leader>c' F'x,xi
+noremap <leader>d( F(xf)x
+noremap <leader>c( F(xf)xi
+noremap <leader>d) F(xf)x
+noremap <leader>c) F(xf)xi
+noremap <leader>d{ F{xf}x
+noremap <leader>d} F{xf}x
+noremap <leader>c{ F{xf}xi
+noremap <leader>c} F{xf}xi
+noremap <leader>d[ F[xf]x
+noremap <leader>d] F[xf]x
+noremap <leader>c[ F[xf]xi
+noremap <leader>c] F[xf]xi
 " quick pairs
 imap <leader>' ''<ESC>i
 imap <leader>" ""<ESC>i
@@ -147,6 +160,7 @@ nmap <F6> :tprev<CR>
 "nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 "nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>  
 "
+
 
 "nnoremap <silent> <Leader>ff :execute "vimgrep /".expand("<cword>")."/"expand("%") <Bar> cw<CR>
 nnoremap <silent> <Leader>ff  :vimgrep /<C-R>=expand("<cword>")<CR>/ % \| cw<CR>
@@ -242,9 +256,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "syntax enable
 "syntax on
 ""let g:molokai_original = 1
-""set background=light
-""set background=dark
-""set t_Co=256
+"set background=dark
 "
 "
 ""非兼容vi模式。去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
@@ -271,8 +283,8 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "
 "" 突出显示当前行等 不喜欢这种定位可注解
 ""set cursorcolumn
-""set cursorline              " 突出显示当前行
-""hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"set cursorline              " 突出显示当前行
+"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 ""hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 ""nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 "
@@ -412,4 +424,9 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 ""When on, splitting a window will put the new window right of the current one.
 "set splitright 
 "
+
+"" Highlight c function
+"syn match    cCustomParen    "(" contains=cParen
+"syn match    cCustomFunc     "\w\+\s*(" contains=cCustomParen
+"hi cCustomFunc cterm=bold ctermfg=blue
 

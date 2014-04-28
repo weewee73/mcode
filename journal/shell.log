@@ -942,3 +942,26 @@ cvs log -S -d "2005/10/1<2005/10/3"
 To show the headers of files in the current directory created after October 1, 2005 through the present time:
 cvs log -S -l -d "2005/10/1<now"
 
+
+
+man 1 intro - 一篇对从未接触过Linux的用户的简明教程。
+man 2 syscalls - 内核系统请求的列表，按内核版本注释分类，系统编程必备。
+man 2 select_tut - 关于select()系统请求的教程。
+man 3 string - 在头文件内的所有函数。
+man 3 stdio - 关于头文件的使用，标准输入/输出库的说明。
+man 3 errno - 所有errorno的取值及说明。（C语言内类似其他语言的异常告知机 制）
+man 4 console_codes - Linux的终端控制码及其使用解释。
+man 4 full - 介绍/dev/full这个总是处于"满"状态的磁盘。（对应/dev/null这个总是 空的设备）
+man 5 proc - 介绍/proc下的文件系统。
+man 5 filesystems - 各种Linux文件系统。
+man 7 bootparam - 详细解释内核启动参数。
+man 7 charsets - 解释各种语言的编码集。（gbk，gb2312等）
+man 7 glob - 解释glob文件名管理机制的工作过程。
+man 7 hier - 解释Linux文件系统结构各个部分的作用。
+man 7 operator - C语言的运算符的列表。
+man 7 regex - 介绍正则表达式。
+man 7 suffixes - 常见文件后缀名的列表跟解释。
+man 7 time - Linux的时钟机制解释。
+man 7 units - 数值单位及其数值的解释。
+man 7 utf8 - 描述UTF-8编码。
+man 7 url - 解释URL、URI、URN等的标准。

@@ -356,3 +356,10 @@ https://github.com/gmarik/Vundle.vim
 
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git submodule
+
+ubuntu
+gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encodingUTF-8
+~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
+
+Monospace

@@ -42,6 +42,8 @@ Plugin 'vis'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
+Plugin 'ervandew/supertab'
+"Plugin 'tomasr/molokai'
 
 
    call vundle#end()            " required
@@ -64,6 +66,7 @@ Plugin 'tpope/vim-fugitive'
 " General
 "==========================================
 set number
+highlight LineNr  ctermbg=255 ctermfg=8
 
 set hlsearch
 set ignorecase
@@ -295,6 +298,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "
 ""- 则点击光标不会换,用于复制
 "set mouse-=a           " 鼠标暂不启用, 键盘党....
+set mouse=a           " 鼠标暂不启用, 键盘党....
 "" 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
 ""set selection=exclusive
 "set selection=inclusive
@@ -425,7 +429,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "set splitright 
 "
 
-"" Highlight c function
+"" Highlight c function  (~/.vim/syntax/c.vim)
 "syn match    cCustomParen    "(" contains=cParen
 "syn match    cCustomFunc     "\w\+\s*(" contains=cCustomParen
 "hi cCustomFunc cterm=bold ctermfg=blue

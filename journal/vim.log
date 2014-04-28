@@ -785,3 +785,5 @@ g_			To the last non-blank character of the line and [count - 1] lines downward 
 This changes the word "my_foo" to "My_Foo" in all *.c and *.h files.
 The "e" flag is used for the ":substitute" command to avoid an error for files where "my_foo" isn't used.
 ":update" writes the file only if changes were made.
+
+:scrip[tnames]		List all sourced script names, in the order they were first sourced.

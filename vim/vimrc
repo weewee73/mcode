@@ -74,6 +74,9 @@ set ignorecase
 set background=light
 set t_Co=256
 
+"t_te	out of termcap mode
+"t_ti	put terminal in termcap mode
+set t_ti= t_te=
 
 set termencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
@@ -191,6 +194,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " Lokaltog/vim-easymotion
 "==========================================
 "map <Leader> <Plug>(easymotion-prefix)
+map s <Plug>(easymotion-s)
 
 
 

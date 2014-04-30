@@ -71,12 +71,19 @@ highlight LineNr  ctermbg=255 ctermfg=8
 set hlsearch
 set ignorecase
 
+syntax enable
+"syntax on
+
 set background=light
 set t_Co=256
 
 "t_te	out of termcap mode
 "t_ti	put terminal in termcap mode
 set t_ti= t_te=
+
+""When on, splitting a window will put the new window right of the current one.
+set splitright 
+
 
 set termencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,big5,gb18030,euc-jp,euc-kr,latin1
@@ -151,12 +158,12 @@ if has("cscope")
     set csverb
 endif
 set cscopequickfix=s-,c-,d-,i-,t-,e-
-nmap <F2> :tnext<CR>
-nmap <S-F2> :tprev<CR>
-nmap <F3> :cnext<CR>
-nmap <S-F3> :cprev<CR>
+nmap <F2> :cnext<CR>
+nmap <F3> :cprev<CR>
 nmap <F4> :cs find e <C-R>=expand("<cword>")<CR><CR>  
 nmap <F5> :cs find c <C-R>=expand("<cword>")<CR><CR>  
+nmap <F6> :tnext<CR>
+nmap <F7> :tprev<CR>
 "nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>  
 "nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
 "nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  
@@ -260,8 +267,6 @@ map s <Plug>(easymotion-s)
 "
 ""==========================================
 ""开启语法高亮
-"syntax enable
-"syntax on
 ""let g:molokai_original = 1
 "set background=dark
 "
@@ -429,8 +434,6 @@ set mouse=a           " 鼠标暂不启用, 键盘党....
 "iabbrev #b /****************************************
 "iabbrev #e <Space>****************************************/
 "
-""When on, splitting a window will put the new window right of the current one.
-"set splitright 
 "
 
 "" Highlight c function  (~/.vim/syntax/c.vim)

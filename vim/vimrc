@@ -43,6 +43,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'kshenoy/vim-signature' "vim-signature is a plugin to place, toggle and display marks.
 "Plugin 'tomasr/molokai'
 
 
@@ -101,33 +104,33 @@ set laststatus=2
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
 
-" custom comma motion mapping
-nmap di, f,dT,
-nmap ci, f,cT,
-nmap da, f,ld2F,i,<ESC>l
-nmap ca, f,ld2F,i,<ESC>a
-"" delete surrounding characters
-noremap <leader>d" F"x,x
-noremap <leader>c" F"x,xi
-noremap <leader>d' F'x,x
-noremap <leader>c' F'x,xi
-noremap <leader>d( F(xf)x
-noremap <leader>c( F(xf)xi
-noremap <leader>d) F(xf)x
-noremap <leader>c) F(xf)xi
-noremap <leader>d{ F{xf}x
-noremap <leader>d} F{xf}x
-noremap <leader>c{ F{xf}xi
-noremap <leader>c} F{xf}xi
-noremap <leader>d[ F[xf]x
-noremap <leader>d] F[xf]x
-noremap <leader>c[ F[xf]xi
-noremap <leader>c] F[xf]xi
-" quick pairs
-imap <leader>' ''<ESC>i
-imap <leader>" ""<ESC>i
-imap <leader>( ()<ESC>i
-imap <leader>[ []<ESC>i
+"" custom comma motion mapping
+"nmap di, f,dT,
+"nmap ci, f,cT,
+"nmap da, f,ld2F,i,<ESC>l
+"nmap ca, f,ld2F,i,<ESC>a
+""" delete surrounding characters
+"noremap <leader>d" F"x,x
+"noremap <leader>c" F"x,xi
+"noremap <leader>d' F'x,x
+"noremap <leader>c' F'x,xi
+"noremap <leader>d( F(xf)x
+"noremap <leader>c( F(xf)xi
+"noremap <leader>d) F(xf)x
+"noremap <leader>c) F(xf)xi
+"noremap <leader>d{ F{xf}x
+"noremap <leader>d} F{xf}x
+"noremap <leader>c{ F{xf}xi
+"noremap <leader>c} F{xf}xi
+"noremap <leader>d[ F[xf]x
+"noremap <leader>d] F[xf]x
+"noremap <leader>c[ F[xf]xi
+"noremap <leader>c] F[xf]xi
+"" quick pairs
+"imap <leader>' ''<ESC>i
+"imap <leader>" ""<ESC>i
+"imap <leader>( ()<ESC>i
+"imap <leader>[ []<ESC>i
 " auto-center
 nmap G Gzz
 nmap n nzz
@@ -179,8 +182,8 @@ nmap <F7> :tprev<CR>
 nnoremap <silent> <Leader>ff  :vimgrep /<C-R>=expand("<cword>")<CR>/ % \| cw<CR>
 vnoremap <silent> <Leader>ff y:vimgrep /<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR>/ % \| cw<CR>
 
-nnoremap <silent> <Leader>ft  :let @a="" \| g/<C-R>=expand("<cword>")<CR>/y A<CR><C-O>:tabnew<CR>p
-vnoremap <silent> <Leader>ft y:let @a="" \| g/<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR>/y A<CR><C-O>:tabnew<CR>p
+nnoremap <silent> <Leader>ft  :let @a="" \| g/<C-R>=expand("<cword>")<CR>/y A<CR><C-O>:tabnew<CR>P
+vnoremap <silent> <Leader>ft y:let @a="" \| g/<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR>/y A<CR><C-O>:tabnew<CR>P
 
 "==========================================
 " TxtBrowser
@@ -202,6 +205,15 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "==========================================
 "map <Leader> <Plug>(easymotion-prefix)
 map s <Plug>(easymotion-s)
+
+"==========================================
+" The-NERD-tree
+"==========================================
+let NERDTreeWinPos="right"
+"==========================================
+" fholgado/minibufexpl.vim
+"==========================================
+let g:miniBufExplorerAutoStart = 0
 
 
 

@@ -669,6 +669,8 @@ The CTRL-A command is very useful in a macro.  Example: Use the following steps 
 |CTRL-]|		Jump to tag under cursor (e.g., definition of a function).
 |CTRL-T|		Jump back to before a CTRL-] command.
 
+CTRL-I			Go to [count] newer cursor position in jump list.
+CTRL-O			Go to [count] Older cursor position in jump list.
 
 |gd|			Go to Declaration of local variable under cursor.
 |gD|			Go to Declaration of global variable under cursor.

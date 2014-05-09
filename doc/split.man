@@ -1,0 +1,72 @@
+SPLIT(1)                         User Commands                        SPLIT(1)
+
+
+
+NAME
+       split - split a file into pieces
+
+SYNOPSIS
+       split [OPTION]... [INPUT [PREFIX]]
+
+DESCRIPTION
+       Output fixed-size pieces of INPUT to PREFIXaa, PREFIXab, ...; default
+       size is 1000 lines, and default PREFIX is 'x'.  With no INPUT, or when
+       INPUT is -, read standard input.
+
+       Mandatory arguments to long options are mandatory for short options
+       too.
+
+       -a, --suffix-length=N
+              use suffixes of length N (default 2)
+
+       -b, --bytes=SIZE
+              put SIZE bytes per output file
+
+       -C, --line-bytes=SIZE
+              put at most SIZE bytes of lines per output file
+
+       -d, --numeric-suffixes
+              use numeric suffixes instead of alphabetic
+
+       -l, --lines=NUMBER
+              put NUMBER lines per output file
+
+       --verbose
+              print a diagnostic just before each output file is opened
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       SIZE may be (or may be an integer optionally followed by) one of fol-
+       lowing: KB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T,
+       P, E, Z, Y.
+
+AUTHOR
+       Written by Torbjorn Granlund and Richard M. Stallman.
+
+REPORTING BUGS
+       Report split bugs to bug-coreutils@gnu.org
+       GNU coreutils home page: <http://www.gnu.org/software/coreutils/>
+       General help using GNU software: <http://www.gnu.org/gethelp/>
+       Report split translation bugs to <http://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright © 2010 Free Software Foundation, Inc.   License GPLv3+:  GNU
+       GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+       This is free software:  you are free to change and redistribute it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       The full documentation for split is maintained as a Texinfo manual.  If
+       the info and split programs are properly installed at your site, the
+       command
+
+              info coreutils 'split invocation'
+
+       should give you access to the complete manual.
+
+
+
+GNU coreutils 8.4                November 2013                        SPLIT(1)

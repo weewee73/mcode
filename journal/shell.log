@@ -965,3 +965,12 @@ man 7 time - Linux的时钟机制解释。
 man 7 units - 数值单位及其数值的解释。
 man 7 utf8 - 描述UTF-8编码。
 man 7 url - 解释URL、URI、URN等的标准。
+
+OUTFILE=`ls -l | grep -v total`
+while read line
+do
+all="$all $line"
+echo $line
+done <<EOF
+$OUTFILE
+EOF

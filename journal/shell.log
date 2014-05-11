@@ -974,3 +974,34 @@ echo $line
 done <<EOF
 $OUTFILE
 EOF
+
+
+${parameter,,pattern}, where parameter is the name of your variable and pattern is ommitted
+$ string="Hello, World!"
+$ echo $string
+Hello, World!
+$ echo ${string,,}
+hello, world!
+The upper-case conversion works with ${parameter^^pattern}
+$ echo ${string^^}
+HELLO, WORLD!
+
+kill -9 %1
+
+logF() { while read data; do echo "[F:$(date +"%D %T")] $data"; done; }
+seq 5 | logF
+
+catecho () {
+    if read -t 0; then
+        cat
+    else
+        echo "$*"
+    fi
+}
+$ catecho command line arguments
+command line arguments
+$ echo "foo bar" | catecho
+foo bar
+
+
+read_from_pipe() { read "$@" <&0; }

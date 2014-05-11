@@ -3,6 +3,22 @@
 SUCC=0
 FAIL=255 #return -- -1;Exit codes should be in the range 0-255.
 
+function usage()
+{
+    cat <<EOF
+Usage: `basename $0` [-f configfile]
+    The default configfile is merge.conf
+    FILE FORMAT:
+        new_file    file_1:offset_1,file_2:offset_2[,...]     [new_char1:offset_char1[,...]]
+        For example:
+        A.bin  a1.bin:0,a2.bin:0x8000,a3.bin:0x10000,a4.bin:0x18000 
+        B.bin  b1.bin:0,b2.bin:0x8000                                 \x0d:0x1234,\xfa:0x2345 
+EOF
+
+    exit 0
+}
+
+
 function log()
 {
     echo ----  $@  ----
@@ -47,20 +63,51 @@ function fill_file()
     fi
 }
 
-# new_file    file_01:of_01,file_02:of_02     x_01:of_01,x_02:of_02 
+function replace_char()
+{
+    printf "\\$1"
+    return 0
+
+    local new_char="$1"
+    local offset=$(($2))
+    local file="$3"
+
+    if [ ! -f "$file" ]; then
+        log "[error] $file not exists!"
+        return $FAIL
+    fi
+
+    printf "\\$1" | dd of="$file" bs=1 seek=$offset count=1 conv=notrunc
+}
+
+# main
+conf_file="merge.conf"
+if [ "x-h" = "x$1" ]; then
+    usage
+elif [ "x-f" = "x$1" ]; then
+    conf_file="$2"
+fi
+
+if [ ! -f "$conf_file" ]; then
+    log "[error] configfile $conf_file not exists!"
+    usage
+fi
+
+
 OLD_IFS="$IFS"
 while read new_file file_offset modify_offset
 do
     if [ -z "$new_file" ]; then continue; fi
 
     > "$new_file"
+
     IFS=','
     array=($file_offset)
     for item in ${array[@]}
     do
         IFS=':'
         sub_array=($item)
-        log ${sub_array[1]} ${sub_array[1]}
+        log ${sub_array[0]} ${sub_array[1]}
 
         #fill_file  "${sub_array[0]}" "${sub_array[1]}" "$new_file" 
 
@@ -70,8 +117,21 @@ do
         fi
     done
 
+    IFS=','
+    array=($modify_offset)
+    for item in ${array[@]}
+    do
+        IFS=':'
+        sub_array=($item)
+        log ${sub_array[0]} ${sub_array[1]}
 
+        replace_char  "${sub_array[0]}" "${sub_array[1]}" "$new_file" 
+
+        if [ $? -eq $FAIL ]; then
+            rm -f "$new_file"
+            break
+        fi
+    done
 
     IFS="$OLD_IFS"
-done < merge.conf
-
+done < $conf_file

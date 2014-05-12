@@ -363,3 +363,9 @@ gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encodingUTF-
 ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
 
 Monospace
+
+tmux
+<Ctrl-b>%  split a window vertically pane
+<Ctrl-b>"  split the window in horizontal pane
+<Ctrl-b>;  go to the previously active pane
+<Ctrl-b>x  close the current pane

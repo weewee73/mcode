@@ -24,16 +24,13 @@ permgen({1,2,3})
 print("---------------\n")
 function permgen_2(a, s)
     s = s or 1
---    print("-", s)
     n = #a
     if s >= n then
         printResult(a)
     else
         for i=s,n do
             a[s], a[i] = a[i], a[s]
-            print("-start", i+1)
-            permgen_2(a, i+1)
-            print("-  end", i+1)
+            permgen_2(a, s+1)
             a[s], a[i] = a[i], a[s]
         end
     end

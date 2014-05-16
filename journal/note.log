@@ -367,5 +367,19 @@ Monospace
 tmux
 <Ctrl-b>%  split a window vertically pane
 <Ctrl-b>"  split the window in horizontal pane
+
 <Ctrl-b>;  go to the previously active pane
+
 <Ctrl-b>x  close the current pane
+
+<Ctrl-b>Page Up    Enter copy mode and scroll one page up.
+<Ctrl-b>[          Enter copy mode to copy text or view the history.
+<Ctrl-b>]          Paste the most recently copied buffer of text.
+<Ctrl-b>=          Choose which buffer to paste interactively from a list.
+
+<Ctrl-b>#          List all paste buffers.
+    vi:
+    Start selection              Space
+    Copy selection               Enter
+    Clear selection              Escape
+    Delete/Copy to end of line   D

@@ -24,6 +24,7 @@ calc() { echo "$*" | bc -l; }
 max() { [ "$1" -gt "$2" ] && { echo $1; } || { echo $2; }; }
 mtail() { tail -n +"$2" $1 | head -n $3; }
 mcount() { grep -o "$1" $2 | sort -n | uniq -c | sort -nr; }
+mfind_ch() { grep $@ `find . -name "*.[ch]"`; }
 cp936_to_utf8() { iconv -f cp936 -t utf8 -o $1.tmp $1 && mv -i $1 $1.original && mv -i $1.tmp $1; }
 utf8_to_cp936() { iconv -t cp936 -f utf8 -o $1.tmp $1 && mv -i $1 $1.original && mv -i $1.tmp $1; }
 value_to_hex() { local value=$1; if [ -z "$value" ]; then read value; fi; printf "0x%x\n" $(($value)); }
@@ -44,6 +45,7 @@ alias mnote='vim -c start $WORKSPACE/mcode/journal/note.log'
 alias mtask='vim -c start $WORKSPACE/mcode/journal/task.log'
 alias mshell='vim + $WORKSPACE/mcode/journal/shell.log'
 alias ashell='echo >>$WORKSPACE/mcode/journal/shell.log'
+alias mvim='vim + $WORKSPACE/mcode/journal/vim.log'
 alias mquestion='vim -c start $WORKSPACE/mcode/journal/question.log'
 alias man='$WORKSPACE/mcode/shell/mman.sh'
 alias project_init='$WORKSPACE/mcode/shell/project_init.sh'

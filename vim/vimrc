@@ -132,11 +132,15 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 "imap <leader>( ()<ESC>i
 "imap <leader>[ []<ESC>i
 " auto-center
-nmap G Gzz
+"nmap G Gzz
 nmap n nzz
 nmap N Nzz
 nmap } }zz
 nmap { {zz
+nnoremap ]] ]]zz
+nnoremap [[ [[zz
+"nnoremap ]] j]]kzzf(b
+"nnoremap [[  [[kzzf(b
 " indent
 vnoremap > >gv
 vnoremap < <gv
@@ -185,6 +189,12 @@ vnoremap <silent> <Leader>ff y:vimgrep /<C-R>=substitute(escape(@", '.*\\/[]'), 
 nnoremap <silent> <Leader>ft  :let @a="" \| g/<C-R>=expand("<cword>")<CR>/y A<CR><C-O>:tabnew<CR>P
 vnoremap <silent> <Leader>ft y:let @a="" \| g/<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR>/y A<CR><C-O>:tabnew<CR>P
 
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+
 "==========================================
 " TxtBrowser
 "==========================================
@@ -210,6 +220,8 @@ map s <Plug>(easymotion-s)
 " The-NERD-tree
 "==========================================
 let NERDTreeWinPos="right"
+nnoremap <silent> <F10> :NERDTreeToggle<CR>
+
 "==========================================
 " fholgado/minibufexpl.vim
 "==========================================

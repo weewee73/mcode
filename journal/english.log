@@ -77,3 +77,9 @@ Are you really totally broke?
 I feel sick to my stomach. 
 
 None is frequently used to represent the absence of a value
+
+The check is done using the calling process’s real UID and GID, rather than the effective IDs as is done when actually attempting an operation (e.g., open(2)) on the  file.
+As is known to everybody, it may now be too late to clean up the river.
+It is known to everybody that it may now be too late to clean up the river.
+It is known to everybody to be too late to clean up the river.
+What is known to everybody is that it may now be too late to clean up the river.

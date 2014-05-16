@@ -1006,3 +1006,5 @@ foo bar
 
 read_from_pipe() { read "$@" <&0; }
 
+ipv4
+netstat -anptu --ip

@@ -789,3 +789,41 @@ The "e" flag is used for the ":substitute" command to avoid an error for files w
 ":update" writes the file only if changes were made.
 
 :scrip[tnames]		List all sourced script names, in the order they were first sourced.
+
+---------- c.vim ----------
+   vim ~/.vim/c-support/templates/Templates
+\if             Adding C function in normal mode or insert mode
+\im             insert main function
+\cfu            insert a function comment
+\cfr            insert a frame commnet
+\p<             insert "#include <>"
+\rc             save and compile the file
+\rr             run
+\nr             insert snippet code
+
+---------- c.vim ----------
+
+
+---------- signature.vim ----------
+
+m[a-zA-Z]    Toggle mark and display it in the leftmost column
+
+m,           Place the next available mark
+m.           If no mark on line, place the next available mark. Otherwise, remove (first) existing mark.
+
+m-           Delete all marks from the current line
+m<Space>     Delete all marks from the current buffer
+m<BS>        Remove all markers
+
+]`           Jump to next mark
+[`           Jump to prev mark
+`]           Jump by alphabetical order to next mark
+`[           Jump by alphabetical order to prev mark
+
+]'           Jump to start of next line containing a mark
+['           Jump to start of prev line containing a mark
+']           Jump by alphabetical order to start of next line having a mark
+'[           Jump by alphabetical order to start of prev line having a mark
+
+---------- signature.vim ----------
+

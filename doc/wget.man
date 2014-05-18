@@ -107,22 +107,20 @@ OPTIONS
 
        -e command
        --execute command
-           Execute command as if it were a part of .wgetrc.  A command thus
-           invoked will be executed after the commands in .wgetrc, thus taking
-           precedence over them.  If you need to specify more than one wgetrc
-           command, use multiple instances of -e.
+           Execute command as if it were a part of .wgetrc.
+           A command thus invoked will be executed after the commands in .wgetrc, thus taking precedence over them.
+           If you need to specify more than one wgetrc command, use multiple instances of -e.
 
    Logging and Input File Options
        -o logfile
        --output-file=logfile
-           Log all messages to logfile.  The messages are normally reported to
-           standard error.
+           Log all messages to logfile.  The messages are normally reported to standard error.
 
        -a logfile
        --append-output=logfile
-           Append to logfile.  This is the same as -o, only it appends to
-           logfile instead of overwriting the old log file.  If logfile does
-           not exist, a new file is created.
+           Append to logfile.
+           This is the same as -o, only it appends to logfile instead of overwriting the old log file.
+           If logfile does not exist, a new file is created.
 
        -d
        --debug
@@ -140,36 +138,30 @@ OPTIONS
 
        -v
        --verbose
-           Turn on verbose output, with all the available data.  The default
-           output is verbose.
+           Turn on verbose output, with all the available data.  The default output is verbose.
 
        -nv
        --no-verbose
            Turn off verbose without being completely quiet (use -q for that),
-           which means that error messages and basic information still get
-           printed.
+               which means that error messages and basic information still get printed.
 
        -i file
        --input-file=file
-           Read URLs from a local or external file.  If - is specified as
-           file, URLs are read from the standard input.  (Use ./- to read from
-           a file literally named -.)
+           Read URLs from a local or external file.
+           If - is specified as file, URLs are read from the standard input.
+               (Use ./- to read from a file literally named -.)
 
-           If this function is used, no URLs need be present on the command
-           line.  If there are URLs both on the command line and in an input
-           file, those on the command lines will be the first ones to be
-           retrieved.  If --force-html is not specified, then file should
-           consist of a series of URLs, one per line.
+           If this function is used, no URLs need be present on the command line.
+           If there are URLs both on the command line and in an input file,
+               those on the command lines will be the first ones to be retrieved.
+           If --force-html is not specified, then file should consist of a series of URLs, one per line.
 
-           However, if you specify --force-html, the document will be regarded
-           as html.  In that case you may have problems with relative links,
-           which you can solve either by adding "<base href="url">" to the
-           documents or by specifying --base=url on the command line.
+           However, if you specify --force-html, the document will be regarded as html.
+           In that case you may have problems with relative links,
+               which you can solve either by adding "<base href="url">" to the documents or by specifying --base=url on the command line.
 
-           If the file is an external one, the document will be automatically
-           treated as html if the Content-Type matches text/html.
-           Furthermore, the file's location will be implicitly used as base
-           href if none was specified.
+           If the file is an external one, the document will be automatically treated as html if the Content-Type matches text/html.
+           Furthermore, the file's location will be implicitly used as base href if none was specified.
 
        -F
        --force-html
@@ -188,13 +180,12 @@ OPTIONS
            with URL as the value for the "href" attribute.
 
            For instance, if you specify http://foo/bar/a.html for URL, and
-           Wget reads ../baz/b.html from the input file, it would be resolved
-           to http://foo/baz/b.html.
+               Wget reads ../baz/b.html from the input file, it would be resolved to http://foo/baz/b.html.
 
    Download Options
        --bind-address=ADDRESS
-           When making client TCP/IP connections, bind to ADDRESS on the local
-           machine.  ADDRESS may be specified as a hostname or IP address.
+           When making client TCP/IP connections, bind to ADDRESS on the local machine.
+           ADDRESS may be specified as a hostname or IP address.
            This option can be useful if your machine is bound to multiple IPs.
 
        -t number
@@ -237,36 +228,29 @@ OPTIONS
        -nc
        --no-clobber
            If a file is downloaded more than once in the same directory,
-           Wget's behavior depends on a few options, including -nc.  In
-           certain cases, the local file will be clobbered, or overwritten,
-           upon repeated download.  In other cases it will be preserved.
+               Wget's behavior depends on a few options, including -nc.
+           In certain cases, the local file will be clobbered, or overwritten, upon repeated download.
+           In other cases it will be preserved.
 
-           When running Wget without -N, -nc, -r, or -p, downloading the same
-           file in the same directory will result in the original copy of file
-           being preserved and the second copy being named file.1.  If that
-           file is downloaded yet again, the third copy will be named file.2,
-           and so on.  (This is also the behavior with -nd, even if -r or -p
-           are in effect.)  When -nc is specified, this behavior is
-           suppressed, and Wget will refuse to download newer copies of file.
-           Therefore, ""no-clobber"" is actually a misnomer in this
-           mode---it's not clobbering that's prevented (as the numeric
-           suffixes were already preventing clobbering), but rather the
-           multiple version saving that's prevented.
+           When running Wget without -N, -nc, -r, or -p, downloading the same file in the same directory
+               will result in the original copy of file being preserved and the second copy being named file.1.
+           If that file is downloaded yet again, the third copy will be named file.2, and so on.
+           (This is also the behavior with -nd, even if -r or -p are in effect.)
+           When -nc is specified, this behavior is suppressed, and Wget will refuse to download newer copies of file.
+           Therefore, ""no-clobber"" is actually a misnomer in this mode---it's not clobbering that's prevented
+               (as the numeric suffixes were already preventing clobbering), but rather the multiple version saving that's prevented.
 
-           When running Wget with -r or -p, but without -N, -nd, or -nc, re-
-           downloading a file will result in the new copy simply overwriting
-           the old.  Adding -nc will prevent this behavior, instead causing
-           the original version to be preserved and any newer copies on the
-           server to be ignored.
+           When running Wget with -r or -p, but without -N, -nd, or -nc, redownloading a file
+               will result in the new copy simply overwriting the old.
+           Adding -nc will prevent this behavior,
+               instead causing the original version to be preserved and any newer copies on the server to be ignored.
 
-           When running Wget with -N, with or without -r or -p, the decision
-           as to whether or not to download a newer copy of a file depends on
-           the local and remote timestamp and size of the file.  -nc may not
-           be specified at the same time as -N.
+           When running Wget with -N, with or without -r or -p, the decision as to whether or not to download a newer copy of a file
+               depends on the local and remote timestamp and size of the file.
+           -nc may not be specified at the same time as -N.
 
-           Note that when -nc is specified, files with the suffixes .html or
-           .htm will be loaded from the local disk and parsed as if they had
-           been retrieved from the Web.
+           Note that when -nc is specified, files with the suffixes .html or .htm
+               will be loaded from the local disk and parsed as if they had been retrieved from the Web.
 
        -c
        --continue
@@ -320,8 +304,8 @@ OPTIONS
            Note that -c only works with FTP servers and with HTTP servers that support the "Range" header.
 
        --progress=type
-           Select the type of the progress indicator you wish to use.  Legal
-           indicators are "dot" and "bar".
+           Select the type of the progress indicator you wish to use.
+           Legal indicators are "dot" and "bar".
 
            The "bar" indicator is used by default.  It draws an ASCII progress
            bar graphics (a.k.a "thermometer" display) indicating the status of
@@ -355,71 +339,60 @@ OPTIONS
 
        -S
        --server-response
-           Print the headers sent by HTTP servers and responses sent by FTP
-           servers.
+           Print the headers sent by HTTP servers and responses sent by FTP servers.
 
        --spider
            When invoked with this option, Wget will behave as a Web spider,
-           which means that it will not download the pages, just check that
-           they are there.  For example, you can use Wget to check your
-           bookmarks:
+               which means that it will not download the pages, just check that they are there.
+           For example, you can use Wget to check your bookmarks:
 
                    wget --spider --force-html -i bookmarks.html
 
-           This feature needs much more work for Wget to get close to the
-           functionality of real web spiders.
+           This feature needs much more work for Wget to get close to the functionality of real web spiders.
 
        -T seconds
        --timeout=seconds
-           Set the network timeout to seconds seconds.  This is equivalent to
-           specifying --dns-timeout, --connect-timeout, and --read-timeout,
-           all at the same time.
+           Set the network timeout to seconds seconds.
+           This is equivalent to specifying --dns-timeout, --connect-timeout, and --read-timeout, all at the same time.
 
-           When interacting with the network, Wget can check for timeout and
-           abort the operation if it takes too long.  This prevents anomalies
-           like hanging reads and infinite connects.  The only timeout enabled
-           by default is a 900-second read timeout.  Setting a timeout to 0
-           disables it altogether.  Unless you know what you are doing, it is
-           best not to change the default timeout settings.
+           When interacting with the network, Wget can check for timeout and abort the operation if it takes too long.
+           This prevents anomalies like hanging reads and infinite connects.
+           The only timeout enabled by default is a 900-second read timeout.
+           Setting a timeout to 0 disables it altogether.
+           Unless you know what you are doing, it is best not to change the default timeout settings.
 
-           All timeout-related options accept decimal values, as well as
-           subsecond values.  For example, 0.1 seconds is a legal (though
-           unwise) choice of timeout.  Subsecond timeouts are useful for
-           checking server response times or for testing network latency.
+           All timeout-related options accept decimal values, as well as subsecond values.
+           For example, 0.1 seconds is a legal (though unwise) choice of timeout.
+           Subsecond timeouts are useful for checking server response times or for testing network latency.
 
        --dns-timeout=seconds
-           Set the DNS lookup timeout to seconds seconds.  DNS lookups that
-           don't complete within the specified time will fail.  By default,
-           there is no timeout on DNS lookups, other than that implemented by
-           system libraries.
+           Set the DNS lookup timeout to seconds seconds.
+           DNS lookups that don't complete within the specified time will fail.
+           By default, there is no timeout on DNS lookups, other than that implemented by system libraries.
 
        --connect-timeout=seconds
-           Set the connect timeout to seconds seconds.  TCP connections that
-           take longer to establish will be aborted.  By default, there is no
-           connect timeout, other than that implemented by system libraries.
+           Set the connect timeout to seconds seconds.
+           TCP connections that take longer to establish will be aborted.
+           By default, there is no connect timeout, other than that implemented by system libraries.
 
        --read-timeout=seconds
-           Set the read (and write) timeout to seconds seconds.  The "time" of
-           this timeout refers to idle time: if, at any point in the download,
+           Set the read (and write) timeout to seconds seconds.
+           The "time" of this timeout refers to idle time: if, at any point in the download,
            no data is received for more than the specified number of seconds,
-           reading fails and the download is restarted.  This option does not
-           directly affect the duration of the entire download.
+           reading fails and the download is restarted.
+           This option does not directly affect the duration of the entire download.
 
-           Of course, the remote server may choose to terminate the connection
-           sooner than this option requires.  The default read timeout is 900
-           seconds.
+           Of course, the remote server may choose to terminate the connection sooner than this option requires.
+           The default read timeout is 900 seconds.
 
        --limit-rate=amount
-           Limit the download speed to amount bytes per second.  Amount may be
-           expressed in bytes, kilobytes with the k suffix, or megabytes with
-           the m suffix.  For example, --limit-rate=20k will limit the
-           retrieval rate to 20KB/s.  This is useful when, for whatever
-           reason, you don't want Wget to consume the entire available
-           bandwidth.
+           Limit the download speed to amount bytes per second.
+           Amount may be expressed in bytes, kilobytes with the k suffix, or megabytes with the m suffix.
+           For example, --limit-rate=20k will limit the retrieval rate to 20KB/s.
+           This is useful when, for whatever reason, you don't want Wget to consume the entire available bandwidth.
 
-           This option allows the use of decimal numbers, usually in
-           conjunction with power suffixes; for example, --limit-rate=2.5k is
-           a legal value.
+           This option allows the use of decimal numbers, usually in conjunction with power suffixes;
+               for example, --limit-rate=2.5k is a legal value.
 
            Note that Wget implements the limiting by sleeping the appropriate
            amount of time after a network read that took less time than
@@ -431,17 +404,16 @@ OPTIONS
 
        -w seconds
        --wait=seconds
-           Wait the specified number of seconds between the retrievals.  Use
-           of this option is recommended, as it lightens the server load by
-           making the requests less frequent.  Instead of in seconds, the time
-           can be specified in minutes using the "m" suffix, in hours using
-           "h" suffix, or in days using "d" suffix.
+           Wait the specified number of seconds between the retrievals.
+           Use of this option is recommended, as it lightens the server load by making the requests less frequent.
+           Instead of in seconds, the time can be specified
+               in minutes using the "m" suffix,
+               in hours using "h" suffix, or
+               in days using "d" suffix.
 
-           Specifying a large value for this option is useful if the network
-           or the destination host is down, so that Wget can wait long enough
-           to reasonably expect the network error to be fixed before the
-           retry.  The waiting interval specified by this function is
-           influenced by "--random-wait", which see.
+           Specifying a large value for this option is useful if the network or the destination host is down,
+               so that Wget can wait long enough to reasonably expect the network error to be fixed before the retry.
+           The waiting interval specified by this function is influenced by "--random-wait", which see.
 
        --waitretry=seconds
            If you don't want Wget to wait between every retrieval, but only
@@ -455,26 +427,21 @@ OPTIONS
            By default, Wget will assume a value of 10 seconds.
 
        --random-wait
-           Some web sites may perform log analysis to identify retrieval
-           programs such as Wget by looking for statistically significant
-           similarities in the time between requests. This option causes the
-           time between requests to vary between 0.5 and 1.5 * wait seconds,
-           where wait was specified using the --wait option, in order to mask
-           Wget's presence from such analysis.
+           Some web sites may perform log analysis to identify retrieval programs such as Wget
+               by looking for statistically significant similarities in the time between requests.
+           This option causes the time between requests to vary between 0.5 and 1.5 * wait seconds,
+               where wait was specified using the --wait option, in order to mask Wget's presence from such analysis.
 
-           A 2001 article in a publication devoted to development on a popular
-           consumer platform provided code to perform this analysis on the
-           fly.  Its author suggested blocking at the class C address level to
-           ensure automated retrieval programs were blocked despite changing
-           DHCP-supplied addresses.
+           A 2001 article in a publication
+               devoted to development on a popular consumer platform provided code to perform this analysis on the fly.
+           Its author suggested blocking at the class C address level
+               to ensure automated retrieval programs were blocked despite changing DHCP-supplied addresses.
 
-           The --random-wait option was inspired by this ill-advised
-           recommendation to block many unrelated users from a web site due to
-           the actions of one.
+           The --random-wait option was inspired by this ill-advised recommendation
+               to block many unrelated users from a web site due to the actions of one.
 
        --no-proxy
-           Don't use proxies, even if the appropriate *_proxy environment
-           variable is defined.
+           Don't use proxies, even if the appropriate *_proxy environment variable is defined.
 
        -Q quota
        --quota=quota
@@ -512,9 +479,8 @@ OPTIONS
            won't need it.
 
        --restrict-file-names=modes
-           Change which characters found in remote URLs must be escaped during
-           generation of local filenames.  Characters that are restricted by
-           this option are escaped, i.e. replaced with %HH, where HH is the
+           Change which characters found in remote URLs must be escaped during generation of local filenames.
+           Characters that are restricted by this option are escaped, i.e. replaced with %HH, where HH is the
            hexadecimal number that corresponds to the restricted character.
            This option may also be used to force all alphabetical cases to be
            either lower- or uppercase.
@@ -1468,9 +1434,8 @@ OPTIONS
 
        -np
        --no-parent
-           Do not ever ascend to the parent directory when retrieving
-           recursively.  This is a useful option, since it guarantees that
-           only the files below a certain hierarchy will be downloaded.
+           Do not ever ascend to the parent directory when retrieving recursively.
+           This is a useful option, since it guarantees that only the files below a certain hierarchy will be downloaded.
 
 EXIT STATUS
        Wget may return one of several error codes if it encounters problems.

@@ -198,19 +198,25 @@ SHELL GRAMMAR
 
        The standard output of command is connected via a pipe to the standard input of command2.
        This connection is performed before any redirections specified by the command (see REDIRECTION below).
-       If |& is used, the standard error of command is connected to command2's standard input through the pipe; it is shorthand for 2>&1 |.  This implicit redirection of the standard error is performed after any redirections specified by the command.
+
+       If |& is used, the standard error of command is connected to command2's standard input through the pipe;
+           it is shorthand for 2>&1 |.
+       This implicit redirection of the standard error is performed after any redirections specified by the command.
 
        The return status of a pipeline is the exit status of the last command, unless the pipefail option is enabled.
-       If pipefail is enabled, the pipeline's return status is the value of the last (rightmost) command to exit with a non-zero status, or zero if all commands exit successfully.
-       If the reserved word !  precedes a pipeline, the exit status of that pipeline is the logical negation of the exit status as described above.
+       If pipefail is enabled, the pipeline's return status is the value of the last (rightmost) command to exit with a non-zero status,
+           or zero if all commands exit successfully.
+
+       If the reserved word ! precedes a pipeline, the exit status of that pipeline
+           is the logical negation of the exit status as described above.
        The shell waits for all commands in the pipeline to terminate before returning a value.
 
-       If the time reserved word precedes a pipeline, the elapsed as well as user and system time consumed by its execution are reported when the pipeline terminates.
+       If the time reserved word precedes a pipeline,
+           the elapsed as well as user and system time consumed by its execution are reported when the pipeline terminates.
        The -p option changes the output format to that specified by POSIX.
        When the shell is in posix mode, it does not recognize time as a reserved word if the next token begins with a `-'.
        The TIMEFORMAT variable may be set to a format string that specifies how the timing information should be displayed;
-        see the description of TIMEFORMAT under Shell Variables below.
-
+           see the description of TIMEFORMAT under Shell Variables below.
        When the shell is in posix mode, time may be followed by a newline.
        In this case, the shell displays the total user and system time consumed by the shell and its children.
        The TIMEFORMAT variable may be used to specify the format of the time information.
@@ -218,7 +224,8 @@ SHELL GRAMMAR
        Each command in a pipeline is executed as a separate process (i.e., in a subshell).
 
    Lists
-       A list is a sequence of one or more pipelines separated by one of the operators ;, &, &&, or ||, and optionally terminated by one of ;, &, or <newline>.
+       A list is a sequence of one or more pipelines separated by one of the operators ;, &, &&, or ||,
+           and optionally terminated by one of ;, &, or <newline>.
 
        Of these list operators, && and || have equal precedence, followed by ; and &, which have equal precedence.
 
@@ -415,8 +422,10 @@ SHELL GRAMMAR
        If NAME is not supplied, the default name is COPROC.
        NAME must not be supplied if command is a simple command (see above); otherwise, it is interpreted as the first word of the simple command.
        When the coproc is executed, the shell creates an array variable (see Arrays below) named NAME in the context of the executing shell.
-       The standard output of command is connected via a pipe to a file descriptor in the executing shell, and that file descriptor is assigned to NAME [0].
-       The standard input of command is connected via a pipe to a file descriptor in the executing shell, and that file descriptor is assigned to NAME[1].
+       The standard output of command is connected via a pipe to a file descriptor in the executing shell,
+           and that file descriptor is assigned to NAME [0].
+       The standard input of command is connected via a pipe to a file descriptor in the executing shell,
+           and that file descriptor is assigned to NAME[1].
        This pipe is established before any redirections specified by the command (see REDIRECTION below).
        The file descriptors can be utilized as arguments to shell commands and redirections using standard word expansions.
        The process ID of the shell spawned to execute the coprocess is available as the value of the variable NAME_PID.

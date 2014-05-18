@@ -356,6 +356,7 @@ screen -d -m -S some_name ping my_router
 
 wget --random-wait -r -p -e robots=off -U mozilla http://www.example.com
 下载整个www.example.com网站。（注：别太过分，大部分网站都有防爬功能了：）） 
+wget -r -np http://git-scm.com/book/
 
 
 convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png
@@ -611,10 +612,15 @@ echo  | cp -i *.desc xxx/ 也可以
 
 
 
-${varible##*string }   从左向右截取 最后一个 string后的字符串，string后面的字符串
-${varible#*string}     从左向右截取 第一个 string后的字符串，string后面的字符串
-${varible%%string*}  从右向左截取 最后一个 string后的字符串，string前面的字符串
-${varible%string*}   从右向左截取 第一个 string后的字符串，string前面的字符串
+${varible##*string }   贪婪模式，  从左向右截取 最后一个 string后的字符串，string后面的字符串
+${varible#*string}     非贪婪模式，从左向右截取   第一个 string后的字符串，string后面的字符串
+${varible%%string*}  贪婪模式，　从右向左截取   最后一个 string后的字符串，string前面的字符串
+${varible%string*}   非贪婪模式，从右向左截取     第一个 string后的字符串，string前面的字符串
+filename=$(basename "$fullfile")
+filename="${fullfile##*/}"
+extension="${filename##*.}"
+filename="${filename%.*}"
+
 
 
 echo $str | cut -d "-" -f 1
@@ -794,7 +800,6 @@ do
     echo "$account $UID $shell" 
 done < /etc/passwd
 
-wget -r -np http://git-scm.com/book/
 echo >>/tmp/size hhhhjjjj
 
 fc #edit history command

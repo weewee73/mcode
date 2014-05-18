@@ -77,6 +77,9 @@ set ignorecase
 syntax enable
 "syntax on
 
+
+set clipboard=unnamedplus
+
 set background=light
 set t_Co=256
 
@@ -98,6 +101,10 @@ set smarttab        " When on, a <Tab> in front of a line inserts blanks accordi
 set expandtab       " In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 
 set backspace=indent,eol,start  " Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode
+
+" always set autoindenting and smart on
+set autoindent
+set smartindent
 
 " Always show the status line
 set laststatus=2
@@ -233,17 +240,16 @@ let g:miniBufExplorerAutoStart = 0
 
 
 
-"" look up current word under cursor
-"function! SearchWord()
-"    let expr = '!sdcv -n -u "朗道英汉字典5.0" ' .expand("<cword>")
-"    exec expr
-"endfunction
-"
-"nnoremap <silent> <F12> :call SearchWord()<CR>
-"
-""nnoremap <Leader>d :call SearchWord()<CR>
-""vnoremap <Leader>d :<C-U>call SearchWord_v(visualmode(), 1)<cr>
-"
+" look up current word under cursor
+function! SearchWord()
+    let expr = '!sdcv -n -u "朗道英汉字典5.0" ' .expand("<cword>")
+    exec expr
+endfunction
+nnoremap <silent> <F12> :call SearchWord()<CR>
+
+"nnoremap <Leader>d :call SearchWord()<CR>
+"vnoremap <Leader>d :<C-U>call SearchWord_v(visualmode(), 1)<cr>
+
 "
 "function! Mydict()
 "    "执行sdcv命令查询单词的含义,返回的值保存在expl变量中
@@ -260,14 +266,13 @@ let g:miniBufExplorerAutoStart = 0
 "    wincmd p
 "endfunction
 ""nnoremap <silent> <F12> :call Mydict()<CR>
-"
-"function! Synchronize()
-"    exec ':silent !ctags -R --c-kinds=+px && cscope -Rbq'
-"    exec ':silent cs reset'
-"        "exec ':redraw!' "ctrl-l
-"endfunction
-"
-"command Sync call Synchronize()
+
+function! Synchronize()
+    exec ':silent !ctags -R --c-kinds=+px && cscope -Rbq'
+    exec ':silent cs reset'
+        "exec ':redraw!' "ctrl-l
+endfunction
+command Sync call Synchronize()
 
 
 
@@ -331,7 +336,7 @@ let g:miniBufExplorerAutoStart = 0
 "
 ""- 则点击光标不会换,用于复制
 "set mouse-=a           " 鼠标暂不启用, 键盘党....
-set mouse=a           " 鼠标暂不启用, 键盘党....
+"set mouse=a           " 鼠标暂不启用, 键盘党....
 "" 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
 ""set selection=exclusive
 "set selection=inclusive
@@ -374,9 +379,6 @@ set mouse=a           " 鼠标暂不启用, 键盘党....
 ""set foldmethod=indent
 ""set foldlevel=99
 "
-""Smart indent
-"set smartindent
-"set autoindent    " always set autoindenting on
 "" never add copyindent, case error   " copy the previous indentation on autoindenting
 "
 

@@ -8,6 +8,7 @@ fi
 # General definitions
 alias grep='grep --color=auto'
 alias lt='ls -Altr'
+alias tmux='TERM=xterm-256color tmux'
 
 random()
 {

@@ -227,7 +227,7 @@ map s <Plug>(easymotion-s)
 "==========================================
 " Lokaltog/vim-easymotion
 "==========================================
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 
 "==========================================
 " The-NERD-tree
@@ -239,6 +239,11 @@ nnoremap <silent> <F10> :NERDTreeToggle<CR>
 " fholgado/minibufexpl.vim
 "==========================================
 let g:miniBufExplorerAutoStart = 0
+
+"==========================================
+" ervandew/supertab
+"==========================================
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 
 
@@ -276,7 +281,8 @@ nnoremap <silent> <F12> :call SearchWord()<CR>
 function! Synchronize()
     exec ':silent !ctags -R --c-kinds=+px && cscope -Rbq'
     exec ':silent cs reset'
-        "exec ':redraw!' "ctrl-l
+    exec ':silent TlistUpdate'
+    "exec ':redraw!' "ctrl-l
 endfunction
 command Sync call Synchronize()
 

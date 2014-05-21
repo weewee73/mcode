@@ -383,3 +383,37 @@ tmux
     Copy selection               Enter
     Clear selection              Escape
     Delete/Copy to end of line   D
+
+vimperator
+gi              Focus last used input field. If there is no last input field, it focuses the first input field. 
+;{mode}{empty}{hint}
+    Start an extended hint mode.
+    ExtendedHint mode is useful for performing operations on hinted elements other than the default left mouse click.
+    For example, you can yank link locations, open them in a new window or save images.
+    If you want to yank the location of hint 24, press ;y to start this hint mode.
+    Then press 24 to copy the hint location.
+
+    {mode} can be one of:
+        ;;  to focus an element
+        ;?  to show information about an element (incomplete)
+        ;s  to save a link's destination
+        ;S  to save a media object
+        ;a  to save a link's destination (prompting for save location)
+        ;A  to save a media object (prompting for save location)
+        ;f  to focus a frame
+        ;o  to open its location in the current tab
+        ;t  to open its location in a new tab
+        ;b  to open its location in a new background tab
+        ;w  to open its destination in a new window
+        ;F  to follow a sequence of <CR>-delimited hints in background tabs
+        ;O  to generate an :open with hint's URL (like O)
+        ;T  to generate a :tabopen with hint's URL (like T)
+        ;W  to generate a :winopen with hint's URL
+        ;v  to view its destination source
+        ;V  to view its destination source in the external editor
+        ;y  to yank its destination location
+        ;Y  to yank its text description
+        ;c  to open its context menu
+        ;i  to open a media object
+        ;I  to open a media object in a new tab
+        ;x  to display an element's title text, or alt text if none.

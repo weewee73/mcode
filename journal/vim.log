@@ -827,3 +827,17 @@ m<BS>        Remove all markers
 
 ---------- signature.vim ----------
 
+
+
+gi			Insert text in the same position as where Insert mode was stopped last time in the current buffer.
+gI			Insert text in column 1 [count] times.
+
+I			Insert text before the first non-blank in the line [count] times.
+
+preview-window
+:ptag [tag]     Open a tag in the preview window
+:ptnext         to the next matching tag
+:ptprevious     Go to the previous matching tag
+:pclose         Close any open preview windows
+CTRL-W }        a tag under the cursor
+CTRL-W z        Close any open preview windows

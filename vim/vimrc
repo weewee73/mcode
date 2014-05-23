@@ -111,6 +111,8 @@ set smartindent
 set laststatus=2
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
+" find files
+set path+=include
 
 "" custom comma motion mapping
 "nmap di, f,dT,
@@ -244,6 +246,7 @@ let g:miniBufExplorerAutoStart = 0
 " ervandew/supertab
 "==========================================
 let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabDefaultCompletionType = "context"
 
 
 

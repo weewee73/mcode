@@ -365,24 +365,50 @@ gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encodingUTF-
 Monospace
 
 tmux
-<Ctrl-b>%  split a window vertically pane
-<Ctrl-b>"  split the window in horizontal pane
+<Ctrl-b>%       Split the current pane into two, left and right.
+<Ctrl-b>"       Split the current pane into two, top and bottom.
 
-<Ctrl-b>;  go to the previously active pane
+<Ctrl-b>;       Move to the previously active pane.
+<Ctrl-b>o       Select the next pane in the current window.
 
-<Ctrl-b>x  close the current pane
+<Ctrl-b>C-o     Rotate the panes in the current window forwards.
+<Ctrl-b>{       Swap the current pane with the previous pane.
+<Ctrl-b>}       Swap the current pane with the next pane.
 
-<Ctrl-b>Page Up    Enter copy mode and scroll one page up.
-<Ctrl-b>[          Enter copy mode to copy text or view the history.
-<Ctrl-b>]          Paste the most recently copied buffer of text.
-<Ctrl-b>=          Choose which buffer to paste interactively from a list.
+<Ctrl-b>x       Kill the current pane.
 
-<Ctrl-b>#          List all paste buffers.
+
+<Ctrl-b>#       List all paste buffers.
+<Ctrl-b>=       Choose which buffer to paste interactively from a list.
+<Ctrl-b>[       Enter copy mode to copy text or view the history.
+<Ctrl-b>]       Paste the most recently copied buffer of text.
     vi:
     Start selection              Space
     Copy selection               Enter
     Clear selection              Escape
     Delete/Copy to end of line   D
+
+<ctrl-b>s           Select a new session for the attached client interactively.
+<Ctrl-b>d           Detach the current client.
+<Ctrl-b>$           Rename the current session.
+tmux ls             List all sessions managed by the server.
+tmux new -s session-name
+tmux attach -t session-name                
+tmux detach
+
+Windows
+<Ctrl-b>w       list windows
+<Ctrl-b>c       create a new window
+<Ctrl-b>,       rename the current window
+<Ctrl-b>i       Display some information about the current window.
+<Ctrl-b>n       change to the next window
+<Ctrl-b>p       change to the previous window
+<Ctrl-b>0-9     select windows 0 through 9
+
+
+
+<Ctrl-b>t       Show the time.
+
 
 vimperator
 gi              Focus last used input field. If there is no last input field, it focuses the first input field. 

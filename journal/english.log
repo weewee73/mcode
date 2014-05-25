@@ -83,3 +83,6 @@ As is known to everybody, it may now be too late to clean up the river.
 It is known to everybody that it may now be too late to clean up the river.
 It is known to everybody to be too late to clean up the river.
 What is known to everybody is that it may now be too late to clean up the river.
+
+The value returned is the CPU time used so far as a clock_t;
+ 

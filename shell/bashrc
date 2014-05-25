@@ -42,11 +42,11 @@ export EDITOR="vim"
 WORKSPACE="$HOME/github"
 
 alias vi='vim'
-alias mnote='vim -c start $WORKSPACE/mcode/journal/note.log'
-alias mtask='vim -c start $WORKSPACE/mcode/journal/task.log'
-alias mshell='vim + $WORKSPACE/mcode/journal/shell.log'
+alias mnote='vim $WORKSPACE/mcode/journal/note.log'
+alias mtask='vim + $WORKSPACE/mcode/journal/task.log'
+alias mshell='vim $WORKSPACE/mcode/journal/shell.log'
 alias ashell='echo >>$WORKSPACE/mcode/journal/shell.log'
-alias mvim='vim + $WORKSPACE/mcode/journal/vim.log'
+alias mvim='vim $WORKSPACE/mcode/journal/vim.log'
 alias mquestion='vim -c start $WORKSPACE/mcode/journal/question.log'
 alias man='$WORKSPACE/mcode/shell/mman.sh'
 alias project_init='$WORKSPACE/mcode/shell/project_init.sh'

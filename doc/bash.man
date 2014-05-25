@@ -644,12 +644,9 @@ PARAMETERS
                 is the portion of the string matching the nth parenthesized subexpression.
               This variable is read-only.
        BASH_SOURCE
-              An array variable whose members
-                are the source filenames
-                where the corresponding shell function names
-                    in the FUNCNAME array variable are defined.
-              The shell function ${FUNCNAME[$i]} is defined
-                in the file ${BASH_SOURCE[$i]} and called from ${BASH_SOURCE[$i+1]}.
+              An array variable whose members are the source filenames
+                  where the corresponding shell function names in the FUNCNAME array variable are defined.
+              The shell function ${FUNCNAME[$i]} is defined in the file ${BASH_SOURCE[$i]} and called from ${BASH_SOURCE[$i+1]}.
        BASH_SUBSHELL
               Incremented by one each time a subshell or subshell environment is spawned.
               The initial value is 0.

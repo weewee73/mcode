@@ -3543,10 +3543,9 @@ SHELL BUILTIN COMMANDS
               -A     Each name is an associative array variable (see Arrays above).
               -f     Use function names only.
               -i     The variable is treated as an integer;
-                     arithmetic evaluation (see ARITHMETIC EVALUATION above) is performed
-                        when the variable is assigned a value.
+                         arithmetic evaluation (see ARITHMETIC EVALUATION above) is performed when the variable is assigned a value.
               -l     When the variable is assigned a value,
-                        all upper -case characters are converted to lower-case. 
+                        all upper-case characters are converted to lower-case. 
                      The upper-case attribute is disabled.
               -r     Make names readonly.
                      These names cannot then be assigned values by subsequent assignment statements or unset.
@@ -3558,7 +3557,9 @@ SHELL BUILTIN COMMANDS
               -x     Mark names for export to subsequent commands via the environment.
 
               Using `+' instead of `-' turns off the attribute instead,
-                with the exceptions that +a may not be used to destroy an array variable and +r will not remove the readonly attribute.  When used in a function, makes each name local, as with the local command, unless the -g option is supplied, If a variable name is followed by =value, the value of the variable is set to value.
+                with the exceptions that +a may not be used to destroy an array variable and +r will not remove the readonly attribute.
+              When used in a function, makes each name local, as with the local command, unless the -g option is supplied,
+                  If a variable name is followed by =value, the value of the variable is set to value.
               The return value is 0 unless an invalid option is encountered,
                 an attempt is made to define a function using ``-f foo=bar'',
                 an attempt is made to assign a value to a readonly variable,

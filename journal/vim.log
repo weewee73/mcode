@@ -845,6 +845,11 @@ m<BS>        Remove all markers
 ---------- a.vim ----------
 
 
+---------- ervandew/supertab -------------
+  if *x>3 {                 ysW(        if ( x>3 ) {
+---------- ervandew/supertab -------------
+
+
 gi			Insert text in the same position as where Insert mode was stopped last time in the current buffer.
 gI			Insert text in column 1 [count] times.
 
@@ -862,3 +867,23 @@ CTRL-W z        Close any open preview windows
 show the tab characters.
 :set list
 :set listchars=tab:~~
+
+
+:ptag           Open a tag in the preview window
+:ptnext         Go to the next matching tag
+:ptprevious     Go to the previous matching tag
+:pclose         Close any open preview windows
+CTRL-W }        Open a tag under the cursor
+CTRL-W z        Close any open preview windows
+
+
+:s/\<./\u&/g        Capitalize first letter of each word
+    \< matches the start of a word
+    .  matches the first character of a word
+    \u tells Vim to uppercase the following character in the substitution string (&)
+    &  means substitute whatever was matched on the LHS
+       replaced with the whole matched pattern
+
+jump to diffs:
+[c		Jump backwards to the previous start of a change.
+]c		Jump forwards to the next start of a change.

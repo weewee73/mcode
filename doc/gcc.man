@@ -6675,14 +6675,12 @@ OPTIONS
            standard predefined macros remain defined.
 
        -I dir
-           Add the directory dir to the list of directories to be searched for
-           header files.  Directories named by -I are searched before the
-           standard system include directories.  If the directory dir is a
-           standard system include directory, the option is ignored to ensure
-           that the default search order for system directories and the
-           special treatment of system headers are not defeated .  If dir
-           begins with "=", then the "=" will be replaced by the sysroot
-           prefix; see --sysroot and -isysroot.
+           Add the directory dir to the list of directories to be searched for header files.
+           Directories named by -I are searched before the standard system include directories.
+           If the directory dir is a standard system include directory,
+               the option is ignored to ensure that the default search order for system directories
+                   and the special treatment of system headers are not defeated.
+           If dir begins with "=", then the "=" will be replaced by the sysroot prefix; see --sysroot and -isysroot.
 
        -o file
            Write output to file.  This is the same as specifying file as the
@@ -6692,10 +6690,8 @@ OPTIONS
 
        -Wall
            Turns on all optional warnings which are desirable for normal code.
-           At present this is -Wcomment, -Wtrigraphs, -Wmultichar and a
-           warning about integer promotion causing a change of sign in "#if"
-           expressions.  Note that many of the preprocessor's warnings are on
-           by default and have no options to control them.
+           At present this is -Wcomment, -Wtrigraphs, -Wmultichar and a warning about integer promotion causing a change of sign in "#if" expressions.
+           Note that many of the preprocessor's warnings are on by default and have no options to control them.
 
        -Wcomment
        -Wcomments
@@ -7022,20 +7018,17 @@ OPTIONS
            puts it where -idirafter would.
 
        -isysroot dir
-           This option is like the --sysroot option, but applies only to
-           header files.  See the --sysroot option for more information.
+           This option is like the --sysroot option, but applies only to header files.
+           See the --sysroot option for more information.
 
        -imultilib dir
            Use dir as a subdirectory of the directory containing target-
            specific C++ headers.
 
        -isystem dir
-           Search dir for header files, after all directories specified by -I
-           but before the standard system directories.  Mark it as a system
-           directory, so that it gets the same special treatment as is applied
-           to the standard system directories.  If dir begins with "=", then
-           the "=" will be replaced by the sysroot prefix; see --sysroot and
-           -isysroot.
+           Search dir for header files, after all directories specified by -I but before the standard system directories.
+           Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories.
+           If dir begins with "=", then the "=" will be replaced by the sysroot prefix; see --sysroot and -isysroot.
 
        -iquote dir
            Search dir only for header files requested with "#include "file"";

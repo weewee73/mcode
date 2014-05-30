@@ -1013,3 +1013,6 @@ read_from_pipe() { read "$@" <&0; }
 
 ipv4
 netstat -anptu --ip
+
+daemon shell
+nohup ./myscript 0<&- &> my.admin.log.file &

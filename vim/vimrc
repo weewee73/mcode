@@ -43,7 +43,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kshenoy/vim-signature' "vim-signature is a plugin to place, toggle and display marks.
@@ -156,9 +158,6 @@ vnoremap > >gv
 vnoremap < <gv
 
 
-
-
-
 set tags=tags;
 set cst
 if has("cscope")
@@ -205,6 +204,10 @@ autocmd BufReadPost *
     \   exe "normal! g'\"" |
     \ endif
 
+
+set completeopt-=preview
+
+
 "==========================================
 " TxtBrowser
 "==========================================
@@ -245,12 +248,29 @@ let g:miniBufExplorerAutoStart = 0
 "==========================================
 " ervandew/supertab
 "==========================================
-let g:SuperTabClosePreviewOnPopupClose = 1
+"let g:SuperTabClosePreviewOnPopupClose = 1
 let g:SuperTabDefaultCompletionType = "context"
 
-
-
-
+"==========================================
+" Valloric/YouCompleteMe
+"==========================================
+let g:ycm_key_invoke_completion = '<leader><Space>'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"let g:ycm_semantic_triggers =  {
+"    \   'c' : ['->', '.'],
+"    \   'objc' : ['->', '.'],
+"    \   'ocaml' : ['.', '#'],
+"    \   'cpp,objcpp' : ['->', '.', '::'],
+"    \   'perl' : ['->'],
+"    \   'php' : ['->', '::'],
+"    \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+"    \   'ruby' : ['.', '::'],
+"    \   'lua' : ['.', ':'],
+"    \   'erlang' : [':'],
+"    \ }
+"
+"
 
 
 

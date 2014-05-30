@@ -21,10 +21,18 @@ elif [ -n "$1" ]; then
 	#query word
 	#rm -f /usr/bin/mword && ln -s $HOME/github/mcode/shell/mword.sh /usr/bin/mword
 	word="$1"
-	sed -n "/<word>$word/,/<\/trans>/p" $f_word_xml | xargs echo | sed 's/.*CDATA\[\(.*\)\]\]><\/trans>/\1/g'
+	#sed -n "/<word>$word/,/<\/trans>/p" $f_word_xml | xargs echo | sed 's/.*CDATA\[\(.*\)\]\]><\/trans>/\1/g'
+
+    trans=`sed -n "/<word>$word/,/<\/phonetic>/p" $f_word_xml | tr '\n' ' ' |
+        sed -n 's/.*<word>\(.*\)<\/word>.*CDATA\[\([^]]*\)\]\].*CDATA\[\[\(.*\)\]\]\]><\/phonetic>/ *\/\3\/ \2/gp'`
+    if [[ -z "$trans" ]]; then
+        type sdcv >/dev/null 2>&1 || { echo >&2 "sdcv is not installed.  Aborting."; exit 1; }
+        trans=`sdcv $word`
+    fi
+
+    echo "$trans"
 
 	echo "$word,`date +"%Y/%m/%d %H:%M:%S"`" >>$f_word_history
-
 else
 	#prompt word
 	#add PROMPT_COMMAND to ~/.bashrc

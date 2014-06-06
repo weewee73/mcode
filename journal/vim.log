@@ -849,6 +849,14 @@ m<BS>        Remove all markers
   if *x>3 {                 ysW(        if ( x>3 ) {
 ---------- ervandew/supertab -------------
 
+---------- vcscommand.git -------------
+:VCSVimDiff
+|<Leader>|cv VCSVimDiff
+|<Leader>|cd VCSDiff
+|<Leader>|cs VCSStatus
+|<Leader>|cu VCSUpdate
+|<Leader>|cc VCSCommit
+---------- vcscommand.git -------------
 
 gi			Insert text in the same position as where Insert mode was stopped last time in the current buffer.
 gI			Insert text in column 1 [count] times.

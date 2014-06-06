@@ -42,6 +42,7 @@ export EDITOR="vim"
 WORKSPACE="$HOME/github"
 
 alias vi='vim'
+alias psgrep='ps aux | grep '
 alias mnote='vim $WORKSPACE/mcode/journal/note.log'
 alias mtask='vim + $WORKSPACE/mcode/journal/task.log'
 alias mshell='vim $WORKSPACE/mcode/journal/shell.log'

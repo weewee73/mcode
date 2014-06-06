@@ -2,10 +2,12 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 int daemon_init(void)
 {
     pid_t pid;
+    int i, fd;
 
     if ( (pid = fork()) < 0)
         return (-1);
@@ -16,6 +18,15 @@ int daemon_init(void)
     setsid();       /* become session leader */
     chdir("/");     /* change working directory */
     umask(0);       /* clear our file mode creation mask */
+
+    for (i=getdtablesize(); i>=0; --i)
+        close(i); /* close all descriptors */ 
+
+    /* The file descriptor returned by a successful call will be the lowest-numbered file descriptor not currently open for the process. */
+    /* So fd=0 STDIN_FILENO */
+    fd = open("/dev/null", O_RDWR);
+    dup2(fd, STDOUT_FILENO);
+    dup2(fd, STDERR_FILENO);
 
     return (0);
 }

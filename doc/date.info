@@ -52,12 +52,10 @@ File: coreutils.info,  Node: Time conversion specifiers,  Next: Date conversion 
      hour (`01'...`12')
 
 `%k'
-     hour, space padded (` 0'...`23'); equivalent to `%_H'.  This is a
-     GNU extension.
+     hour, space padded (` 0'...`23'); equivalent to `%_H'.  This is a GNU extension.
 
 `%l'
-     hour, space padded (` 1'...`12'); equivalent to `%_I'.  This is a
-     GNU extension.
+     hour, space padded (` 1'...`12'); equivalent to `%_I'.  This is a GNU extension.
 
 `%M'
      minute (`00'...`59')
@@ -245,27 +243,22 @@ zeros, so that, for example, numeric months are always output as two
 digits.  Seconds since the epoch are not padded, though, since there is
 no natural width for them.
 
-   As a GNU extension, `date' recognizes any of the following optional
-flags after the `%':
+   As a GNU extension, `date' recognizes any of the following optional flags after the `%':
 
 `-'
-     (hyphen) Do not pad the field; useful if the output is intended for
-     human consumption.
+     (hyphen) Do not pad the field; useful if the output is intended for human consumption.
 
 `_'
-     (underscore) Pad with spaces; useful if you need a fixed number of
-     characters in the output, but zeros are too distracting.
+     (underscore) Pad with spaces; useful if you need a fixed number of characters in the output, but zeros are too distracting.
 
 `0'
-     (zero) Pad with zeros even if the conversion specifier would
-     normally pad with spaces.
+     (zero) Pad with zeros even if the conversion specifier would normally pad with spaces.
 
 `^'
      Use upper case characters if possible.
 
 `#'
-     Use opposite case characters if possible.  A field that is
-     normally upper case becomes lower case, and vice versa.
+     Use opposite case characters if possible.  A field that is normally upper case becomes lower case, and vice versa.
 
 Here are some examples of padding:
 
@@ -393,8 +386,7 @@ options::.
     `ns'
           Append the hours, minutes, seconds and nanoseconds.
 
-     If showing any time terms, then include the time zone using the
-     format `%z'.
+     If showing any time terms, then include the time zone using the format `%z'.
 
 `-r FILE'
 `--reference=FILE'
@@ -428,26 +420,22 @@ options::.
      It can be one of the following:
 
     `date'
-          Print just the full-date, e.g., `2005-09-14'.  This is
-          equivalent to the format `%Y-%m-%d'.
+          Print just the full-date, e.g., `2005-09-14'.  This is equivalent to the format `%Y-%m-%d'.
 
     `seconds'
-          Print the full-date and full-time separated by a space, e.g.,
-          `2005-09-14 00:56:06+05:30'.  The output ends with a numeric
-          time-offset; here the `+05:30' means that local time is five
-          hours and thirty minutes east of UTC.  This is equivalent to
-          the format `%Y-%m-%d %H:%M:%S%:z'.
+          Print the full-date and full-time separated by a space, e.g., `2005-09-14 00:56:06+05:30'.
+          The output ends with a numeric time-offset;
+              here the `+05:30' means that local time is five hours and thirty minutes east of UTC.
+          This is equivalent to the format `%Y-%m-%d %H:%M:%S%:z'.
 
     `ns'
-          Like `seconds', but also print nanoseconds, e.g., `2005-09-14
-          00:56:06.998458565+05:30'.  This is equivalent to the format
-          `%Y-%m-%d %H:%M:%S.%N%:z'.
+          Like `seconds', but also print nanoseconds, e.g., `2005-09-14 00:56:06.998458565+05:30'.
+          This is equivalent to the format `%Y-%m-%d %H:%M:%S.%N%:z'.
 
 
 `-s DATESTR'
 `--set=DATESTR'
-     Set the date and time to DATESTR.  See `-d' above.  See also *note
-     Setting the time::.
+     Set the date and time to DATESTR.  See `-d' above.  See also *note Setting the time::.
 
 `-u'
 `--utc'

@@ -50,6 +50,8 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kshenoy/vim-signature' "vim-signature is a plugin to place, toggle and display marks.
 "Plugin 'tomasr/molokai'
+" plugin not on GitHub
+Plugin 'git://repo.or.cz/vcscommand.git'
 
 
    call vundle#end()            " required
@@ -114,7 +116,7 @@ set laststatus=2
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
 " find files
-set path+=include
+set path+=./include
 
 "" custom comma motion mapping
 "nmap di, f,dT,

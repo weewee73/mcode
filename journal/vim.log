@@ -800,7 +800,9 @@ The "e" flag is used for the ":substitute" command to avoid an error for files w
 \rc             save and compile the file
 \rr             run
 \nr             insert snippet code
-
+\ss       switch
+\sw       while
+\swh      while{}
 ---------- c.vim ----------
 
 
@@ -895,3 +897,19 @@ CTRL-W z        Close any open preview windows
 jump to diffs:
 [c		Jump backwards to the previous start of a change.
 ]c		Jump forwards to the next start of a change.
+
+
+replace in multiple file
+:arg *.cpp                                    All *.cpp files in directory.
+:argadd *.h                                   And all *.h files.
+:argdo %s/pattern/replace/ge | update         Search and replace in all files in arglist.
+
+:arg **/*.cpp                                 All *.cpp files in and below current directory.
+:argadd **/*.h                                And all *.h files. 
+
+replace in all buffers
+:bufdo %s/pattern/replace/ge | update
+
+replace in all windows
+:sball                             Split screen to show all buffers (one window per buffer). 
+:windo %s/pattern/replace/ge       Replace in all visible windows.  

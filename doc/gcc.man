@@ -3533,10 +3533,8 @@ OPTIONS
            source files you want data about, and you must also use it when
            linking.
 
-       -pg Generate extra code to write profile information suitable for the
-           analysis program gprof.  You must use this option when compiling
-           the source files you want data about, and you must also use it when
-           linking.
+       -pg Generate extra code to write profile information suitable for the analysis program gprof.
+           You must use this option when compiling the source files you want data about, and you must also use it when linking.
 
        -Q Makes the compiler print out each function name as it is compiled,
            and print some statistics about each pass when it finishes.

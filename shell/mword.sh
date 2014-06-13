@@ -27,10 +27,10 @@ elif [ -n "$1" ]; then
         sed -n 's/.*<word>\(.*\)<\/word>.*CDATA\[\([^]]*\)\]\].*CDATA\[\[\(.*\)\]\]\]><\/phonetic>/ *\/\3\/ \2/gp'`
     if [[ -z "$trans" ]]; then
         type sdcv >/dev/null 2>&1 || { echo >&2 "sdcv is not installed.  Aborting."; exit 1; }
-        trans=`sdcv $word`
+        sdcv "$word"
+    else
+        echo "$trans"
     fi
-
-    echo "$trans"
 
 	echo "$word,`date +"%Y/%m/%d %H:%M:%S"`" >>$f_word_history
 else

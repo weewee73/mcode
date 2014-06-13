@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
+
 
 int daemon_init(void)
 {
@@ -31,6 +33,19 @@ int daemon_init(void)
     return (0);
 }
 
+#define ERR_EXIT(m) \
+do {\
+        perror(m);\
+        exit(EXIT_FAILURE);\
+} while (0);\
+
+int daemon_init_v2(void)
+{
+    if(daemon(0, 0) == -1)
+        ERR_EXIT("daemon error");
+
+    return 0;
+}
 
 int main()
 {

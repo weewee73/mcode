@@ -899,10 +899,9 @@ OPTIONS
                      login shell.
 
              default-terminal terminal
-                     Set the default terminal for new windows created in this
-                     session - the default value of the TERM environment vari-
-                     able.  For tmux to work correctly, this must be set to
-                     'screen' or a derivative of it.
+                     Set the default terminal for new windows created in this session
+                         - the default value of the TERM environment variable.
+                     For tmux to work correctly, this must be set to 'screen' or a derivative of it.
 
              destroy-unattached [on | off]
                      If enabled and the session is no longer attached to any

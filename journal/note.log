@@ -370,6 +370,12 @@ tmux
 
 <Ctrl-b>;       Move to the previously active pane.
 <Ctrl-b>o       Select the next pane in the current window.
+           C-Up, C-Down
+           C-Left, C-Right
+                       Resize the current pane in steps of one cell.
+           M-Up, M-Down
+           M-Left, M-Right
+                       Resize the current pane in steps of five cells.
 
 <Ctrl-b>C-o     Rotate the panes in the current window forwards.
 <Ctrl-b>{       Swap the current pane with the previous pane.
@@ -443,3 +449,7 @@ gi              Focus last used input field. If there is no last input field, it
         ;i  to open a media object
         ;I  to open a media object in a new tab
         ;x  to display an element's title text, or alt text if none.
+git
+     .gitignore
+     .git/info/exclude
+     .git/config  [core] -> excludesfile = 

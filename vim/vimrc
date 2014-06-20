@@ -44,6 +44,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'ervandew/supertab'
+Plugin 'dkprice/vim-easygrep'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
@@ -256,9 +257,12 @@ let g:SuperTabDefaultCompletionType = "context"
 "==========================================
 " Valloric/YouCompleteMe
 "==========================================
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = '<leader><Space>'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
 "let g:ycm_semantic_triggers =  {
 "    \   'c' : ['->', '.'],
 "    \   'objc' : ['->', '.'],
@@ -274,6 +278,18 @@ let g:ycm_key_invoke_completion = '<leader><Space>'
 "
 "
 
+"==========================================
+" a.vim
+"==========================================
+let g:alternateNoDefaultAlternate = 1
+let g:alternateSearchPath = 'sfr:./include,sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
+
+
+"==========================================
+" dkprice/vim-easygrep
+"==========================================
+let g:EasyGrepCommand=1
+let g:EasyGrepFilesToExclude=".svn,.git,tags,cscope.*,*.o,*.swp,*.out"
 
 
 " look up current word under cursor
@@ -304,7 +320,9 @@ nnoremap <silent> <F12> :call SearchWord()<CR>
 ""nnoremap <silent> <F12> :call Mydict()<CR>
 
 function! Synchronize()
-    exec ':silent !ctags -R --c-kinds=+px && cscope -Rbq'
+    "exec ':silent !find .  -name "*.[ch]" >cscope.files'
+    "exec ':silent !ctags --sort=yes --c-kinds=+px -L cscope.files && cscope -bq'
+    exec ':silent !ctags -R --c-kinds=+px --fields=+l && cscope -Rbq'
     exec ':silent cs reset'
     exec ':silent TlistUpdate'
     "exec ':redraw!' "ctrl-l
@@ -312,19 +330,44 @@ endfunction
 command Sync call Synchronize()
 
 
-
 "" Search for current word and replace with given text for files in arglist.
-"function! Replace(bang, replace)
-"    let flag = 'ge'
+"function! Replace(bang, search, replace)
+"    let flag = 'geI'
 "    if !a:bang
 "        let flag .= 'c'
 "    endif
-"    let search = '\<' . escape(expand('<cword>'), '/\.*$^~[') . '\>'
+"    "let search = '\<' . escape(expand('<cword>'), '/\.*$^~[') . '\>'
+"    let search =  escape(a:search,  '/\&~')
 "    let replace = escape(a:replace, '/\&~')
-"    execute 'argdo %s/' . search . '/' . replace . '/' . flag
+"    let exclued = '*.o,cscope.*,tags,*.swp'
+"    "execute 'arg **/*.[ch]'
+"    execute 'set wildignore+=' . exclued
+"    execute 'arg **/*'
+"    execute 'set wildignore-=' . exclued
+"    execute 'argdo %s/' . search . '/' . replace . '/' . flag . ' | update'
 "endfunction
-"command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
-"nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
+""command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
+"nnoremap <Leader>R :call Replace(0, expand('<cword>'), input('Replace '.expand('<cword>').' with: '))<CR>
+"command! -nargs=* -bang Replace :call Replace(<bang>0, <f-args>)
+"command! -nargs=1 FindAll :set wildignore+=*.o,cscope.*,tags,*.swp | vimgrep <q-args> **/* | set wildignore-=*.o,cscope.*,tags,*.swp | cw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" END==============================================================================================================================
+
+
 
 
 

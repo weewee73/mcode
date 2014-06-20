@@ -287,13 +287,14 @@ OPTIONS
               This behavior can also be enabled by default at compile time.
 
         expression
-              selects which packets will be dumped.  If no expression is given, all packets on the net will be dumped.   Otherwise,  only
-              packets for which expression is `true' will be dumped.
+              selects which packets will be dumped.
+              If no expression is given, all packets on the net will be dumped.
+              Otherwise, only packets for which expression is `true' will be dumped.
 
               For the expression syntax, see pcap-filter(7).
 
-              Expression arguments can be passed to tcpdump as either a single argument or as multiple arguments, whichever is more conve‐
-              nient.  Generally, if the expression contains Shell metacharacters, it is easier to pass it as a single,  quoted argument.
+              Expression arguments can be passed to tcpdump as either a single argument or as multiple arguments, whichever is more convenient.
+              Generally, if the expression contains Shell metacharacters, it is easier to pass it as a single,  quoted argument.
               Multiple arguments are concatenated with spaces before being parsed.
 
 EXAMPLES

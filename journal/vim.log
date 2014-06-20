@@ -913,3 +913,9 @@ replace in all buffers
 replace in all windows
 :sball                             Split screen to show all buffers (one window per buffer). 
 :windo %s/pattern/replace/ge       Replace in all visible windows.  
+
+
+:verbose highlight
+
+tags need absolute path
+:set tags+=..../include/tags

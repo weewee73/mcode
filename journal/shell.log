@@ -941,6 +941,9 @@ evince man.pdf
 
 cvs status | grep -v "^ " | grep -v "^$" | grep -v = | grep -v "Status: Up-to-date"
 
+not ignore file
+cvs update -I ! 
+
 To show the headers of files created after October 1, 2005 and before October 3, 2005:
 cvs log -S -d "2005/10/1<2005/10/3"
 
@@ -1040,4 +1043,29 @@ ip route flush
 
 tcpdump arp and ether host 00:00:00:00:00:00
 
- tar czf - *.o | ssh root@192.168.2.1 "cd /tmp && tar xzf -"
+tar czf - *.o | ssh root@192.168.2.1 "cd /tmp && tar xzf -"
+
+login user message 
+    w
+    who
+    last
+    finger
+    pkill -t pts/0
+
+    write 
+    wall
+    talk
+    mesg
+    notify-send
+
+The character % introduces a job specification (jobspec).
+jobs
+bg
+fg
+disown [-ar] [-h] [jobspec ...]
+    Without options , each jobspec is removed from the table of active jobs.
+kill [-s sigspec | -n signum | -sigspec] [pid | jobspec] ...
+
+ifconfig eth0 | grep 'inet addr' | xargs echo | awk -F " |:" '{print $3}'
+ifconfig eth0 | grep 'inet addr' | awk -F " +|:" '{print $4}'
+

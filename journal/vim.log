@@ -919,3 +919,8 @@ replace in all windows
 
 tags need absolute path
 :set tags+=..../include/tags
+
+:nohlsearch
+
+show list ^M
+:e ++ff=unix

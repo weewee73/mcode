@@ -40,7 +40,7 @@ Plugin 'TxtBrowser'
 Plugin 'vis'
 "" scripts on GitHub repos https://github.com/
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'ervandew/supertab'
@@ -50,6 +50,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kshenoy/vim-signature' "vim-signature is a plugin to place, toggle and display marks.
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'Townk/vim-autoclose'
+Plugin 'bling/vim-airline'
 "Plugin 'tomasr/molokai'
 " plugin not on GitHub
 Plugin 'git://repo.or.cz/vcscommand.git'
@@ -94,7 +99,7 @@ set t_Co=256
 set t_ti= t_te=
 
 ""When on, splitting a window will put the new window right of the current one.
-set splitright 
+set splitright
 
 
 set termencoding=utf-8
@@ -120,10 +125,10 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set path+=./include
 
 "" custom comma motion mapping
-"nmap di, f,dT,
-"nmap ci, f,cT,
-"nmap da, f,ld2F,i,<ESC>l
-"nmap ca, f,ld2F,i,<ESC>a
+nmap di, f,dT,
+nmap ci, f,cT,
+nmap da, f,ld2F,i,<ESC>l
+nmap ca, f,ld2F,i,<ESC>a
 """ delete surrounding characters
 "noremap <leader>d" F"x,x
 "noremap <leader>c" F"x,xi
@@ -179,8 +184,8 @@ endif
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 nmap <F2> :cprev<CR>
 nmap <F3> :cnext<CR>
-nmap <F4> :cs find e <C-R>=expand("<cword>")<CR><CR>  
-nmap <F5> :cs find c <C-R>=expand("<cword>")<CR><CR>  
+nmap <F4> :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <F5> :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <F6> :tprev<CR>
 nmap <F7> :tnext<CR>
 "nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>  
@@ -292,6 +297,42 @@ let g:alternateSearchPath = 'sfr:./include,sfr:../source,sfr:../src,sfr:../inclu
 "==========================================
 let g:EasyGrepCommand=1
 let g:EasyGrepFilesToExclude=".svn,.git,tags,cscope.*,*.o,*.swp,*.out"
+let g:EasyGrepJumpToMatch=0
+
+"==========================================
+" kshenoy/vim-signature
+"==========================================
+let g:SignatureMap = {
+      \ 'PlaceNextMark'      :  "m",
+      \ 'PurgeMarksAtLine'   :  "<Space>",
+      \ 'PurgeMarks'         :  "-",
+      \ }
+
+"==========================================
+" bling/vim-airline
+"==========================================
+"let g:airline_theme='badwolf'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline_section_z='%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%-3c'
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#right_sep = ''
+
+
 
 
 " look up current word under cursor
@@ -309,7 +350,7 @@ nnoremap <silent> <F12> :call SearchWord()<CR>
 "    "执行sdcv命令查询单词的含义,返回的值保存在expl变量中
 "    let expl=system('sdcv -n ' . expand("<cword>"))
 "    "在每个窗口中执行命令，判断窗口中的文件名是否是dict-tmp，如果是，强制关闭
-"    windo if expand("%")=="dict-tmp" |q!|endif  
+"    windo if expand("%")=="dict-tmp" |q!|endif
 "    "纵向分割窗口，宽度为25，新窗口的内容为dict-tmp文件的内容
 "    25vsp dict-tmp
 "    "设置查询结果窗口的属性，不缓存，不保留交换文件
@@ -330,6 +371,20 @@ function! Synchronize()
     "exec ':redraw!' "ctrl-l
 endfunction
 command Sync call Synchronize()
+
+
+function! Mlog(name)
+    let file_name = $HOME . '/github/mcode/journal/' . a:name
+    exec ':tabnew ' . file_name
+endfunction
+command Mvim call Mlog("vim.log")
+command Mnote call Mlog("note.log")
+command Mshell call Mlog("shell.log")
+
+
+
+
+
 
 
 "" Search for current word and replace with given text for files in arglist.
@@ -544,20 +599,6 @@ command Sync call Synchronize()
 "
 
 "
-""==========================================
-"" netrw setting
-""==========================================
-"let g:netrw_winsize = 30
-"let g:netrw_browse_split = 3
-"
 "
 "iabbrev #b /****************************************
 "iabbrev #e <Space>****************************************/
-"
-"
-
-"" Highlight c function  (~/.vim/syntax/c.vim)
-"syn match    cCustomParen    "(" contains=cParen
-"syn match    cCustomFunc     "\w\+\s*(" contains=cCustomParen
-"hi cCustomFunc cterm=bold ctermfg=blue
-

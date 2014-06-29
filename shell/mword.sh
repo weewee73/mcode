@@ -38,22 +38,22 @@ else
 	#add PROMPT_COMMAND to ~/.bashrc
 	#PROMPT_COMMAND='$HOME/github/mcode/shell/mword.sh'
 
-	start_time=1389534029
-	step_time=1
-	day_count=20
-
-	pass_time=$((`date +%s`-$start_time))
-
-	today_base=`echo "$pass_time/86400*$day_count + 1" | bc`
-	count=`echo "$today_base + $pass_time/$step_time%$day_count" | bc`
-
 	if [ ! -f "$f_words" ]; then
 		grep '<word>' $f_word_xml | sed 's/.*<word>\(.*\)<\/word>.*/\1/g' >$f_words
 	fi
 
+    max=(`wc -l $f_words`)
+	start_time=1389534029
+	step_time=1
+	day_count=40
+
+	pass_time=$((`date +%s`-$start_time))
+    today_base=$(($pass_time/86400*$day_count + 1))
+    count=$((($today_base + $pass_time/$step_time%$day_count) % ${max[0]}))
+
 	word=`sed -n "$count p" $f_words`
 
-	#echo -ne "\n\e[1;35m[$count: $word]\e[m\n"
+	echo -ne "\n\e[1;35m[$count: $word]\e[m\n"
 
 	#set window's title
 	#echo -ne "\033]0;$word ---- $USER@$HOSTNAME: $PWD\007"

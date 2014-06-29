@@ -453,3 +453,27 @@ git
      .gitignore
      .git/info/exclude
      .git/config  [core] -> excludesfile = 
+
+http://ftp.gnu.org/gnu/coreutils/coreutils-8.22.tar.xz
+http://www.gnu.org/manual/manual.html
+
+http://www.gnu.org/software/bash/manual/
+
+http://www.gnu.org/software/coreutils/manual/
+http://www.gnu.org/software/grep/manual/
+http://www.gnu.org/software/gawk/manual/
+http://www.gnu.org/software/sed/manual/
+http://www.gnu.org/software/findutils/manual/find.html
+
+http://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html
+http://www.gnu.org/software/gnulib/manual/
+http://www.gnu.org/software/libc/manual/
+
+http://www.gnu.org/software/gcc/
+http://www.gnu.org/software/make/manual/
+http://www.gnu.org/software/gdb/documentation/
+
+http://www.gnu.org/software/autoconf/manual/
+http://www.gnu.org/software/automake/manual/
+
+http://www.gnu.org/software/autogen/manual/

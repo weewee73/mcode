@@ -1069,3 +1069,7 @@ kill [-s sigspec | -n signum | -sigspec] [pid | jobspec] ...
 ifconfig eth0 | grep 'inet addr' | xargs echo | awk -F " |:" '{print $3}'
 ifconfig eth0 | grep 'inet addr' | awk -F " +|:" '{print $4}'
 
+gzip -d
+gunzip
+
+xgettext *.c *.sh

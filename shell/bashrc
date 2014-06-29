@@ -68,6 +68,8 @@ if [ -f $HOME/.workrc ]; then
 	. $HOME/.workrc
 fi
 
+return 0
+
 # TMUX
 type tmux >/dev/null 2>&1 || return
 # If not running interactively, do not do anything

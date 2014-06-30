@@ -87,7 +87,7 @@ set ignorecase
 
 syntax enable
 "syntax on
-
+set regexpengine=1
 
 set clipboard=unnamedplus
 
@@ -363,10 +363,9 @@ nnoremap <silent> <F12> :call SearchWord()<CR>
 ""nnoremap <silent> <F12> :call Mydict()<CR>
 
 function! Synchronize()
-    "exec ':silent !find .  -name "*.[ch]" >cscope.files'
-    "exec ':silent !ctags --sort=yes --c-kinds=+px -L cscope.files && cscope -bq'
-    exec ':silent !ctags -R --c-kinds=+px --fields=+l && cscope -Rbq'
+    exec ':silent !$HOME/github/mcode/shell/project_init.sh'
     exec ':silent cs reset'
+    exec ':silent set ft=c'
     exec ':silent TlistUpdate'
     "exec ':redraw!' "ctrl-l
 endfunction
@@ -374,7 +373,7 @@ command Sync call Synchronize()
 
 
 function! Mlog(name)
-    let file_name = $HOME . '/github/mcode/journal/' . a:name
+    let file_name = '$HOME/github/mcode/journal/' . a:name
     exec ':tabnew ' . file_name
 endfunction
 command Mvim call Mlog("vim.log")

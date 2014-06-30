@@ -875,6 +875,11 @@ usr_28.txt fold
 " Show spaces before a tab:
 / \+\ze\t
 
+
+vim --startuptime start.log xxx.c
+
+#####################################################################################
+
 ---------- c.vim ----------
    vim ~/.vim/c-support/templates/Templates
 \if             Adding C function in normal mode or insert mode

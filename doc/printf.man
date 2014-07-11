@@ -41,9 +41,9 @@ DESCRIPTION
 
        \v     vertical tab
 
-       \NNN   byte with octal value NNN (1 to 3 digits)
+       \NNN byte with octal value NNN (1 to 3 digits)
 
-       \xHH   byte with hexadecimal value HH (1 to 2 digits)
+       \xHH byte with hexadecimal value HH (1 to 2 digits)
 
        \uHHHH Unicode (ISO/IEC 10646) character with hex value HHHH (4 digits)
 
@@ -52,14 +52,14 @@ DESCRIPTION
 
        %%     a single %
 
-       %b     ARGUMENT as a string with '\' escapes interpreted,  except  that
+       %b     ARGUMENT as a string with '\' escapes interpreted,  except that
               octal escapes are of the form \0 or \0NNN
 
-       and  all C format specifications ending with one of diouxXfeEgGcs, with
+       and all C format specifications ending with one of diouxXfeEgGcs, with
        ARGUMENTs converted to proper type first.  Variable widths are handled.
 
-       NOTE:  your  shell  may  have  its own version of printf, which usually
-       supersedes the version described here.  Please refer  to  your  shell's
+       NOTE:  your shell may have its own version of printf, which usually
+       supersedes the version described here.  Please refer to your shell's
        documentation for details about the options it supports.
 
 AUTHOR
@@ -72,16 +72,16 @@ REPORTING BUGS
        Report printf translation bugs to <http://translationproject.org/team/>
 
 COPYRIGHT
-       Copyright © 2010 Free Software Foundation, Inc.   License  GPLv3+:  GNU
+       Copyright © 2010 Free Software Foundation, Inc.   License GPLv3+:  GNU
        GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
-       This  is  free  software:  you  are free to change and redistribute it.
+       This is free software:  you are free to change and redistribute it.
        There is NO WARRANTY, to the extent permitted by law.
 
 SEE ALSO
        printf(3)
 
-       The full documentation for printf is maintained as  a  Texinfo  manual.
-       If  the  info  and printf programs are properly installed at your site,
+       The full documentation for printf is maintained as a Texinfo manual.
+       If the info and printf programs are properly installed at your site,
        the command
 
               info coreutils 'printf invocation'
@@ -90,4 +90,1658 @@ SEE ALSO
 
 
 
-GNU coreutils 8.4                  May 2013                          PRINTF(1)
+GNU coreutils 8.4                November 2013                       PRINTF(1)
+PRINTF(1P)                 POSIX Programmer's Manual                PRINTF(1P)
+
+
+
+PROLOG
+       This manual page is part of the POSIX Programmer's Manual.  The Linux
+       implementation of this interface may differ (consult the corresponding
+       Linux manual page for details of Linux behavior), or the interface may
+       not be implemented on Linux.
+
+NAME
+       printf - write formatted output
+
+SYNOPSIS
+       printf format[argument...]
+
+DESCRIPTION
+       The printf utility shall write formatted operands to the standard out-
+       put. The argument operands shall be formatted under control of the for-
+       mat operand.
+
+OPTIONS
+       None.
+
+OPERANDS
+       The following operands shall be supported:
+
+       format A string describing the format to use to write the remaining
+              operands.  See the EXTENDED DESCRIPTION section.
+
+       argument
+              The strings to be written to standard output, under the control
+              of format. See the EXTENDED DESCRIPTION section.
+
+
+STDIN
+       Not used.
+
+INPUT FILES
+       None.
+
+ENVIRONMENT VARIABLES
+       The following environment variables shall affect the execution of
+       printf:
+
+       LANG Provide a default value for the internationalization variables
+              that are unset or null. (See the Base Definitions volume of
+              IEEE Std 1003.1-2001,  Section 8.2,  Internationalization Vari-
+              ables for the precedence of internationalization variables used
+              to determine the values of locale categories.)
+
+       LC_ALL If set to a non-empty string value, override the values of all
+              the other internationalization variables.
+
+       LC_CTYPE
+              Determine the locale for the interpretation of sequences of
+              bytes of text data as characters (for example, single-byte as
+              opposed to multi-byte characters in arguments).
+
+       LC_MESSAGES
+              Determine the locale that should be used to affect the format
+              and contents of diagnostic messages written to standard error.
+
+       LC_NUMERIC
+
+              Determine the locale for numeric formatting. It shall affect the
+              format of numbers written using the e, E, f, g, and G conversion
+              specifier characters (if supported).
+
+       NLSPATH
+              Determine the location of message catalogs for the processing of
+              LC_MESSAGES .
+
+
+ASYNCHRONOUS EVENTS
+       Default.
+
+STDOUT
+       See the EXTENDED DESCRIPTION section.
+
+STDERR
+       The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+       None.
+
+EXTENDED DESCRIPTION
+       The format operand shall be used as the format string described in the
+       Base Definitions volume of IEEE Std 1003.1-2001, Chapter 5, File Format
+       Notation with the following exceptions:
+
+        1. A <space> in the format string, in any context other than a flag of
+           a conversion specification, shall be treated as an ordinary charac-
+           ter that is copied to the output.
+
+
+        2. A ' ' character in the format string shall be treated as a '  '
+           character, not as a <space>.
+
+
+        3. In addition to the escape sequences shown in the Base Definitions
+           volume of IEEE Std 1003.1-2001, Chapter 5, File Format Notation (
+           '\\', '\a', '\b', '\f', '\n', '\r', '\t', '\v' ), "\ddd", where ddd
+           is a one, two, or three-digit octal number, shall be written as a
+           byte with the numeric value specified by the octal number.
+
+
+        4. The implementation shall not precede or follow output from the d or
+           u conversion specifiers with <blank>s not specified by the format
+           operand.
+
+
+        5. The implementation shall not precede output from the o conversion
+           specifier with zeros not specified by the format operand.
+
+
+        6. The e, E, f, g, and G conversion specifiers need not be supported.
+
+
+        7. An additional conversion specifier character, b, shall be supported
+           as follows. The argument shall be taken to be a string that may
+           contain backslash-escape sequences. The following backslash-escape
+           sequences shall be supported:
+
+            * The escape sequences listed in the Base Definitions volume of
+              IEEE Std 1003.1-2001,  Chapter 5,  File Format Notation ( '\\',
+              '\a', '\b', '\f', '\n', '\r', '\t', '\v' ), which shall be con-
+              verted to the characters they represent
+
+
+            * "\0ddd",  where ddd is a zero, one, two, or three-digit octal
+              number that shall be converted to a byte with the numeric value
+              specified by the octal number
+
+
+            * to ignore any remaining characters in the string operand con-
+              taining it, any remaining string operands,  and any additional
+              characters in the format operand
+
+
+       The interpretation of a backslash followed by any other sequence of
+       characters is unspecified.
+
+       Bytes from the converted string shall be written until the end of the
+       string or the number of bytes indicated by the precision specification
+       is reached. If the precision is omitted, it shall be taken to be infi-
+       nite, so all bytes up to the end of the converted string shall be writ-
+       ten.
+
+
+        8. For each conversion specification that consumes an argument,  the
+           next argument operand shall be evaluated and converted to the
+           appropriate type for the conversion as specified below.
+
+
+        9. The format operand shall be reused as often as necessary to satisfy
+           the argument operands. Any extra c or s conversion specifiers shall
+           be evaluated as if a null string argument were supplied;  other
+           extra conversion specifications shall be evaluated as if a zero
+           argument were supplied.  If the format operand contains no conver-
+           sion specifications and argument operands are present, the results
+           are unspecified.
+
+
+       10. If a character sequence in the format operand begins with a '%'
+           character,  but does not form a valid conversion specification, the
+           behavior is unspecified.
+
+
+       The argument operands shall be treated as strings if the corresponding
+       conversion specifier is b, c, or s ; otherwise, it shall be evaluated
+       as a C constant, as described by the ISO C standard, with the following
+       extensions:
+
+        * A leading plus or minus sign shall be allowed.
+
+
+        * If the leading character is a single-quote or double-quote, the
+          value shall be the numeric value in the underlying codeset of the
+          character following the single-quote or double-quote.
+
+
+       If an argument operand cannot be completely converted into an internal
+       value appropriate to the corresponding conversion specification,  a
+       diagnostic message shall be written to standard error and the utility
+       shall not exit with a zero exit status, but shall continue processing
+       any remaining operands and shall write the value accumulated at the
+       time the error was detected to standard output.
+
+       It is not considered an error if an argument operand is not completely
+       used for a c or s conversion or if a string operand's first or second
+       character is used to get the numeric value of a character.
+
+EXIT STATUS
+       The following exit values shall be returned:
+
+        0     Successful completion.
+
+       >0     An error occurred.
+
+
+CONSEQUENCES OF ERRORS
+       Default.
+
+       The following sections are informative.
+
+APPLICATION USAGE
+       The floating-point formatting conversion specifications of printf() are
+       not required because all arithmetic in the shell is integer arithmetic.
+       The awk utility performs floating-point calculations and provides its
+       own printf function.  The bc utility can perform arbitrary-precision
+       floating-point arithmetic, but does not provide extensive formatting
+       capabilities.  (This printf utility cannot really be used to format bc
+       output; it does not support arbitrary precision.)  Implementations are
+       encouraged to support the floating-point conversions as an extension.
+
+       Note that this printf utility, like the printf() function defined in
+       the System Interfaces volume of IEEE Std 1003.1-2001 on which it is
+       based,  makes no special provision for dealing with multi-byte charac-
+       ters when using the %c conversion specification or when a precision is
+       specified in a %b or %s conversion specification. Applications should
+       be extremely cautious using either of these features when there are
+       multi-byte characters in the character set.
+
+       No provision is made in this volume of IEEE Std 1003.1-2001 which
+       allows field widths and precisions to be specified as '*' since the '*'
+       can be replaced directly in the format operand using shell variable
+       substitution.  Implementations can also provide this feature as an
+       extension if they so choose.
+
+       Hexadecimal character constants as defined in the ISO C standard are
+       not recognized in the format operand because there is no consistent way
+       to detect the end of the constant. Octal character constants are lim-
+       ited to, at most, three octal digits, but hexadecimal character con-
+       stants are only terminated by a non-hex-digit character. In the ISO C
+       standard, the "##" concatenation operator can be used to terminate a
+       constant and follow it with a hexadecimal character to be written.  In
+       the shell, concatenation occurs before the printf utility has a chance
+       to parse the end of the hexadecimal constant.
+
+       The  %b conversion specification is not part of the ISO C standard; it
+       has been added here as a portable way to process backslash escapes
+       expanded in string operands as provided by the echo utility.  See also
+       the APPLICATION USAGE section of echo for ways to use printf as a
+       replacement for all of the traditional versions of the echo utility.
+
+       If an argument cannot be parsed correctly for the corresponding conver-
+       sion specification, the printf utility is required to report an error.
+       Thus,  overflow and extraneous characters at the end of an argument
+       being used for a numeric conversion shall be reported as errors.
+
+EXAMPLES
+       To alert the user and then print and read a series of prompts:
+
+
+              printf "\aPlease fill in the following: \nName: "
+              read name
+              printf "Phone number: "
+              read phone
+
+       To read out a list of right and wrong answers from a file,  calculate
+       the percentage correctly,  and print them out. The numbers are right-
+       justified and separated by a single <tab>. The percentage is written to
+       one decimal place of accuracy:
+
+
+              while read right wrong ; do
+                  percent=$(echo "scale=1;($right*100)/($right+$wrong)" | bc)
+                  printf "%2d right\t%2d wrong\t(%s%%)\n" \
+                      $right $wrong $percent
+              done < database_file
+       The command:
+
+
+              printf "%5d%4d\n" 1 21 321 4321 54321
+
+       produces:
+
+
+                 1 21
+                3214321
+              54321 0
+
+       Note that the format operand is used three times to print all of the
+       given strings and that a '0' was supplied by printf to satisfy the last
+       %4d conversion specification.
+
+       The printf utility is required to notify the user when conversion
+       errors are detected while producing numeric output; thus, the following
+       results would be expected on an implementation with 32-bit twos-comple-
+       ment integers when %d is specified as the format operand:
+
+                      Standard
+          Argument    Output      Diagnostic Output
+          5a          5           printf: "5a" not completely converted
+          9999999999 2147483647 printf: "9999999999" arithmetic overflow
+          -9999999999 -2147483648 printf: "-9999999999" arithmetic overflow
+          ABC         0           printf: "ABC" expected numeric value
+
+       The diagnostic message format is not specified, but these examples con-
+       vey the type of information that should be reported. Note that the
+       value shown on standard output is what would be expected as the return
+       value from the strtol() function as defined in the System Interfaces
+       volume of IEEE Std 1003.1-2001. A similar correspondence exists between
+       %u and strtoul()  and  %e, %f, and %g (if the implementation supports
+       floating-point conversions) and strtod().
+
+       In a locale using the ISO/IEC 646:1991 standard as the underlying code-
+       set, the command:
+
+
+              printf "%d\n" 3 +3 -3 \'3 \"+3 "'-3"
+
+       produces:
+
+       3      Numeric value of constant 3
+
+       3      Numeric value of constant 3
+
+       -3     Numeric value of constant -3
+
+       51     Numeric value of the character '3' in the ISO/IEC 646:1991 stan-
+              dard codeset
+
+       43     Numeric value of the character '+' in the ISO/IEC 646:1991 stan-
+              dard codeset
+
+       45     Numeric value of the character '-' in the ISO/IEC 646:1991 stan-
+              dard codeset
+
+
+       Note that in a locale with multi-byte characters, the value of a char-
+       acter is intended to be the value of the equivalent of the wchar_t rep-
+       resentation of the character as described in the System Interfaces vol-
+       ume of IEEE Std 1003.1-2001.
+
+RATIONALE
+       The printf utility was added to provide functionality that has histori-
+       cally been provided by echo. However, due to irreconcilable differences
+       in the various versions of echo extant, the version has few special
+       features, leaving those to this new printf utility, which is based on
+       one in the Ninth Edition system.
+
+       The EXTENDED DESCRIPTION section almost exactly matches the printf()
+       function in the ISO C standard, although it is described in terms of
+       the file format notation in the Base Definitions volume of
+       IEEE Std 1003.1-2001, Chapter 5, File Format Notation.
+
+FUTURE DIRECTIONS
+       None.
+
+SEE ALSO
+       awk, bc, echo, the System Interfaces volume of IEEE Std 1003.1-2001,
+       printf()
+
+COPYRIGHT
+       Portions of this text are reprinted and reproduced in electronic form
+       from IEEE Std 1003.1, 2003 Edition, Standard for Information Technology
+       --  Portable Operating System Interface (POSIX), The Open Group Base
+       Specifications Issue 6, Copyright (C) 2001-2003 by the Institute of
+       Electrical and Electronics Engineers, Inc and The Open Group. In the
+       event of any discrepancy between this version and the original IEEE and
+       The Open Group Standard, the original IEEE and The Open Group Standard
+       is the referee document. The original Standard can be obtained online
+       at http://www.opengroup.org/unix/online.html .
+
+
+
+IEEE/The Open Group                  2003                           PRINTF(1P)
+PRINTF(3)                  Linux Programmer's Manual                 PRINTF(3)
+
+
+
+NAME
+       printf,   fprintf,  sprintf,  snprintf,  vprintf,  vfprintf,  vsprintf,
+       vsnprintf - formatted output conversion
+
+SYNOPSIS
+       #include <stdio.h>
+
+       int printf(const char *format, ...);
+       int fprintf(FILE *stream, const char *format, ...);
+       int sprintf(char *str, const char *format, ...);
+       int snprintf(char *str, size_t size, const char *format, ...);
+
+       #include <stdarg.h>
+
+       int vprintf(const char *format, va_list ap);
+       int vfprintf(FILE *stream, const char *format, va_list ap);
+       int vsprintf(char *str, const char *format, va_list ap);
+       int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+       snprintf(), vsnprintf(): _BSD_SOURCE || _XOPEN_SOURCE >= 500 ||
+       _ISOC99_SOURCE; or cc -std=c99
+
+DESCRIPTION
+       The functions in the printf() family produce output according to a for-
+       mat as described below.  The functions printf()  and vprintf()  write
+       output to stdout, the standard output stream; fprintf() and vfprintf()
+       write output to the given output stream;  sprintf(),  snprintf(),
+       vsprintf() and vsnprintf() write to the character string str.
+
+       The functions snprintf()  and vsnprintf()  write at most size bytes
+       (including the trailing null byte ('\0')) to str.
+
+       The functions vprintf(), vfprintf(), vsprintf(), vsnprintf() are equiv-
+       alent to the functions printf(),  fprintf(), sprintf(), snprintf(),
+       respectively, except that they are called with a va_list instead of a
+       variable number of arguments.  These functions do not call the va_end
+       macro.  Because they invoke the va_arg macro, the value of ap is unde-
+       fined after the call.  See stdarg(3).
+
+       These eight functions write the output under the control of a format
+       string that specifies how subsequent arguments (or arguments accessed
+       via the variable-length argument facilities of stdarg(3)) are converted
+       for output.
+
+       C99 and POSIX.1-2001 specify that the results are undefined if a call
+       to sprintf(),  snprintf(),  vsprintf(),  or vsnprintf() would cause to
+       copying to take place between objects that overlap (e.g., if the target
+       string array and one of the supplied input arguments refer to the same
+       buffer).  See NOTES.
+
+   Return value
+       Upon successful return, these functions return the number of characters
+       printed  (not including the trailing '\0'  used to end output to
+       strings).
+
+       The functions snprintf() and vsnprintf() do not write more than size
+       bytes  (including the trailing '\0').  If the output was truncated due
+       to this limit then the return value is the number of characters  (not
+       including the trailing '\0') which would have been written to the final
+       string if enough space had been available.  Thus,  a return value of
+       size or more means that the output was truncated.  (See also below
+       under NOTES.)
+
+       If an output error is encountered, a negative value is returned.
+
+   Format of the format string
+       The format string is a character string, beginning and ending in its
+       initial shift state, if any.  The format string is composed of zero or
+       more directives:  ordinary characters (not  %),  which are copied
+       unchanged to the output stream; and conversion specifications, each of
+       which results in fetching zero or more subsequent arguments.  Each con-
+       version specification is introduced by the character %, and ends with a
+       conversion specifier.  In between there may be (in this order) zero or
+       more flags, an optional minimum field width, an optional precision and
+       an optional length modifier.
+
+       The arguments must correspond properly (after type promotion) with the
+       conversion specifier.  By default, the arguments are used in the order
+       given, where each '*' and each conversion specifier asks for the next
+       argument  (and it is an error if insufficiently many arguments are
+       given).  One can also specify explicitly which argument is taken,  at
+       each place where an argument is required, by writing "%m$" instead of
+       '%' and "*m$" instead of '*', where the decimal integer m denotes the
+       position in the argument list of the desired argument, indexed starting
+       from 1.  Thus,
+
+           printf("%*d", width, num);
+
+       and
+
+           printf("%2$*1$d", width, num);
+
+       are equivalent.  The second style allows repeated references to the
+       same argument.  The C99 standard does not include the style using '$',
+       which comes from the Single Unix Specification.  If the style using '$'
+       is used, it must be used throughout for all conversions taking an argu-
+       ment and all width and precision arguments, but it may be mixed with
+       "%%" formats which do not consume an argument.  There may be no gaps in
+       the numbers of arguments specified using '$'; for example, if arguments
+       1 and 3 are specified, argument 2 must also be specified somewhere in
+       the format string.
+
+       For some numeric conversions a radix character ("decimal point")  or
+       thousands'  grouping character is used.   The actual character used
+       depends on the LC_NUMERIC part of the locale.  The POSIX locale uses
+       '.' as radix character, and does not have a grouping character.  Thus,
+
+               printf("%'.2f", 1234567.89);
+
+       results in "1234567.89"  in the POSIX locale, in "1234567,89" in the
+       nl_NL locale, and in "1.234.567,89" in the da_DK locale.
+
+   The flag characters
+       The character % is followed by zero or more of the following flags:
+
+       #      The value should be converted to an  "alternate form".   For o
+              conversions,  the first character of the output string is made
+              zero (by prefixing a 0 if it was not zero already).  For x and X
+              conversions,  a non-zero result has the string "0x" (or "0X" for
+              X conversions) prepended to it.  For a, A, e, E, f, F, g, and G
+              conversions,  the result will always contain a decimal point,
+              even if no digits follow it (normally, a decimal point appears
+              in the results of those conversions only if a digit follows).
+              For g and G conversions, trailing zeros are not removed from the
+              result as they would otherwise be.  For other conversions, the
+              result is undefined.
+
+       0      The value should be zero padded.  For d, i, o, u, x, X, a, A, e,
+              E,  f, F, g, and G conversions, the converted value is padded on
+              the left with zeros rather than blanks.  If the 0 and -  flags
+              both appear,  the 0 flag is ignored.  If a precision is given
+              with a numeric conversion (d, i, o, u, x, and X), the 0 flag is
+              ignored.  For other conversions, the behavior is undefined.
+
+       -      The converted value is to be left adjusted on the field bound-
+              ary.  (The default is right justification.)  Except for n con-
+              versions,  the converted value is padded on the right with
+              blanks, rather than on the left with blanks or zeros.  A - over-
+              rides a 0 if both are given.
+
+       ' '    (a space)  A blank should be left before a positive number (or
+              empty string) produced by a signed conversion.
+
+       +      A sign (+ or -) should always be placed before a number produced
+              by a signed conversion.  By default a sign is used only for neg-
+              ative numbers.  A + overrides a space if both are used.
+
+       The five flag characters above are defined in the C standard.   The
+       SUSv2 specifies one further flag character.
+
+       '      For decimal conversion (i, d, u, f, F, g, G) the output is to be
+              grouped with thousands' grouping characters if the locale infor-
+              mation indicates any.  Note that many versions of gcc(1) cannot
+              parse this option and will issue a warning.   SUSv2 does not
+              include %'F.
+
+       glibc 2.2 adds one further flag character.
+
+       I      For decimal integer conversion (i, d, u) the output uses the
+              locale's alternative output digits, if any.  For example,  since
+              glibc 2.2.3 this will give Arabic-Indic digits in the Persian
+              ("fa_IR") locale.
+
+   The field width
+       An optional decimal digit string (with non-zero first digit) specifying
+       a minimum field width.   If the converted value has fewer characters
+       than the field width, it will be padded with spaces on the left (or
+       right, if the left-adjustment flag has been given).  Instead of a deci-
+       mal digit string one may write "*" or "*m$" (for some decimal integer
+       m) to specify that the field width is given in the next argument, or in
+       the m-th argument, respectively, which must be of type int.  A negative
+       field width is taken as a '-' flag followed by a positive field width.
+       In no case does a nonexistent or small field width cause truncation of
+       a field;  if the result of a conversion is wider than the field width,
+       the field is expanded to contain the conversion result.
+
+   The precision
+       An optional precision, in the form of a period ('.')   followed by an
+       optional decimal digit string.  Instead of a decimal digit string one
+       may write "*" or "*m$" (for some decimal integer m) to specify that the
+       precision is given in the next argument, or in the m-th argument,
+       respectively, which must be of type int.  If the precision is given as
+       just  '.',  or the precision is negative, the precision is taken to be
+       zero.  This gives the minimum number of digits to appear for d,  i,  o,
+       u, x, and X conversions, the number of digits to appear after the radix
+       character for a, A, e, E, f, and F conversions, the maximum number of
+       significant digits for g and G conversions, or the maximum number of
+       characters to be printed from a string for s and S conversions.
+
+   The length modifier
+       Here, "integer conversion" stands for d, i, o, u, x, or X conversion.
+
+       hh     A following integer conversion corresponds to a signed char or
+              unsigned char argument, or a following n conversion corresponds
+              to a pointer to a signed char argument.
+
+       h      A following integer conversion corresponds to a short int or
+              unsigned short int argument, or a following n conversion corre-
+              sponds to a pointer to a short int argument.
+
+       l      (ell) A following integer conversion corresponds to a long int
+              or unsigned long int argument, or a following n conversion cor-
+              responds to a pointer to a long int argument, or a following c
+              conversion corresponds to a wint_t argument, or a following s
+              conversion corresponds to a pointer to wchar_t argument.
+
+       ll     (ell-ell).  A following integer conversion corresponds to a long
+              long int or unsigned long long int argument, or a following n
+              conversion corresponds to a pointer to a long long int argument.
+
+       L      A following a, A, e, E, f, F, g, or G conversion corresponds to
+              a long double argument.  (C99 allows %LF, but SUSv2 does not.)
+
+       q      ("quad". 4.4BSD and Linux libc5 only.  Don't use.)   This is a
+              synonym for ll.
+
+       j      A following integer conversion corresponds to an intmax_t or
+              uintmax_t argument.
+
+       z      A following integer conversion corresponds to a size_t or
+              ssize_t argument.  (Linux libc5 has Z with this meaning.  Don't
+              use it.)
+
+       t      A following integer conversion corresponds to a ptrdiff_t argu-
+              ment.
+
+       The SUSv2 only knows about the length modifiers h (in hd, hi, ho, hx,
+       hX, hn) and l (in ld, li, lo, lx, lX, ln, lc, ls) and L (in Le, LE, Lf,
+       Lg, LG).
+
+   The conversion specifier
+       A character that specifies the type of conversion to be applied.  The
+       conversion specifiers and their meanings are:
+
+       d, i The int argument is converted to signed decimal notation.   The
+              precision,  if any, gives the minimum number of digits that must
+              appear; if the converted value requires fewer digits,  it is
+              padded on the left with zeros.  The default precision is 1.
+              When 0 is printed with an explicit precision 0,  the output is
+              empty.
+
+       o, u, x, X
+              The unsigned int argument is converted to unsigned octal (o),
+              unsigned decimal (u), or unsigned hexadecimal (x and X)  nota-
+              tion.   The letters abcdef are used for x conversions; the let-
+              ters ABCDEF are used for X conversions.  The precision, if any,
+              gives the minimum number of digits that must appear; if the con-
+              verted value requires fewer digits, it is padded on the left
+              with zeros.  The default precision is 1.  When 0 is printed with
+              an explicit precision 0, the output is empty.
+
+       e, E The double argument is rounded and converted in the style
+              [-]d.ddde±dd where there is one digit before the decimal-point
+              character and the number of digits after it is equal to the pre-
+              cision;  if the precision is missing, it is taken as 6; if the
+              precision is zero, no decimal-point character appears.   An E
+              conversion uses the letter E (rather than e) to introduce the
+              exponent.  The exponent always contains at least two digits;  if
+              the value is zero, the exponent is 00.
+
+       f, F The double argument is rounded and converted to decimal notation
+              in the style [-]ddd.ddd, where the number of digits after the
+              decimal-point character is equal to the precision specification.
+              If the precision is missing, it is taken as 6; if the precision
+              is explicitly zero,  no decimal-point character appears.  If a
+              decimal point appears, at least one digit appears before it.
+
+              (The SUSv2 does not know about F and says that character string
+              representations for infinity and NaN may be made available.  The
+              C99 standard specifies "[-]inf" or "[-]infinity"  for infinity,
+              and a string starting with "nan" for NaN, in the case of f con-
+              version, and "[-]INF" or "[-]INFINITY" or "NAN*" in the case of
+              F conversion.)
+
+       g, G The double argument is converted in style f or e (or F or E for
+              G conversions).  The precision specifies the number of signifi-
+              cant digits.   If the precision is missing, 6 digits are given;
+              if the precision is zero, it is treated as 1.  Style e is used
+              if the exponent from its conversion is less than -4 or greater
+              than or equal to the precision.  Trailing zeros are removed from
+              the fractional part of the result; a decimal point appears only
+              if it is followed by at least one digit.
+
+       a, A   (C99; not in SUSv2) For a conversion,  the double argument is
+              converted to hexadecimal notation (using the letters abcdef) in
+              the style [-]0xh.hhhhp±d; for A conversion the prefix 0X,  the
+              letters ABCDEF, and the exponent separator P is used.  There is
+              one hexadecimal digit before the decimal point, and the number
+              of digits after it is equal to the precision.  The default pre-
+              cision suffices for an exact representation of the value if an
+              exact representation in base 2 exists and otherwise is suffi-
+              ciently large to distinguish values of type double.   The digit
+              before the decimal point is unspecified for non-normalized num-
+              bers, and non-zero but otherwise unspecified for normalized num-
+              bers.
+
+       c      If no l modifier is present, the int argument is converted to an
+              unsigned char, and the resulting character is written.  If an l
+              modifier is present,  the wint_t (wide character) argument is
+              converted to a multibyte sequence by a call to the wcrtomb(3)
+              function, with a conversion state starting in the initial state,
+              and the resulting multibyte string is written.
+
+       s      If no l modifier is present:  The const char  *  argument is
+              expected to be a pointer to an array of character type (pointer
+              to a string).  Characters from the array are written up to  (but
+              not including) a terminating null byte ('\0'); if a precision is
+              specified, no more than the number specified are written.  If a
+              precision is given, no null byte need be present; if the preci-
+              sion is not specified, or is greater than the size of the array,
+              the array must contain a terminating null byte.
+
+              If an l modifier is present: The const wchar_t * argument is
+              expected to be a pointer to an array of wide characters.   Wide
+              characters from the array are converted to multibyte characters
+              (each by a call to the wcrtomb(3) function,  with a conversion
+              state starting in the initial state before the first wide char-
+              acter), up to and including a terminating null wide character.
+              The resulting multibyte characters are written up to (but not
+              including) the terminating null byte.  If a precision is speci-
+              fied,  no more bytes than the number specified are written, but
+              no partial multibyte characters are written.  Note that the pre-
+              cision determines the number of bytes written, not the number of
+              wide characters or screen positions.  The array must contain a
+              terminating null wide character, unless a precision is given and
+              it is so small that the number of bytes written exceeds it
+              before the end of the array is reached.
+
+       C      (Not in C99, but in SUSv2.)  Synonym for lc.  Don't use.
+
+       S      (Not in C99, but in SUSv2.)  Synonym for ls.  Don't use.
+
+       p      The void * pointer argument is printed in hexadecimal (as if by
+              %#x or %#lx).
+
+       n      The number of characters written so far is stored into the inte-
+              ger indicated by the int * (or variant) pointer argument.  No
+              argument is converted.
+
+       m      (Glibc extension.)  Print output of strerror(errno).   No argu-
+              ment is required.
+
+       %      A  '%' is written.  No argument is converted.  The complete con-
+              version specification is '%%'.
+
+CONFORMING TO
+       The fprintf(),  printf(),  sprintf(),   vprintf(),   vfprintf(),   and
+       vsprintf()  functions conform to C89 and C99.   The snprintf() and
+       vsnprintf() functions conform to C99.
+
+       Concerning the return value of snprintf(),  SUSv2 and C99 contradict
+       each other: when snprintf() is called with size=0 then SUSv2 stipulates
+       an unspecified return value less than 1, while C99 allows str to be
+       NULL in this case, and gives the return value (as always) as the number
+       of characters that would have been written in case the output string
+       has been large enough.
+
+       Linux libc4 knows about the five C standard flags.  It knows about the
+       length modifiers h, l, L, and the conversions c, d, e, E, f, F,  g,  G,
+       i,  n, o, p, s, u, x, and X, where F is a synonym for f.  Additionally,
+       it accepts D, O, and U as synonyms for ld, lo, and lu.  (This is bad,
+       and caused serious bugs later, when support for %D disappeared.)  No
+       locale-dependent radix character, no thousands' separator,  no NaN or
+       infinity, no "%m$" and "*m$".
+
+       Linux libc5 knows about the five C standard flags and the ' flag,
+       locale, "%m$" and "*m$".  It knows about the length modifiers h, l,  L,
+       Z,  and q,  but accepts L and q both for long double and for long long
+       int (this is a bug).  It no longer recognizes F, D, O, and U, but adds
+       the conversion character m, which outputs strerror(errno).
+
+       glibc 2.0 adds conversion characters C and S.
+
+       glibc 2.1 adds length modifiers hh, j, t, and z and conversion charac-
+       ters a and A.
+
+       glibc 2.2 adds the conversion character F with C99 semantics,  and the
+       flag character I.
+
+NOTES
+       Some programs imprudently rely on code such as the following
+
+           sprintf(buf, "%s some further text", buf);
+
+       to append text to buf.  However, the standards explicitly note that the
+       results are undefined if source and destination buffers overlap when
+       calling sprintf(), snprintf(), vsprintf(), and vsnprintf().  Depending
+       on the version of gcc(1) used, and the compiler options employed, calls
+       such as the above will not produce the expected results.
+
+       The glibc implementation of the functions snprintf() and vsnprintf()
+       conforms to the C99 standard, that is,  behaves as described above,
+       since glibc version 2.1.  Until glibc 2.0.6 they would return -1 when
+       the output was truncated.
+
+BUGS
+       Because sprintf() and vsprintf() assume an arbitrarily long string,
+       callers must be careful not to overflow the actual space; this is often
+       impossible to assure.  Note that the length of the strings produced is
+       locale-dependent and difficult to predict.   Use snprintf()  and
+       vsnprintf() instead (or asprintf(3) and vasprintf(3)).
+
+       Linux libc4.[45] does not have a snprintf(), but provides a libbsd that
+       contains an snprintf()  equivalent to sprintf(),  that is, one that
+       ignores the size argument.  Thus, the use of snprintf()  with early
+       libc4 leads to serious security problems.
+
+       Code such as printf(foo); often indicates a bug, since foo may contain
+       a % character.  If foo comes from untrusted user input, it may contain
+       %n,  causing the printf() call to write to memory and creating a secu-
+       rity hole.
+
+EXAMPLE
+       To print pi to five decimal places:
+
+           #include <math.h>
+           #include <stdio.h>
+           fprintf(stdout, "pi = %.5f\n", 4 * atan(1.0));
+
+       To print a date and time in the form "Sunday,  July 3,  10:02",  where
+       weekday and month are pointers to strings:
+
+           #include <stdio.h>
+           fprintf(stdout, "%s, %s %d, %.2d:%.2d\n",
+                   weekday, month, day, hour, min);
+
+       Many countries use the day-month-year order.  Hence, an international-
+       ized version must be able to print the arguments in an order specified
+       by the format:
+
+           #include <stdio.h>
+           fprintf(stdout, format,
+                   weekday, month, day, hour, min);
+
+       where format depends on locale, and may permute the arguments.  With
+       the value:
+
+           "%1$s, %3$d. %2$s, %4$d:%5$.2d\n"
+
+       one might obtain "Sonntag, 3. Juli, 10:02".
+
+       To allocate a sufficiently large string and print into it (code correct
+       for both glibc 2.0 and glibc 2.1):
+
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <stdarg.h>
+
+       char *
+       make_message(const char *fmt, ...)
+       {
+           /* Guess we need no more than 100 bytes. */
+           int n, size = 100;
+           char *p, *np;
+           va_list ap;
+
+           if ((p = malloc(size)) == NULL)
+               return NULL;
+
+           while (1) {
+               /* Try to print in the allocated space. */
+               va_start(ap, fmt);
+               n = vsnprintf(p, size, fmt, ap);
+               va_end(ap);
+               /* If that worked, return the string. */
+               if (n > -1 && n < size)
+                   return p;
+               /* Else try again with more space. */
+               if (n > -1)    /* glibc 2.1 */
+                   size = n+1; /* precisely what is needed */
+               else           /* glibc 2.0 */
+                   size *= 2;  /* twice the old size */
+               if ((np = realloc (p, size)) == NULL) {
+                   free(p);
+                   return NULL;
+               } else {
+                   p = np;
+               }
+           }
+       }
+
+SEE ALSO
+       printf(1), asprintf(3), dprintf(3), scanf(3), setlocale(3), wcrtomb(3),
+       wprintf(3), locale(5)
+
+COLOPHON
+       This page is part of release 3.22 of the Linux man-pages project.   A
+       description of the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               2008-12-19                         PRINTF(3)
+FPRINTF(3P)                POSIX Programmer's Manual               FPRINTF(3P)
+
+
+
+PROLOG
+       This manual page is part of the POSIX Programmer's Manual.  The Linux
+       implementation of this interface may differ (consult the corresponding
+       Linux manual page for details of Linux behavior), or the interface may
+       not be implemented on Linux.
+
+NAME
+       fprintf, printf, snprintf, sprintf - print formatted output
+
+SYNOPSIS
+       #include <stdio.h>
+
+       int fprintf(FILE *restrict stream, const char *restrict format, ...);
+       int printf(const char *restrict format, ...);
+       int snprintf(char *restrict s, size_t n,
+              const char *restrict format, ...);
+       int sprintf(char *restrict s, const char *restrict format, ...);
+
+
+DESCRIPTION
+       The fprintf() function shall place output on the named output stream.
+       The printf() function shall place output on the standard output stream
+       stdout. The sprintf() function shall place output followed by the null
+       byte,  '\0',  in consecutive bytes starting at *s; it is the user's
+       responsibility to ensure that enough space is available.
+
+       The snprintf() function shall be equivalent to sprintf(),  with the
+       addition of the n argument which states the size of the buffer referred
+       to by s. If n is zero, nothing shall be written and s may be a null
+       pointer.   Otherwise,  output bytes beyond the n-1st shall be discarded
+       instead of being written to the array, and a null byte is written at
+       the end of the bytes actually written into the array.
+
+       If copying takes place between objects that overlap as a result of a
+       call to sprintf() or snprintf(), the results are undefined.
+
+       Each of these functions converts, formats,  and prints its arguments
+       under control of the format. The format is a character string, begin-
+       ning and ending in its initial shift state, if any. The format is com-
+       posed of zero or more directives: ordinary characters, which are simply
+       copied to the output stream, and conversion specifications,  each of
+       which shall result in the fetching of zero or more arguments. The
+       results are undefined if there are insufficient arguments for the for-
+       mat.  If the format is exhausted while arguments remain, the excess
+       arguments shall be evaluated but are otherwise ignored.
+
+       Conversions can be applied to the nth argument after the format in the
+       argument list,  rather than to the next unused argument. In this case,
+       the conversion specifier character % (see below)  is replaced by the
+       sequence   "%n$",   where n is a decimal integer in the range
+       [1,{NL_ARGMAX}], giving the position of the argument in the argument
+       list.  This feature provides for the definition of format strings that
+       select arguments in an order appropriate to specific languages (see the
+       EXAMPLES section).
+
+       The format can contain either numbered argument conversion specifica-
+       tions (that is, "%n$" and "*m$"),  or unnumbered argument conversion
+       specifications (that is, % and * ), but not both. The only exception to
+       this is that %% can be mixed with the "%n$" form. The results of mixing
+       numbered and unnumbered argument specifications in a format string are
+       undefined. When numbered argument specifications are used,  specifying
+       the Nth argument requires that all the leading arguments, from the
+       first to the (N-1)th, are specified in the format string.
+
+       In format strings containing the "%n$" form of conversion specifica-
+       tion,  numbered arguments in the argument list can be referenced from
+       the format string as many times as required.
+
+       In format strings containing the % form of conversion specification,
+       each conversion specification uses the first unused argument in the
+       argument list.
+
+       All forms of the fprintf() functions allow for the insertion of a lan-
+       guage-dependent radix character in the output string. The radix charac-
+       ter is defined in the program's locale (category LC_NUMERIC ).  In the
+       POSIX locale, or in a locale where the radix character is not defined,
+       the radix character shall default to a period ( '.' ).
+
+       Each conversion specification is introduced by the '%' character or by
+       the character sequence  "%n$",   after which the following appear in
+       sequence:
+
+        * Zero or more flags (in any order), which modify the meaning of the
+          conversion specification.
+
+
+        * An optional minimum field width. If the converted value has fewer
+          bytes than the field width,  it shall be padded with spaces by
+          default on the left; it shall be padded on the right if the left-
+          adjustment flag ( '-' ), described below,  is given to the field
+          width.  The field width takes the form of an asterisk ( '*' ),
+          described below, or a decimal integer.
+
+
+        * An optional precision that gives the minimum number of digits to
+          appear for the d, i, o, u, x, and X conversion specifiers; the num-
+          ber of digits to appear after the radix character for the a,  A,  e,
+          E, f, and F conversion specifiers; the maximum number of significant
+          digits for the g and G conversion specifiers; or the maximum number
+          of bytes to be printed from a string in the s and S conversion
+          specifiers. The precision takes the form of a period (  '.'  )  fol-
+          lowed either by an asterisk ( '*' ), described below, or an optional
+          decimal digit string, where a null digit string is treated as zero.
+          If a precision appears with any other conversion specifier, the
+          behavior is undefined.
+
+
+        * An optional length modifier that specifies the size of the argument.
+
+
+        * A conversion specifier character that indicates the type of conver-
+          sion to be applied.
+
+
+       A field width, or precision, or both, may be indicated by an asterisk (
+       '*' ). In this case an argument of type int supplies the field width or
+       precision. Applications shall ensure that arguments specifying field
+       width,  or precision, or both appear in that order before the argument,
+       if any, to be converted.  A negative field width is taken as a '-' flag
+       followed by a positive field width. A negative precision is taken as if
+       the precision were omitted.  In format strings containing the "%n$"
+       form of a conversion specification, a field width or precision may be
+       indicated by the sequence "*m$", where m is a decimal integer in the
+       range  [1,{NL_ARGMAX}]  giving the position in the argument list (after
+       the format argument) of an integer argument containing the field width
+       or precision, for example:
+
+
+              printf("%1$d:%2$.*3$d:%4$.*3$d\n", hour, min, precision, sec);
+
+       The flag characters and their meanings are:
+
+       The integer portion of the result of a decimal conversion ( %i,
+              %d,  %u,  %f, %F, %g, or %G ) shall be formatted with thousands'
+              grouping characters. For other conversions the behavior is unde-
+              fined. The non-monetary grouping character is used.
+
+       -      The result of the conversion shall be left-justified within the
+              field.  The conversion is right-justified if this flag is not
+              specified.
+
+       +      The result of a signed conversion shall always begin with a sign
+              ( '+' or '-' ). The conversion shall begin with a sign only when
+              a negative value is converted if this flag is not specified.
+
+       <space>
+              If the first character of a signed conversion is not a sign or
+              if a signed conversion results in no characters, a <space> shall
+              be prefixed to the result. This means that if the <space> and
+              '+' flags both appear, the <space> flag shall be ignored.
+
+       #      Specifies that the value is to be converted to an alternative
+              form.   For o conversion, it increases the precision (if neces-
+              sary) to force the first digit of the result to be zero.  For x
+              or X conversion specifiers, a non-zero result shall have 0x (or
+              0X) prefixed to it. For a, A, e, E, f, F, g,  and G conversion
+              specifiers,  the result shall always contain a radix character,
+              even if no digits follow the radix character. Without this flag,
+              a radix character appears in the result of these conversions
+              only if a digit follows it. For g and G conversion specifiers,
+              trailing zeros shall not be removed from the result as they nor-
+              mally are.  For other conversion specifiers,  the behavior is
+              undefined.
+
+       0      For d,  i,  o,  u,  x, X, a, A, e, E, f, F, g, and G conversion
+              specifiers, leading zeros (following any indication of sign or
+              base)  are used to pad to the field width; no space padding is
+              performed. If the '0' and '-' flags both appear, the '0' flag is
+              ignored.  For d,  i, o, u, x, and X conversion specifiers, if a
+              precision is specified, the '0' flag is ignored.  If the '0' and
+              '"  flags both appear,  the grouping characters are inserted
+              before zero padding. For other conversions,  the behavior is
+              undefined.
+
+
+       The length modifiers and their meanings are:
+
+       hh     Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to a signed char or unsigned char argument (the
+              argument will have been promoted according to the integer promo-
+              tions, but its value shall be converted to signed char or
+              unsigned char before printing); or that a following n conversion
+              specifier applies to a pointer to a signed char argument.
+
+       h      Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to a short or unsigned short argument (the argument
+              will have been promoted according to the integer promotions, but
+              its value shall be converted to short or unsigned short before
+              printing); or that a following n conversion specifier applies to
+              a pointer to a short argument.
+
+       l (ell)
+              Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to a long or unsigned long argument;  that a
+              following n conversion specifier applies to a pointer to a long
+              argument; that a following c conversion specifier applies to a
+              wint_t argument; that a following s conversion specifier applies
+              to a pointer to a wchar_t argument; or has no effect on a fol-
+              lowing a, A, e, E, f, F, g, or G conversion specifier.
+
+       ll (ell-ell)
+
+              Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to a long long or unsigned long long argument;  or
+              that a following n conversion specifier applies to a pointer to
+              a long long argument.
+
+       j      Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to an intmax_t or uintmax_t argument; or that a
+              following n conversion specifier applies to a pointer to an int-
+              max_t argument.
+
+       z      Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to a size_t or the corresponding signed integer
+              type argument;  or that a following n conversion specifier
+              applies to a pointer to a signed integer type corresponding to a
+              size_t argument.
+
+       t      Specifies that a following d, i, o, u, x, or X conversion speci-
+              fier applies to a ptrdiff_t or the corresponding unsigned type
+              argument;  or that a following n conversion specifier applies to
+              a pointer to a ptrdiff_t argument.
+
+       L      Specifies that a following a, A, e, E, f, F, g, or G conversion
+              specifier applies to a long double argument.
+
+
+       If a length modifier appears with any conversion specifier other than
+       as specified above, the behavior is undefined.
+
+       The conversion specifiers and their meanings are:
+
+       d, i The int argument shall be converted to a signed decimal in the
+              style  "[-]dddd".  The precision specifies the minimum number of
+              digits to appear; if the value being converted can be repre-
+              sented in fewer digits, it shall be expanded with leading zeros.
+              The default precision is 1. The result of converting zero with
+              an explicit precision of zero shall be no characters.
+
+       o      The unsigned argument shall be converted to unsigned octal for-
+              mat in the style "dddd". The precision specifies the minimum
+              number of digits to appear; if the value being converted can be
+              represented in fewer digits, it shall be expanded with leading
+              zeros.  The default precision is 1.  The result of converting
+              zero with an explicit precision of zero shall be no characters.
+
+       u      The unsigned argument shall be converted to unsigned decimal
+              format in the style "dddd". The precision specifies the minimum
+              number of digits to appear; if the value being converted can be
+              represented in fewer digits, it shall be expanded with leading
+              zeros.  The default precision is 1.  The result of converting
+              zero with an explicit precision of zero shall be no characters.
+
+       x      The unsigned argument shall be converted to unsigned hexadecimal
+              format in the style "dddd"; the letters "abcdef" are used.  The
+              precision specifies the minimum number of digits to appear; if
+              the value being converted can be represented in fewer digits, it
+              shall be expanded with leading zeros. The default precision is
+              1. The result of converting zero with an explicit precision of
+              zero shall be no characters.
+
+       X      Equivalent to the x conversion specifier, except that letters
+              "ABCDEF" are used instead of "abcdef" .
+
+       f, F The double argument shall be converted to decimal notation in
+              the style "[-]ddd.ddd",  where the number of digits after the
+              radix character is equal to the precision specification. If the
+              precision is missing, it shall be taken as 6; if the precision
+              is explicitly zero and no '#' flag is present, no radix charac-
+              ter shall appear.  If a radix character appears, at least one
+              digit appears before it.  The low-order digit shall be rounded
+              in an implementation-defined manner.
+
+       A double argument representing an infinity shall be converted in one of
+       the styles "[-]inf" or "[-]infinity" ; which style is implementation-
+       defined. A double argument representing a NaN shall be converted in one
+       of the styles "[-]nan(n-char-sequence)" or "[-]nan" ; which style,  and
+       the meaning of any n-char-sequence, is implementation-defined. The F
+       conversion specifier produces "INF", "INFINITY", or  "NAN"  instead of
+       "inf", "infinity", or "nan", respectively.
+
+       e, E The double argument shall be converted in the style
+              "[-]d.ddde±dd", where there is one digit before the radix char-
+              acter  (which is non-zero if the argument is non-zero) and the
+              number of digits after it is equal to the precision; if the pre-
+              cision is missing, it shall be taken as 6; if the precision is
+              zero and no '#'  flag is present,  no radix character shall
+              appear.  The low-order digit shall be rounded in an implementa-
+              tion-defined manner.  The E conversion specifier shall produce a
+              number with 'E'  instead of 'e' introducing the exponent. The
+              exponent shall always contain at least two digits. If the value
+              is zero, the exponent shall be zero.
+
+       A double argument representing an infinity or NaN shall be converted in
+       the style of an f or F conversion specifier.
+
+       g, G The double argument shall be converted in the style f or e (or
+              in the style F or E in the case of a G conversion specifier),
+              with the precision specifying the number of significant digits.
+              If an explicit precision is zero, it shall be taken as 1. The
+              style used depends on the value converted; style e (or E ) shall
+              be used only if the exponent resulting from such a conversion is
+              less than -4 or greater than or equal to the precision. Trailing
+              zeros shall be removed from the fractional portion of the
+              result; a radix character shall appear only if it is followed by
+              a digit or a '#' flag is present.
+
+       A double argument representing an infinity or NaN shall be converted in
+       the style of an f or F conversion specifier.
+
+       a, A A double argument representing a floating-point number shall be
+              converted in the style "[-]0xh.hhhhp±d", where there is one hex-
+              adecimal digit (which shall be non-zero if the argument is a
+              normalized floating-point number and is otherwise unspecified)
+              before the decimal-point character and the number of hexadecimal
+              digits after it is equal to the precision; if the precision is
+              missing and FLT_RADIX is a power of 2, then the precision shall
+              be sufficient for an exact representation of the value; if the
+              precision is missing and FLT_RADIX is not a power of 2, then the
+              precision shall be sufficient to distinguish values of type dou-
+              ble, except that trailing zeros may be omitted; if the precision
+              is zero and the '#'  flag is not specified, no decimal-point
+              character shall appear. The letters "abcdef" shall be used for a
+              conversion and the letters "ABCDEF" for A conversion. The A con-
+              version specifier produces a number with 'X' and 'P' instead of
+              'x'  and  'p'  .  The exponent shall always contain at least one
+              digit, and only as many more digits as necessary to represent
+              the decimal exponent of 2.  If the value is zero, the exponent
+              shall be zero.
+
+       A double argument representing an infinity or NaN shall be converted in
+       the style of an f or F conversion specifier.
+
+       c      The int argument shall be converted to an unsigned char, and the
+              resulting byte shall be written.
+
+       If an l (ell) qualifier is present, the wint_t argument shall be con-
+       verted as if by an ls conversion specification with no precision and an
+       argument that points to a two-element array of type wchar_t, the first
+       element of which contains the wint_t argument to the ls conversion
+       specification and the second element contains a null wide character.
+
+       s      The argument shall be a pointer to an array of char. Bytes from
+              the array shall be written up to (but not including) any termi-
+              nating null byte. If the precision is specified,  no more than
+              that many bytes shall be written. If the precision is not speci-
+              fied or is greater than the size of the array,  the application
+              shall ensure that the array contains a null byte.
+
+       If an l (ell) qualifier is present, the argument shall be a pointer to
+       an array of type wchar_t. Wide characters from the array shall be con-
+       verted to characters (each as if by a call to the wcrtomb() function,
+       with the conversion state described by an mbstate_t object initialized
+       to zero before the first wide character is converted) up to and includ-
+       ing a terminating null wide character. The resulting characters shall
+       be written up to (but not including) the terminating null character
+       (byte). If no precision is specified, the application shall ensure that
+       the array contains a null wide character. If a precision is specified,
+       no more than that many characters (bytes) shall be written (including
+       shift sequences, if any), and the array shall contain a null wide char-
+       acter if, to equal the character sequence length given by the preci-
+       sion,  the function would need to access a wide character one past the
+       end of the array. In no case shall a partial character be written.
+
+       p      The argument shall be a pointer to void.  The value of the
+              pointer is converted to a sequence of printable characters, in
+              an implementation-defined manner.
+
+       n      The argument shall be a pointer to an integer into which is
+              written the number of bytes written to the output so far by this
+              call to one of the fprintf()  functions.  No argument is con-
+              verted.
+
+       C      Equivalent to lc .
+
+       S      Equivalent to ls .
+
+       %      Print a '%'  character; no argument is converted. The complete
+              conversion specification shall be %% .
+
+
+       If a conversion specification does not match one of the above forms,
+       the behavior is undefined. If any argument is not the correct type for
+       the corresponding conversion specification, the behavior is undefined.
+
+       In no case shall a nonexistent or small field width cause truncation of
+       a field; if the result of a conversion is wider than the field width,
+       the field shall be expanded to contain the conversion result. Charac-
+       ters generated by fprintf() and printf() are printed as if fputc()  had
+       been called.
+
+       For the a and A conversion specifiers, if FLT_RADIX is a power of 2,
+       the value shall be correctly rounded to a hexadecimal floating number
+       with the given precision.
+
+       For a and A conversions,  if FLT_RADIX is not a power of 2 and the
+       result is not exactly representable in the given precision, the result
+       should be one of the two adjacent numbers in hexadecimal floating style
+       with the given precision, with the extra stipulation that the error
+       should have a correct sign for the current rounding direction.
+
+       For the e,  E, f, F, g, and G conversion specifiers, if the number of
+       significant decimal digits is at most DECIMAL_DIG,  then the result
+       should be correctly rounded. If the number of significant decimal dig-
+       its is more than DECIMAL_DIG but the source value is exactly repre-
+       sentable with DECIMAL_DIG digits, then the result should be an exact
+       representation with trailing zeros.  Otherwise,  the source value is
+       bounded by two adjacent decimal strings L < U, both having DECIMAL_DIG
+       significant digits; the value of the resultant decimal string D should
+       satisfy L <= D <= U, with the extra stipulation that the error should
+       have a correct sign for the current rounding direction.
+
+       The st_ctime and st_mtime fields of the file shall be marked for update
+       between the call to a successful execution of fprintf() or printf() and
+       the next successful completion of a call to fflush() or fclose() on the
+       same stream or a call to exit() or abort().
+
+RETURN VALUE
+       Upon successful completion, the fprintf() and printf() functions shall
+       return the number of bytes transmitted.
+
+       Upon successful completion, the sprintf()  function shall return the
+       number of bytes written to s, excluding the terminating null byte.
+
+       Upon successful completion,  the snprintf() function shall return the
+       number of bytes that would be written to s had n been sufficiently
+       large excluding the terminating null byte.
+
+       If an output error was encountered, these functions shall return a neg-
+       ative value.
+
+       If the value of n is zero on a call to snprintf(),  nothing shall be
+       written,  the number of bytes that would have been written had n been
+       sufficiently large excluding the terminating null shall be returned,
+       and s may be a null pointer.
+
+ERRORS
+       For the conditions under which fprintf() and printf() fail and may
+       fail, refer to fputc() or fputwc().
+
+       In addition, all forms of fprintf() may fail if:
+
+       EILSEQ A wide-character code that does not correspond to a valid char-
+              acter has been detected.
+
+       EINVAL There are insufficient arguments.
+
+
+       The printf() and fprintf() functions may fail if:
+
+       ENOMEM Insufficient storage space is available.
+
+
+       The snprintf() function shall fail if:
+
+       EOVERFLOW
+              The value of n is greater than {INT_MAX} or the number of bytes
+              needed to hold the output excluding the terminating null is
+              greater than {INT_MAX}.
+
+
+       The following sections are informative.
+
+EXAMPLES
+   Printing Language-Independent Date and Time
+       The following statement can be used to print date and time using a lan-
+       guage-independent format:
+
+
+              printf(format, weekday, month, day, hour, min);
+
+       For American usage, format could be a pointer to the following string:
+
+
+              "%s, %s %d, %d:%.2d\n"
+
+       This example would produce the following message:
+
+
+              Sunday, July 3, 10:02
+
+       For German usage, format could be a pointer to the following string:
+
+
+              "%1$s, %3$d. %2$s, %4$d:%5$.2d\n"
+
+       This definition of format would produce the following message:
+
+
+              Sonntag, 3. Juli, 10:02
+
+   Printing File Information
+       The following example prints information about the type,  permissions,
+       and number of links of a specific file in a directory.
+
+       The first two calls to printf() use data decoded from a previous stat()
+       call.  The user-defined strperm() function shall return a string simi-
+       lar to the one at the beginning of the output for the following com-
+       mand:
+
+
+              ls -l
+
+       The next call to printf() outputs the owner's name if it is found using
+       getpwuid();  the getpwuid()  function shall return a passwd structure
+       from which the name of the user is extracted. If the user name is not
+       found, the program instead prints out the numeric value of the user ID.
+
+       The next call prints out the group name if it is found using get-
+       grgid();  getgrgid() is very similar to getpwuid() except that it shall
+       return group information based on the group number. Once again, if the
+       group is not found, the program prints the numeric value of the group
+       for the entry.
+
+       The final call to printf() prints the size of the file.
+
+
+              #include <stdio.h>
+              #include <sys/types.h>
+              #include <pwd.h>
+              #include <grp.h>
+
+
+              char *strperm (mode_t);
+              ...
+              struct stat statbuf;
+              struct passwd *pwd;
+              struct group *grp;
+              ...
+              printf("%10.10s", strperm (statbuf.st_mode));
+              printf("%4d", statbuf.st_nlink);
+
+
+              if ((pwd = getpwuid(statbuf.st_uid)) != NULL)
+                  printf(" %-8.8s", pwd->pw_name);
+              else
+                  printf(" %-8ld", (long) statbuf.st_uid);
+
+
+              if ((grp = getgrgid(statbuf.st_gid)) != NULL)
+                  printf(" %-8.8s", grp->gr_name);
+              else
+                  printf(" %-8ld", (long) statbuf.st_gid);
+
+
+              printf("%9jd", (intmax_t) statbuf.st_size);
+              ...
+
+   Printing a Localized Date String
+       The following example gets a localized date string.  The nl_langinfo()
+       function shall return the localized date string, which specifies the
+       order and layout of the date. The strftime() function takes this infor-
+       mation and, using the tm structure for values, places the date and time
+       information into datestring. The printf() function then outputs dat-
+       estring and the name of the entry.
+
+
+              #include <stdio.h>
+              #include <time.h>
+              #include <langinfo.h>
+              ...
+              struct dirent *dp;
+              struct tm *tm;
+              char datestring[256];
+              ...
+              strftime(datestring, sizeof(datestring), nl_langinfo (D_T_FMT), tm);
+
+
+              printf(" %s %s\n", datestring, dp->d_name);
+              ...
+
+   Printing Error Information
+       The following example uses fprintf()  to write error information to
+       standard error.
+
+       In the first group of calls, the program tries to open the password
+       lock file named LOCKFILE. If the file already exists, this is an error,
+       as indicated by the O_EXCL flag on the open()  function.  If the call
+       fails,  the program assumes that someone else is updating the password
+       file, and the program exits.
+
+       The next group of calls saves a new password file as the current pass-
+       word file by creating a link between LOCKFILE and the new password file
+       PASSWDFILE.
+
+
+              #include <sys/types.h>
+              #include <sys/stat.h>
+              #include <fcntl.h>
+              #include <stdio.h>
+              #include <stdlib.h>
+              #include <unistd.h>
+              #include <string.h>
+              #include <errno.h>
+
+
+              #define LOCKFILE "/etc/ptmp"
+              #define PASSWDFILE "/etc/passwd"
+              ...
+              int pfd;
+              ...
+              if ((pfd = open(LOCKFILE, O_WRONLY | O_CREAT | O_EXCL,
+                  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
+              {
+                  fprintf(stderr, "Cannot open /etc/ptmp. Try again later.\n");
+                  exit(1);
+              }
+              ...
+              if (link(LOCKFILE,PASSWDFILE) == -1) {
+                  fprintf(stderr, "Link error: %s\n", strerror(errno));
+                  exit(1);
+              }
+              ...
+
+   Printing Usage Information
+       The following example checks to make sure the program has the necessary
+       arguments,  and uses fprintf()  to print usage information if the
+       expected number of arguments is not present.
+
+
+              #include <stdio.h>
+              #include <stdlib.h>
+              ...
+              char *Options = "hdbtl";
+              ...
+              if (argc < 2) {
+                  fprintf(stderr, "Usage: %s -%s <file\n", argv[0], Options); exit(1);
+              }
+              ...
+
+   Formatting a Decimal String
+       The following example prints a key and data pair on stdout.   Note use
+       of the '*'  (asterisk) in the format string; this ensures the correct
+       number of decimal places for the element based on the number of ele-
+       ments requested.
+
+
+              #include <stdio.h>
+              ...
+              long i;
+              char *keystr;
+              int elementlen, len;
+              ...
+              while (len < elementlen) {
+              ...
+                  printf("%s Element%0*ld\n", keystr, elementlen, i);
+              ...
+              }
+
+   Creating a Filename
+       The following example creates a filename using information from a pre-
+       vious getpwnam() function that returned the HOME directory of the user.
+
+
+              #include <stdio.h>
+              #include <sys/types.h>
+              #include <unistd.h>
+              ...
+              char filename[PATH_MAX+1];
+              struct passwd *pw;
+              ...
+              sprintf(filename, "%s/%d.out", pw->pw_dir, getpid());
+              ...
+
+   Reporting an Event
+       The following example loops until an event has timed out. The pause()
+       function waits forever unless it receives a signal.  The fprintf()
+       statement should never occur due to the possible return values of
+       pause().
+
+
+              #include <stdio.h>
+              #include <unistd.h>
+              #include <string.h>
+              #include <errno.h>
+              ...
+              while (!event_complete) {
+              ...
+                  if (pause() != -1 || errno != EINTR)
+                      fprintf(stderr, "pause: unknown error: %s\n", strerror(errno));
+              }
+              ...
+
+   Printing Monetary Information
+       The following example uses strfmon() to convert a number and store it
+       as a formatted monetary string named convbuf. If the first number is
+       printed, the program prints the format and the description;  otherwise,
+       it just prints the number.
+
+
+              #include <monetary.h>
+              #include <stdio.h>
+              ...
+              struct tblfmt {
+                  char *format;
+                  char *description;
+              };
+
+
+              struct tblfmt table[] = {
+                  { "%n", "default formatting" },
+                  { "%11n", "right align within an 11 character field" },
+                  { "%#5n", "aligned columns for values up to 99999" },
+                  { "%=*#5n", "specify a fill character" },
+                  { "%=0#5n", "fill characters do not use grouping" },
+                  { "%^#5n", "disable the grouping separator" },
+                  { "%^#5.0n", "round off to whole units" },
+                  { "%^#5.4n", "increase the precision" },
+                  { "%(#5n", "use an alternative pos/neg style" },
+                  { "%!(#5n", "disable the currency symbol" },
+              };
+              ...
+              float input[3];
+              int i, j;
+              char convbuf[100];
+              ...
+              strfmon(convbuf, sizeof(convbuf), table[i].format, input[j]);
+
+
+              if (j == 0) {
+                  printf("%s  %s  %s\n", table[i].format,
+                      convbuf, table[i].description);
+              }
+              else {
+                  printf("    %s\n", convbuf);
+              }
+              ...
+
+   Printing Wide Characters
+       The following example prints a series of wide characters. Suppose that
+       "L'@'" expands to three bytes:
+
+
+              wchar_t wz [3] = L"@@";       // Zero-terminated
+              wchar_t wn [3] = L"@@@";      // Unterminated
+
+
+              fprintf (stdout,"%ls", wz);   // Outputs 6 bytes
+              fprintf (stdout,"%ls", wn);   // Undefined because wn has no terminator
+              fprintf (stdout,"%4ls", wz);  // Outputs 3 bytes
+              fprintf (stdout,"%4ls", wn);  // Outputs 3 bytes; no terminator needed
+              fprintf (stdout,"%9ls", wz);  // Outputs 6 bytes
+              fprintf (stdout,"%9ls", wn);  // Outputs 9 bytes; no terminator needed
+              fprintf (stdout,"%10ls", wz); // Outputs 6 bytes
+              fprintf (stdout,"%10ls", wn); // Undefined because wn has no terminator
+
+       In the last line of the example,  after processing three characters,
+       nine bytes have been output. The fourth character must then be examined
+       to determine whether it converts to one byte or more.  If it converts
+       to more than one byte, the output is only nine bytes. Since there is no
+       fourth character in the array, the behavior is undefined.
+
+APPLICATION USAGE
+       If the application calling fprintf() has any objects of type wint_t or
+       wchar_t,  it must also include the  <wchar.h>  header to have these
+       objects defined.
+
+RATIONALE
+       None.
+
+FUTURE DIRECTIONS
+       None.
+
+SEE ALSO
+       fputc(), fscanf(), setlocale(), strfmon(), wcrtomb(), the Base Defini-
+       tions volume of IEEE Std 1003.1-2001,  Chapter 7, Locale, <stdio.h>,
+       <wchar.h>
+
+COPYRIGHT
+       Portions of this text are reprinted and reproduced in electronic form
+       from IEEE Std 1003.1, 2003 Edition, Standard for Information Technology
+       -- Portable Operating System Interface (POSIX),  The Open Group Base
+       Specifications Issue 6,  Copyright  (C) 2001-2003 by the Institute of
+       Electrical and Electronics Engineers, Inc and The Open Group.  In the
+       event of any discrepancy between this version and the original IEEE and
+       The Open Group Standard, the original IEEE and The Open Group Standard
+       is the referee document. The original Standard can be obtained online
+       at http://www.opengroup.org/unix/online.html .
+
+
+
+IEEE/The Open Group                  2003                          FPRINTF(3P)

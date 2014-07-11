@@ -878,6 +878,9 @@ usr_28.txt fold
 
 vim --startuptime start.log xxx.c
 
+:vert diffsplit main.c~
+:diffsplit main.c~
+
 #####################################################################################
 
 ---------- c.vim ----------

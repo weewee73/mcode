@@ -1960,10 +1960,9 @@ The following list describes options mandated by the POSIX standard:
      than once, setting another variable each time, like this: 'awk -v foo=1
      -v bar=2 ...'.
 
-          CAUTION: Using '-v' to set the values of the built-in
-          variables may lead to surprising results.  'awk' will reset
-          the values of those variables as it needs to, possibly
-          ignoring any predefined value you may have given.
+          CAUTION: Using '-v' to set the values of the built-in variables may lead to surprising results.
+          'awk' will reset the values of those variables as it needs to,
+              possibly ignoring any predefined value you may have given.
 
 '-W GAWK-OPT'
      Provide an implementation-specific option.  This is the POSIX
@@ -3441,11 +3440,10 @@ started.  Another built-in variable, 'NR', records the total number of
 input records read so far from all data files.  It starts at zero, but
 is never automatically reset to zero.
 
-   Records are separated by a character called the "record separator".
-By default, the record separator is the newline character.  This is why
-records are, by default, single lines.  A different character can be
-used for the record separator by assigning the character to the built-in
-variable 'RS'.
+Records are separated by a character called the "record separator".
+By default, the record separator is the newline character.
+This is why records are, by default, single lines.
+A different character can be used for the record separator by assigning the character to the built-in variable 'RS'.
 
    Like any other variable, the value of 'RS' can be changed in the
 'awk' program with the assignment operator, '=' (*note Assignment
@@ -3826,8 +3824,7 @@ existing fields.
 fields; *note Fields::).  For example, the value of 'NF' is set to the
 number of the highest field you create.  The exact format of '$0' is
 also affected by a feature that has not been discussed yet: the "output
-field separator", 'OFS', used to separate the fields (*note Output
-Separators::).
+field separator", 'OFS', used to separate the fields (*note Output Separators::).
 
    Note, however, that merely _referencing_ an out-of-range field does
 _not_ change the value of either '$0' or 'NF'.  Referencing an
@@ -8618,20 +8615,17 @@ specific to 'gawk' are marked with a pound sign ('#').
      exclusively on the value of 'FS'.
 
 'FS'
-     This is the input field separator (*note Field Separators::).  The
-     value is a single-character string or a multicharacter regular
-     expression that matches the separations between fields in an input
-     record.  If the value is the null string ('""'), then each
-     character in the record becomes a separate field.  (This behavior
-     is a 'gawk' extension.  POSIX 'awk' does not specify the behavior
-     when 'FS' is the null string.  Nonetheless, some other versions of
-     'awk' also treat '""' specially.)
+     This is the input field separator (*note Field Separators::).
+     The value is a single-character string or
+         a multicharacter regular expression that matches the separations between fields in an input record.
+     If the value is the null string ('""'), then each character in the record becomes a separate field.
+     (This behavior is a 'gawk' extension.
+         POSIX 'awk' does not specify the behavior when 'FS' is the null string.
+         Nonetheless, some other versions of 'awk' also treat '""' specially.)
 
      The default value is '" "', a string consisting of a single space.
-     As a special exception, this value means that any sequence of
-     spaces, TABs, and/or newlines is a single separator.(1)  It also
-     causes spaces, TABs, and newlines at the beginning and end of a
-     record to be ignored.
+     As a special exception, this value means that any sequence of spaces, TABs, and/or newlines is a single separator.(1)
+     It also causes spaces, TABs, and newlines at the beginning and end of a record to be ignored.
 
      You can set the value of 'FS' on the command line using the '-F'
      option:
@@ -8686,14 +8680,14 @@ specific to 'gawk' are marked with a pound sign ('#').
      now done by 'CONVFMT'.
 
 'OFS'
-     This is the output field separator (*note Output Separators::).  It
-     is output between the fields printed by a 'print' statement.  Its
-     default value is '" "', a string consisting of a single space.
+     This is the output field separator (*note Output Separators::).
+     It is output between the fields printed by a 'print' statement.
+     Its default value is '" "', a string consisting of a single space.
 
 'ORS'
-     This is the output record separator.  It is output at the end of
-     every 'print' statement.  Its default value is '"\n"', the newline
-     character.  (*Note Output Separators::.)
+     This is the output record separator.
+     It is output at the end of every 'print' statement.
+     Its default value is '"\n"', the newline character.  (*Note Output Separators::.)
 
 'PREC #'
      The working precision of arbitrary precision floating-point
@@ -11098,11 +11092,10 @@ Versions::) also support these functions.  Optional parameters are
 enclosed in square brackets ([ ]):
 
 'mktime(DATESPEC)'
-     Turn DATESPEC into a timestamp in the same form as is returned by
-     'systime()'.  It is similar to the function of the same name in ISO
-     C. The argument, DATESPEC, is a string of the form
-     '"YYYY MM DD HH MM SS [DST]"'.  The string consists of six or seven
-     numbers representing, respectively, the full year including
+     Turn DATESPEC into a timestamp in the same form as is returned by 'systime()'.
+     It is similar to the function of the same name in ISO C.
+     The argument, DATESPEC, is a string of the form '"YYYY MM DD HH MM SS [DST]"'.
+     The string consists of six or seven numbers representing, respectively, the full year including
      century, the month from 1 to 12, the day of the month from 1 to 31,
      the hour of the day from 0 to 23, the minute from 0 to 59, the
      second from 0 to 60,(3) and an optional daylight-savings flag.
@@ -11121,27 +11114,22 @@ enclosed in square brackets ([ ]):
      time is out of range, 'mktime()' returns -1.
 
 'strftime([FORMAT [, TIMESTAMP [, UTC-FLAG]]])'
-     Format the time specified by TIMESTAMP based on the contents of the
-     FORMAT string and return the result.  It is similar to the function
-     of the same name in ISO C. If UTC-FLAG is present and is either
-     nonzero or non-null, the value is formatted as UTC (Coordinated
-     Universal Time, formerly GMT or Greenwich Mean Time).  Otherwise,
-     the value is formatted for the local time zone.  The TIMESTAMP is
-     in the same format as the value returned by the 'systime()'
-     function.  If no TIMESTAMP argument is supplied, 'gawk' uses the
-     current time of day as the timestamp.  If no FORMAT argument is
-     supplied, 'strftime()' uses the value of 'PROCINFO["strftime"]' as
-     the format string (*note Built-in Variables::).  The default string
-     value is '"%a %b %e %H:%M:%S %Z %Y"'.  This format string produces
-     output that is equivalent to that of the 'date' utility.  You can
-     assign a new value to 'PROCINFO["strftime"]' to change the default
-     format; see below for the various format directives.
+     Format the time specified by TIMESTAMP based on the contents of the FORMAT string and return the result.
+     It is similar to the function of the same name in ISO C.
+     If UTC-FLAG is present and is either nonzero or non-null,
+         the value is formatted as UTC (Coordinated Universal Time, formerly GMT or Greenwich Mean Time).
+     Otherwise, the value is formatted for the local time zone.
+     The TIMESTAMP is in the same format as the value returned by the 'systime()' function.
+     If no TIMESTAMP argument is supplied, 'gawk' uses the current time of day as the timestamp.
+     If no FORMAT argument is supplied, 'strftime()' uses the value of 'PROCINFO["strftime"]' as the format string (*note Built-in Variables::).
+     The default string value is '"%a %b %e %H:%M:%S %Z %Y"'.
+     This format string produces output that is equivalent to that of the 'date' utility.
+     You can assign a new value to 'PROCINFO["strftime"]' to change the default format; see below for the various format directives.
 
 'systime()'
-     Return the current time as the number of seconds since the system
-     epoch.  On POSIX systems, this is the number of seconds since
-     1970-01-01 00:00:00 UTC, not counting leap seconds.  It may be a
-     different number on other systems.
+     Return the current time as the number of seconds since the system epoch.
+     On POSIX systems, this is the number of seconds since 1970-01-01 00:00:00 UTC, not counting leap seconds.
+     It may be a different number on other systems.
 
    The 'systime()' function allows you to compare a timestamp from a log
 file with the current time of day.  In particular, it is easy to
@@ -11154,12 +11142,10 @@ to do before/after comparisons of dates and times, particularly when
 dealing with date and time data coming from an external source, such as
 a log file.
 
-   The 'strftime()' function allows you to easily turn a timestamp into
-human-readable information.  It is similar in nature to the 'sprintf()'
-function (*note String Functions::), in that it copies nonformat
-specification characters verbatim to the returned string, while
-substituting date and time values for format specifications in the
-FORMAT string.
+   The 'strftime()' function allows you to easily turn a timestamp into human-readable information.
+It is similar in nature to the 'sprintf()' function (*note String Functions::),
+    in that it copies nonformat specification characters verbatim to the returned string,
+    while substituting date and time values for format specifications in the FORMAT string.
 
    'strftime()' is guaranteed by the 1999 ISO C standard(4) to support
 the following date format specifications:
@@ -11230,12 +11216,10 @@ the following date format specifications:
      A newline character (ASCII LF).
 
 '%p'
-     The locale's equivalent of the AM/PM designations associated with a
-     12-hour clock.
+     The locale's equivalent of the AM/PM designations associated with a 12-hour clock.
 
 '%r'
-     The locale's 12-hour clock time.  (This is '%I:%M:%S %p' in the
-     '"C"' locale.)
+     The locale's 12-hour clock time.  (This is '%I:%M:%S %p' in the '"C"' locale.)
 
 '%R'
      Equivalent to specifying '%H:%M'.
@@ -11253,8 +11237,7 @@ the following date format specifications:
      The weekday as a decimal number (1-7).  Monday is day one.
 
 '%U'
-     The week number of the year (the first Sunday as the first day of
-     week one) as a decimal number (00-53).
+     The week number of the year (the first Sunday as the first day of week one) as a decimal number (00-53).
 
 '%V'
      The week number of the year (the first Monday as the first day of
@@ -11272,12 +11255,10 @@ the following date format specifications:
      week one) as a decimal number (00-53).
 
 '%x'
-     The locale's "appropriate" date representation.  (This is '%A %B %d
-     %Y' in the '"C"' locale.)
+     The locale's "appropriate" date representation.  (This is '%A %B %d %Y' in the '"C"' locale.)
 
 '%X'
-     The locale's "appropriate" time representation.  (This is '%T' in
-     the '"C"' locale.)
+     The locale's "appropriate" time representation.  (This is '%T' in the '"C"' locale.)
 
 '%y'
      The year modulo 100 as a decimal number (00-99).
@@ -11286,24 +11267,20 @@ the following date format specifications:
      The full year as a decimal number (e.g., 2011).
 
 '%z'
-     The timezone offset in a +HHMM format (e.g., the format necessary
-     to produce RFC 822/RFC 1036 date headers).
+     The timezone offset in a +HHMM format (e.g., the format necessary to produce RFC 822/RFC 1036 date headers).
 
 '%Z'
-     The time zone name or abbreviation; no characters if no time zone
-     is determinable.
+     The time zone name or abbreviation; no characters if no time zone is determinable.
 
 '%Ec %EC %Ex %EX %Ey %EY %Od %Oe %OH'
 '%OI %Om %OM %OS %Ou %OU %OV %Ow %OW %Oy'
-     "Alternate representations" for the specifications that use only
-     the second letter ('%c', '%C', and so on).(5)  (These facilitate
-     compliance with the POSIX 'date' utility.)
+     "Alternate representations" for the specifications that use only the second letter ('%c', '%C', and so on).
+     (5)  (These facilitate compliance with the POSIX 'date' utility.)
 
 '%%'
      A literal '%'.
 
-   If a conversion specifier is not one of the above, the behavior is
-undefined.(6)
+   If a conversion specifier is not one of the above, the behavior is undefined.(6)
 
    Informally, a "locale" is the geographic place in which a program is
 meant to run.  For example, a common way to abbreviate the date
@@ -11321,8 +11298,8 @@ compile 'gawk' (*note Installation::), then the following additional
 format specifications are available:
 
 '%k'
-     The hour (24-hour clock) as a decimal number (0-23).  Single-digit
-     numbers are padded with a space.
+     The hour (24-hour clock) as a decimal number (0-23).
+     Single-digit numbers are padded with a space.
 
 '%l'
      The hour (12-hour clock) as a decimal number (1-12).  Single-digit

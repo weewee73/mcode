@@ -181,6 +181,7 @@ $@
 
 
 
+FS = "[ \t\n]+"
 awk '$3==0 && $6=="LISTEN" || NR==1 {printf "%-20s %-20s %s\n",$4,$5,$6}' netstat.txt
 $0 当前记录（这个变量中存放着整个行的内容） 
 $1~$n 当前记录的第n个字段，字段间由FS分隔 
@@ -357,6 +358,9 @@ screen -d -m -S some_name ping my_router
 wget --random-wait -r -p -e robots=off -U mozilla http://www.example.com
 下载整个www.example.com网站。（注：别太过分，大部分网站都有防爬功能了：）） 
 wget -r -np http://git-scm.com/book/
+wget -r -A ".c,.h" http://beej.us/
+
+
 
 
 convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png
@@ -1058,6 +1062,9 @@ login user message
     mesg
     notify-send
 
+uptime
+
+
 The character % introduces a job specification (jobspec).
 jobs
 bg
@@ -1073,3 +1080,32 @@ gzip -d
 gunzip
 
 xgettext *.c *.sh
+
+echo $line | tr [:upper:] [:lower:]
+
+[root@localhost ~]# echo a b c d | awk 'OFS="-"{ $2="b"; print $0}'
+a-b-c-d 
+[root@localhost ~]# echo a b c d | awk 'OFS="-"{ print $0}'
+a b c d
+[eric@eric monitor]$ echo a b c d | awk 'OFS="-"{ $2=$2; print $0}'   
+a-b-c-d
+
+
+date "+%Y-%m-%d %H:%M:%S"
+date "+%Y-%m-%d %T"
+2014-07-08 19:21:43
+echo | awk '{print strftime("%Y-%m-%d %H:%M:%S", mktime("2014 08 01 07 23 59"))}'  
+date -d "Tue 08 Jul 2014 07:23:59" "+%Y-%m-%d %H:%M:%S"
+echo "Tue Jun 24 15:11:12 2014" | awk '{ cmd="date  \"+%Y-%m-%d %H:%M:%S\" -d \""  $0 "\""; cmd | getline time; close(cmd); print time}'
+
+mysqldump --no-data db_name tb1 tb2 >table.sql
+mysql --execute="SELECT VERSION();SELECT NOW()"
+mysql --batch --skip-column-name --execute="select count(*) from db.table;"
+mysql db_name <file.sql
+mysqldump -h HostIp -u UserName -pPassWord  --no-data db_name table_name | mysql db_name
+mysql --execute="SELECT VERSION();SELECT NOW()"
+select User,Host from mysql.user;
+INSERT INTO table1 SELECT *, NOW(), "aaa" FROM table2 WHERE id=1;
+SELECT * FROM table ORDER BY alarm_id DESC LIMIT 10 ;
+SELECT * FROM table WHERE time > NOW() - INTERVAL 5 MINUTE;
+SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GROUP BY type;

@@ -5,12 +5,20 @@ find .  -name "*.[ch]" >cscope.files
 cscope -bq
 ctags --sort=yes --c-kinds=+px -L cscope.files
 
+CustomFunc='
+syn match    cCustomParen    "(" contains=cParen
+syn match    cCustomFunc     "\w\+\s*(" contains=cCustomParen
+hi cCustomFunc ctermfg=blue
+'
+echo "$CustomFunc" >c.vim
+
 awk -v fcolor="c.vim" '
 BEGIN{
     Tenum="syn keyword cEnum "
     Ttypedef="syn keyword cType "
     Tdefine="syn keyword cDefine "
     Tglobal="syn keyword cGlobalVal "
+    Tfunction="syn keyword cFunction "
 }
 {
     if (/;"\te/)
@@ -21,10 +29,12 @@ BEGIN{
         Tdefine  = Tdefine " " $1
     else if (/;"\tv/)
         Tglobal  = Tglobal " " $1
+    else if (/;"\tf/)
+        Tfunction = Tfunction "  " $1
 }
 END{
     if (length(Tenum) > length("syn keyword cEnum "))
-        print Tenum >fcolor
+        print Tenum >>fcolor
         print "hi cEnum ctermfg=DarkRed" >> fcolor
     if (length(Ttypedef) > length("syn keyword cType "))
         print Ttypedef >>fcolor
@@ -33,6 +43,9 @@ END{
     if (length(Tenum) > length("syn keyword cGlobalVal "))
         print Tglobal >>fcolor
         print "hi def link cGlobalVal cDefine" >> fcolor
+    if (length(Tfunction) > length("syn keyword cFunction "))
+        print Tfunction >>fcolor
+        print "hi cFunction cterm=bold ctermfg=blue" >> fcolor
 }
 ' tags
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-find .  -name "*.[ch]" >cscope.files
+#find .  -name "*.[ch]" >cscope.files
+#find . -name '*.c' -o -name '*.cpp' -o -name '*.h'
+find . -regex '.*\.\(c\|cpp\|h\)$' -print >cscope.files
 
 cscope -bq
 ctags --sort=yes --c-kinds=+px -L cscope.files

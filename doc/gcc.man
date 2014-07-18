@@ -3226,10 +3226,9 @@ OPTIONS
            of time.
 
        -Wpointer-sign (C and Objective-C only)
-           Warn for pointer argument passing or assignment with different
-           signedness.  This option is only supported for C and Objective-C.
-           It is implied by -Wall and by -pedantic, which can be disabled with
-           -Wno-pointer-sign.
+           Warn for pointer argument passing or assignment with different signedness.
+           This option is only supported for C and Objective-C.
+           It is implied by -Wall and by -pedantic, which can be disabled with -Wno-pointer-sign.
 
        -Wstack-protector
            This option is only active when -fstack-protector is active.  It

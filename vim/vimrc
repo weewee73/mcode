@@ -373,12 +373,68 @@ function! Synchronize()
     exec ':silent cs kill -1'
     exec ':silent cs add cscope.out .'
 
-    exec ':silent set ft=c'
-
     exec ':silent TlistUpdate'
     "exec ':redraw!' "ctrl-l
+
+    " be careful only use in c/c++ file !
+    exec ':silent set ft=c'
+
 endfunction
 command Sync call Synchronize()
+
+function! AddSpace()
+    " be careful only use in c/c++ file !
+    
+    " add space after ','
+    exec '%s/,\(\S\)/, \1/ge'
+
+    " add space after C control keyword
+    exec '%s/\(if\|while\|for\|switch\)(/\1 (/ge'
+
+
+    " add space after '='
+    exec '%s/=\([^ \t=]\)/= \1/ge'
+    " add space before '=',  be careful '>>=' and '<<=' !
+    exec '%s/\([^ \t=><!+\-*/%|&^]\)=/\1 =/ge'
+    " add space before '?=', be careful '>>=' and '<<=' !
+    exec '%s/\([^ \t]\)\([=><!+\-*/%|&^]=\)/\1 \2/ge'
+
+    " add space before and after '&&, ||'
+    exec '%s/\(\S\)\(&&\|||\)/\1 \2/ge'
+    exec '%s/\(&&\|||\)\(\S\)/\1 \2/ge'
+
+    " add space before and after '<', be careful '#include <xx>'
+    exec '%s/\([^ \t]\)</\1 </ge'
+    exec '%s/<\([^ \t=<]\)/< \1/ge'
+
+    " add space before and after '>', be careful '#include <xx>'
+    exec '%s/\([^ \t\-]\)>/\1 >/ge'
+    exec '%s/\([^-]\)>\([^ \t=>]\)/\1> \2/ge'
+
+    " add space before and after '+,-,*,/,%,....'
+    " ......
+endfunction
+command AddSpace call AddSpace()
+
+function! DeleteTailBlank()
+    exec '%s/[ \t]\+$//ge'
+endfunction
+command DeleteTailBlank call DeleteTailBlank()
+
+function! ExpandTab()
+    exec '%s/\t/    /ge'
+endfunction
+command ExpandTab call ExpandTab()
+
+function! FormatCFile()
+    exec '%s///ge'
+    normal ggVG=
+    call DeleteTailBlank()
+    call ExpandTab()
+    call AddSpace()
+endfunction
+command FormatCFile call FormatCFile()
+
 
 
 function! Mlog(name)

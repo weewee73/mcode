@@ -471,6 +471,11 @@ ntpdate time.nist.gov
 
 find . -type f -exec touch {} \;
 
+find -type f -printf '%T+ %p\n'
+find -type f -printf '%T+ %P\n'
+find -type f -printf "%T@ %p\n"
+find -type f -printf "%T@ %P\n"
+
 
 find . -name '*.[ch]' | xargs grep -l thing
 find . -name '*.[ch]' -print0 | xargs -r -0 grep -l thing
@@ -724,6 +729,8 @@ gcc
 	gcc -DYES -UYES -o helloyesno hello.c
 	gcc -g -o testwmi -I. -L.  -lwmiclient testwmi.c
 
+    编译目标代码时指定可执行文件的动态库搜索路径
+    gcc -o pos main.c -L. -lpos -Wl,-rpath,./
 
 
 
@@ -743,6 +750,19 @@ gdb
 	p *a @3 显示数组a前3个元素
 
 	set follow-fork-mode 
+
+    break ... if <condition> 
+        break if i=100
+
+    info threads 显示当前可调试的所有线程
+    thread ID 切换当前调试的线程为指定ID的线程
+    break thread_test.c:123 thread all 在所有线程中相应的行上设置断点
+    set scheduler-locking off|on|step 
+        off 不锁定任何线程，也就是所有线程都执行，这是默认值
+        on 只有当前被调试程序会执行
+        step 在单步的时候，除了next过一个函数的情况以外，只有当前线程会执行。
+    break <linespec> thread <threadno> [if ...]
+        break frik.c:13 thread 28 if bartab > lim
 
 
 if (( RANDOM % 2 )); then C1; else C2; fi
@@ -1112,3 +1132,6 @@ INSERT INTO table1 SELECT *, NOW(), "aaa" FROM table2 WHERE id=1;
 SELECT * FROM table ORDER BY alarm_id DESC LIMIT 10 ;
 SELECT * FROM table WHERE time > NOW() - INTERVAL 5 MINUTE;
 SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GROUP BY type;
+
+
+smbclient //192.168.2.2/share -U root%password

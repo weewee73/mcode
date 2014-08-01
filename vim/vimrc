@@ -377,6 +377,7 @@ function! Synchronize()
     "exec ':redraw!' "ctrl-l
 
     " be careful only use in c/c++ file !
+    exec 'set tags+=/usr/local/include/showclear/tags'
     exec ':silent set ft=c'
 
 endfunction

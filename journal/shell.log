@@ -1135,3 +1135,39 @@ SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GR
 
 
 smbclient //192.168.2.2/share -U root%password
+
+git
+     .gitignore
+     .git/info/exclude
+     .git/config  [core] -> excludesfile = 
+
+git clone https://github.com/zeroflyfire/mcode.git
+git config user.email "zero.flyfire@gmail.com"
+git config user.name "flyfire"
+git push origin master
+git branch
+git branch -r
+git diff origin/master
+git fetch origin
+git merge origin/master
+git rebase origin/master
+git reset --hard HEAD~1
+git stash
+git stash clear
+git stash list
+git stash pop
+git config credential.helper cache
+git config remote.origin.url git@github.com:zeroflyfire/mcode.git
+git diff --stat --staged origin
+git checkout -- Makefile
+
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git submodule
+
+git diff 012345..abcdef
+git diff --cached
+
+git diff 0da94be  59ff30c > my.patch
+git apply my.patch
+
+git archive master --format=tar -o xxx.tar

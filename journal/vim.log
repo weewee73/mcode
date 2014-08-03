@@ -1,3 +1,29 @@
+\%23l	Matches in a specific line.
+\%<23l	Matches above a specific line (lower line number).
+\%>23l	Matches below a specific line (higher line number).
+    \%<23l\%>10l
+
+\%23c	Matches in a specific column.
+\%<23c	Matches before a specific column.
+\%>23c	Matches after a specific column.
+
+
+\%'m	Matches with the position of mark m.
+\%<'m	Matches before the position of mark m.
+\%>'m	Matches after the position of mark m.
+
+\zs	Matches at any position, and sets the start of the match there: The next char is the first char of the whole match.
+	Example: /^\s*\zsif
+            matches an "if" at the start of a line, ignoring white space.
+\ze	Matches at any position, and sets the end of the match there: The previous char is the last char of the whole match.
+	Example: "end\ze\(if\|for\)"
+            matches the "end" in "endif" and "endfor".
+            end\(\>\|if\|for\) is the same
+
+\%^	Matches start of the file.  When matching with a string, matches the start of the string.
+\%$	Matches end of the file.  When matching with a string, matches the end of the string.
+
+
 gv			Start Visual mode with the same area as the previous area and the same mode.
 
 "set modelines=1
@@ -1034,3 +1060,16 @@ The Above commands can additionally accept command switches that override the co
     Opens all of the entries in the current result list in a new tab.
 
 ------------ dkprice/vim-easygrep ------------------
+
+
+------------ godlygeek/tabular ------------------
+:Tabularize /{pattern}
+    :Tabularize /=
+    :Tabularize /=\zs
+------------ godlygeek/tabular ------------------
+
+
+
+------------ suan/vim-instant-markdown------------------
+:InstantMarkdownPreview
+------------ suan/vim-instant-markdown------------------

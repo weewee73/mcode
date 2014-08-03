@@ -35,7 +35,6 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 PATH=$PATH:/log/.debug/mips/bin
 
 
-git archive master --format=tar -o xxx.tar
 
 You can try --enable-wide-getaddrinfo.
 http://bugs.ruby-lang.org/issues/7856
@@ -295,25 +294,6 @@ http://www.offensive-security.com/metasploit-unleashed/Exploits
 
 http://code.taobao.org/svn/tinixdev/trunk
 
-git clone https://github.com/zeroflyfire/mcode.git
-git config user.email "zero.flyfire@gmail.com"
-git config user.name "flyfire"
-git push origin master
-git branch
-git branch -r
-git diff origin/master
-git fetch origin
-git merge origin/master
-git rebase origin/master
-git reset --hard HEAD~1
-git stash
-git stash clear
-git stash list
-git stash pop
-git config credential.helper cache
-git config remote.origin.url git@github.com:zeroflyfire/mcode.git
-git diff --stat --staged origin
-git checkout -- Makefile
 vidcontrol -i mode
 vim /etc/rc.conf
 
@@ -355,8 +335,6 @@ http://vim-scripts.org/vim/scripts.html
 https://github.com/gmarik/Vundle.vim
 
 
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-git submodule
 
 ubuntu
 gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encodingUTF-8
@@ -449,11 +427,6 @@ gi              Focus last used input field. If there is no last input field, it
         ;i  to open a media object
         ;I  to open a media object in a new tab
         ;x  to display an element's title text, or alt text if none.
-git
-     .gitignore
-     .git/info/exclude
-     .git/config  [core] -> excludesfile = 
-
 http://ftp.gnu.org/gnu/coreutils/coreutils-8.22.tar.xz
 http://www.gnu.org/manual/manual.html
 
@@ -482,3 +455,5 @@ http://www.gnu.org/software/autogen/manual/
 https://www.kernel.org/doc/
 
 Happy Hacking Keyboard
+
+pandoc

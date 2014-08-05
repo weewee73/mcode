@@ -209,6 +209,10 @@ vnoremap <silent> <Leader>ff y:vimgrep /<C-R>=substitute(escape(@", '.*\\/[]'), 
 nnoremap <silent> <Leader>ft  :let @a="" \| g/<C-R>=expand("<cword>")<CR>/y A<CR><C-O>:tabnew<CR>P
 vnoremap <silent> <Leader>ft y:let @a="" \| g/<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR>/y A<CR><C-O>:tabnew<CR>P
 
+
+" Integrate aspell spelling checker
+map <Leader>s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
+
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -306,11 +310,11 @@ let g:EasyGrepJumpToMatch=0
 "==========================================
 " kshenoy/vim-signature
 "==========================================
-let g:SignatureMap = {
-      \ 'PlaceNextMark'      :  "m",
-      \ 'PurgeMarksAtLine'   :  "<Space>",
-      \ 'PurgeMarks'         :  "-",
-      \ }
+"let g:SignatureMap = {
+      "\ 'PlaceNextMark'      :  "m",
+      "\ 'PurgeMarksAtLine'   :  "<Space>",
+      "\ 'PurgeMarks'         :  "-",
+      "\ }
 
 "==========================================
 " bling/vim-airline
@@ -365,7 +369,10 @@ endfunction
 " plasticboy/vim-markdown
 "==========================================
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
+" Enable spell checking for markdown files
+"autocmd FileType markdown setlocal spell
+"au BufRead *.md setlocal spell
+"au BufRead *.markdown setlocal spell
 
 "==========================================
 " suan/vim-instant-markdown

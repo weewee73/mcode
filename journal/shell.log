@@ -1171,3 +1171,7 @@ git diff 0da94be  59ff30c > my.patch
 git apply my.patch
 
 git archive master --format=tar -o xxx.tar
+
+
+list packages installed
+dpkg --get-selections | grep -v deinstall

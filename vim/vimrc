@@ -370,7 +370,7 @@ endfunction
 "==========================================
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Enable spell checking for markdown files
-"autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal spell
 "au BufRead *.md setlocal spell
 "au BufRead *.markdown setlocal spell
 

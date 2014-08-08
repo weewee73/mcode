@@ -735,6 +735,7 @@ gcc
 
 
 gdb
+gdb -x foo.gdbinit foo
 	dir xxx/xxx/xxx
 
 	set substitute-path /home/new_scanner/trunk/user/modules/hse /log/.debug/hse

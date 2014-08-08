@@ -927,6 +927,11 @@ vim --startuptime start.log xxx.c
 \ss       switch
 \sw       while
 \swh      while{}
+
+[n]\cl   end of line comment
+
+\cd     date
+\ct     date & time
 ---------- c.vim ----------
 
 

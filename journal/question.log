@@ -8,3 +8,13 @@ chinese encode
 mark vim 'The current file does not appear to be a Vimball'?
 how to not print the specified column use awk?
 ls $HOME long time and ps show '+D' why?
+
+typedef struct {
+      int x, y;
+} Point;
+
+typedef struct __point {
+      int x, y;
+} Point;
+
+

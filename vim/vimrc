@@ -210,6 +210,9 @@ nnoremap <silent> <Leader>ft  :let @a="" \| g/<C-R>=expand("<cword>")<CR>/y A<CR
 vnoremap <silent> <Leader>ft y:let @a="" \| g/<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR>/y A<CR><C-O>:tabnew<CR>P
 
 
+au BufNewFile,BufRead *.gdbinit          setf gdb
+
+
 " Integrate aspell spelling checker
 map <Leader>s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
 
@@ -352,6 +355,8 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,\zs<CR>
+vmap <Leader>a, :Tabularize /,\zs<CR>
 
 inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()

@@ -1078,3 +1078,7 @@ The Above commands can additionally accept command switches that override the co
 ------------ suan/vim-instant-markdown------------------
 :InstantMarkdownPreview
 ------------ suan/vim-instant-markdown------------------
+
+------------ nathanaelkane/vim-indent-guides ------------------
+  :nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+------------ nathanaelkane/vim-indent-guides ------------------

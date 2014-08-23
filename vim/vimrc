@@ -58,6 +58,7 @@ Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'tomasr/molokai'
 " plugin not on GitHub
 Plugin 'git://repo.or.cz/vcscommand.git'
@@ -375,9 +376,9 @@ endfunction
 "==========================================
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Enable spell checking for markdown files
-autocmd FileType markdown setlocal spell
-"au BufRead *.md setlocal spell
-"au BufRead *.markdown setlocal spell
+"autocmd FileType markdown setlocal spell
+set listchars=eol:г,trail:·
+autocmd FileType markdown set list
 
 "==========================================
 " suan/vim-instant-markdown
@@ -385,7 +386,9 @@ autocmd FileType markdown setlocal spell
 let g:instant_markdown_autostart = 0
 let g:vim_markdown_initial_foldlevel=1
 
-
+"==========================================
+" nathanaelkane/vim-indent-guides
+"==========================================
 
 " look up current word under cursor
 function! SearchWord()

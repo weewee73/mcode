@@ -51,6 +51,7 @@ sleep 99999
 mutex() {
     local file=$1 pid pids 
 
+    # trouble, child process whill inherit FD 9
     exec 9>>"$file"
 
     { pids=$(fuser -f "$file"); } 2>&- 9>&- 
@@ -64,3 +65,20 @@ mutex() {
 } 
 
 mutex /var/run/myscript.lock || { echo "Already running." >&2; exit 1; }
+
+
+
+
+mutex_pgrep() {
+    local pid pids 
+
+    pids=$(pgrep `basename $0`)
+
+    for pid in $pids; do
+        [[ $pid -eq $$ ]] && continue
+
+        return 1
+    done 
+} 
+
+mutex_pgrep || { echo "Already running." >&2; exit 1; } 

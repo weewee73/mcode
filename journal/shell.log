@@ -476,6 +476,9 @@ find -type f -printf '%T+ %P\n'
 find -type f -printf "%T@ %p\n"
 find -type f -printf "%T@ %P\n"
 
+find . -type f -printf "%C@ %p\n" | sort -rn | head -n 10
+find /etc -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r
+
 
 find . -name '*.[ch]' | xargs grep -l thing
 find . -name '*.[ch]' -print0 | xargs -r -0 grep -l thing
@@ -1176,3 +1179,10 @@ git archive master --format=tar -o xxx.tar
 
 list packages installed
 dpkg --get-selections | grep -v deinstall
+
+
+A=0
+awk "{print \$$A}" 1.txt
+awk \{print\$$A\} 1.txt
+awk '{print $'$A'}' 1.txt
+awk '{print $'"$A"'}' 1.txt 

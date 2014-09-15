@@ -11,6 +11,10 @@ alias lt='ls -Altr'
 alias mdate='date "+%Y-%m-%d %T"'
 alias tmux='TERM=xterm-256color tmux'
 alias cvs_status='cvs status | grep -v "^ " | grep -v "^$" | grep -v = | grep -v "Status: Up-to-date"'
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'
 
 random()
 {

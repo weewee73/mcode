@@ -52,7 +52,7 @@ ask() {
 
 get_corefile_name() {
     for file ; do
-        echo -n $file : ; gdb --core=$file --batch | head -1
+        echo -n $file : ; gdb --core=$file --batch | head -2
     done
 }
 

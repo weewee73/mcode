@@ -65,8 +65,7 @@ EXAMPLES
               filter the archive through xz
 
        -p, --preserve-permissions
-              extract  information  about  file permissions (default for supe-
-              ruser)
+              extract  information  about  file permissions (default for superuser)
 
        -v, --verbose
               verbosely list files processed
@@ -77,8 +76,7 @@ EXAMPLES
 
 Operation modifiers:
        --check-device
-              check   device   numbers   when  creating  incremental  archives
-              (default)
+              check   device   numbers   when  creating  incremental  archives (default)
 
        -g, --listed-incremental=FILE
               handle new GNU-format incremental backup
@@ -117,16 +115,13 @@ Operation modifiers:
 
 Overwrite control:
        -k, --keep-old-files
-              don't replace existing files  when  extracting,  treat  them  as
-              errors
+              don't replace existing files  when  extracting,  treat  them  as errors
 
        --skip-old-files
-              don't replace existing files when extracting, silently skip over
-              them
+              don't replace existing files when extracting, silently skip over them
 
        --keep-newer-files
-              don't replace existing files that are newer than  their  archive
-              copies
+              don't replace existing files that are newer than  their  archive copies
 
        --no-overwrite-dir
               preserve metadata of existing directories
@@ -135,8 +130,7 @@ Overwrite control:
               overwrite existing files when extracting
 
        --overwrite-dir
-              overwrite  metadata  of  existing  directories  when  extracting
-              (default)
+              overwrite  metadata  of  existing  directories  when  extracting (default)
 
        --recursive-unlink
               empty hierarchies prior to extracting directory
@@ -214,8 +208,7 @@ Select output stream:
               force NAME as owner for added files
 
        -p, --preserve-permissions, --same-permissions
-              extract information about file permissions  (default  for  supe-
-              ruser)
+              extract information about file permissions (default  for  superuser)
 
        --preserve
               same as both -p and -s

@@ -3721,7 +3721,8 @@ SHELL BUILTIN COMMANDS
               optstring contains the option characters to be recognized; 
                 if a character is followed by a colon, the option is expected to have an argument, which should be separated from it by white space.  
               The colon and question mark characters may not be used as option characters.
-              Each time it is invoked, getopts places the next option in the shell variable name, initializing name if it does not exist, and the index of the next argument to be processed into the variable OPTIND.
+              Each time it is invoked, getopts places the next option in the shell variable name, initializing name if it does not exist,
+                  and the index of the next argument to be processed into the variable OPTIND.
               OPTIND is initialized to 1 each time the shell or a shell script is invoked.
               When an option requires an argument, getopts places that argument into the variable OPTARG.
               The shell does not reset OPTIND automatically;

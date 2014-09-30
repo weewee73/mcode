@@ -1,3 +1,7 @@
+tar -cvf x.tar.gz a/b/c d/e f/g 
+tar -xzf x.tar.gz
+   c e g
+
 vim:
     1. delete all blank line
     2. delete all blank end of line

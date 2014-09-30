@@ -72,6 +72,10 @@ if [ -f $HOME/.workrc ]; then
 	. $HOME/.workrc
 fi
 
+.  ${mcode}/shell/lib/alias.sh
+.  ${mcode}/shell/lib/function.sh
+
+
 return 0
 
 # TMUX

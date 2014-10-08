@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define STREQ(a, b) (*(a) == *(b) && strcmp((a), (b)) == 0)
+
 static inline char * skip_ws(const char *p)
 {
     while (isspace(*p)) 

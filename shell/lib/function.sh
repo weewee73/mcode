@@ -130,4 +130,51 @@ extract() {
 
 
 
+# four functions: mark, markcd, markrm, marks
+#
+# mark xxx  : adds sym link xxx to current dir to $MARKPATH
+# marks     : list all marks
+# markcd xxx: cd to the dir referred to as xxx
+# markrm xxx: remove sym link xxx
+export MARKPATH=$HOME/.marks
+function mark() { 
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+function marks {
+    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+function markrm() { 
+    local del_links
+
+    if [ "$1" = "-a" ]; then
+        rm $MARKPATH/*
+        return 0
+    fi
+
+    for link in ${@}
+    do
+        del_links=$del_links" $MARKPATH/$link"
+    done
+
+    rm -i $del_links
+}
+function markcd() {
+    if [ -z "$1" ]; then
+        ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9-
+        return 0
+    fi
+
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+# Completion using available marks
+# http://stackoverflow.com/questions/803653/bash-completion-for-certain-types-of-files-in-a-special-directory
+function _marks_show() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local marks=$(find $MARKPATH -type l -printf "%f\n")
+    COMPREPLY=($( compgen -W "${marks[@]}" -- "$cur" ) )
+}
+complete -o default -o nospace -F _marks_show cdmark
+complete -o default -o nospace -F _marks_show markcd
+complete -o default -o nospace -F _marks_show markrm
+alias cdmark=markcd
 

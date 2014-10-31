@@ -57,6 +57,7 @@ alias mvim='vim $WORKSPACE/mcode/journal/vim.log'
 alias mquestion='vim -c start $WORKSPACE/mcode/journal/question.log'
 alias man='$WORKSPACE/mcode/shell/mman.sh'
 alias project_init='$WORKSPACE/mcode/shell/project_init.sh'
+alias project_lua_init='$WORKSPACE/mcode/shell/project_lua_init.sh'
 
 mcode="$WORKSPACE/mcode"
 source ${mcode}/shell/git-completion.bash

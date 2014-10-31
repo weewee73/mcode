@@ -1,13 +1,23 @@
 #!/bin/bash
 
 mkdir -p $HOME/.vim/syntax
-f_color="$HOME/.vim/syntax/c.vim"
-#find .  -name "*.[ch]" >cscope.files
-#find . -name '*.c' -o -name '*.cpp' -o -name '*.h'
-find . -regex '.*\.\(c\|cpp\|h\)$' -print >cscope.files
+f_color="$HOME/.vim/syntax/lua.vim"
+
+find . -name "*.lua" -print >cscope.files
 
 cscope -bq
-ctags --sort=yes --c-kinds=+px -L cscope.files
+
+ctags --sort=yes --excmd=number -L cscope.files \
+        --langdef=MYLUA \
+        --langmap=MYLUA:.lua \
+        --regex-MYLUA="/^.*\s*function\s*(\w+):(\w+).*$/\2/f/" \
+        --regex-MYLUA="/^.*\s*function\s*(\w+)\.(\w+).*$/\2/f/" \
+        --regex-MYLUA="/^.*\s*function\s*(\w+)\s*\(.*$/\1/f/" \
+        --regex-MYLUA="/^\s*(\w+)\s*=\s*\{.*$/\1/e/" \
+        --regex-MYLUA="/^\s*(\w+)\s*=\s*[0-9]+.*$/\1/e/" \
+        --regex-MYLUA="/^\s*module\s+\"(\w+)\".*$/\1/m,module/" \
+        --regex-MYLUA="/^\s*module\s+\"[a-zA-Z0-9._]+\.(\w+)\".*$/\1/m,module/" \
+        --languages=MYLUA
 
 CustomFunc='
 syn match    cCustomParen    "(" contains=cParen
@@ -56,3 +66,4 @@ END{
 if [ -f ~/.vim/syntax/common.vim ]; then
     cat "$HOME/.vim/syntax/common.vim" >>$f_color
 fi
+

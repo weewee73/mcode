@@ -381,6 +381,8 @@ vim一个远程文件
 
 python -m SimpleHTTPServer
 一句话实现一个HTTP服务，把当前目录设为HTTP服务目录，可以通过http://localhost:8000访问 这也许是这个星球上最简单的HTTP服务器的实现了。
+python -m SimpleHTTPServer 8080
+python -c "help('modules')"
 
 
 history | awk '{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] " " CMD[a]/count*100 "% " a }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
@@ -1053,6 +1055,7 @@ netstat -anptu --ip
 
 daemon shell
 nohup ./myscript 0<&- &> my.admin.log.file &
+command &>filename redirects both the stdout and the stderr of command to filename.
 
 
 ifconfig
@@ -1144,6 +1147,10 @@ SELECT * FROM table WHERE time > NOW() - INTERVAL 5 MINUTE;
 SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GROUP BY type;
 SELECT GROUP_CONCAT(id SEPARATOR ',' ) FROM table;
 SELECT GROUP_CONCAT( CONCAT( id, ' ', name, ' ', city, ' ', state) SEPARATOR ',')  from table;
+show databases;
+
+GRANT ALL PRIVILEGES ON *.* TO admin@localhost IDENTIFIED BY 'something' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO user_name@"%" IDENTIFIED BY 'password' WITH GRANT OPTION;
 
 SELECT column_name(s) FROM table1
 UNION
@@ -1151,6 +1158,12 @@ SELECT column_name(s) FROM table2;
 
 path:/var/lib/mysql/
 SELECT @@datadir;
+
+SELECT CONCAT('20000',i)
+SELECT CONCAT(20000+i)
+SELECT CONCAT(20000+i,'')
+SELECT CAST(20000+i AS CHAR)
+
 
 --------------------drop all table----------------------------------------
 SET FOREIGN_KEY_CHECKS = 0; 
@@ -1279,3 +1292,28 @@ curl -A "() { foo;};echo \"Content-type: text/plain\"; ping 192.168.2.172 &" htt
 
 Set the Access and Modification times
 touch -c -t 201312101730
+
+mount --bind  olddir/ newdir/    #把newdir 作为olddird的一个镜像，它们的内容完全一样
+
+fuser –km /dev/cdrom # busy状态时，卸载该文件系统
+
+script path
+SCRIPT_PATH="$( cd $(dirname ${BASH_SOURCE[0]}) && pwd )"
+
+$FUNCNAME[@]
+An array variable containing the names of all shell functions currently in the execution call stack.
+The element with index 0 is the name of any currently-executing shell function.
+The bottom-most element (the one with the highest index) is "main".
+
+timeout 5s COMMAND
+Start COMMAND, and kill it if still running after 5 seconds
+
+[root@~]# path="a/b/c"
+[root@~]# echo "${path////\/}"
+a\/b\/c
+
+ionice -c3 $$; renice +20 -p $$
+
+ip link
+ip addr add IP/掩码 dev 网卡名
+ip route add default via 192.168.2.1

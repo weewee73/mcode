@@ -59,6 +59,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-ftplugin'
+"Plugin 'xolox/vim-lua-inspect'
 "Plugin 'tomasr/molokai'
 " plugin not on GitHub
 Plugin 'git://repo.or.cz/vcscommand.git'
@@ -174,7 +177,8 @@ set tags=tags;
 set cst
 if has("cscope")
 "    set csprg=/usr/bin/cscope
-    set csto=0
+    " If 'csto' is set to one, tag file(s) are searched before cscope database(s).
+    set csto=1
     set nocsverb
     " add any database in current directory
     if filereadable("cscope.out")
@@ -390,6 +394,15 @@ let g:vim_markdown_initial_foldlevel=1
 " nathanaelkane/vim-indent-guides
 "==========================================
 
+"==========================================
+" nathanaelkane/vim-lua-inspect
+"==========================================
+let g:lua_inspect_mappings = 0
+let g:lua_inspect_warnings = 0
+
+
+
+
 " look up current word under cursor
 function! SearchWord()
     let expr = '!sdcv -n -u "朗道英汉字典5.0" ' .expand("<cword>")
@@ -418,21 +431,30 @@ nnoremap <silent> <F12> :call SearchWord()<CR>
 ""nnoremap <silent> <F12> :call Mydict()<CR>
 
 function! Synchronize()
-    exec ':silent !$HOME/github/mcode/shell/project_init.sh'
-
     "exec ':silent cs reset'
     exec ':silent cs kill -1'
     exec ':silent cs add cscope.out .'
 
     exec ':silent TlistUpdate'
     "exec ':redraw!' "ctrl-l
+endfunction
 
+function! SynchronizeC()
+    exec ':silent !$HOME/github/mcode/shell/project_init.sh'
+    call Synchronize()
     " be careful only use in c/c++ file !
     exec 'set tags+=/usr/local/include/showclear/tags'
     exec ':silent set ft=c'
-
 endfunction
-command Sync call Synchronize()
+
+function! SynchronizeLua()
+    exec ':silent !$HOME/github/mcode/shell/project_lua_init.sh'
+    call Synchronize()
+    exec ':silent set ft=lua'
+endfunction
+
+command Sync call SynchronizeC()
+command SyncLua call SynchronizeLua()
 
 function! AddSpace()
     " be careful only use in c/c++ file !

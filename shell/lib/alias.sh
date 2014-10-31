@@ -14,6 +14,8 @@ alias grep='grep --color=auto'
 alias mdate='date "+%Y-%m-%d %T"'
 alias tmux='TERM=xterm-256color tmux'
 alias cvs_status='cvs status | grep -v "^ " | grep -v "^$" | grep -v = | grep -v "Status: Up-to-date"'
+alias mfind_ch='find . -regex '.*\.\(c\|cpp\|h\)$' -print | xargs grep --color=auto -n '
+alias mfind_lua='find . -name "*.lua" -print | xargs grep --color=auto -n '
 
 
 

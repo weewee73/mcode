@@ -3994,9 +3994,9 @@ SHELL BUILTIN COMMANDS
               -u fd  Read input from file descriptor fd.
 
               If no names are supplied, the line read is assigned to the variable REPLY.
-              The return code is zero, unless end -of-file is encountered, read times out
-                (in which case the return code is greater than 128),
-                or an invalid file descriptor is supplied as the argument to -u.
+              The return code is zero, unless end-of-file is encountered,
+                  read times out (in which case the return code is greater than 128),
+                  or an invalid file descriptor is supplied as the argument to -u.
 
        readonly [-aAf] [-p] [name[=word] ...]
               The given names are marked readonly;

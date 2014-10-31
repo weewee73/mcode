@@ -6,12 +6,13 @@
 
 calc() { echo "$*" | bc -l; }
 mkdircd() { mkdir -p "$@" && eval cd "\"\$$#\""; }
-mfind_ch() { grep -n $@ `find . -regex '.*\.\(c\|cpp\|h\)$' -print`; }
+#mfind_ch() { find . -regex '.*\.\(c\|cpp\|h\)$' -print | xargs grep --color=auto -n $@ ; }
+#mfind_lua() { find . -name "*.lua" -print | xargs grep --color=auto -n $@ ; }
 mtail() { tail -n +"$2" $1 | head -n $3; }
 mcount() { grep -o "$1" $2 | sort -n | uniq -c | sort -nr; }
 
 # Find a file with a pattern in name:
-ff() { find . -type f -iname '*'"$*"'*' -ls ; }
+ff() { find . -type f -iname '*'"$*"'*' -ls | column -t ; }
 # Find a file with pattern $1 in name and Execute $2 on it:
 fe() { find . -type f -iname '*'"${1:-}"'*' -exec ${2:-file} {} \;  ; }
 
@@ -111,6 +112,7 @@ extract() {
         case $1 in
             *.tar.bz2)   tar xvjf $1     ;;
             *.tar.gz)    tar xvzf $1     ;;
+            *.tar.xz)    tar xvJf $1     ;;
             *.bz2)       bunzip2 $1      ;;
             *.rar)       unrar x $1      ;;
             *.gz)        gunzip $1       ;;
@@ -177,4 +179,17 @@ complete -o default -o nospace -F _marks_show cdmark
 complete -o default -o nospace -F _marks_show markcd
 complete -o default -o nospace -F _marks_show markrm
 alias cdmark=markcd
+
+
+
+function check_command() {
+  CMD=`which $1` > /dev/null 2>&1
+  if [ $? -ne 0 ] ; then
+     echo "[CRIT] Command $1 not found. Cannot continue."
+     exit 1
+  fi
+  _RET=${CMD}
+  return 0
+}
+#check_command grep; grepcmd=${_RET}
 

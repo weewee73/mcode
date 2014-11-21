@@ -1,23 +1,3 @@
-alias ..="cd .."
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
-alias ..4="cd ../../../.."
-alias ..5="cd ../../../../.."
-
-alias lx='ls -lXB'         #  Sort by extension.
-alias lk='ls -lSr'         #  Sort by size, biggest last.
-alias lt='ls -lAtr'        #  Sort by date, most recent last.
-alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
-alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
-
-alias grep='grep --color=auto'
-alias mdate='date "+%Y-%m-%d %T"'
-alias tmux='TERM=xterm-256color tmux'
-alias cvs_status='cvs status | grep -v "^ " | grep -v "^$" | grep -v = | grep -v "Status: Up-to-date"'
-alias mfind_ch='find . -regex '.*\.\(c\|cpp\|h\)$' -print | xargs grep --color=auto -n '
-alias mfind_lua='find . -name "*.lua" -print | xargs grep --color=auto -n '
-
-
 
 # Color definitions (taken from Color Bash Prompt HowTo).
 # Some colors might look different of some terminals.

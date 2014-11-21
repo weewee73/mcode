@@ -1,3 +1,5 @@
+z. 屏幕中间显示当前行
+
 \%23l	Matches in a specific line.
 \%<23l	Matches above a specific line (lower line number).
 \%>23l	Matches below a specific line (higher line number).

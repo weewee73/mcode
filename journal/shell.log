@@ -1317,3 +1317,8 @@ ionice -c3 $$; renice +20 -p $$
 ip link
 ip addr add IP/掩码 dev 网卡名
 ip route add default via 192.168.2.1
+
+tcpsvd -vE 0.0.0.0 21 ftpd -w /home/root/
+
+如果你想要从一台电脑上备份一个目录，但你仅仅想要复制改变的文件到它的备份而不是复制所有的东西到各自的备份，你可以使用工具rsync来实现它。
+rsync -vare ssh jono@192.168.0.2:/home/jono/importantfiles/* /home/jono/backup/

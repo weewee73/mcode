@@ -1,34 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
-
-#define QUEUE_LEN 10
-
-typedef struct __queue_t {
-    unsigned int length;
-    unsigned int head;
-    unsigned int tail;
-    unsigned int count;
-    int  *buf;
-}queue_t;
-
+#include "queue.h"
 
 void empty_queue(queue_t *q)
 {
     unsigned int i;
 
-    if (NULL == q)
-    {
+    if (NULL == q) {
         return ;
     }
     q->head = q->tail = q->count = 0;
 
-    if (NULL == q->buf)
-    {
+    if (NULL == q->buf) {
         return ;
     }
 
-    for (i=0; i<q->length; i++)
-    {
+    for (i=0; i<q->length; i++) {
         q->buf[i] = -1;
     }
 }
@@ -38,8 +25,7 @@ queue_t *init_queue(unsigned int length)
     queue_t *q;
 
     q = (queue_t *)malloc(sizeof(queue_t));
-    if (NULL == q)
-    {
+    if (NULL == q) {
         printf("malloc queue_t error!\n");
         return NULL;
     }
@@ -47,8 +33,7 @@ queue_t *init_queue(unsigned int length)
     q->length = length;
 
     q->buf = (int *)malloc(q->length);
-    if (NULL == q->buf)
-    {
+    if (NULL == q->buf) {
         printf("malloc queue buffer error!\n");
         free(q);
         return NULL;
@@ -74,61 +59,50 @@ void destroy_queue(queue_t *q)
 
 int dequeue(queue_t *q, int *x)
 {
-    if (NULL == q || NULL == q->buf)
-    {
-        return -1;
+    if (NULL == q || NULL == q->buf) {
+        return E_QUEUE_ERROR;
     }
 
-    if (q->count == 0)
-    {
-        printf("queue is empty!\n");
-        return -2;
+    if (q->count == 0) {
+        return E_QUEUE_EMPTY;
     }
 
     *x = q->buf[q->head];
     q->buf[q->head] = -1;
-    if (q->head == q->length-1)
-    {
+    if (q->head == q->length-1) {
         q->head = 0;
     }
-    else
-    {
+    else {
         q->head++;
     }
 
     q->count--;
 
-    return 0;
+    return E_QUEUE_SUC;
 }
 
-void enqueue(queue_t *q, int x)
+int  enqueue(queue_t *q, int x)
 {
-    if (NULL == q || NULL == q->buf)
-    {
-        return ;
+    if (NULL == q || NULL == q->buf) {
+        return E_QUEUE_ERROR;
     }
 
-    if (q->count == q->length)
-    {
-        printf("queue is full!\n");
-
-        int x, ret;
-        ret = dequeue(q, &x);
-        printf("dequeue[%d] %d!\n", ret, x);
+    if (q->count == q->length) {
+        return E_QUEUE_FULL;
     }
 
     q->buf[q->tail] = x;
 
-    if (q->tail == q->length-1)
-    {
+    if (q->tail == q->length-1) {
         q->tail = 0;
     }
-    else
-    {
+    else {
         q->tail++;
     }
 
     q->count++;
+
+    return E_QUEUE_SUC;
 }
 
 void dump_quene(queue_t *q)
@@ -147,8 +121,7 @@ void dump_quene(queue_t *q)
     if (NULL == q->buf)
         return;
 
-    for (i=0; i<q->length; i++)
-    {
+    for (i=0; i<q->length; i++) {
         printf("%d: %d\t", i, q->buf[i]);
     }
 
@@ -162,10 +135,9 @@ void queue_test()
     int i;
     int x, ret;
 
-    q = init_queue(QUEUE_LEN);
+    q = init_queue(5);
 
-    for (i=0; i<QUEUE_LEN; i++)
-    {
+    for (i=0; i<5; i++) {
         enqueue(q, i);
     }
 
@@ -197,7 +169,6 @@ void queue_test()
     empty_queue(q);
     dump_quene(q);
 }
-
 
 int main()
 {

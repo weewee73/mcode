@@ -1,4 +1,5 @@
 #!/bin/bash
+# Warn: word.xml should be dos2unix
 
 f_word_xml="$HOME/github/mcode/shell/word.xml"
 f_words="$f_word_xml.list~"
@@ -9,6 +10,10 @@ if [ ! -f "$f_word_xml" ]; then
 	exit 1
 fi
 
+start_time=1389534029
+step_time=1
+day_count=20
+
 if [ "-topx" = "$1x" ]; then
 	#history words statistic
 	number=40
@@ -17,6 +22,15 @@ if [ "-topx" = "$1x" ]; then
 	fi
 	awk -F ',' '{print $1}' $f_word_history | sort | uniq -c | sort -nr |  head -n $number
 	
+elif [ "-lX" = "$1X" ]; then
+    max=(`wc -l $f_words`)
+
+	pass_time=$((`date +%s`-$start_time))
+    today_base=$((($pass_time/86400*$day_count + 1) % ${max[0]}))
+    today_max=$(($today_base+$day_count-1))
+
+    sed -n "$today_base, $today_max p" $f_words
+
 elif [ -n "$1" ]; then
 	#query word
 	#rm -f /usr/bin/mword && ln -s $HOME/github/mcode/shell/mword.sh /usr/bin/mword
@@ -43,13 +57,14 @@ else
 	fi
 
     max=(`wc -l $f_words`)
-	start_time=1389534029
-	step_time=1
-	day_count=40
 
 	pass_time=$((`date +%s`-$start_time))
     today_base=$(($pass_time/86400*$day_count + 1))
     count=$((($today_base + $pass_time/$step_time%$day_count) % ${max[0]}))
+
+    if [ $count -eq 0 ]; then
+        count=1
+    fi
 
 	word=`sed -n "$count p" $f_words`
 

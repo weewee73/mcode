@@ -32,10 +32,8 @@
 " my scripts
 "" scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'The-NERD-tree'
-Plugin 'taglist.vim'
 Plugin 'c.vim'
 Plugin 'a.vim'
-Plugin 'Mark--Karkat'
 Plugin 'TxtBrowser'
 Plugin 'vis'
 "" scripts on GitHub repos https://github.com/
@@ -61,6 +59,8 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'zeroflyfire/taglist.vim'
+Plugin 'zeroflyfire/Mark--Karkat'
 "Plugin 'xolox/vim-lua-inspect'
 "Plugin 'tomasr/molokai'
 " plugin not on GitHub
@@ -237,16 +237,6 @@ set completeopt-=preview
 au BufRead,BufNewFile *.txt setlocal ft=txt
 
 "==========================================
-" taglist.vim
-"==========================================
-let Tlist_Show_One_File=1
-let Tlist_WinWidth=40
-let Tlist_Exit_OnlyWindow=1
-"let Tlist_Use_Right_Window=1
-let Tlist_Auto_Open=1
-nnoremap <silent> <F8> :TlistToggle<CR>
-
-"==========================================
 " Lokaltog/vim-easymotion
 "==========================================
 "map <Leader> <Plug>(easymotion-prefix)
@@ -283,7 +273,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = '<leader><Space>'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 "let g:ycm_semantic_triggers =  {
@@ -400,7 +390,20 @@ let g:vim_markdown_initial_foldlevel=1
 let g:lua_inspect_mappings = 0
 let g:lua_inspect_warnings = 0
 
+"==========================================
+" zeroflyfire/taglist.vim
+"==========================================
+let Tlist_Show_One_File=1
+let Tlist_WinWidth=40
+let Tlist_Exit_OnlyWindow=1
+"let Tlist_Use_Right_Window=1
+let Tlist_Auto_Open=1
+nnoremap <silent> <F8> :TlistToggle<CR>
 
+
+"==========================================
+" zeroflyfire/Mark--Karkat
+"==========================================
 
 
 " look up current word under cursor

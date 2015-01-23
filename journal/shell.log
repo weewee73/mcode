@@ -1148,6 +1148,7 @@ SELECT type, COUNT(type) FROM table WHERE time > (NOW() - INTERVAL 40 MINUTE) GR
 SELECT GROUP_CONCAT(id SEPARATOR ',' ) FROM table;
 SELECT GROUP_CONCAT( CONCAT( id, ' ', name, ' ', city, ' ', state) SEPARATOR ',')  from table;
 show databases;
+sql='/*!40101 SET NAMES utf8 */; INSERT INTO ext_user (usr_tel, usrname) VALUES ("99900000", "中文") ON DUPLICATE KEY UPDATE usrname="中文";'
 
 GRANT ALL PRIVILEGES ON *.* TO admin@localhost IDENTIFIED BY 'something' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO user_name@"%" IDENTIFIED BY 'password' WITH GRANT OPTION;
@@ -1243,6 +1244,11 @@ cat <<EOF
 hello world
 EOF
 
+
+
+send udp socket
+ncat -u 192.168.2.20 8888
+
 ECHO Server:
 ncat -v -l -p 5555 -c 'while true; do read i && echo [echo] $i; done'
 Client:
@@ -1282,6 +1288,8 @@ eval "$myCode"
 while read i; do echo -e "Parameter : $i"; done < <(echo -e "a\nab\nc") 
 
 tar -c -f foo.tar -C /etc passwd hosts -C /lib libc.a
+tar -tvf filename.tar
+tar xvf filename.tar file_to_extract
 
 file size
 stat -c %s FileName
@@ -1322,3 +1330,17 @@ tcpsvd -vE 0.0.0.0 21 ftpd -w /home/root/
 
 如果你想要从一台电脑上备份一个目录，但你仅仅想要复制改变的文件到它的备份而不是复制所有的东西到各自的备份，你可以使用工具rsync来实现它。
 rsync -vare ssh jono@192.168.0.2:/home/jono/importantfiles/* /home/jono/backup/
+
+redirecting all output streams to /dev/null using this shortcut: &>/dev/null (or redirect to a log file with &>/path/to/file.log).
+ping -q -c 1 google.com &> /dev/null && echo online || echo offline
+
+"&>word", ">&word" equivalence ">word 2>&1"
+
+grep -o "\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}" ip.log
+nmap -p 80,443 `grep -o "\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}" README.md | uniq` >google.log
+
+find all files that symbolic link to this file
+find -L /etc -samefile /etc/rc.d/rc.local
+
+find out all hard links to file1
+find /home -xdev -samefile file1

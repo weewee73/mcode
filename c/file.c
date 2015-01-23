@@ -1,5 +1,44 @@
 #include <stdio.h>
 
+
+#include <string.h>
+#include <unistd.h>
+
+#define MAX_ENTRY 64
+
+void modify_one_line(const char *file, const char *original_str, const char *modify_str)
+{
+    FILE *fp, *temp_fp;
+    char entry[MAX_ENTRY + 1];
+    char *temp_file="/tmp/temp_file";
+    int length;
+
+    if (file[0] == '\0')
+        return;
+
+    length = strlen(original_str);
+
+    fp = fopen(file, "r");
+    if (fp == (FILE *)NULL) return;
+
+    temp_fp = fopen(temp_file, "w");
+
+    while (fgets(entry, MAX_ENTRY, fp)) {
+        if (strncmp(original_str, entry, length) == 0) {
+            fputs(modify_str, temp_fp);
+        }
+        else {
+            fputs(entry, temp_fp);
+        }
+    }
+
+    fclose(fp);
+    fclose(temp_fp);
+
+    unlink(file);
+    rename(temp_file, file);
+}
+
 /* random record description - could be anything */
 struct rec
 {
